@@ -1,6 +1,8 @@
 # 2019_2_TODO
 > Фронтенд игры "Покер"
 
+[Репозиторий бекенда](https://github.com/go-park-mail-ru/2019_2_TODO)
+
 ## Состав команды
 * [Шепелев Сергей](https://github.com/Toringol)
 * [Михаил Иваниадзе](https://github.com/MishokkohsiM)
