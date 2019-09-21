@@ -1,0 +1,9 @@
+
+.startButton {
+    color: white;
+    min-width: 180px;
+    min-height: 20px;
+    background: #337ab7;
+    border: 1px ;
+    border-radius: 3px;
+}
