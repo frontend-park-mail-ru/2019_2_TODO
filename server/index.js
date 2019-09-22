@@ -9,14 +9,14 @@ const path = require('path');
 const app = express();
 
 app.use(morgan('dev'));
-app.use(express.static(path.resolve(__dirname, '..', 'public')));
+app.use(express.static(path.resolve(__dirname, '..', 'src')));
 app.use(body.json());
 app.use(cookie());
 
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3005;
 
 
-app.listen(port, function () {
+app.listen(port, () => {
     console.log(`Server listening port ${port}`);
 });

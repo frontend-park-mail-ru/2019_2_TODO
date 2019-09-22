@@ -4,9 +4,10 @@ export const RENDER_RULES = {
 };
 
 export class ButtonComponent {
-    constructor(parent = document.body, data = "") {
+    constructor(parent = document.body, data = '', className = '') {
         this._parent = parent;
         this._data = data;
+        this._className = className
     }
 
     get data () {
@@ -31,7 +32,7 @@ export class ButtonComponent {
     _renderDOM() {
         const button = document.createElement('button');
         button.innerText = this._data;
-        button.className = 'startButton'
+        button.className = this._className
         this._parent.appendChild(button);
     }
 

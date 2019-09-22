@@ -1,0 +1,37 @@
+
+.startButton {
+    position: relative;
+    width: 123px;
+    height: 52px;
+    /*left: 837px;*/
+    /*top: 728px;*/
+
+    background: #337AB7;
+    border-radius: 20px;
+}
+
+.logButton {
+    color: white;
+    min-width: 90px;
+    min-height: 20px;
+    background: darkslategrey;
+    border: 1px ;
+    border-radius: 3px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 100;
+}
+.signButton {
+    color: white;
+    min-width: 90px;
+    min-height: 20px;
+    background: darkslategrey;
+    border: 1px ;
+    border-radius: 3px;
+    position: fixed;
+    top: 35px;
+    right: 10px;
+    z-index: 100;
+}
+
