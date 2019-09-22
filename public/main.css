@@ -1,0 +1,12 @@
+@import url('./components/Button/Button.css');
+
+body{
+    background: #27ae60;
+}
+
+a{
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
