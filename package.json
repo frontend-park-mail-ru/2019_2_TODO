@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "Poker",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,8 +7,6 @@
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
-    "fest": "^0.12.1",
-    "fetch": "^1.1.0",
     "morgan": "^1.9.1",
     "path": "^0.12.7",
     "uuid": "^3.3.3",
@@ -23,7 +21,7 @@
     "type": "git",
     "url": "git+https://github.com/frontend-park-mail-ru/2019_2_TODO.git"
   },
-  "author": "Сергей Паничев",
+  "author": "TODO",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/frontend-park-mail-ru/2019_2_TODO/issues"
