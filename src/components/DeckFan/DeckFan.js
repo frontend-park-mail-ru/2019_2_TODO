@@ -1,4 +1,5 @@
 import {TextComponent} from "../TextComponent/Text.js";
+import {ButtonComponent} from "../Button/Button.js";
 
 
 export class CardComponent {
@@ -8,7 +9,7 @@ export class CardComponent {
         this._className = className;
     }
     render(data = this._data, className = this._className) {
-        const card = document.createElement('div');
+        const card = document.createElement('button');
         card.className = className;
         this._parent.appendChild(card);
         const text = new TextComponent(card, 'a', data, 'card')
@@ -21,16 +22,20 @@ export class DeckFanComponent {
     }
 
     render() {
+        const Cards = {
+            'offline': 'firstCard',
+            'online': 'secondCard',
+            'your profile': 'thirdCard',
+            'scoreboard': 'fourthCard',
+            'about': 'fifthCard',
+        };
         const container = document.createElement('section');
         container.className = 'container';
-        const Card = new CardComponent(container, 'B', 'firstCard');
-        Card.render();
-        Card.render('9', 'secondCard');
-        Card.render('K', 'thirdCard');
-        Card.render('A', 'fourthCard');
-        Card.render('10', 'fifthCard');
-        Card.render('Q', 'sixthCard');
-        Card.render('8', 'seventhCard');
+        Object.keys(Cards).forEach(key => {
+            const Card = new ButtonComponent(container, key, Cards[key]);
+            Card.render();
+        });
+
         this._parent.appendChild(container);
     }
 }

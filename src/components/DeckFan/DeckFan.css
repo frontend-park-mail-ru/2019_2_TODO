@@ -1,14 +1,12 @@
 
 section.container{
-    display: flex;
-    position: relative;
     margin-top: 50px;
     height: 400px;
+    align-items: center;
 
 }
 
 a.card {
-    position: absolute;
     width: 36px;
     height: 46px;
     /*left: 15%;*/
@@ -25,98 +23,126 @@ a.card {
 }
 
 
-div.firstCard{
-    position: absolute;
+button.firstCard{
+    position: relative;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 35px;
+    line-height: 56px;
+
+    color: #EEEEEE;
     min-width: 206px;
     min-height: 325px;
-    left: 10%;
-    margin-top: 57px;
+    /*left: 10%;*/
+    /*margin-top: 57px;*/
     /*top: 10%;*/
-    background: #565656;
+    background: #2980B9;
     border: 1px solid rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
     border-radius: 20px;
-    transform: rotate(-17deg);
+    margin: 30px;
 }
 
-div.secondCard {
-    position: absolute;
-    min-width: 206px;
-    min-height: 325px;
-    left: 20%;
+button.secondCard {
+    position: relative;
+    width: 206px;
+    height: 325px;
+    /*left: 20%;*/
     /*top: 356.77px;*/
-    margin-top: 25px;
     background: #793C92;
     border: 1px solid #793C92;
     box-sizing: border-box;
     border-radius: 20px;
-    transform: rotate(-10deg);
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 35px;
+    line-height: 56px;
+    margin: 30px;
+    color: #EEEEEE;
 }
 
-div.thirdCard{
-    position: absolute;
-    min-width: 206px;
-    min-height: 325px;
-    left: 30%;
+button.thirdCard{
+    position: relative;
+    width: 206px;
+    height: 325px;
+
+    /*left: 30%;*/
     /*top: 328.95px;*/
-    margin-top: 8px;
-    background: #793C92;
+    background: #565656;
     border: 1px solid rgba(0, 0, 0, 0.4);
     box-sizing: border-box;
     border-radius: 20px;
-    transform: rotate(-5deg);
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 35px;
+    line-height: 56px;
+    margin: 30px;
+    color: #EEEEEE;
 }
-div.fourthCard{
-    position: absolute;
-    min-width: 206px;
-    min-height: 325px;
-    left: 40%;
+button.fourthCard{
+    position: relative;
+    width: 206px;
+    height: 325px;
+    /*left: 40%;*/
     /*top: 311px;*/
-    background: #2980B9;
-    border: 1px solid #126195;
-    box-sizing: border-box;
-    border-radius: 20px;
-}
-div.fifthCard{
-    position: absolute;
-    min-width: 206px;
-    min-height: 325px;
-    left: 50%;
-    margin-top: 8px;
-    /*top: 311px;*/
-
-    background: #2980B9;
-    border: 1px solid #126195;
-    box-sizing: border-box;
-    border-radius: 20px;
-    transform: rotate(5deg);
-}
-div.sixthCard{
-    position: absolute;
-    min-width: 206px;
-    min-height: 325px;
-    left: 60%;
-    margin-top: 25px;
-    /*top: 321px;*/
-
     background: #E67E22;
-    border: 1px solid #C46816;
+    border: 1px solid #126195;
     box-sizing: border-box;
     border-radius: 20px;
-    transform: rotate(10deg);
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 35px;
+    line-height: 56px;
+    margin: 30px;
+    color: #EEEEEE;
 }
-div.seventhCard{
-    position: absolute;
-    min-width: 206px;
-    min-height: 325px;
-    left: 70%;
-    margin-top: 58px;
-
-    /*top: 342px;*/
+button.fifthCard{
+    position: relative;
+    width: 206px;
+    height: 325px;
+    /*left: 50%;*/
+    /*top: 311px;*/
 
     background: #BF3902;
-    border: 1px solid #882C07;
+    border: 1px solid #126195;
     box-sizing: border-box;
     border-radius: 20px;
-    transform: rotate(17deg);
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 35px;
+    line-height: 56px;
+    margin: 30px;
+    color: #EEEEEE;
 }
+/*button.sixthCard{*/
+/*    position: relative;*/
+/*    min-width: 206px;*/
+/*    min-height: 325px;*/
+/*    !*left: 60%;*!*/
+/*    margin-top: 25px;*/
+/*    !*top: 321px;*!*/
+
+/*    background: #;*/
+/*    border: 1px solid #C46816;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 20px;*/
+/*}*/
+/*button.seventhCard{*/
+/*    position: relative;*/
+/*    min-width: 206px;*/
+/*    min-height: 325px;*/
+/*    !*left: 70%;*!*/
+/*    margin-top: 58px;*/
+
+/*    !*top: 342px;*!*/
+
+/*    background: #;*/
+/*    border: 1px solid #882C07;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 20px;*/
+/*}*/

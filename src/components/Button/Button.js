@@ -18,6 +18,10 @@ export class ButtonComponent {
         this._data = {...dataToSet};
     }
 
+    set className (classNameToSet) {
+        this._className = {...classNameToSet}
+    }
+
     render(method = RENDER_RULES.DOM) {
         switch(method) {
             case RENDER_RULES.STRING:
