@@ -17,6 +17,6 @@ app.use(cookie());
 const port = process.env.PORT || 3000;
 
 
-app.listen(port, function () {
+app.listen(port, () => {
     console.log(`Server listening port ${port}`);
 });
