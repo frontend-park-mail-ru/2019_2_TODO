@@ -12,27 +12,34 @@ export class CardComponent {
         const card = document.createElement('button');
         card.className = className;
         this._parent.appendChild(card);
-        const text = new TextComponent(card, 'a', data, 'card')
-        text.render()
+        const nominal = new TextComponent(card, 'a', data[1], 'cardNominal');
+        nominal.render();
+        const text = new TextComponent(card, 'a', data[0], 'card');
+        text.render();
+
     }
 }
+
+const Cards = {
+    'firstCard': ['offline', 'A'],
+    'secondCard': ['online', 'K'],
+    'thirdCard': ['your profile', 'Q'],
+    'fourthCard': ['scoreboard', 'J'],
+    'fifthCard': ['about', '10']
+};
+
+
 export class DeckFanComponent {
     constructor(parent = document.body) {
         this._parent = parent;
     }
 
     render() {
-        const Cards = {
-            'offline': 'firstCard',
-            'online': 'secondCard',
-            'your profile': 'thirdCard',
-            'scoreboard': 'fourthCard',
-            'about': 'fifthCard',
-        };
+
         const container = document.createElement('section');
         container.className = 'container';
         Object.keys(Cards).forEach(key => {
-            const Card = new ButtonComponent(container, key, Cards[key]);
+            const Card = new CardComponent(container, Cards[key], key);
             Card.render();
         });
 

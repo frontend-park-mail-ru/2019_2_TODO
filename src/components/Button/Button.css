@@ -9,7 +9,11 @@
     background: #337AB7;
     border-radius: 20px;
 }
-
+button:focus{
+    background: #ffd700;
+    color: black;
+    outline: none;
+}
 .logButton {
     color: white;
     min-width: 90px;

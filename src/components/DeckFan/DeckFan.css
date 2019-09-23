@@ -7,23 +7,29 @@ section.container{
 }
 
 a.card {
-    width: 36px;
-    height: 46px;
-    /*left: 15%;*/
-    /*top: 417.04px;*/
 
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
-    font-size: 48px;
+    font-size: 35px;
     line-height: 56px;
 
-    color: #EEEEEE;
+}
+a.card:hover {
+    text-decoration: none;
+}
+a.cardNominal {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+
+}
+a.cardNominal:hover {
+    text-decoration: none;
 
 }
 
-
-button.firstCard{
+.container > button {
     position: relative;
     font-family: Roboto;
     font-style: normal;
@@ -34,90 +40,42 @@ button.firstCard{
     color: #EEEEEE;
     min-width: 206px;
     min-height: 325px;
-    /*left: 10%;*/
-    /*margin-top: 57px;*/
-    /*top: 10%;*/
-    background: #2980B9;
-    border: 1px solid rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
     border-radius: 20px;
     margin: 30px;
+}
+
+.container > button:hover {
+    background: #ffd700;
+    color: black;
+    border-color: black;
+}
+
+.container > button:focus {
+    outline: none;
+}
+
+button.firstCard{
+    background: #2980B9;
+    border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 button.secondCard {
-    position: relative;
-    width: 206px;
-    height: 325px;
-    /*left: 20%;*/
-    /*top: 356.77px;*/
     background: #793C92;
     border: 1px solid #793C92;
-    box-sizing: border-box;
-    border-radius: 20px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 35px;
-    line-height: 56px;
-    margin: 30px;
-    color: #EEEEEE;
 }
 
 button.thirdCard{
-    position: relative;
-    width: 206px;
-    height: 325px;
-
-    /*left: 30%;*/
-    /*top: 328.95px;*/
     background: #565656;
     border: 1px solid rgba(0, 0, 0, 0.4);
-    box-sizing: border-box;
-    border-radius: 20px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 35px;
-    line-height: 56px;
-    margin: 30px;
-    color: #EEEEEE;
 }
 button.fourthCard{
-    position: relative;
-    width: 206px;
-    height: 325px;
-    /*left: 40%;*/
-    /*top: 311px;*/
     background: #E67E22;
-    border: 1px solid #126195;
-    box-sizing: border-box;
-    border-radius: 20px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 35px;
-    line-height: 56px;
-    margin: 30px;
-    color: #EEEEEE;
+    border: 1px solid #BF3902;
 }
 button.fifthCard{
-    position: relative;
-    width: 206px;
-    height: 325px;
-    /*left: 50%;*/
-    /*top: 311px;*/
-
     background: #BF3902;
-    border: 1px solid #126195;
-    box-sizing: border-box;
-    border-radius: 20px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 35px;
-    line-height: 56px;
-    margin: 30px;
-    color: #EEEEEE;
+    border: 1px solid #E67E22;
 }
 /*button.sixthCard{*/
 /*    position: relative;*/

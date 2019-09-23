@@ -5,16 +5,18 @@ import {DeckFanComponent} from "./components/DeckFan/DeckFan.js";
 const application = document.getElementById('application');
 
 
-function startScreen() {
+const startScreen = () => {
     application.innerHTML = '';
     const header = new HeaderComponent(application, false);
     header.render();
     const deck = new DeckFanComponent(application);
     deck.render();
+};
 
+const signUpScreen = () => {
+    application.innerHTML = '';
+};
 
-
-}
 
 startScreen();
 

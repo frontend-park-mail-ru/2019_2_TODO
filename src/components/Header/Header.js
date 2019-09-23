@@ -14,7 +14,11 @@ export class HeaderComponent {
         this._parent.appendChild(head);
         const text = new TextComponent(head,'h1', 'Online Poker game', 'center');
         const chip = new ImageComponent(head, './components/Image/gold_fishka.jpg', 'chip');
-        chip.render()
+        const signInButton = new ButtonComponent(head, 'Sign in', 'logButton');
+        signInButton.render();
+        const signUpButton = new ButtonComponent(head, 'Sign up', 'signButton');
+        signUpButton.render();
+        chip.render();
         text.render();
 
     }
