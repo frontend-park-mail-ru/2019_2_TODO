@@ -3,4 +3,5 @@ img.chip{
     border:  2px solid darkblue ;
     max-width: 100px;
     max-height: 100px;
+    align-self: center;
 }

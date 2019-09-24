@@ -15,8 +15,11 @@ const startScreen = () => {
 
 const signUpScreen = () => {
     application.innerHTML = '';
+    const header = new HeaderComponent(application, false);
+    header.render();
 };
 
 
 startScreen();
+//signUpScreen();
 

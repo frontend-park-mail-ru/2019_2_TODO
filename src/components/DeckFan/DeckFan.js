@@ -14,7 +14,7 @@ export class CardComponent {
         this._parent.appendChild(card);
         const nominal = new TextComponent(card, 'a', data[1], 'cardNominal');
         nominal.render();
-        const text = new TextComponent(card, 'a', data[0], 'card');
+        const text = new TextComponent(card, 'a', data[0], 'cardText');
         text.render();
 
     }

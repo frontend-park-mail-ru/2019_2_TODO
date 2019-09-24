@@ -9,33 +9,29 @@
     background: #337AB7;
     border-radius: 20px;
 }
+
+button {
+    color: white;
+
+    min-width: 90px;
+    min-height: 20px;
+    background: darkslategrey;
+    border: 1px ;
+    border-radius: 3px;
+    align-self: flex-end;
+    margin: 3px;
+}
+
 button:focus{
     background: #ffd700;
     color: black;
     outline: none;
+
 }
 .logButton {
-    color: white;
-    min-width: 90px;
-    min-height: 20px;
-    background: darkslategrey;
-    border: 1px ;
-    border-radius: 3px;
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 100;
+
 }
 .signButton {
-    color: white;
-    min-width: 90px;
-    min-height: 20px;
-    background: darkslategrey;
-    border: 1px ;
-    border-radius: 3px;
-    position: fixed;
-    top: 35px;
-    right: 10px;
-    z-index: 100;
+
 }
 
