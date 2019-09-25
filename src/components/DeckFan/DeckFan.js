@@ -1,23 +1,15 @@
 import {TextComponent} from "../TextComponent/Text.js";
-import {ButtonComponent} from "../Button/Button.js";
+import MainComponent from "../MainComponent/MainComponent.js";
 
-
-export class CardComponent {
-    constructor(parent = document.body, data ='', className = '') {
-        this._parent = parent;
-        this._data = data;
-        this._className = className;
-    }
-    render(data = this._data, className = this._className) {
-        const card = document.createElement('button');
-        card.className = className;
-        this._parent.appendChild(card);
-        const nominal = new TextComponent(card, 'a', data[1], 'cardNominal');
-        nominal.render();
-        const text = new TextComponent(card, 'a', data[0], 'cardText');
-        text.render();
-
-    }
+export class CardComponent extends MainComponent{
+    constructor(context) {
+        super();
+        this.context = context;
+        this.template = Handlebars.compile(`
+            <button class="{{card}}">
+                        <a class="cardNominal">{{Nominal}}</a>
+                        <a class="cardText">{{text}}</a>
+            </button>`)}
 }
 
 const Cards = {
@@ -33,16 +25,13 @@ export class DeckFanComponent {
     constructor(parent = document.body) {
         this._parent = parent;
     }
-
     render() {
-
         const container = document.createElement('section');
         container.className = 'container';
         Object.keys(Cards).forEach(key => {
-            const Card = new CardComponent(container, Cards[key], key);
-            Card.render();
+            const Card = new CardComponent({card: key, Nominal:Cards[key][1], text: Cards[key][0]});
+            container.innerHTML += Card.render()
         });
-
         this._parent.appendChild(container);
     }
 }
