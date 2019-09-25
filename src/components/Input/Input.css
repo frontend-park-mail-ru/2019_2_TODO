@@ -6,3 +6,7 @@ input {
     border: none;
     box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #565656;
 }
+
+input:focus{
+    outline: none;
+}

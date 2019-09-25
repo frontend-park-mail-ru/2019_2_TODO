@@ -5,7 +5,7 @@ export class ButtonComponent extends MainComponent {
     constructor(context) {
         super();
         this.context = context;
-        this.template = Handlebars.compile('<button>{{text}}</button>');
+        this.template = Handlebars.compile('<button type="{{type}}">{{text}}</button>');
     }
 
 }
