@@ -3,9 +3,13 @@
 @import url('./components/TextComponent/Text.css');
 @import url('./components/Image/Image.css');
 @import url('./components/DeckFan/DeckFan.css');
+@import url('./components/Input/Input.css');
 
 
 body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     background: #27ae60;
 }
 
@@ -24,5 +28,14 @@ a:hover {
 }
 
 section{
-    text-align: center;
+
+}
+
+form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*max-width: 320px;*/
+
 }

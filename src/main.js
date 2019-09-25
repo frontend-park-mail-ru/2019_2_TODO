@@ -1,25 +1,11 @@
-import {HeaderComponent} from "./components/Header/Header.js";
-import {DeckFanComponent} from "./components/DeckFan/DeckFan.js";
-//import {ButtonComponent} from "./components/Button/Button.js";
+import {startScreen} from "./components/StartScreen/StartScreen.js";
+import {SignUpScreen} from "./SignUpScreen/SignUpScreen.js";
+
 
 const application = document.getElementById('application');
 
 
-const startScreen = () => {
-    application.innerHTML = '';
-    const header = new HeaderComponent(application, false);
-    header.render();
-    const deck = new DeckFanComponent(application);
-    deck.render();
-};
+SignUpScreen(application);
+//startScreen(application);
 
-const signUpScreen = () => {
-    application.innerHTML = '';
-    const header = new HeaderComponent(application, false);
-    header.render();
-};
-
-
-startScreen();
-//signUpScreen();
 
