@@ -15,15 +15,10 @@ app.use(cookie());
 
 
 app.post('/signup', function (req, res) {
-    AjaxModule.doPost({
-        url: "http://93.171.139.196:780/",
-        body: req.body,
-        callback(req, res) {
-            return res;
-        }
-    });
 
-    return res.status(404).json({error: "err"});
+
+
+    res.status(201).end()
 });
 app.get('');
 
