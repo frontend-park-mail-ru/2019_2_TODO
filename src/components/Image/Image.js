@@ -1,15 +1,12 @@
+import MainComponent from "../MainComponent/MainComponent.js";
 
-export class ImageComponent {
-    constructor(parent = document.body, src = '', className = '') {
-        this._parent = parent;
-        this._src = src;
-        this._className = className;
-    }
+export class ImageComponent extends MainComponent{
+    constructor(context) {
+        super();
+        this.context = context;
+        this.template = Handlebars.compile(`      
+            <img src="{{source}}" class="{{class}}" alt="">
+        `)
 
-    render() {
-        const image = document.createElement('img');
-        image.src = this._src;
-        image.className = this._className;
-        this._parent.appendChild(image);
     }
 }
