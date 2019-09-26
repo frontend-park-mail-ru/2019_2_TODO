@@ -7,6 +7,7 @@ import {SignInScreen} from "../SignInScreen/SignInScreen.js";
 
 
 
+
 export class HeaderComponent {
     constructor(parent = document.body, authorized = false) {
         this._parent = parent;
@@ -39,6 +40,20 @@ export class HeaderComponent {
         head.innerHTML += signUpButton.render();
         head.innerHTML += chip.render();
         head.innerHTML += text.render();
+        const functions = {
+            start: startScreen,
+            signUp: SignUpScreen,
+            signIn: SignInScreen,
+            //profile: createProfile,
+            //about: null,
+        };
+        head.addEventListener('click', evt => {
+            const {target} = evt;
+            if ((target instanceof HTMLButtonElement) || (target instanceof HTMLImageElement)) {
+                evt.preventDefault();
+                functions[target.dataset.section](application);
+            }
+        });
 
     }
 }

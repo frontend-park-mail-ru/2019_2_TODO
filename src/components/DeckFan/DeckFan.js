@@ -7,18 +7,29 @@ export class CardComponent extends BaseComponent{
         this.context = context;
         this.template = Handlebars.compile(`
             <button class="card">
-                        <a class="cardNominal">{{Nominal}}</a>
-                        <a class="cardText">{{text}}</a>
-            </button>`)}
+                <a class="cardNominal">{{Nominal}}</a>
+                <a class="cardText">{{text}}</a>
+            </button>`
+        )
+    }
 }
 
-const Cards = {
-    'firstCard': ['offline', 'A'],
-    'secondCard': ['online', 'K'],
-    'thirdCard': ['your profile', 'Q'],
-    'fourthCard': ['scoreboard', 'J'],
-    'fifthCard': ['about', '10']
-};
+const Cards = [{
+    text: 'offline',
+    nominal: 'A'
+},  {
+    text: 'online',
+    nominal: 'K'
+},  {
+    text: 'your profile',
+    nominal: 'Q'
+},  {
+    text: 'scoreboard',
+    nominal:'J'
+},  {
+    text: 'about',
+    nominal:'10'
+}];
 
 
 export class DeckFanComponent {
@@ -28,10 +39,10 @@ export class DeckFanComponent {
     render() {
         const container = document.createElement('section');
         container.className = 'container';
-        Object.keys(Cards).forEach(key => {
+        Cards.forEach(key => {
             const Card = new CardComponent({
-                Nominal:Cards[key][1],
-                text: Cards[key][0],
+                Nominal:key['nominal'],
+                text: key['text'],
             });
             container.innerHTML += Card.render()
         });

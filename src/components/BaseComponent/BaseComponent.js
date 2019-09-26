@@ -3,8 +3,8 @@ export default class BaseComponent {
         this.context = null;
         this.element = null;
         this.template = null;
-        this._needAuth = false;
-        this._forAuth = false;
+        //this._needAuth = false;
+        //this._forAuth = false;
     }
     render(){
         if (!this.element){
@@ -15,21 +15,21 @@ export default class BaseComponent {
     remove(){
         this.element.parentElement.removeChild(this.element);
     }
-    compile(context) {
-        if (context.needAuth === 'true') {
-            this._needAuth = true;
-        } else if (context.forAuth === 'true') {
-            this._forAuth = true;
-        }
-    }
-    hide() {
-        if (this.element) {
-            this.element.style.display = 'none';
-        }
-    }
-    show() {
-        if (this.element) {
-            this.element.style.display = 'block';
-        }
-    }
+    // compile(context) {
+    //     if (context.needAuth === 'true') {
+    //         this._needAuth = true;
+    //     } else if (context.forAuth === 'true') {
+    //         this._forAuth = true;
+    //     }
+    // }
+    // hide() {
+    //     if (this.element) {
+    //         this.element.style.display = 'none';
+    //     }
+    // }
+    // show() {
+    //     if (this.element) {
+    //         this.element.style.display = 'block';
+    //     }
+    // }
 }
