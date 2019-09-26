@@ -6,7 +6,8 @@ import {SignInScreen} from "./components/SignInScreen/SignInScreen.js";
 const application = document.getElementById('application');
 
 
-SignInScreen(application);
 //startScreen(application);
+SignInScreen(application);
+//SignUpScreen(application);
 
 

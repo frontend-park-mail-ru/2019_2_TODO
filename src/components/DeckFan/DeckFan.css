@@ -9,7 +9,7 @@
 
 
 
-.container > button {
+.card {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -21,37 +21,36 @@
     border-radius: 20px;
     margin: auto;
     position: relative;
+    background: #2980B9;
+    border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-.container > button:hover {
+.card:hover {
     background: #ffd700;
     color: black;
     border-color: black;
 }
 
-.container > button:focus {
+.card:focus {
     outline: none;
 }
 
-.firstCard{
-    background: #2980B9;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-}
 
-.secondCard {
+
+.card:nth-child(1) {
     background: #793C92;
     border: 1px solid #793C92;
 }
 
-.thirdCard{
+.card:nth-child(2) {
     background: #565656;
     border: 1px solid rgba(0, 0, 0, 0.4);
 }
-.fourthCard{
+.card:nth-child(3){
     background: #E67E22;
     border: 1px solid #BF3902;
 }
-.fifthCard{
+.card:nth-child(4){
     background: #BF3902;
     border: 1px solid #E67E22;
 }
@@ -79,7 +78,7 @@
 
 
 }
-.container > button >.cardNominal:hover {
+.cardNominal:hover {
     text-decoration: none;
 
 }

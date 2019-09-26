@@ -1,6 +1,6 @@
-import MainComponent from "../MainComponent/MainComponent.js";
+import BaseComponent from "../BaseComponent/BaseComponent.js";
 
-export class TextComponent extends MainComponent{
+export class TextComponent extends BaseComponent{
     constructor(context) {
         super();
         this.context = context;
@@ -10,9 +10,4 @@ export class TextComponent extends MainComponent{
             </{{tag}}>
         `)
     }
-
-
-        // this._parent.innerHTML = `
-        //     <${this._tag} class=" ${this._className}">${this._data}</${this._tag}>
-        // `;
 }

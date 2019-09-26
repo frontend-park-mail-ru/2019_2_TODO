@@ -9,8 +9,13 @@
 body{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     background: #27ae60;
+}
+
+div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 a{
@@ -18,13 +23,6 @@ a{
 }
 a:hover {
     text-decoration: underline;
-}
-
-.right {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 100;
 }
 
 section{
@@ -36,6 +34,7 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /*max-width: 320px;*/
+    align-self: center;
+    max-width: 320px;
 
 }

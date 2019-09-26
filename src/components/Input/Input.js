@@ -1,7 +1,7 @@
-import MainComponent from "../MainComponent/MainComponent.js";
+import BaseComponent from "../BaseComponent/BaseComponent.js";
 
 
-export class InputComponent extends MainComponent {
+export class InputComponent extends BaseComponent {
     constructor(context) {
         super();
         this.context = context;

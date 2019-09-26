@@ -1,4 +1,4 @@
-export default class MainComponent {
+export default class BaseComponent {
     constructor(){
         this.context = null;
         this.element = null;
