@@ -5,7 +5,7 @@ export class ImageComponent extends BaseComponent{
         super();
         this.context = context;
         this.template = Handlebars.compile(`      
-            <img src="{{source}}" class="{{class}}" alt="">
+            <img src="{{source}}" data-section="{{section}}" class="{{class}}" alt="">
         `)
 
     }
