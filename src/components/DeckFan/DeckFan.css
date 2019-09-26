@@ -36,24 +36,47 @@
 }
 
 
-
-.card:nth-child(1) {
+.card:nth-child(2) {
     background: #793C92;
     border: 1px solid #793C92;
 }
 
-.card:nth-child(2) {
+.card:nth-child(2):hover {
+    background: #ffd700;
+    color: black;
+    border-color: black;
+}
+
+.card:nth-child(3) {
     background: #565656;
     border: 1px solid rgba(0, 0, 0, 0.4);
 }
-.card:nth-child(3){
+
+.card:nth-child(3):hover {
+    background: #ffd700;
+    color: black;
+    border-color: black;
+}
+.card:nth-child(4){
     background: #E67E22;
     border: 1px solid #BF3902;
 }
-.card:nth-child(4){
+.card:nth-child(4):hover{
+    background: #ffd700;
+    color: black;
+    border-color: black;
+}
+.card:nth-child(5){
     background: #BF3902;
     border: 1px solid #E67E22;
 }
+
+.card:nth-child(5):hover {
+    background: #ffd700;
+    color: black;
+    border-color: black;
+}
+
 
 .cardText {
     font-family: Roboto;
