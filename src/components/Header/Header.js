@@ -1,9 +1,10 @@
 import {ButtonComponent} from "../Button/Button.js";
 import {TextComponent} from "../TextComponent/Text.js";
 import {ImageComponent} from "../Image/Image.js";
-import {startScreen} from "../StartScreen/StartScreen.js";
+import {StartScreen} from "../StartScreen/StartScreen.js";
 import {SignUpScreen} from "../SignUpScreen/SignUpScreen.js";
 import {SignInScreen} from "../SignInScreen/SignInScreen.js";
+
 
 
 
@@ -14,6 +15,13 @@ export class HeaderComponent {
     }
 
     render() {
+        const functions = {
+            start: StartScreen,
+            signUp: SignUpScreen,
+            signIn: SignInScreen,
+            //profile: createProfile,
+            //about: null,
+        };
         const head = document.createElement('header');
 
         this._parent.appendChild(head);
@@ -39,6 +47,14 @@ export class HeaderComponent {
         head.innerHTML += signUpButton.render();
         head.innerHTML += chip.render();
         head.innerHTML += text.render();
+
+        head.addEventListener('click', evt => {
+            const {target} = evt;
+            if ((target instanceof HTMLButtonElement) || (target instanceof HTMLImageElement)) {
+                evt.preventDefault();
+                functions[target.dataset.section](application);
+            }
+        });
 
     }
 }

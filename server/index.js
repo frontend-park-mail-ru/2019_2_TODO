@@ -14,7 +14,7 @@ app.use(body.json());
 app.use(cookie());
 
 
-
+app.post('/signup', function (req, res) {return res.status(404).json({error: "err"});});
 
 const port = process.env.PORT || 3000;
 
