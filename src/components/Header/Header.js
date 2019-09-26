@@ -15,13 +15,7 @@ export class HeaderComponent {
 
     render() {
         const head = document.createElement('header');
-        const functions = {
-            start: startScreen,
-            signUp: SignUpScreen,
-            signIn: SignInScreen,
-            //profile: createProfile,
-            //about: null,
-        };
+
         this._parent.appendChild(head);
         const text = new TextComponent({
             tag: "h1",
@@ -45,13 +39,7 @@ export class HeaderComponent {
         head.innerHTML += signUpButton.render();
         head.innerHTML += chip.render();
         head.innerHTML += text.render();
-        head.addEventListener('click', evt => {
-            const {target} = evt;
-            if ((target instanceof HTMLButtonElement) || (target instanceof HTMLImageElement)) {
-                evt.preventDefault();
-                functions[target.dataset.section](application);
-            }
-        });
+
     }
 }
 
