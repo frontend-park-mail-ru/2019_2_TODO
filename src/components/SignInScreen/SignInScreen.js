@@ -38,7 +38,7 @@ export const SignInScreen = application => {
         const password = form.elements['password'].value;
 
         AjaxModule.doGet({
-            url: 'http://93.171.139.196:780/',
+            url: 'SignIn',
             body: {email, password},
             callback(status, responseText) {
                 if (status === 201) {
