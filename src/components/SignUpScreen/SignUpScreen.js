@@ -55,7 +55,18 @@ export const SignUpScreen = (application) => {
             alert("No email");
             return;
         }
-        AjaxModule._fetch("/").then(rez => {
+        AjaxModule._fetch(
+            "http://93.171.139.196:780/signup",
+            "POST",
+            {
+                withCredentials: true,
+                credentials: "same-origin"
+            },
+            {
+                username: email,
+                password: password
+            }
+            ).then(rez => {
             console.log(rez)
         });
 
