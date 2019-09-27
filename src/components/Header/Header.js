@@ -26,7 +26,7 @@ export class HeaderComponent {
             //about: null,
         };
         const head = document.createElement('header');
-
+        head.id = "header";
         this._parent.appendChild(head);
         const text = new TextComponent({
             tag: "h1",
@@ -49,21 +49,36 @@ export class HeaderComponent {
             text:'Sign up',
             section: "signUp"
         });
-        const profileButton = new ButtonComponent({
-            text: 'Profile',
-            section: 'profile'
-        })
         head.innerHTML += signUpButton.render();
-        head.innerHTML += profileButton.render();
+
+        if (this._authorized) {
+            const avatar = new ImageComponent({
+                src: "",
+                class: "avatar"
+            });
+            const profileButton = new ButtonComponent({
+                text: 'Profile',
+                section: 'profile'
+            });
+            head.innerHTML += avatar.render();
+            head.innerHTML += profileButton.render();
+        }
         head.innerHTML += chip.render();
         head.innerHTML += text.render();
-        head.addEventListener('click', evt => {
+
+        head.addEventListener('click', function evtListener(evt){
             const {target} = evt;
             if ((target instanceof HTMLButtonElement) || (target instanceof HTMLImageElement)) {
                 evt.preventDefault();
                 functions[target.dataset.section](application);
             }
         });
+
+    }
+    remove() {
+        const head = document.getElementById("header");
+        // head.removeEventListener('click', )
+        this._parent.removeChild(head);
 
     }
 }

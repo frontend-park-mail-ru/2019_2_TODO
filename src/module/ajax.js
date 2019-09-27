@@ -2,45 +2,33 @@
     const noop = () => null;
 
     class AjaxModule {
-        doGet({
-                  url = '/',
-                  body = null,
-                  callback = noop} = {}
-        ) {
-            this._ajax({method: 'GET', url, body, callback});
+
+        _fetch(url = "http://localhost:3000",
+               method ="GET",
+               params = {withCredentials: true, credentials: "same-origin"},
+               body = {}){
+            return  fetch(url, {method, params})
+
         }
 
-        doPost({
-                   url = '/',
-                   body = null,
-                   callback = noop} = {}
-        ) {
-            this._ajax({method: 'POST', url, body, callback});
-        }
+        // _fetchPost(url = "http://localhost:3001/kek",
+        //            method ="POST",
+        //            params = {withCredentials: true, credentials: "same-origin"},
+        //            body = {}){
+        //     fetch(url, {method, params}).then(res => {
+        //         return res.text();
+        //     }).then(ans => console.log(JSON.parse(ans).misha));
+        // }
+        //
+        // _fetchGet(url = "http://localhost:3001/kek",
+        //           method ="POST",
+        //           params = {withCredentials: true, credentials: "same-origin"},
+        //           body = {}){
+        //     fetch(url, {method, params}).then(res => {
+        //         return res.text();
+        //     }).then(ans => console.log(JSON.parse(ans).misha));
+        // }
 
-        _ajax({
-                  method = 'GET',
-                  url = '/',
-                  body = null,
-                  callback = noop} = {}
-        ) {
-            const xhr = new XMLHttpRequest();
-            xhr.open(method, url, true);
-            xhr.withCredentials = true;
-
-            xhr.addEventListener('readystatechange', function() {
-                if (xhr.readyState !== xhr.DONE) return;
-
-                callback(xhr.status, xhr.responseText);
-            });
-
-            if (body) {
-                xhr.setRequestHeader('Content-type', 'application/json; charset=utf8');
-                xhr.send(JSON.stringify(body));
-                return;
-            }
-            xhr.send();
-        }
     }
 
     globalThis.AjaxModule = new AjaxModule();

@@ -39,12 +39,12 @@ export class DeckFanComponent {
     render() {
         const container = document.createElement('section');
         container.className = 'container';
-        Cards.forEach(key => {
+        Cards.forEach(({text, Nominal}) => {
             const Card = new CardComponent({
-                Nominal:key['nominal'],
-                text: key['text'],
+                text,
+                Nominal,
             });
-            container.innerHTML += Card.render()
+            container.innerHTML += Card.render();
         });
         this._parent.appendChild(container);
     }
