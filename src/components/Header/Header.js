@@ -4,6 +4,9 @@ import {ImageComponent} from "../Image/Image.js";
 import {StartScreen} from "../StartScreen/StartScreen.js";
 import {SignUpScreen} from "../SignUpScreen/SignUpScreen.js";
 import {SignInScreen} from "../SignInScreen/SignInScreen.js";
+import {RenderProfile} from "../Profile/Profile.js";
+
+
 
 
 
@@ -38,13 +41,20 @@ export class HeaderComponent {
         const signInButton = new ButtonComponent({
             href: '/SignIn',
             text:'Sign in',
-            section: "signIn"});
+            section: "signIn"
+        });
         head.innerHTML += signInButton.render();
         const signUpButton = new ButtonComponent({
             href: '/SignUp',
             text:'Sign up',
-            section: "signUp"});
+            section: "signUp"
+        });
+        const profileButton = new ButtonComponent({
+            text: 'Profile',
+            section: 'profile'
+        })
         head.innerHTML += signUpButton.render();
+        head.innerHTML += profileButton.render();
         head.innerHTML += chip.render();
         head.innerHTML += text.render();
 

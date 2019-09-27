@@ -8,4 +8,5 @@ export const StartScreen = (application) => {
     header.render();
     const deck = new DeckFanComponent(application);
     deck.render();
+
 };

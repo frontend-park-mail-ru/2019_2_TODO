@@ -7,7 +7,6 @@ import {HeaderComponent} from "./components/Header/Header.js";
 const application = document.getElementById('application');
 
 
-
 StartScreen(application);
 //SignInScreen(application);
 //SignUpScreen(application);
