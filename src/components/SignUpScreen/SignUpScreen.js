@@ -56,19 +56,26 @@ export const SignUpScreen = (application) => {
             return;
         }
         AjaxModule._fetch(
-            "http://93.171.139.196:780/signup",
-            "POST",
-            {
-                withCredentials: true,
-                credentials: "same-origin"
-            },
-            {
-                username: email,
-                password: password
-            }
-            ).then(rez => {
+            "http://93.171.139.196:780/",
+            "OPTIONS",
+        ).then(rez => {
             console.log(rez)
         });
+
+        // AjaxModule._fetch(
+        //     "http://93.171.139.196:780/signup",
+        //     "POST",
+        //     {
+        //         withCredentials: true,
+        //         credentials: "same-origin",
+        //     },
+        //     {
+        //         username: email,
+        //         password: password
+        //     }
+        //     ).then(rez => {
+        //     console.log(rez)
+        // });
 
                 // const {error} = JSON.parse(responseText);
                 // if (error) {
