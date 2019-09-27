@@ -22,7 +22,7 @@ export class HeaderComponent {
             start: StartScreen,
             signUp: SignUpScreen,
             signIn: SignInScreen,
-            //profile: createProfile,
+            profile: RenderProfile,
             //about: null,
         };
         const head = document.createElement('header');
@@ -57,7 +57,6 @@ export class HeaderComponent {
         head.innerHTML += profileButton.render();
         head.innerHTML += chip.render();
         head.innerHTML += text.render();
-
         head.addEventListener('click', evt => {
             const {target} = evt;
             if ((target instanceof HTMLButtonElement) || (target instanceof HTMLImageElement)) {

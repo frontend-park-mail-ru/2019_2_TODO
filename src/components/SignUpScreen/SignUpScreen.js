@@ -51,13 +51,6 @@ export const SignUpScreen = (application) => {
             alert("Passwords are'nt equal");
             return
         }
-        AjaxModule._ajax({
-            method: 'OPTIONS',
-            url: 'http://93.171.139.196:780/',
-            callback(status, responseText) {
-                console.log(JSON.parse(responseText));
-            }
-        });
         AjaxModule.doPost({
             url: 'http://93.171.139.196:780/',
             body: {email, password},
@@ -66,8 +59,12 @@ export const SignUpScreen = (application) => {
                     StartScreen(application);
                     return;
                 }
-                //const {error} = JSON.parse(responseText);
-                //alert(error);
+                // const {error} = JSON.parse(responseText);
+                // if (error) {
+                //     alert(error);
+                // } else {
+                //     alert('error')
+                // }
             }
         });
     })

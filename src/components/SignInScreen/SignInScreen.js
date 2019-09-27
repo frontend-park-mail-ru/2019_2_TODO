@@ -17,11 +17,13 @@ export const SignInScreen = application => {
     });
     form.innerHTML += Text.render();
     const EmailInput = new InputComponent({
+        id: "email",
         type: "email",
         placeholder: "Email"
     });
     form.innerHTML += EmailInput.render();
     const PassInput = new InputComponent({
+        id: "password",
         type: "password",
         placeholder: "Password"
     });
@@ -38,7 +40,7 @@ export const SignInScreen = application => {
         const password = form.elements['password'].value;
 
         AjaxModule.doGet({
-            url: 'SignIn',
+            url: 'http://93.171.139.196:780/',
             body: {email, password},
             callback(status, responseText) {
                 if (status === 201) {

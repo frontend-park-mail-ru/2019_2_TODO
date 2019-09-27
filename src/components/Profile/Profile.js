@@ -1,5 +1,5 @@
 import BaseComponent from "../BaseComponent/BaseComponent.js";
-import {startScreen} from "../StartScreen/StartScreen.js";
+import {StartScreen} from "../StartScreen/StartScreen.js";
 
 
 export class Profile extends BaseComponent {
@@ -24,6 +24,6 @@ export const RenderProfile = (application, context = {avatar: "./assets/gold_fis
     const closeButton = document.getElementById('closeButton');
     closeButton.addEventListener('click', evt => {
         evt.preventDefault();
-        startScreen(application);
+        StartScreen(application);
     })
 }
