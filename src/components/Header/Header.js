@@ -16,8 +16,7 @@ export class HeaderComponent {
         this._parent = parent;
         this._authorized = authorized;
     }
-
-    render() {
+    evtListener = evt  =>{
         const functions = {
             start: StartScreen,
             signUp: SignUpScreen,
@@ -25,6 +24,15 @@ export class HeaderComponent {
             profile: RenderProfile,
             //about: null,
         };
+        const {target} = evt;
+        if ((target instanceof HTMLButtonElement) || (target instanceof HTMLImageElement)) {
+            evt.preventDefault();
+            this.remove();
+            functions[target.dataset.section](this._parent);
+        }
+    };
+    render() {
+
         const head = document.createElement('header');
         head.id = "header";
         this._parent.appendChild(head);
@@ -66,18 +74,12 @@ export class HeaderComponent {
         head.innerHTML += chip.render();
         head.innerHTML += text.render();
 
-        head.addEventListener('click', function evtListener(evt){
-            const {target} = evt;
-            if ((target instanceof HTMLButtonElement) || (target instanceof HTMLImageElement)) {
-                evt.preventDefault();
-                functions[target.dataset.section](application);
-            }
-        });
+        head.addEventListener('click', this.evtListener);
 
     }
     remove() {
         const head = document.getElementById("header");
-        // head.removeEventListener('click', )
+        head.removeEventListener('click', this.evtListener)
         this._parent.removeChild(head);
 
     }

@@ -51,6 +51,10 @@ export const SignUpScreen = (application) => {
             alert("Passwords are'nt equal");
             return
         }
+        if (email) {
+            alert("No email");
+            return;
+        }
         AjaxModule._fetch("/").then(rez => {
             console.log(rez)
         });
