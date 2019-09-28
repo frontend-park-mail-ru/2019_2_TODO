@@ -31,7 +31,7 @@ export class HeaderComponent {
             functions[target.dataset.section](this._parent);
         }
     };
-    render() {
+    render(username = null) {
 
         const head = document.createElement('header');
         head.id = "header";
@@ -65,7 +65,7 @@ export class HeaderComponent {
                 class: "avatar"
             });
             const profileButton = new ButtonComponent({
-                text: 'Profile',
+                text: username.username,
                 section: 'profile'
             });
             head.innerHTML += avatar.render();

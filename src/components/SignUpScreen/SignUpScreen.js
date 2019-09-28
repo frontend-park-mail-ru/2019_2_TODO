@@ -51,31 +51,21 @@ export const SignUpScreen = (application) => {
             alert("Passwords are'nt equal");
             return
         }
-        if (email) {
+        if (!email) {
             alert("No email");
             return;
         }
-        AjaxModule._fetch(
-            "http://93.171.139.196:780/",
-            "OPTIONS",
-        ).then(rez => {
+
+
+        AjaxModule._fetchPost(
+            "http://localhost:3000/p",
+            JSON.stringify({
+                username: email,
+                password: password
+            })
+            ).then(rez => {
             console.log(rez)
         });
-
-        // AjaxModule._fetch(
-        //     "http://93.171.139.196:780/signup",
-        //     "POST",
-        //     {
-        //         withCredentials: true,
-        //         credentials: "same-origin",
-        //     },
-        //     {
-        //         username: email,
-        //         password: password
-        //     }
-        //     ).then(rez => {
-        //     console.log(rez)
-        // });
 
                 // const {error} = JSON.parse(responseText);
                 // if (error) {

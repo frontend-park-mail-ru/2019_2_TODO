@@ -20,7 +20,8 @@ export class Profile extends BaseComponent {
 
 export const RenderProfile = (application, context = {avatar: "./assets/gold_fishka.jpg", nickname: "nickname", score: "1000"}) => {
     const profile = new Profile(context);
-    application.innerHTML += profile.render();
+
+    application.innerHTML = profile.render();
     const closeButton = document.getElementById('closeButton');
     closeButton.addEventListener('click', evt => {
         evt.preventDefault();
