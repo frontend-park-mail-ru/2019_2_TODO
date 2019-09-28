@@ -3,6 +3,7 @@ import {HeaderComponent} from "../Header/Header.js";
 import {ButtonComponent} from "../Button/Button.js";
 import {TextComponent} from "../TextComponent/Text.js";
 import {StartScreen} from "../StartScreen/StartScreen.js";
+import {SignInScreen} from "../SignInScreen/SignInScreen.js";
 
 
 export const SignUpScreen = (application) => {
@@ -58,13 +59,15 @@ export const SignUpScreen = (application) => {
 
 
         AjaxModule._fetchPost(
-            "http://localhost:3000/p",
+            "http://93.171.139.196:780/signup",
             JSON.stringify({
                 username: email,
                 password: password
             })
             ).then(rez => {
-            console.log(rez)
+            if (rez.status === 200) {
+                SignInScreen();
+            }
         });
 
                 // const {error} = JSON.parse(responseText);

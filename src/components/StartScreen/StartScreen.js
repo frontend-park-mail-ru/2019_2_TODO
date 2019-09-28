@@ -4,13 +4,13 @@ import {DeckFanComponent} from "../DeckFan/DeckFan.js";
 
 export const StartScreen = (application) => {
     application.innerHTML = '';
-    AjaxModule._fetchGet("http://localhost:3000/c")
+    AjaxModule._fetchGet("http://93.171.139.196:780/")
         .then(res => res.text())
-        .then(res => {
-            console.log(res);
-        if (res) {
+        .then(resText => {
+            console.log(resText);
+        if (resText) {
             const header = new HeaderComponent(application, true);
-            header.render(JSON.parse(res));
+            header.render(JSON.parse(resText));
             const deck = new DeckFanComponent(application);
             deck.render();
         }else {
