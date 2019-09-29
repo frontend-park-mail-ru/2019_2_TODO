@@ -18,6 +18,7 @@
 }
 
 .ProfileButton{
+    align-self: center;
     background: gold;
     color: black;
 }
