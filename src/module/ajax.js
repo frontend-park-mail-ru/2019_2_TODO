@@ -6,22 +6,19 @@
         _fetch(url = "http://93.171.139.196:780/",
                params = {},
         ) {
-            return fetch(url, { method: "GET",  credentials: "include", keepalive: true});
+            return fetch(url, params);
         }
 
         _fetchPost(
             url = "http://93.171.139.196:780/",
-            params = {withCredentials: true, credentials: "same-origin"},
-            body = {}) {
-            body = JSON.stringify(body);
-            return this._fetch(url, "POST", params, body);
+            body = {},
+            params = {method: "POST", withCredentials: true, credentials: "include", body: JSON.stringify(body)}) {
+            return fetch(url, params);
         }
 
         _fetchGet(url = "http://93.171.139.196:780/",
-                  params = { credentials: "same-origin", keepalive: true},
-                  ){
-            fetch(url, { method: "GET",  credentials: "same-origin", keepalive: true})
-            return this._fetch(url, "GET", params);
+                  params = {method: "GET", withCredentials: true, credentials: "include"},) {
+            return fetch(url, params);
         }
 
     }

@@ -35,6 +35,12 @@ export const SignUpScreen = (application) => {
         placeholder: "Repeat your password"
     });
     form.innerHTML += PassRepeat.render();
+    const avatarInput = new InputComponent( {
+        type: "file",
+        id: "avatarInput",
+        placeholder: "Upload avatar"
+    });
+    avatarInput.render();
     const SubmitButton = new ButtonComponent({
         href: "/",
         type: "submit",
@@ -48,6 +54,9 @@ export const SignUpScreen = (application) => {
         const email = form.elements['email'].value;
         const password = form.elements['password'].value;
         const passwordRepeat = form.elements['passwordRepeat'].value;
+        const avatar = form.elements['avatarInput'];
+        const data = new FormData();
+
         if (password !== passwordRepeat) {
             alert("Passwords are'nt equal");
             return
@@ -56,32 +65,20 @@ export const SignUpScreen = (application) => {
             alert("No email");
             return;
         }
+        data.append('file', avatar.files[0], avatar.files[0].name);
+        data.append("username", email);
+        data.append("password", password);
 
-
-        fetch(
-            "http://93.171.139.196:780/signup/",
-            {
-                withCredentials: true,
-                credentials: "include",
-                body: {
-                    username: email,
-                    password: password
-                }
-            })
+        AjaxModule._fetchPost(
+            "http://93.171.139.196:780/esignup/",
+            data
+        )
             .then(rez => {
-            if (rez.status === 200) {
-                console.log(rez);
-                StartScreen(application);
-            }
-        });
-
-                // const {error} = JSON.parse(responseText);
-                // if (error) {
-                //     alert(error);
-                // } else {
-                //     alert('error')
-                // }
-
+                if (rez.status === 200) {
+                    console.log(rez);
+                    StartScreen(application);
+                }
+            });
     })
 
 };

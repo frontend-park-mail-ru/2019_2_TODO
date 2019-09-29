@@ -14,8 +14,10 @@ export const StartScreen = (application) => {
         .then(resText => {
             console.log(resText);
             if (resText) {
+                console.log(JSON.parse(resText));
                 const header = new HeaderComponent(application, true);
-                header.render(JSON.parse(resText).username);
+                console.log(JSON.parse(resText).username);
+                header.render(JSON.parse(resText));
                 const deck = new DeckFanComponent(application);
                 deck.render();
             }
