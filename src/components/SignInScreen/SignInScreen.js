@@ -39,9 +39,16 @@ export const SignInScreen = application => {
         const email = form.elements['email'].value;
         const password = form.elements['password'].value;
 
-        AjaxModule._fetch('http://93.171.139.196:780/signin').then(rez => {
+        AjaxModule._fetch('http://93.171.139.196:780/signin', {
+            withCredentials: true,
+            credentials: "include",
+            body: {
+                username: email,
+                password: password
+            }
+        }).then(rez => {
             if (rez.status === 200) {
-                StartScreen();
+                StartScreen(application);
             }
         });
     })

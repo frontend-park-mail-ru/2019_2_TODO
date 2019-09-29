@@ -4,10 +4,9 @@
     class AjaxModule {
 
         _fetch(url = "http://93.171.139.196:780/",
-               method ="GET",
                params = {},
-               body = null) {
-            return fetch(url, {method, params, body});
+        ) {
+            return fetch(url, { method: "GET",  credentials: "include", keepalive: true});
         }
 
         _fetchPost(
@@ -19,8 +18,9 @@
         }
 
         _fetchGet(url = "http://93.171.139.196:780/",
-                  params = {withCredentials: true, credentials: "same-origin"},
+                  params = { credentials: "same-origin", keepalive: true},
                   ){
+            fetch(url, { method: "GET",  credentials: "same-origin", keepalive: true})
             return this._fetch(url, "GET", params);
         }
 

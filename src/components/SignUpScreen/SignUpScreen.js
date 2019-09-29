@@ -58,15 +58,20 @@ export const SignUpScreen = (application) => {
         }
 
 
-        AjaxModule._fetchPost(
-            "http://93.171.139.196:780/signup",
-            JSON.stringify({
-                username: email,
-                password: password
+        fetch(
+            "http://93.171.139.196:780/signup/",
+            {
+                withCredentials: true,
+                credentials: "include",
+                body: {
+                    username: email,
+                    password: password
+                }
             })
-            ).then(rez => {
+            .then(rez => {
             if (rez.status === 200) {
-                SignInScreen();
+                console.log(rez);
+                StartScreen(application);
             }
         });
 
