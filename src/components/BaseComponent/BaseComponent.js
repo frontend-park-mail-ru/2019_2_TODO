@@ -1,20 +1,23 @@
 export default class BaseComponent {
-    constructor(){
+    constructor() {
         this.context = null;
         this.element = null;
         this.template = null;
         //this._needAuth = false;
         //this._forAuth = false;
     }
-    render(){
-        if (!this.element){
-            this.element =  this.template(this.context);
+
+    render() {
+        if (!this.element) {
+            this.element = this.template(this.context);
         }
         return this.element;
     }
-    remove(){
+
+    remove() {
         this.element.parentElement.removeChild(this.element);
     }
+
     // compile(context) {
     //     if (context.needAuth === 'true') {
     //         this._needAuth = true;

@@ -4,6 +4,7 @@ import {ButtonComponent} from "../Button/Button.js";
 import {TextComponent} from "../TextComponent/Text.js";
 import {StartScreen} from "../StartScreen/StartScreen.js";
 import {SignInScreen} from "../SignInScreen/SignInScreen.js";
+import AjaxModule from "../../module/ajax.js";
 
 
 export const SignUpScreen = (application) => {
@@ -63,13 +64,13 @@ export const SignUpScreen = (application) => {
             alert("No email");
             return;
         }
-        
-        AjaxModule._fetchPost(
+
+        AjaxModule()._fetchPost(
             "http://93.171.139.196:780/signup/",
-		JSON.stringify({
-			username: email,
-			password: password
-		})
+            JSON.stringify({
+                username: email,
+                password: password
+            })
         )
             .then(rez => {
                 if (rez.status === 200) {

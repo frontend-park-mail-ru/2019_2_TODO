@@ -1,6 +1,6 @@
 import BaseComponent from "../BaseComponent/BaseComponent.js";
 
-export class ImageComponent extends BaseComponent{
+export class ImageComponent extends BaseComponent {
     constructor(context) {
         super();
         this.context = context;

@@ -1,6 +1,6 @@
 import BaseComponent from "../BaseComponent/BaseComponent.js";
 
-export class TextComponent extends BaseComponent{
+export class TextComponent extends BaseComponent {
     constructor(context) {
         super();
         this.context = context;

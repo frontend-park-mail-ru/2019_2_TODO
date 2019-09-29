@@ -36,6 +36,7 @@ export class DeckFanComponent {
     constructor(parent = document.body) {
         this._parent = parent;
     }
+
     render() {
         const container = document.createElement('section');
         container.className = 'container';

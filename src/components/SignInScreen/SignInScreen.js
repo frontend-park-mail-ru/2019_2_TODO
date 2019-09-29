@@ -3,6 +3,7 @@ import {TextComponent} from "../TextComponent/Text.js";
 import {InputComponent} from "../Input/Input.js";
 import {ButtonComponent} from "../Button/Button.js";
 import {StartScreen} from "../StartScreen/StartScreen.js";
+import AjaxModule from "../../module/ajax.js";
 
 
 export const SignInScreen = application => {
@@ -33,7 +34,7 @@ export const SignInScreen = application => {
         text: "Sign in!"
     });
     form.innerHTML += SubmitButton.render();
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
 
         const email = form.elements['email'].value;
@@ -46,18 +47,16 @@ export const SignInScreen = application => {
             alert("No email");
             return;
         }
-        fetch(
+        AjaxModule()._fetchPost(
             "http://93.171.139.196:780/signin/",
             {
-                method: "POST",
-                credentials: "include",
-                body: JSON.stringify( {
+                body: JSON.stringify({
                     username: email,
                     password: password
                 })
             })
-            .then(rez => {
-                if (rez.status === 200) {
+            .then(res => {
+                if (res.status === 200) {
                     console.log("sdcsdv");
                     StartScreen(application);
                 }

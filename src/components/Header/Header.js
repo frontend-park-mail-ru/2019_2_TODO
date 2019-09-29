@@ -16,7 +16,8 @@ export class HeaderComponent {
         this._parent = parent;
         this._authorized = authorized;
     }
-    evtListener = evt  =>{
+
+    evtListener = evt => {
         const functions = {
             start: StartScreen,
             signUp: SignUpScreen,
@@ -31,6 +32,7 @@ export class HeaderComponent {
             functions[target.dataset.section](this._parent);
         }
     };
+
     render(username = null) {
 
         const head = document.createElement('header');
@@ -48,13 +50,13 @@ export class HeaderComponent {
         });
         const signInButton = new ButtonComponent({
             href: '/SignIn',
-            text:'Sign in',
+            text: 'Sign in',
             section: "signIn"
         });
         head.innerHTML += signInButton.render();
         const signUpButton = new ButtonComponent({
             href: '/SignUp',
-            text:'Sign up',
+            text: 'Sign up',
             section: "signUp"
         });
         head.innerHTML += signUpButton.render();
@@ -77,6 +79,7 @@ export class HeaderComponent {
         head.addEventListener('click', this.evtListener);
 
     }
+
     remove() {
         const head = document.getElementById("header");
         head.removeEventListener('click', this.evtListener)

@@ -1,15 +1,11 @@
 import {HeaderComponent} from "../Header/Header.js";
 import {DeckFanComponent} from "../DeckFan/DeckFan.js";
+import AjaxModule from "../../module/ajax.js";
 
 
 export const StartScreen = (application) => {
     application.innerHTML = '';
-    fetch("http://93.171.139.196:780/signin/",
-        {
-            credentials: 'include',
-            method: 'GET',
-            keepalive: true
-        })
+    AjaxModule()._fetchGet("http://93.171.139.196:780/signin/")
         .then(res => res.text())
         .then(resText => {
             console.log(resText);
@@ -20,8 +16,7 @@ export const StartScreen = (application) => {
                 header.render(JSON.parse(resText));
                 const deck = new DeckFanComponent(application);
                 deck.render();
-            }
-            else {
+            } else {
                 const header = new HeaderComponent(application);
                 header.render();
                 const deck = new DeckFanComponent(application);
