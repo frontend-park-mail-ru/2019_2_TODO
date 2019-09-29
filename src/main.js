@@ -1,12 +1,14 @@
-import {
-    ButtonComponent,
-    RENDER_RULES,
-} from './components/Button/Button.js';
+import {StartScreen} from "./components/StartScreen/StartScreen.js";
+import {SignUpScreen} from "./components/SignUpScreen/SignUpScreen.js";
+import {SignInScreen} from "./components/SignInScreen/SignInScreen.js";
+import {HeaderComponent} from "./components/Header/Header.js";
 
 
 const application = document.getElementById('application');
-application.innerHTML = ``;
-const button = new ButtonComponent(application, "Кнопка");
-button.render();
+
+
+StartScreen(application);
+//SignInScreen(application);
+//SignUpScreen(application);
 
 

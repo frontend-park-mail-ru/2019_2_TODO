@@ -1,9 +1,38 @@
 
 .startButton {
+    position: relative;
+    width: 123px;
+    height: 52px;
+    /*left: 837px;*/
+    /*top: 728px;*/
+
+    background: #337AB7;
+    border-radius: 20px;
+}
+
+button {
     color: white;
-    min-width: 180px;
+
+    min-width: 90px;
     min-height: 20px;
-    background: #337ab7;
+    background: darkslategrey;
     border: 1px ;
     border-radius: 3px;
+    align-self: flex-end;
+    margin: 3px;
 }
+
+button:focus{
+    background: #ffd700;
+    color: black;
+    outline: none;
+
+}
+.logButton {
+}
+.signButton {
+
+}
+
+form > button {
+    align-self: auto;

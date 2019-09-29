@@ -1,0 +1,25 @@
+
+.profileForm{
+    background: #34495E;
+
+    width: 500px;
+    max-height: 500px;
+    border-radius: 30px;
+    box-shadow: 0 0 0 2px #565656;
+
+}
+
+.avatar {
+    border-radius: 100px;
+    border:  2px solid darkblue ;
+    max-width: 100px;
+    max-height: 100px;
+    align-self: center;
+}
+
+.ProfileButton{
+    background: grey;
+}
+.profileText{
+
+}

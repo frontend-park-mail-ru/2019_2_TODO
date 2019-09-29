@@ -1,7 +1,21 @@
 @import url('./components/Button/Button.css');
+@import url('./components/Header/Header.css');
+@import url('./components/TextComponent/Text.css');
+@import url('./components/Image/Image.css');
+@import url('./components/DeckFan/DeckFan.css');
+@import url('./components/Input/Input.css');
+@import url('./components/Profile/Profile.css');
 
 body{
+    display: flex;
+    flex-direction: column;
     background: #27ae60;
+}
+
+div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 a{
@@ -9,4 +23,22 @@ a{
 }
 a:hover {
     text-decoration: underline;
+}
+
+section{
+
+}
+
+form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    max-width: 320px;
+
+}
+
+.ProfileButton{
+	background: white;
 }
