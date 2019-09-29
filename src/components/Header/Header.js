@@ -10,21 +10,6 @@ export class HeaderComponent {
   constructor (parent = document.body, authorized = false) {
     this._parent = parent
     this._authorized = authorized
-    this._evtListener = evt => {
-      const functions = {
-        start: StartScreen,
-        signUp: SignUpScreen,
-        signIn: SignInScreen,
-        profile: RenderProfile
-        // about: null,
-      }
-      const { target } = evt
-      if ((target instanceof HTMLButtonElement) || (target instanceof HTMLImageElement)) {
-        evt.preventDefault()
-        this.remove()
-        functions[target.dataset.section](parent)
-      }
-    }
   }
 
   render (username = null) {
@@ -74,7 +59,21 @@ export class HeaderComponent {
 
   remove () {
     const head = document.getElementById('header')
-    head.removeEventListener('click', this._evtListener)
+    head.removeEventListener('click', evt => {
+      const functions = {
+        start: StartScreen,
+        signUp: SignUpScreen,
+        signIn: SignInScreen,
+        profile: RenderProfile
+        // about: null,
+      }
+      const { target } = evt
+      if ((target instanceof HTMLButtonElement) || (target instanceof HTMLImageElement)) {
+        evt.preventDefault()
+        this.remove()
+        functions[target.dataset.section](this._authorized.parentElement.parentElement)
+      }
+    })
     this._parent.removeChild(head)
   }
 }
