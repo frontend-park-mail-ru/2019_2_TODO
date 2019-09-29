@@ -120,6 +120,9 @@ export const RenderProfile = (application, context = { avatar: './assets/gold_fi
         if (pass !== passr) {
           alert('no equel')
         }
+        if (pass.length < 5) {
+          alert('Password is too short')
+        }
         AjaxModule._fetchPost(
           'http://93.171.139.196:780/signin/profile/',
           JSON.stringify({

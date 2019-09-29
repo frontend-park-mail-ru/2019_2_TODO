@@ -59,6 +59,9 @@ export const SignUpScreen = (application) => {
       alert("Passwords are'nt equal")
       return
     }
+    if (password.length < 5) {
+      alert('Password is too short')
+    }
     if (!email) {
       alert('No email')
       return
