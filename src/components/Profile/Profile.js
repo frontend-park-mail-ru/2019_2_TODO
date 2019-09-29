@@ -54,7 +54,7 @@ export const RenderProfile = (application, context = { avatar: './assets/gold_fi
       form.innerHTML += avatarInput.render()
       const changeAvButton = new ButtonComponent({
         type: 'submit',
-        className: 'ProfileButton',
+        class: 'ProfileButton',
         id: 'changeAv',
 
         text: 'Upload avatar'
@@ -85,7 +85,7 @@ export const RenderProfile = (application, context = { avatar: './assets/gold_fi
       const changeButton = new ButtonComponent({
         id: 'changeNP',
         type: 'submit',
-        className: 'ProfileButton',
+        class: 'ProfileButton',
         text: 'change'
       })
       form.innerHTML += changeButton.render()
