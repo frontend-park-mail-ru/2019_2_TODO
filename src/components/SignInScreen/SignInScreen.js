@@ -49,12 +49,11 @@ export const SignInScreen = application => {
         }
         AjaxModule._fetchPost(
             "http://93.171.139.196:780/signin/",
-            {
-                body: JSON.stringify({
+                 JSON.stringify({
                     username: email,
                     password: password
                 })
-            })
+            )
             .then(res => {
                 if (res.status === 200) {
                     console.log("sdcsdv");
