@@ -77,7 +77,7 @@ export class HeaderComponent {
 
   remove () {
     const head = document.getElementById('header')
-    head.removeEventListener('click', evtListener)
+    //head.removeEventListener('click', evtListener)
     this._parent.removeChild(head)
   }
 }
