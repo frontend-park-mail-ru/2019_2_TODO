@@ -1,6 +1,10 @@
 import { TextComponent } from '../TextComponent/Text.js'
 import BaseComponent from '../BaseComponent/BaseComponent.js'
 
+/*
+* Компонент карты для стартового меню
+ */
+
 export class CardComponent extends BaseComponent {
   constructor (context) {
     super()
@@ -30,6 +34,10 @@ const Cards = [{
   text: 'about',
   nominal: '10'
 }]
+
+/*
+* Класс для нескольких карт
+ */
 
 export class DeckFanComponent {
   constructor (parent = document.body) {

@@ -35,7 +35,7 @@ export const RenderProfile = (application, context = { avatar: './assets/gold_fi
       form.className = 'profileForm'
       const closeButton = new ButtonComponent({
         id: 'cl',
-        class: 'ProfilButton',
+        class: 'ProfileButton',
         text: 'close'
       })
       form.innerHTML += closeButton.render()

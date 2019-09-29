@@ -1,3 +1,8 @@
+
+/*
+*Класс для использования fetch api
+ */
+
 class AjaxModule {
   _fetch (url = 'http://93.171.139.196:780/',
     params = {}

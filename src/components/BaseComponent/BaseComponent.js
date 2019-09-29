@@ -1,3 +1,9 @@
+
+/*
+* Базовый класс для шаблонов, от
+* которого они наследуются.
+*/
+
 export default class BaseComponent {
   constructor () {
     this.context = null
@@ -17,22 +23,4 @@ export default class BaseComponent {
   remove () {
     this.element.parentElement.removeChild(this.element)
   }
-
-  // compile(context) {
-  //     if (context.needAuth === 'true') {
-  //         this._needAuth = true;
-  //     } else if (context.forAuth === 'true') {
-  //         this._forAuth = true;
-  //     }
-  // }
-  // hide() {
-  //     if (this.element) {
-  //         this.element.style.display = 'none';
-  //     }
-  // }
-  // show() {
-  //     if (this.element) {
-  //         this.element.style.display = 'block';
-  //     }
-  // }
 }
