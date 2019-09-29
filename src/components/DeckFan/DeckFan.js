@@ -11,7 +11,7 @@ export class CardComponent extends BaseComponent {
     this.context = context
     this.template = Handlebars.compile(`
             <button class="card">
-                <a class="cardNominal">{{Nominal}}</a>
+                <a class="cardNominal">{{nominal}}</a>
                 <a class="cardText">{{text}}</a>
             </button>`
     )
@@ -47,9 +47,9 @@ export class DeckFanComponent {
   render () {
     const container = document.createElement('section')
     container.className = 'container'
-    Cards.forEach(({ text, Nominal }) => {
+    Cards.forEach(({ text, nominal }) => {
       const Card = new CardComponent({
-        Nominal,
+        nominal,
         text
       })
       container.innerHTML += Card.render()
