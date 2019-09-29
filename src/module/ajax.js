@@ -25,3 +25,4 @@
 
     globalThis.AjaxModule = new AjaxModule();
 })();
+

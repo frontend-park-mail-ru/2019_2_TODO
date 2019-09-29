@@ -23,10 +23,11 @@ export class Profile extends BaseComponent {
 
 export const RenderProfile = (application, context = {avatar: "./assets/gold_fishka.jpg", nickname: "nickname", score: "1000"}) => {
     AjaxModule._fetchGet("http://93.171.139.196:780/signin/")
-        .then(res => {
-            res.body;
+        .then(res =>{
+	return res.text();
         })
-        .then(res => {
+        .then(resT => {
+		console.log(resT);
             const form = document.createElement('form');
             application.innerHTML = '';
             application.appendChild(form);
@@ -45,7 +46,7 @@ export const RenderProfile = (application, context = {avatar: "./assets/gold_fis
                 type: "file",
                 className: "avatarInput",
                 id: "avatarInput",
-                placeholder: "Upload avatar"
+                placeholder: JSON.parse(resT).image
             });
             avatarInput.render();
             form.innerHTML += avatar.render();
@@ -62,17 +63,19 @@ export const RenderProfile = (application, context = {avatar: "./assets/gold_fis
             const nickname = new InputComponent({
                 className: "profileText",
                 id: "nick",
-                placeholder: "nickname"
+                placeholder: JSON.parse(resT).username
             });
             form.innerHTML += nickname.render();
             const password = new InputComponent({
                 class: "profileText",
                 id: "pass",
+		    type: "password",
                 placeholder: "new password"
             });
             const passwordRepeat = new InputComponent({
                 class: "profileText",
                 id: "passr",
+		    type: "password",
                 placeholder: "repeat Passwor"
             });
 
@@ -82,7 +85,7 @@ export const RenderProfile = (application, context = {avatar: "./assets/gold_fis
                 id: "changeNP",
                 type: 'submit',
                 className: "ProfileButton",
-                text: "cheange"
+                text: "change"
             });
             form.innerHTML += changeButton.render();
 
@@ -92,30 +95,39 @@ export const RenderProfile = (application, context = {avatar: "./assets/gold_fis
             const avButton = document.getElementById('changeAv');
             const npButton = document.getElementById('changeNP');
             avButton.addEventListener('click', evt => {
+		    evt.preventDefault();
                 const av = form.elements['avatarInput'];
                 const data = new FormData();
                 data.append("image", av.files[0]);
-                AjaxModule._fetchPost("http://93.171.139.196:780/profileImage/", data)
+                AjaxModule._fetchPost("http://93.171.139.196:780/signin/profileImage/", data)
                     .then(res => {
-                        if (rez.status === 200) {
+                        if (res.status === 200) {
                             console.log(res);
                             RenderProfile(application)
                         }
                     })
             })
             npButton.addEventListener('click', evt => {
+		    evt.preventDefault();
                 const nick = form.elements['nick'].value;
                 const pass = form.elements['pass'].value;
                 const passr = form.elements['passr'].value;
+		    if (!nick) {
+			    alert("No email");
+        	    	return;
+		    }
                 if (pass !== passr) {
-                    allert('no equel');
+                    alert('no equel');
                 }
-                const data = new FormData();
-                data.append("username", nick);
-                data.append("password", pass);
-                AjaxModule._fetchPost("http://93.171.139.196:780/profile/", data)
+                AjaxModule._fetchPost(
+			"http://93.171.139.196:780/signin/profile/",
+			JSON.stringify({
+				username: nick,
+				password: pass,
+			})
+		)
                     .then(res => {
-                        if (rez.status === 200) {
+                        if (res.status === 200) {
                             console.log(res);
                             RenderProfile(application)
                         }

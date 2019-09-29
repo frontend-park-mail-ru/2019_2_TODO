@@ -22,8 +22,8 @@ export const StartScreen = (application) => {
                 deck.render();
             }
             else {
-                const header = new HeaderComponent(application, true);
-                header.render("sdv");
+                const header = new HeaderComponent(application);
+                header.render();
                 const deck = new DeckFanComponent(application);
                 deck.render();
             }
