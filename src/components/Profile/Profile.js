@@ -100,7 +100,7 @@ export const RenderProfile = (application, context = {avatar: "./assets/gold_fis
                 const av = form.elements['avatarInput'];
                 const data = new FormData();
                 data.append("image", av.files[0]);
-                AjaxModule()._fetchPost("http://93.171.139.196:780/signin/profileImage/", data)
+                AjaxModule._fetchPost("http://93.171.139.196:780/signin/profileImage/", data)
                     .then(res => {
                         if (res.status === 200) {
                             console.log(res);
@@ -120,7 +120,7 @@ export const RenderProfile = (application, context = {avatar: "./assets/gold_fis
                 if (pass !== passr) {
                     alert('no equel');
                 }
-                AjaxModule()._fetchPost(
+                AjaxModule._fetchPost(
                     "http://93.171.139.196:780/signin/profile/",
                     JSON.stringify({
                         username: nick,

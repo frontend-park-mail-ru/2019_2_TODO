@@ -65,7 +65,7 @@ export const SignUpScreen = (application) => {
             return;
         }
 
-        AjaxModule()._fetchPost(
+        AjaxModule._fetchPost(
             "http://93.171.139.196:780/signup/",
             JSON.stringify({
                 username: email,

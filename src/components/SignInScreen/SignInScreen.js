@@ -47,7 +47,7 @@ export const SignInScreen = application => {
             alert("No email");
             return;
         }
-        AjaxModule()._fetchPost(
+        AjaxModule._fetchPost(
             "http://93.171.139.196:780/signin/",
             {
                 body: JSON.stringify({
