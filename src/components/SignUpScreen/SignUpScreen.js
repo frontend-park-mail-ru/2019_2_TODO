@@ -40,7 +40,8 @@ export const SignUpScreen = (application) => {
         id: "avatarInput",
         placeholder: "Upload avatar"
     });
-    avatarInput.render();
+   // form.innerHTML += avatarInput.render();
+
     const SubmitButton = new ButtonComponent({
         href: "/",
         type: "submit",
@@ -65,12 +66,12 @@ export const SignUpScreen = (application) => {
             alert("No email");
             return;
         }
-        data.append('file', avatar.files[0], avatar.files[0].name);
+       
         data.append("username", email);
         data.append("password", password);
 
         AjaxModule._fetchPost(
-            "http://93.171.139.196:780/esignup/",
+            "http://93.171.139.196:780/signup/", 
             data
         )
             .then(rez => {
