@@ -35,6 +35,13 @@ export const SignUpScreen = (application) => {
         placeholder: "Repeat your password"
     });
     form.innerHTML += PassRepeat.render();
+    const avatarInput = new InputComponent({
+        type: "file",
+        id: "avatarInput",
+        placeholder: "Upload avatar"
+    });
+    // form.innerHTML += avatarInput.render();
+
     const SubmitButton = new ButtonComponent({
         href: "/",
         type: "submit",
@@ -42,7 +49,7 @@ export const SignUpScreen = (application) => {
     });
     form.innerHTML += SubmitButton.render();
 
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
 
         const email = form.elements['email'].value;
@@ -56,27 +63,20 @@ export const SignUpScreen = (application) => {
             alert("No email");
             return;
         }
-
-
+        
         AjaxModule._fetchPost(
-            "http://93.171.139.196:780/signup",
-            JSON.stringify({
-                username: email,
-                password: password
-            })
-            ).then(rez => {
-            if (rez.status === 200) {
-                SignInScreen();
-            }
-        });
-
-                // const {error} = JSON.parse(responseText);
-                // if (error) {
-                //     alert(error);
-                // } else {
-                //     alert('error')
-                // }
-
+            "http://93.171.139.196:780/signup/",
+		JSON.stringify({
+			username: email,
+			password: password
+		})
+        )
+            .then(rez => {
+                if (rez.status === 200) {
+                    console.log(rez);
+                    StartScreen(application);
+                }
+            });
     })
 
 };

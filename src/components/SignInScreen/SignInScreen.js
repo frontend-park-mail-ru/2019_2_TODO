@@ -38,11 +38,29 @@ export const SignInScreen = application => {
 
         const email = form.elements['email'].value;
         const password = form.elements['password'].value;
-
-        AjaxModule._fetch('http://93.171.139.196:780/signin').then(rez => {
-            if (rez.status === 200) {
-                StartScreen();
-            }
-        });
+        if (!password) {
+            alert("Passwords are'nt equal");
+            return
+        }
+        if (!email) {
+            alert("No email");
+            return;
+        }
+        fetch(
+            "http://93.171.139.196:780/signin/",
+            {
+                method: "POST",
+                credentials: "include",
+                body: JSON.stringify( {
+                    username: email,
+                    password: password
+                })
+            })
+            .then(rez => {
+                if (rez.status === 200) {
+                    console.log("sdcsdv");
+                    StartScreen(application);
+                }
+            });
     })
 };
