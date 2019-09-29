@@ -35,12 +35,13 @@ export const SignUpScreen = (application) => {
         placeholder: "Repeat your password"
     });
     form.innerHTML += PassRepeat.render();
-    const avatarInput = new InputComponent( {
+    const avatarInput = new InputComponent({
         type: "file",
         id: "avatarInput",
         placeholder: "Upload avatar"
     });
-    avatarInput.render();
+    // form.innerHTML += avatarInput.render();
+
     const SubmitButton = new ButtonComponent({
         href: "/",
         type: "submit",
@@ -48,7 +49,7 @@ export const SignUpScreen = (application) => {
     });
     form.innerHTML += SubmitButton.render();
 
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
 
         const email = form.elements['email'].value;
@@ -64,7 +65,6 @@ export const SignUpScreen = (application) => {
             alert("No email");
             return;
         }
-        data.append("image", avatar.files[0]);
         data.append("username", email);
         data.append("password", password);
 
