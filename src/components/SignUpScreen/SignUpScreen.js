@@ -6,6 +6,11 @@ import { StartScreen } from '../StartScreen/StartScreen.js'
 import { SignInScreen } from '../SignInScreen/SignInScreen.js'
 import AjaxModule from '../../module/ajax.js'
 
+
+/*
+* @param {HTMLElement} application - контейнер HTML,
+* в котором отрисовывается верстка
+ */
 export const SignUpScreen = (application) => {
   application.innerHTML = ''
   const header = new HeaderComponent(application)

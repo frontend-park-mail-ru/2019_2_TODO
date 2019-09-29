@@ -2,6 +2,10 @@ import { HeaderComponent } from '../Header/Header.js'
 import { DeckFanComponent } from '../DeckFan/DeckFan.js'
 import AjaxModule from '../../module/ajax.js'
 
+/*
+* @param {HTMLElement} application - контейнер HTML,
+* в котором отрисовывается верстка
+ */
 export const StartScreen = (application) => {
   application.innerHTML = ''
   AjaxModule._fetchGet('http://93.171.139.196:780/signin/')

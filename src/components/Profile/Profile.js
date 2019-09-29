@@ -22,6 +22,11 @@ export class Profile extends BaseComponent {
   }
 }
 
+/*
+* @param {HTMLElement} application - контейнер HTML,
+* в котором отрисовывается верстка
+* @param {Object} context - контекст для шаблонизатора
+ */
 export const RenderProfile = (application, context = { avatar: './assets/gold_fishka.jpg', nickname: 'nickname', score: '1000' }) => {
   AjaxModule._fetchGet('http://93.171.139.196:780/signin/')
     .then(res => {

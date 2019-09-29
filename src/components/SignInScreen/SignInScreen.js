@@ -5,6 +5,10 @@ import { ButtonComponent } from '../Button/Button.js'
 import { StartScreen } from '../StartScreen/StartScreen.js'
 import AjaxModule from '../../module/ajax.js'
 
+/*
+* @param {HTMLElement} application - контейнер HTML,
+* в котором отрисовывается верстка
+ */
 export const SignInScreen = application => {
   application.innerHTML = ''
   const header = new HeaderComponent(application)

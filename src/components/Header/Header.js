@@ -73,7 +73,6 @@ export class HeaderComponent {
 
     head.addEventListener('click', evtListener)
   }
-
 }
 
 // export default 1
