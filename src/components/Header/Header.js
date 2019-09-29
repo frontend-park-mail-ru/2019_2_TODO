@@ -10,23 +10,23 @@ export class HeaderComponent {
   constructor (parent = document.body, authorized = false) {
     this._parent = parent
     this._authorized = authorized
-
-  }
-  _evtListener = evt => {
+    this._evtListener = evt => {
       const functions = {
-          start: StartScreen,
-          signUp: SignUpScreen,
-          signIn: SignInScreen,
-          profile: RenderProfile
-          // about: null,
+        start: StartScreen,
+        signUp: SignUpScreen,
+        signIn: SignInScreen,
+        profile: RenderProfile
+        // about: null,
       }
-      const {target} = evt
+      const { target } = evt
       if ((target instanceof HTMLButtonElement) || (target instanceof HTMLImageElement)) {
-          evt.preventDefault()
-          this.remove()
-          functions[target.dataset.section](this._parent)
+        evt.preventDefault()
+        this.remove()
+        functions[target.dataset.section](parent)
       }
+    }
   }
+
   render (username = null) {
     const head = document.createElement('header')
     head.id = 'header'
