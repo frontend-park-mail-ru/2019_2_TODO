@@ -19,7 +19,6 @@ const evtListener = evt => {
   const { target } = evt
   if ((target instanceof HTMLButtonElement) || (target instanceof HTMLImageElement)) {
     evt.preventDefault()
-    this.remove()
     functions[target.dataset.section](application)
   }
 }
@@ -75,11 +74,6 @@ export class HeaderComponent {
     head.addEventListener('click', evtListener)
   }
 
-  remove () {
-    const head = document.getElementById('header')
-    //head.removeEventListener('click', evtListener)
-    this._parent.removeChild(head)
-  }
 }
 
 // export default 1
