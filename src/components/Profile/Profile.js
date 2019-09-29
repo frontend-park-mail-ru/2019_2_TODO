@@ -1,5 +1,9 @@
 import BaseComponent from "../BaseComponent/BaseComponent.js";
 import {StartScreen} from "../StartScreen/StartScreen.js";
+import {ButtonComponent} from "../Button/Button.js";
+import {ImageComponent} from "../Image/Image.js";
+import {TextComponent} from "../TextComponent/Text.js";
+import {InputComponent} from "../Input/Input.js";
 
 
 export class Profile extends BaseComponent {
@@ -19,12 +23,56 @@ export class Profile extends BaseComponent {
 }
 
 export const RenderProfile = (application, context = {avatar: "./assets/gold_fishka.jpg", nickname: "nickname", score: "1000"}) => {
-    const profile = new Profile(context);
+    AjaxModule._fetchGet("http://93.171.139.196:780/signin/")
+        .then(res => {
+           res.body;
+        })
+        .then(res => {
+            const form = document.createElement('form');
+            application.innerHTML = '';
+            application.appendChild(form);
+            form.className = "profileForm";
+            const closeButton = new ButtonComponent({
+                className: "closeProfileButton"
+            });
+            form.innerHTML += closeButton.render();
+            const avatar = new ImageComponent({
+                className: "avatar",
+                src: "./assets/gold_fishka.jpg"
+            });
+            const avatarInput = new InputComponent( {
+                type: "file",
+                className: "avatarInput",
+                id: "avatarInput",
+                placeholder: "Upload avatar"
+            });
+            avatarInput.render();
+            form.innerHTML += avatar.render();
+            const nickname = new TextComponent({
+                className: "profileText",
+                text: ""
+            });
+            form.innerHTML += nickname.render();
+            const score = new TextComponent({
+                className: "profileText",
+                text: "1000"
+            });
+            form.innerHTML += score.render();
+            const changeButton = new ButtonComponent({
+                type: 'submit',
+                className: "",
+                text: "cheange"
+            });
+            form.innerHTML += changeButton.render();
+                //const profile = new Profile(context);
+            //application.innerHTML = profile.render();
+            const clButton = document.getElementById('cl');
 
-    application.innerHTML = profile.render();
-    const closeButton = document.getElementById('closeButton');
-    closeButton.addEventListener('click', evt => {
-        evt.preventDefault();
-        StartScreen(application);
-    })
-}
+            clButton.addEventListener('click', evt => {
+                evt.preventDefault();
+                StartScreen(application);
+            })
+
+        });
+
+};

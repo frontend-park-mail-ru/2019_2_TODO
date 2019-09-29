@@ -56,7 +56,6 @@ export const SignUpScreen = (application) => {
         const passwordRepeat = form.elements['passwordRepeat'].value;
         const avatar = form.elements['avatarInput'];
         const data = new FormData();
-
         if (password !== passwordRepeat) {
             alert("Passwords are'nt equal");
             return
@@ -65,12 +64,12 @@ export const SignUpScreen = (application) => {
             alert("No email");
             return;
         }
-        data.append('file', avatar.files[0], avatar.files[0].name);
+        data.append("image", avatar.files[0]);
         data.append("username", email);
         data.append("password", password);
 
         AjaxModule._fetchPost(
-            "http://93.171.139.196:780/esignup/",
+            "http://93.171.139.196:780/signup/",
             data
         )
             .then(rez => {
