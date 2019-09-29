@@ -49,8 +49,8 @@ export class DeckFanComponent {
     container.className = 'container'
     Cards.forEach(({ text, Nominal }) => {
       const Card = new CardComponent({
-        text,
-        Nominal
+        Nominal,
+        text
       })
       container.innerHTML += Card.render()
     })
