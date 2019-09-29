@@ -1,4 +1,4 @@
-export default class AjaxModule {
+class AjaxModule {
     _fetch(url = "http://93.171.139.196:780/",
            params = {},
     ) {
@@ -19,5 +19,5 @@ export default class AjaxModule {
 
 }
 
-
+export default new AjaxModule();
 
