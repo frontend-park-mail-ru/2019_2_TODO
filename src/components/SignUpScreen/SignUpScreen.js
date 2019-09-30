@@ -68,16 +68,16 @@ export const SignUpScreen = (application) => {
         class: 'error',
         text: passwordRepeat.error
       })
-      application.innerHTML += errorText.render();
+      form.innerHTML += errorText.render();
       return
     }
-    if (password.length < 5) {
+    if (password.value.length < 5) {
       const errorText = new TextComponent({
         tag: 'a',
         class: 'error',
         text: password.error
       })
-      application.innerHTML += errorText.render();
+      form.innerHTML += errorText.render();
       return;
     }
     const reg = /\w+@\w+"/
@@ -87,7 +87,7 @@ export const SignUpScreen = (application) => {
         class: 'error',
         text: email.error
       })
-      application.innerHTML += errorText.render();
+      form.innerHTML += errorText.render();
       return
     }
 
