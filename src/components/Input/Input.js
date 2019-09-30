@@ -4,7 +4,6 @@ import { TextComponent } from '../TextComponent/Text.js'
 export class InputComponent extends BaseComponent {
   constructor (context) {
     super()
-    this.errFlag = false
     this.context = context
     this.template = Handlebars.compile(`
             <input type="{{type}}" id="{{id}}" placeholder="{{placeholder}}">
@@ -12,10 +11,6 @@ export class InputComponent extends BaseComponent {
   }
 
   error (err, parent) {
-    if (this.errFlag) {
-      parent.removeChild(parent.lastChild)
-    }
-    this.errFlag = true
     switch (err) {
       case 'EMAIL_FORMAT':
       {

@@ -59,10 +59,14 @@ export const SignUpScreen = (application) => {
 
   form.addEventListener('submit', function (e) {
     e.preventDefault()
-
     const email = form.elements.email.value
     const password = form.elements.password
     const passwordRepeat = form.elements.passwordRepeat
+    const reg = /\w+@\w+/
+    if (email.search(reg) === -1) {
+      EmailInput.error('EMAIL_FORMAT', form)
+      return
+    }
     if (password.value !== passwordRepeat.value) {
       PassRepeat.error('PASSWORDS_MATCH', form)
       return
@@ -71,17 +75,11 @@ export const SignUpScreen = (application) => {
       PassInput.error('PASSWORD_LENGTH', form)
       return
     }
-    const reg = /\w+@\w+/
-    if (email.search(reg) === -1) {
-      EmailInput.error('EMAIL_FORMAT', form)
-      return
-    }
-
     AjaxModule._fetchPost(
       'http://93.171.139.196:780/signup/',
       JSON.stringify({
         username: email,
-        password: password
+        password: password.value
       })
     )
       .then(rez => {
