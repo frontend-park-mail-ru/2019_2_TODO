@@ -119,7 +119,7 @@ export const RenderProfile = (application, context = { avatar: './assets/gold_fi
         const pass = form.elements.pass.value
         const passRepeat = form.elements.passr.value
         if (pass !== passRepeat) {
-          passwordRepeat.error('PASSWORDS_MATCH', form)
+          password.error('PASSWORDS_MATCH', form)
           return
         }
         if (pass.length < 5) {
