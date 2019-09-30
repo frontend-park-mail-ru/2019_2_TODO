@@ -78,6 +78,7 @@ export const SignUpScreen = (application) => {
         text: password.error
       })
       application.innerHTML += errorText.render();
+      return;
     }
     const reg = /\w+@\w+"/
     if (email.search(reg) === -1) {
