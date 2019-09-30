@@ -117,16 +117,14 @@ export const RenderProfile = (application, context = { avatar: './assets/gold_fi
         evt.preventDefault()
         const nick = form.elements.nick.value
         const pass = form.elements.pass.value
-        const passr = form.elements.passr.value
-        if (!nick) {
-          alert('No email')
+        const passRepeat = form.elements.passr.value
+        if (pass !== passRepeat) {
+          passwordRepeat.error('PASSWORDS_MATCH', form)
           return
         }
-        if (pass !== passr) {
-          alert('no equel')
-        }
         if (pass.length < 5) {
-          alert('Password is too short')
+          password.error('PASSWORD_LENGTH', form)
+          return
         }
         AjaxModule._fetchPost(
           'http://93.171.139.196:780/signin/profile/',
