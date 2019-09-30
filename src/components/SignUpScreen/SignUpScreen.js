@@ -79,8 +79,8 @@ export const SignUpScreen = (application) => {
       })
       application.innerHTML += errorText.render();
     }
-    const reg = new RegExp("\w+@\w+")
-    if (!reg.match(email)) {
+    const reg = /\w+@\w+"/
+    if (email.search(reg) === -1) {
       const errorText = new TextComponent({
         tag: 'a',
         class: 'error',
