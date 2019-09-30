@@ -1,5 +1,5 @@
 import BaseComponent from '../BaseComponent/BaseComponent.js'
-import { TextComponent } from '../TextComponent/Text'
+import { TextComponent } from '../TextComponent/Text.js'
 
 export class InputComponent extends BaseComponent {
   constructor (context) {
