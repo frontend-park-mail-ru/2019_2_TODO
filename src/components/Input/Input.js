@@ -12,7 +12,7 @@ export class InputComponent extends BaseComponent {
 
   error (err, parent) {
     switch (err) {
-      case 'PASSWORD_LENGTH':
+      case 'EMAIL_FORMAT':
       {
         const errorText = new TextComponent({
           tag: 'a',
