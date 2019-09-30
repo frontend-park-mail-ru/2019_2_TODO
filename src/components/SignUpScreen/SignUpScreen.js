@@ -70,7 +70,7 @@ export const SignUpScreen = (application) => {
       PassInput.error('PASSWORD_LENGTH', form)
       return
     }
-    const reg = /\w+@\w+"/
+    const reg = /\w+@\w+/
     if (email.search(reg) === -1) {
       EmailInput.error('EMAIL_FORMAT', form)
       return
