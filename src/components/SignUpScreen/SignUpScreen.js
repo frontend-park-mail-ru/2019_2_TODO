@@ -59,11 +59,10 @@ export const SignUpScreen = (application) => {
 
   form.addEventListener('submit', function (e) {
     e.preventDefault()
-
     const email = form.elements.email.value
-    const password = form.elements.password
-    const passwordRepeat = form.elements.passwordRepeat
-    if (password.value !== passwordRepeat.value) {
+    const password = form.elements.password.value
+    const passwordRepeat = form.elements.passwordRepeat.value
+    if (password !== passwordRepeat) {
       PassRepeat.error('PASSWORDS_MATCH', form)
       return
     }
