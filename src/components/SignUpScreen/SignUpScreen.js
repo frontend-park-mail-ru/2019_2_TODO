@@ -63,31 +63,16 @@ export const SignUpScreen = (application) => {
     const password = form.elements.password
     const passwordRepeat = form.elements.passwordRepeat
     if (password.value !== passwordRepeat.value) {
-      const errorText = new TextComponent({
-        tag: 'a',
-        class: 'error',
-        text: passwordRepeat.error
-      })
-      form.innerHTML += errorText.render();
+      PassRepeat.error('PASSWORDS_MATCH')
       return
     }
     if (password.value.length < 5) {
-      const errorText = new TextComponent({
-        tag: 'a',
-        class: 'error',
-        text: password.error
-      })
-      form.innerHTML += errorText.render();
-      return;
+      PassInput.error('PASSWORD_LENGTH')
+      return
     }
     const reg = /\w+@\w+"/
     if (email.search(reg) === -1) {
-      const errorText = new TextComponent({
-        tag: 'a',
-        class: 'error',
-        text: email.error
-      })
-      form.innerHTML += errorText.render();
+      EmailInput.error('EMAIL_FORMAT')
       return
     }
 
