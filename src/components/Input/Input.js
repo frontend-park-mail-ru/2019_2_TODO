@@ -10,7 +10,7 @@ export class InputComponent extends BaseComponent {
         `)
   }
 
-  error (err) {
+  error (err, parent) {
     switch (err) {
       case 'PASSWORD_LENGTH':
       {
@@ -19,7 +19,7 @@ export class InputComponent extends BaseComponent {
           class: 'error',
           text: 'Not email'
         })
-        this.element.parentElement.innerHTML += errorText.render()
+        parent.innerHTML += errorText.render()
         break
       }
       case 'PASSWORD_LENGTH':
@@ -29,7 +29,7 @@ export class InputComponent extends BaseComponent {
           class: 'error',
           text: 'Password is too short'
         })
-        this.element.parentElement.innerHTML += errorText.render()
+        parent.innerHTML += errorText.render()
         break
       }
       case 'PASSWORDS_MATCH':
@@ -39,7 +39,7 @@ export class InputComponent extends BaseComponent {
           class: 'error',
           text: 'Password are not equal'
         })
-        this.element.parentElement.innerHTML += errorText.render()
+        parent.innerHTML += errorText.render()
         break
       }
     }

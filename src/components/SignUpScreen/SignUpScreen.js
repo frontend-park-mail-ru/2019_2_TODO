@@ -63,16 +63,16 @@ export const SignUpScreen = (application) => {
     const password = form.elements.password
     const passwordRepeat = form.elements.passwordRepeat
     if (password.value !== passwordRepeat.value) {
-      PassRepeat.error('PASSWORDS_MATCH')
+      PassRepeat.error('PASSWORDS_MATCH', form)
       return
     }
     if (password.value.length < 5) {
-      PassInput.error('PASSWORD_LENGTH')
+      PassInput.error('PASSWORD_LENGTH', form)
       return
     }
     const reg = /\w+@\w+"/
     if (email.search(reg) === -1) {
-      EmailInput.error('EMAIL_FORMAT')
+      EmailInput.error('EMAIL_FORMAT', form)
       return
     }
 
