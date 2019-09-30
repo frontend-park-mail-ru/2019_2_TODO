@@ -60,9 +60,9 @@ export const SignUpScreen = (application) => {
   form.addEventListener('submit', function (e) {
     e.preventDefault()
     const email = form.elements.email.value
-    const password = form.elements.password.value
-    const passwordRepeat = form.elements.passwordRepeat.value
-    if (password !== passwordRepeat) {
+    const password = form.elements.password
+    const passwordRepeat = form.elements.passwordRepeat
+    if (password.value !== passwordRepeat.value) {
       PassRepeat.error('PASSWORDS_MATCH', form)
       return
     }
@@ -80,7 +80,7 @@ export const SignUpScreen = (application) => {
       'http://93.171.139.196:780/signup/',
       JSON.stringify({
         username: email,
-        password: password
+        password: password.value
       })
     )
       .then(rez => {
