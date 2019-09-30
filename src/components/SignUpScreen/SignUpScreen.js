@@ -15,6 +15,7 @@ export const SignUpScreen = (application) => {
   const header = new HeaderComponent(application)
   header.render()
   const form = document.createElement('form')
+  form.noValidate = true
   application.appendChild(form)
   const Text = new TextComponent({
     tag: 'h3',
