@@ -24,26 +24,29 @@ export const SignUpScreen = (application) => {
   const EmailInput = new InputComponent({
     type: 'email',
     id: 'email',
+    error: 'EMAIL_FORMAT',
     placeholder: 'Email'
   })
   form.innerHTML += EmailInput.render()
   const PassInput = new InputComponent({
     type: 'password',
     id: 'password',
+    error: 'PASSWORD_LENGTH',
     placeholder: 'Password'
   })
   form.innerHTML += PassInput.render()
   const PassRepeat = new InputComponent({
     type: 'password',
     id: 'passwordRepeat',
+    error: 'PASSWORD_REPEAT',
     placeholder: 'Repeat your password'
   })
   form.innerHTML += PassRepeat.render()
-  const avatarInput = new InputComponent({
-    type: 'file',
-    id: 'avatarInput',
-    placeholder: 'Upload avatar'
-  })
+  // const avatarInput = new InputComponent({
+  //   type: 'file',
+  //   id: 'avatarInput',
+  //   placeholder: 'Upload avatar'
+  // })
   // form.innerHTML += avatarInput.render();
 
   const SubmitButton = new ButtonComponent({
@@ -57,17 +60,33 @@ export const SignUpScreen = (application) => {
     e.preventDefault()
 
     const email = form.elements.email.value
-    const password = form.elements.password.value
-    const passwordRepeat = form.elements.passwordRepeat.value
-    if (password !== passwordRepeat) {
-      alert("Passwords are'nt equal")
+    const password = form.elements.password
+    const passwordRepeat = form.elements.passwordRepeat
+    if (password.value !== passwordRepeat.value) {
+      const errorText = new TextComponent({
+        tag: 'a',
+        class: 'error',
+        text: passwordRepeat.error
+      })
+      application.innerHTML += errorText.render();
       return
     }
     if (password.length < 5) {
-      alert('Password is too short')
+      const errorText = new TextComponent({
+        tag: 'a',
+        class: 'error',
+        text: password.error
+      })
+      application.innerHTML += errorText.render();
     }
-    if (!email) {
-      alert('No email')
+    const reg = new RegExp("\w+@\w+")
+    if (!reg.match(email)) {
+      const errorText = new TextComponent({
+        tag: 'a',
+        class: 'error',
+        text: email.error
+      })
+      application.innerHTML += errorText.render();
       return
     }
 

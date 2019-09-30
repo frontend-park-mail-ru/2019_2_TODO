@@ -5,7 +5,7 @@ export class InputComponent extends BaseComponent {
     super()
     this.context = context
     this.template = Handlebars.compile(`
-            <input type="{{type}}" id="{{id}}" placeholder="{{placeholder}}">
+            <input type="{{type}}" id="{{id}}" error="{{error}}" placeholder="{{placeholder}}">
         `)
   }
 }
