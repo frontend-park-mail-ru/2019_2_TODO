@@ -19,7 +19,7 @@ export class InputComponent extends BaseComponent {
           class: 'error',
           text: 'Not email'
         })
-        if (parent.lastChild instanceof HTMLAnchorElement){
+        if (!(parent.lastChild instanceof HTMLButtonElement)){
           parent.removeChild(parent.lastChild)
         }
         parent.innerHTML += errorText.render()
@@ -32,7 +32,7 @@ export class InputComponent extends BaseComponent {
           class: 'error',
           text: 'Password is too short'
         })
-        if (parent.lastChild instanceof HTMLAnchorElement){
+        if (!(parent.lastChild instanceof HTMLButtonElement)){
           parent.removeChild(parent.lastChild)
         }
         parent.innerHTML += errorText.render()
@@ -45,7 +45,7 @@ export class InputComponent extends BaseComponent {
           class: 'error',
           text: 'Password are not equal'
         })
-        if (parent.lastChild instanceof HTMLAnchorElement){
+        if (!(parent.lastChild instanceof HTMLButtonElement)){
           parent.removeChild(parent.lastChild)
         }
         parent.innerHTML += errorText.render()
