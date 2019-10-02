@@ -5,22 +5,22 @@
 */
 
 export default class BaseComponent {
-  constructor () {
-    this.context = null
-    this.element = null
-    this.template = null
+  constructor() {
+    this.context = null;
+    this.element = null;
+    this.template = null;
     // this._needAuth = false;
     // this._forAuth = false;
   }
 
-  render () {
+  render() {
     if (!this.element) {
-      this.element = this.template(this.context)
+      this.element = this.template(this.context);
     }
-    return this.element
+    return this.element;
   }
 
-  remove () {
-    this.element.parentElement.removeChild(this.element)
+  remove() {
+    this.element.parentElement.removeChild(this.element);
   }
 }
