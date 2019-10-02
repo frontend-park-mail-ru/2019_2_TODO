@@ -13,11 +13,11 @@ export const StartScreen = (application) => {
       .then((resText) => {
         console.log(resText);
         if (resText) {
-          console.log(JSON.parse(resText));
+          //console.log(JSON.parse(resText));
           const header = new HeaderComponent(application, true);
-          console.log(JSON.parse(resText).username);
+          //console.log(JSON.parse(resText).username);
           window._image = URL.createObjectURL(resText);
-          header.render(JSON.parse(resText));
+          //header.render(JSON.parse(resText));
           const deck = new DeckFanComponent(application);
           deck.render();
         } else {
