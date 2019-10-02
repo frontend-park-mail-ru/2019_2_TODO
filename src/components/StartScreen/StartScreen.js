@@ -6,6 +6,9 @@ import AjaxModule from '../../module/ajax.js';
 * @param {HTMLElement} application - контейнер HTML,
 * в котором отрисовывается верстка
  */
+function hexToBase64(str) {
+    return btoa(String.fromCharCode.apply(null, str.replace(/\r|\n/g, "").replace(/([\da-fA-F]{2}) ?/g, "0x$1 ").replace(/ +$/, "").split(" ")));
+}
 export const StartScreen = (application) => {
   application.innerHTML = '';
   AjaxModule._fetchGet('http://93.171.139.196:780/signin/')
@@ -16,7 +19,10 @@ export const StartScreen = (application) => {
           //console.log(JSON.parse(resText));
           const header = new HeaderComponent(application, true);
           //console.log(JSON.parse(resText).username);
-          window._image = URL.createObjectURL(resText);
+            const img = document.createElement('img');
+            img.src = 'data:image/jpeg;base64,' + hexToBase64(resText);
+            document.body.appendChild(img);
+          //window._image = URL.createObjectURL(resText);
           //header.render(JSON.parse(resText));
           const deck = new DeckFanComponent(application);
           deck.render();
