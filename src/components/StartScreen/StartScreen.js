@@ -16,7 +16,7 @@ export const StartScreen = (application) => {
           console.log(JSON.parse(resText));
           const header = new HeaderComponent(application, true);
           console.log(JSON.parse(resText).username);
-          window._image = URL.createObjectURL(JSON.parse(resText).image);
+          window._image = JSON.parse(resText).image;
           header.render(JSON.parse(resText));
           const deck = new DeckFanComponent(application);
           deck.render();
