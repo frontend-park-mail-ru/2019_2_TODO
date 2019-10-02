@@ -20,7 +20,7 @@ export const StartScreen = (application) => {
           const header = new HeaderComponent(application, true);
           //console.log(JSON.parse(resText).username);
             const img = document.createElement('img');
-            img.src = 'data:image/jpeg;base64,' + hexToBase64(resText);
+            img.src = 'data:image/png;base64,' + hexToBase64(resText);
             document.body.appendChild(img);
           //window._image = URL.createObjectURL(resText);
           //header.render(JSON.parse(resText));
