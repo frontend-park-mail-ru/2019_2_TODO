@@ -57,16 +57,11 @@ export const SignUpScreen = (application) => {
   });
   form.innerHTML += SubmitButton.render();
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
+  form.addEventListener('submit', evt => {
+    evt.preventDefault();
     const email = form.elements.email.value;
     const password = form.elements.password;
     const passwordRepeat = form.elements.passwordRepeat;
-    const reg = /\w+@\w+/;
-    if (email.search(reg) === -1) {
-      EmailInput.error('EMAIL_FORMAT', form);
-      return;
-    }
     if (password.value !== passwordRepeat.value) {
       PassRepeat.error('PASSWORDS_MATCH', form);
       return;
@@ -75,18 +70,8 @@ export const SignUpScreen = (application) => {
       PassInput.error('PASSWORD_LENGTH', form);
       return;
     }
-    AjaxModule._fetchPost(
-        'http://93.171.139.196:780/signup/',
-        JSON.stringify({
-          username: email,
-          password: password.value,
-        })
-    )
-        .then((rez) => {
-          if (rez.status === 200) {
-            console.log(rez);
-            StartScreen(application);
-          }
-        });
+
+    AjaxModule.signUp(application, email, password.value);
+
   });
 };

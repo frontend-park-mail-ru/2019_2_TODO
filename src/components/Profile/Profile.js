@@ -28,7 +28,7 @@ export class Profile extends BaseComponent {
 * @param {Object} context - контекст для шаблонизатора
  */
 export const RenderProfile = (application, context = {avatar: './assets/gold_fishka.jpg', nickname: 'nickname', score: '1000'}) => {
-  AjaxModule._fetchGet('http://93.171.139.196:780/signin/')
+  AjaxModule.fetchGet('http://93.171.139.196:780/signin/')
       .then((res) => {
         return res.text();
       })
@@ -46,7 +46,7 @@ export const RenderProfile = (application, context = {avatar: './assets/gold_fis
         form.innerHTML += closeButton.render();
         const avatar = new ImageComponent({
           class: 'chip',
-          source: window._image,
+          source: JSON.parse(resT).image,
         });
         const avatarInput = new InputComponent({
           type: 'file',
@@ -105,7 +105,7 @@ export const RenderProfile = (application, context = {avatar: './assets/gold_fis
           const av = form.elements.avatarInput;
           const data = new FormData();
           data.append('image', av.files[0]);
-          AjaxModule._fetchPost('http://93.171.139.196:780/signin/profileImage/', data)
+          AjaxModule.fetchPost('http://93.171.139.196:780/signin/profileImage/', data)
               .then((res) => {
                 if (res.status === 200) {
                   console.log(res);
@@ -126,7 +126,7 @@ export const RenderProfile = (application, context = {avatar: './assets/gold_fis
             password.error('PASSWORD_LENGTH', form);
             return;
           }
-          AjaxModule._fetchPost(
+          AjaxModule.fetchPost(
               'http://93.171.139.196:780/signin/profile/',
               JSON.stringify({
                 username: nick,
