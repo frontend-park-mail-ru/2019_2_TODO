@@ -10,6 +10,10 @@ h3{
 }
 
 .error{
-    color: red;
+    color: crimson;
+    text-decoration: none;
+}
 
+.error:hover{
+    text-decoration: none;
 }

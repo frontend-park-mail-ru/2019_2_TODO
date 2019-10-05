@@ -1,12 +1,14 @@
 
-/*
-*Класс для использования fetch api
- */
 
-import {StartScreen} from "../components/StartScreen/StartScreen.js";
+import {startScreen} from '../components/StartScreen/StartScreen.js';
 
+/** Класс для использования fetch api. */
 class AjaxModule {
-
+  /**
+     * отправить картинку
+     * @param {HTMLElement} application - элемент для возврата
+     * @param {File} imageFile - картинка
+     */
   postImage(application, imageFile) {
     const data = new FormData();
     data.append('image', imageFile);
@@ -14,11 +16,17 @@ class AjaxModule {
         .then((res) => {
           if (res.status === 200) {
             console.log(res);
-            RenderProfile(application);
+            renderProfile(application);
           }
         });
   }
 
+  /**
+     * Регистрация
+     * @param {HTMLElement} application - элемент для возврата
+     * @param {string} email
+     * @param {string} password
+     */
   signUp(application, email, password) {
     this.fetchPost('http://93.171.139.196:780/signin/profile',
         JSON.stringify({
@@ -28,11 +36,17 @@ class AjaxModule {
         .then((rez) => {
           if (rez.status === 200) {
             console.log(rez);
-            StartScreen(application);
+            startScreen(application);
           }
         });
   }
 
+  /**
+     * Авторизация
+     * @param {HTMLElement} application - элемент для возврата
+     * @param {string} email
+     * @param {string} password
+     */
   signIn(application, email, password) {
     this.fetchPost(
         'http://93.171.139.196:780/signin/',
@@ -41,14 +55,20 @@ class AjaxModule {
           password: password,
         })
     ).then((res) => {
-          if (res.status === 200) {
-            console.log('sdcsdv');
-            StartScreen(application);
-          }
-        });
+      if (res.status === 200) {
+        console.log('sdcsdv');
+        startScreen(application);
+      }
+    });
   }
 
-
+  /**
+     * POST запрос
+     * @param {string} url - хост получателя
+     * @param {JSON} body - тело запроса
+     * @param {Object} params - параметры запроса
+     * @return {Promise<Response>} - промиз для обработки
+     */
   fetchPost(
       url = 'http://93.171.139.196:780/',
       body = {},
@@ -56,8 +76,14 @@ class AjaxModule {
     return fetch(url, params);
   }
 
+  /**
+     * GET запрос
+     * @param {string} url - хост получателя
+     * @param {Object} params - параметры запроса
+     * @return {Promise<Response>} - промиз для обработки
+     */
   fetchGet(url = 'http://93.171.139.196:780/',
-           params = {method: 'GET', credentials: 'include'}) {
+      params = {method: 'GET', credentials: 'include'}) {
     return fetch(url, params);
   }
 }

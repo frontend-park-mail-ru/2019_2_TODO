@@ -1,38 +1,54 @@
 import {ButtonComponent} from '../Button/Button.js';
 import {TextComponent} from '../TextComponent/Text.js';
 import {ImageComponent} from '../Image/Image.js';
-import {StartScreen} from '../StartScreen/StartScreen.js';
-import {SignUpScreen} from '../SignUpScreen/SignUpScreen.js';
-import {SignInScreen} from '../SignInScreen/SignInScreen.js';
-import {RenderProfile} from '../Profile/Profile.js';
+import {startScreen} from '../StartScreen/StartScreen.js';
+import {signUpScreen} from '../SignUpScreen/SignUpScreen.js';
+import {signInScreen} from '../SignInScreen/SignInScreen.js';
+import {renderProfile} from '../Profile/Profile.js';
 
 const application = document.getElementById('application');
 
 const evtListener = (evt) => {
   const functions = {
-    start: StartScreen,
-    signUp: SignUpScreen,
-    signIn: SignInScreen,
-    profile: RenderProfile,
+    start: startScreen,
+    signUp: signUpScreen,
+    signIn: signInScreen,
+    profile: renderProfile,
     // about: null,
   };
   const {target} = evt;
-  if ((target instanceof HTMLButtonElement) || (target instanceof HTMLImageElement)) {
+  if ((target instanceof HTMLButtonElement) ||
+      (target instanceof HTMLImageElement)) {
     evt.preventDefault();
     functions[target.dataset.section](application);
   }
 };
 
+/** Класс заголовка */
 export class HeaderComponent {
+  /**
+   * Создать заголовок.
+   * @param {HTMLElement} parent - родитель
+   * @param {boolean} authorized - флаг авторизации
+   */
   constructor(parent = document.body, authorized = false) {
     this._parent = parent;
     this._authorized = authorized;
   }
 
+  /**
+   * Отрисовать заголовок
+   * @param {string} username - имяпользователя
+   */
   render(username = null) {
     const head = document.createElement('header');
     head.id = 'header';
-
+    const backButton = new ButtonComponent({
+      text: 'Startscreen',
+      class: 'backButton',
+      section: 'start',
+    });
+    head.innerHTML += backButton.render();
     const text = new TextComponent({
       tag: 'h1',
       class: '',
@@ -51,7 +67,7 @@ export class HeaderComponent {
       });
       head.innerHTML += signInButton.render();
       const signUpButton = new ButtonComponent({
-        href: '/SignUp',
+
         text: 'Sign up',
         section: 'signUp',
       });

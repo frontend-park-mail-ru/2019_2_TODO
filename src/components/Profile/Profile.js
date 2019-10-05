@@ -1,12 +1,17 @@
 import BaseComponent from '../BaseComponent/BaseComponent.js';
-import {StartScreen} from '../StartScreen/StartScreen.js';
+import {startScreen} from '../StartScreen/StartScreen.js';
 import {ButtonComponent} from '../Button/Button.js';
 import {ImageComponent} from '../Image/Image.js';
-import {TextComponent} from '../TextComponent/Text.js';
 import {InputComponent} from '../Input/Input.js';
 import AjaxModule from '../../module/ajax.js';
 
+
+/** Класс профиля*/
 export class Profile extends BaseComponent {
+  /**
+   * Создать профиль
+   * @param {string} context - контекст для профиля
+   */
   constructor(context) {
     super();
     this.context = context;
@@ -22,12 +27,18 @@ export class Profile extends BaseComponent {
   }
 }
 
-/*
-* @param {HTMLElement} application - контейнер HTML,
-* в котором отрисовывается верстка
-* @param {Object} context - контекст для шаблонизатора
+/**
+ * Отрисоват профиль
+ * @param {HTMLElement} application - контейнер HTML,
+ * в котором отрисовывается верстка
+ * @param {Object} context - контекст для шаблонизатора
  */
-export const RenderProfile = (application, context = {avatar: './assets/gold_fishka.jpg', nickname: 'nickname', score: '1000'}) => {
+export const renderProfile = (
+    application,
+    context = {
+      avatar: './assets/gold_fishka.jpg',
+      nickname: 'nickname', score: '1000',
+    }) => {
   AjaxModule.fetchGet('http://93.171.139.196:780/signin/')
       .then((res) => {
         return res.text();
@@ -109,7 +120,7 @@ export const RenderProfile = (application, context = {avatar: './assets/gold_fis
               .then((res) => {
                 if (res.status === 200) {
                   console.log(res);
-                  RenderProfile(application);
+                  renderProfile(application);
                 }
               });
         });
@@ -136,14 +147,14 @@ export const RenderProfile = (application, context = {avatar: './assets/gold_fis
               .then((res) => {
                 if (res.status === 200) {
                   console.log(res);
-                  RenderProfile(application);
+                  renderProfile(application);
                 }
               });
         });
 
         clButton.addEventListener('click', (evt) => {
           evt.preventDefault();
-          StartScreen(application);
+          startScreen(application);
         });
       });
 };

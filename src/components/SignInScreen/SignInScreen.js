@@ -2,14 +2,15 @@ import {HeaderComponent} from '../Header/Header.js';
 import {TextComponent} from '../TextComponent/Text.js';
 import {InputComponent} from '../Input/Input.js';
 import {ButtonComponent} from '../Button/Button.js';
-import {StartScreen} from '../StartScreen/StartScreen.js';
+import {startScreen} from '../StartScreen/StartScreen.js';
 import AjaxModule from '../../module/ajax.js';
+import InputError from '../Input/Input.js';
 
 /*
 * @param {HTMLElement} application - контейнер HTML,
 * в котором отрисовывается верстка
  */
-export const SignInScreen = (application) => {
+export const signInScreen = (application) => {
   application.innerHTML = '';
   const header = new HeaderComponent(application);
   header.render();
@@ -41,27 +42,29 @@ export const SignInScreen = (application) => {
   form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    const email = form.elements.email.value;
-    const password = form.elements.password.value;
-    if (!password) {
-      alert('Passwords are\'nt equal');
+    const email = form.elements.email;
+    const password = form.elements.password;
+    if (!email.value.length) {
+      InputError.e('NO_USERNAME', form);
+      password.value = '';
       return;
     }
-    if (!email) {
-      alert('No email');
+    if (password.value.length < 5) {
+      password.value = '';
+      InputError.e('PASSWORD_LENGTH', form);
       return;
     }
     AjaxModule.fetchPost(
         'http://93.171.139.196:780/signin/',
         JSON.stringify({
-          username: email,
-          password: password,
+          username: email.value,
+          password: password.value,
         })
     )
         .then((res) => {
           if (res.status === 200) {
             console.log('sdcsdv');
-            StartScreen(application);
+            startScreen(application);
           }
         });
   });
