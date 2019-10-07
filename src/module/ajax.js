@@ -28,7 +28,7 @@ class AjaxModule {
      * @param {string} password
      */
   signUp(application, email, password) {
-    this.fetchPost('http://93.171.139.196:780/signin/profile',
+    this.fetchPost('http://93.171.139.196:780/signup/',
         JSON.stringify({
           username: email,
           password: password,
