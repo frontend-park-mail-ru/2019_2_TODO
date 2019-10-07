@@ -78,6 +78,6 @@ export const signUpScreen = (application) => {
       InputError.e('PASSWORD_LENGTH', form);
       return;
     }
-    AjaxModule.signUp(application, email, password.value);
+    AjaxModule.signUp(application, email.value, password.value);
   });
 };
