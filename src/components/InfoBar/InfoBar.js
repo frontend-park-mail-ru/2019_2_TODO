@@ -20,7 +20,7 @@ export class InfoBar {
     const infoBar = document.createElement('div');
     infoBar.className = 'infoBar';
     const avatar = new ImageComponent({
-      class: 'avatar',
+      class: 'infoAvatar',
       section: 'profile',
       source: this._avatar,
     });
@@ -28,6 +28,7 @@ export class InfoBar {
     const username = new TextComponent({
       tag: 'a',
       class: 'username',
+      section: 'profile',
       text: this._username,
     });
     infoBar.innerHTML += username.render();

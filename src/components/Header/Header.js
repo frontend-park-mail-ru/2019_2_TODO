@@ -5,7 +5,7 @@ import {startScreen} from '../StartScreen/StartScreen.js';
 import {signUpScreen} from '../SignUpScreen/SignUpScreen.js';
 import {signInScreen} from '../SignInScreen/SignInScreen.js';
 import {renderProfile} from '../Profile/Profile.js';
-import {InfoBar} from "../InfoBar/InfoBar.js";
+import {InfoBar} from '../InfoBar/InfoBar.js';
 
 const application = document.getElementById('application');
 
@@ -75,8 +75,8 @@ export class HeaderComponent {
       head.innerHTML += signUpButton.render();
     }
     if (this._authorized) {
-      const infoBar = new InfoBar(head , username.username, 'http://93.171.139.196:780/images/');
-      infoBar.render()
+      const infoBar = new InfoBar(head, username.username, 'http://93.171.139.196:780/images/');
+      infoBar.render();
       // const avatar = new ImageComponent({
       //     src: "",
       //     class: "avatar"
@@ -84,9 +84,9 @@ export class HeaderComponent {
       // const profileButton = new ButtonComponent({
       //   text: username.username,
       //   section: 'profile',
-      //});
+      // });
       // head.innerHTML += avatar.render();
-      //head.innerHTML += profileButton.render();
+      // head.innerHTML += profileButton.render();
     }
     head.innerHTML += chip.render();
     head.innerHTML += text.render();
