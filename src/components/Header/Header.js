@@ -5,7 +5,7 @@ import {startScreen} from '../StartScreen/StartScreen.js';
 import {signUpScreen} from '../SignUpScreen/SignUpScreen.js';
 import {signInScreen} from '../SignInScreen/SignInScreen.js';
 import {renderProfile} from '../Profile/Profile.js';
-import {InfoBar} from "../InfoBar/InfoBar";
+import {InfoBar} from "../InfoBar/InfoBar.js";
 
 const application = document.getElementById('application');
 
