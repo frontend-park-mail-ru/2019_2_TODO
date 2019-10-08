@@ -75,7 +75,7 @@ export class HeaderComponent {
       head.innerHTML += signUpButton.render();
     }
     if (this._authorized) {
-      const infoBar = new InfoBar(head ,username, 'http://93.171.139.196:780/images/');
+      const infoBar = new InfoBar(head , username.username, 'http://93.171.139.196:780/images/');
       infoBar.render()
       // const avatar = new ImageComponent({
       //     src: "",
