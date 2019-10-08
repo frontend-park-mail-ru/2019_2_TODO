@@ -51,17 +51,17 @@ export const renderProfile = (
         form.className = 'profileForm';
         const closeButton = new ButtonComponent({
           id: 'cl',
-          class: 'ProfileButton',
+          class: 'profileForm__button',
           text: 'close',
         });
         form.innerHTML += closeButton.render();
         const avatar = new ImageComponent({
-          class: 'chip',
+          class: 'profileForm_avatar',
           source: 'http://93.171.139.196:780/images/',
         });
         const avatarInput = new InputComponent({
           type: 'file',
-          className: 'avatarInput',
+          class: 'profileForm__input',
           id: 'avatarInput',
           placeholder: JSON.parse(resT).image,
         });
@@ -70,27 +70,26 @@ export const renderProfile = (
         form.innerHTML += avatarInput.render();
         const changeAvButton = new ButtonComponent({
           type: 'submit',
-          class: 'ProfileButton',
+          class: 'profileForm__button',
           id: 'changeAv',
-
           text: 'Upload avatar',
         });
         form.innerHTML += changeAvButton.render();
 
         const nickname = new InputComponent({
-          className: 'profileText',
+          class: 'profileForm__input',
           id: 'nick',
           placeholder: JSON.parse(resT).username,
         });
         form.innerHTML += nickname.render();
         const password = new InputComponent({
-          class: 'profileText',
+          class: 'profileForm__input',
           id: 'pass',
           type: 'password',
           placeholder: 'new password',
         });
         const passwordRepeat = new InputComponent({
-          class: 'profileText',
+          class: 'profileForm__input',
           id: 'passr',
           type: 'password',
           placeholder: 'repeat Passwor',
@@ -101,7 +100,7 @@ export const renderProfile = (
         const changeButton = new ButtonComponent({
           id: 'changeNP',
           type: 'submit',
-          class: 'ProfileButton',
+          class: 'profileForm__button',
           text: 'change',
         });
         form.innerHTML += changeButton.render();

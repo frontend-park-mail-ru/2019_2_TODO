@@ -43,10 +43,11 @@ export class HeaderComponent {
    */
   render(username = null) {
     const head = document.createElement('header');
+    head.className = 'header';
     head.id = 'header';
     const backButton = new ButtonComponent({
       text: 'Startscreen',
-      class: 'backButton',
+      class: 'header__button_back',
       section: 'start',
     });
     head.innerHTML += backButton.render();

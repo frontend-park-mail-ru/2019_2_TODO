@@ -11,24 +11,24 @@
     align-items: center;
 }
 
-.infoAvatar {
+.infoBar__avatar {
     border-radius: 100px;
     width: 50px;
     height: 50px;
     border:  1px solid crimson ;;
 }
 
-.username {
+.infoBar__username {
     color: white;
     font-family: sans-serif;
     text-decoration: none;
 }
 
-.username:hover {
+.infoBar__username:hover {
     text-decoration: none;
 }
 
-.logOutButton {
-    background: #27ae60;
+.infoBar__logOutButton {
+    background: none;
     align-self: auto;
 }

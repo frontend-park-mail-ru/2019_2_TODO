@@ -1,9 +1,9 @@
-header {
+.header {
     display: flex;
     flex-direction: column;
 }
 
-.backButton {
+.header__button_back {
     align-self: start;
 }
 

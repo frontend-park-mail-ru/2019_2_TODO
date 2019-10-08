@@ -20,21 +20,21 @@ export class InfoBar {
     const infoBar = document.createElement('div');
     infoBar.className = 'infoBar';
     const avatar = new ImageComponent({
-      class: 'infoAvatar',
+      class: 'infoBar__avatar',
       section: 'profile',
       source: this._avatar,
     });
     infoBar.innerHTML += avatar.render();
     const username = new TextComponent({
       tag: 'a',
-      class: 'username',
+      class: 'infoBar__username',
       section: 'profile',
       text: this._username,
     });
     infoBar.innerHTML += username.render();
     const logOutButton = new ButtonComponent({
       text: 'Log out',
-      class: 'logOutButton',
+      class: 'infoBar__logOutButton',
       type: 'submit',
     });
     infoBar.innerHTML += logOutButton.render();

@@ -13,7 +13,7 @@ export class InputComponent extends BaseComponent {
     this.context = context;
     this.template = Handlebars.compile(`
             <input type="{{type}}" id="{{id}}" 
-            placeholder="{{placeholder}}" >
+            placeholder="{{placeholder}}" class="{{class}}">
         `);
   }
 }

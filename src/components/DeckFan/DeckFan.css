@@ -1,5 +1,5 @@
 
-.container{
+.deckFun{
     margin-top: auto;
     display: flex;
     flex-direction: row;
@@ -9,7 +9,7 @@
 
 
 
-.card {
+.deckFun__card {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -25,13 +25,13 @@
     border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-.card:hover {
+.deckFun__card:hover {
     background: #ffd700;
     color: black;
     border-color: black;
 }
 
-.card:focus {
+.deckFun__card:focus {
     outline: none;
 }
 

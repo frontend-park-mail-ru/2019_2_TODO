@@ -9,7 +9,7 @@
 
 }
 
-.avatar {
+.profileForm__avatar {
     border-radius: 100px;
     border:  2px solid darkblue ;
     max-width: 100px;
@@ -17,11 +17,11 @@
     align-self: center;
 }
 
-.ProfileButton{
+.profileForm__button{
     align-self: center;
     background: gold;
     color: black;
 }
-.profileText{
+.profileForm__text{
 
 }

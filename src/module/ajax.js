@@ -64,7 +64,7 @@ class AjaxModule {
   /**
      * POST запрос
      * @param {string} url - хост получателя
-     * @param {JSON} body - тело запроса
+     * @param {Object} body - тело запроса
      * @param {Object} params - параметры запроса
      * @return {Promise<Response>} - промиз для обработки
      */
