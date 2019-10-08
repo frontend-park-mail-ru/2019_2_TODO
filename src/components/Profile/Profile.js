@@ -117,6 +117,7 @@ export const renderProfile = (
           data.append('image', av.files[0]);
           AjaxModule.fetchPost('http://93.171.139.196:780/signin/profileImage/', data)
               .then((res) => {
+                console.log(res.status);
                 if (res.status === 200) {
                   console.log(res);
                   renderProfile(application);
