@@ -2,14 +2,6 @@
 .infoBar {
     display: flex;
     flex-direction: row;
-    align-self: end;
-    background: #34495E;
-    max-width: 250px;
-}
-
-.infoAvatar {
-    display: flex;
-    flex-direction: row;
     align-self: flex-end;
     background: #34495F;
     max-width: 250px;
@@ -17,6 +9,13 @@
     padding: 3px;
     justify-content: center;
     align-items: center;
+}
+
+.infoAvatar {
+    border-radius: 100px;
+    width: 50px;
+    height: 50px;
+    border:  1px solid crimson ;;
 }
 
 .username {
@@ -30,6 +29,6 @@
 }
 
 .logOutButton {
-    background: green;
-    align-self: center;
+    background: #27ae60;
+    align-self: auto;
 }
