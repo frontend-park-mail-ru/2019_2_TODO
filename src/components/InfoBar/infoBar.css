@@ -8,10 +8,15 @@
 }
 
 .infoAvatar {
-    border-radius: 100px;
-    width: 50px;
-    height: 50px;
-    border:  1px solid crimson ;;
+    display: flex;
+    flex-direction: row;
+    align-self: flex-end;
+    background: #34495F;
+    max-width: 250px;
+    border-radius: 5px;
+    padding: 3px;
+    justify-content: center;
+    align-items: center;
 }
 
 .username {
@@ -22,4 +27,9 @@
 
 .username:hover {
     text-decoration: none;
+}
+
+.logOutButton {
+    background: green;
+    align-self: center;
 }
