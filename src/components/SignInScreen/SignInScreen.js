@@ -1,10 +1,9 @@
 import {HeaderComponent} from '../Header/Header.js';
 import {TextComponent} from '../TextComponent/Text.js';
-import {InputComponent} from '../Input/Input.js';
+import InputError, {InputComponent} from '../Input/Input.js';
 import {ButtonComponent} from '../Button/Button.js';
 import {startScreen} from '../StartScreen/StartScreen.js';
 import AjaxModule from '../../module/ajax.js';
-import InputError from '../Input/Input.js';
 
 /*
 * @param {HTMLElement} application - контейнер HTML,

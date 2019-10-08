@@ -5,8 +5,7 @@ import {ImageComponent} from '../Image/Image.js';
 import {InputComponent} from '../Input/Input.js';
 import AjaxModule from '../../module/ajax.js';
 
-
-/** Класс профиля*/
+/** Класс профиля */
 export class Profile extends BaseComponent {
   /**
    * Создать профиль
@@ -37,7 +36,8 @@ export const renderProfile = (
     application,
     context = {
       avatar: './assets/gold_fishka.jpg',
-      nickname: 'nickname', score: '1000',
+      nickname: 'nickname',
+      score: '1000',
     }) => {
   AjaxModule.fetchGet('http://93.171.139.196:780/signin/')
       .then((res) => {

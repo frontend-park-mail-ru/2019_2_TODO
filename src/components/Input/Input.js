@@ -18,7 +18,7 @@ export class InputComponent extends BaseComponent {
   }
 }
 
-/** Класс ошибки ввода в Input*/
+/** Класс ошибки ввода в Input */
 class InputError {
   /**
    * Создать Input
@@ -41,7 +41,7 @@ class InputError {
         this._errText = document.createElement('a');
         this._errText.className = 'error';
         this._errText.textContent = 'No username';
-        this._errText.id ='Err';
+        this._errText.id = 'Err';
         parent.appendChild(this._errText);
         break;
       }
@@ -49,7 +49,7 @@ class InputError {
         this._errText = document.createElement('a');
         this._errText.className = 'error';
         this._errText.textContent = 'Password is too short';
-        this._errText.id ='Err';
+        this._errText.id = 'Err';
         parent.appendChild(this._errText);
         break;
       }
@@ -57,7 +57,7 @@ class InputError {
         this._errText = document.createElement('a');
         this._errText.className = 'error';
         this._errText.textContent = 'Passwords are not equal';
-        this._errText.id ='Err';
+        this._errText.id = 'Err';
         parent.appendChild(this._errText);
         break;
       }

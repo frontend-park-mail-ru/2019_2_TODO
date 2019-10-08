@@ -9,7 +9,7 @@ import AjaxModule from '../../module/ajax.js';
 export const startScreen = (application) => {
   application.innerHTML = '';
   AjaxModule.fetchGet('http://93.171.139.196:780/signin/')
-      .catch( (res) => {
+      .catch((res) => {
         const header = new HeaderComponent(application);
         header.render();
         const deck = new DeckFanComponent(application);

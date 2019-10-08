@@ -10,6 +10,7 @@ export default class BaseComponent {
     // this._needAuth = false;
     // this._forAuth = false;
   }
+
   /** Отрисовать
    * @return {string} строка для подстановки в HTML.
    */
@@ -19,6 +20,7 @@ export default class BaseComponent {
     }
     return this.element;
   }
+
   /** Удалить. */
   remove() {
     this.element.parentElement.removeChild(this.element);

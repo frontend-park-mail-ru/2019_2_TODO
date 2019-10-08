@@ -1,9 +1,8 @@
-import {InputComponent} from '../Input/Input.js';
+import InputError, {InputComponent} from '../Input/Input.js';
 import {HeaderComponent} from '../Header/Header.js';
 import {ButtonComponent} from '../Button/Button.js';
 import {TextComponent} from '../TextComponent/Text.js';
 import AjaxModule from '../../module/ajax.js';
-import InputError from '../Input/Input.js';
 
 /*
 * @param {HTMLElement} application - контейнер HTML,

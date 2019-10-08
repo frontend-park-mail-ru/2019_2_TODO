@@ -1,5 +1,4 @@
 
-
 import {startScreen} from '../components/StartScreen/StartScreen.js';
 
 /** Класс для использования fetch api. */
