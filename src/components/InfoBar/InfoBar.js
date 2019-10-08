@@ -22,7 +22,7 @@ export class InfoBar {
     const avatar = new ImageComponent({
       class: 'avatar',
       section: 'profile',
-      src: this._avatar,
+      source: this._avatar,
     });
     infoBar.innerHTML += avatar.render();
     const username = new TextComponent({
