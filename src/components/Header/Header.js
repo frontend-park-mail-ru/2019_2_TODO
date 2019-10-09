@@ -49,7 +49,7 @@ export class HeaderComponent {
     const backButton = new ButtonComponent({
       text: 'Startscreen',
       class: 'header__button_back',
-      section: 'start',this._parent.parentElement
+      section: 'start',
     });
     head.innerHTML += backButton.render();
     const text = new TextComponent({
