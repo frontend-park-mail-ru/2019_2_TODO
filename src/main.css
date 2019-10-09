@@ -4,7 +4,7 @@
 @import url('./components/Image/Image.css');
 @import url('./components/DeckFan/DeckFan.css');
 @import url('./components/Input/Input.css');
-@import url('./components/Profile/Profile.css');
+@import url('components/viewes/Profile/Profile.css');
 @import url('./components/InfoBar/infoBar.css');
 
 body{
@@ -22,11 +22,16 @@ div{
 a{
     text-decoration: none;
 }
+
+
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 section{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 
 }
 
@@ -39,4 +44,7 @@ form {
 
 }
 
+[hidden]{
+    display: none;
+}
 

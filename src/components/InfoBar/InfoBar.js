@@ -28,6 +28,7 @@ export class InfoBar {
     const username = new TextComponent({
       tag: 'a',
       class: 'infoBar__username',
+      href: 'profile',
       section: 'profile',
       text: this._username,
     });

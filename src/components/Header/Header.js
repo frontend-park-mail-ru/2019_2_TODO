@@ -1,12 +1,13 @@
 import {ButtonComponent} from '../Button/Button.js';
 import {TextComponent} from '../TextComponent/Text.js';
 import {ImageComponent} from '../Image/Image.js';
-import {startScreen} from '../StartScreen/StartScreen.js';
-import {signUpScreen} from '../SignUpScreen/SignUpScreen.js';
-import {signInScreen} from '../SignInScreen/SignInScreen.js';
-import {renderProfile} from '../Profile/Profile.js';
+//import {StartScreen} from '../viewes/StartScreen/StartScreen.js';
+// import {signUpScreen} from '../viewes/SignUpScreen/SignUpScreen.js';
+// import {signInScreen} from '../viewes/SignInScreen/SignInScreen.js';
+import {renderProfile} from '../viewes/Profile/Profile.js';
 import {InfoBar} from '../InfoBar/InfoBar.js';
 import AjaxModule from '../../module/ajax.js';
+import {InputComponent} from "../Input/Input.js";
 
 const application = document.getElementById('application');
 
@@ -14,23 +15,23 @@ const logOut = (application) => {
   AjaxModule.logOut(application);
 };
 
-const evtListener = (evt) => {
-  evt.preventDefault();
-  const functions = {
-    start: startScreen,
-    signUp: signUpScreen,
-    signIn: signInScreen,
-    profile: renderProfile,
-    logout: logOut,
-    // about: null,
-  };
-  const {target} = evt;
-  if ((target instanceof HTMLButtonElement) ||
-      (target instanceof HTMLImageElement)) {
-    evt.preventDefault();
-    functions[target.dataset.section](application);
-  }
-};
+// const evtListener = (evt) => {
+//   evt.preventDefault();
+//   const functions = {
+//     //start: startScreen,
+//     // signUp: signUpScreen,
+//     // signIn: signInScreen,
+//     profile: renderProfile,
+//     logout: logOut,
+//     // about: null,
+//   };
+//   const {target} = evt;
+//   if ((target instanceof HTMLButtonElement) ||
+//       (target instanceof HTMLImageElement)) {
+//     evt.preventDefault();
+//     functions[target.dataset.section](application);
+//   }
+// };
 
 /** Класс заголовка */
 export class HeaderComponent {
@@ -52,9 +53,11 @@ export class HeaderComponent {
     const head = document.createElement('header');
     head.className = 'header';
     head.id = 'header';
-    const backButton = new ButtonComponent({
+    const backButton = new TextComponent({
+      tag: 'a',
       text: 'Startscreen',
-      class: 'header__button_back',
+      href: '/',
+      class: 'button header__button_back',
       section: 'start',
     });
     head.innerHTML += backButton.render();
@@ -69,14 +72,20 @@ export class HeaderComponent {
       section: 'start',
     });
     if (!this._authorized) {
-      const signInButton = new ButtonComponent({
-        href: '/SignIn',
+      const signInButton = new TextComponent({
+        tag: 'a',
+        type: 'button',
+        class: 'button',
+        href: 'signIn',
         text: 'Sign in',
         section: 'signIn',
       });
       head.innerHTML += signInButton.render();
-      const signUpButton = new ButtonComponent({
-
+      const signUpButton = new TextComponent({
+        type: 'button',
+        tag: 'a',
+        class: 'button',
+        href: 'signUp',
         text: 'Sign up',
         section: 'signUp',
       });
@@ -98,7 +107,7 @@ export class HeaderComponent {
     }
     head.innerHTML += chip.render();
     head.innerHTML += text.render();
-    head.addEventListener('click', evtListener);
+    //head.addEventListener('click', evtListener);
     this._parent.appendChild(head);
   }
 }

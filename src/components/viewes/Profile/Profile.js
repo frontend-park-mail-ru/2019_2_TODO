@@ -1,9 +1,9 @@
-import BaseComponent from '../BaseComponent/BaseComponent.js';
-import {startScreen} from '../StartScreen/StartScreen.js';
-import {ButtonComponent} from '../Button/Button.js';
-import {ImageComponent} from '../Image/Image.js';
-import {InputComponent} from '../Input/Input.js';
-import AjaxModule from '../../module/ajax.js';
+import BaseComponent from '../../BaseComponent/BaseComponent.js';
+import StartScreen from '../StartScreen/StartScreen.js';
+import {ButtonComponent} from '../../Button/Button.js';
+import {ImageComponent} from '../../Image/Image.js';
+import {InputComponent} from '../../Input/Input.js';
+import AjaxModule from '../../../module/ajax.js';
 
 /** Класс профиля */
 export class Profile extends BaseComponent {
@@ -154,7 +154,7 @@ export const renderProfile = (
 
         clButton.addEventListener('click', (evt) => {
           evt.preventDefault();
-          startScreen(application);
+          //startScreen(application);
         });
       });
 };

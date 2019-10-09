@@ -11,6 +11,7 @@
     "http": "0.0.0",
     "morgan": "^1.9.1",
     "path": "^0.12.7",
+    "express-history-api-fallback": "^2.2.1",
     "uuid": "^3.3.3",
     "uuid-v4": "^0.1.0"
   },

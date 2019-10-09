@@ -10,7 +10,7 @@ export class TextComponent extends BaseComponent {
     super();
     this.context = context;
     this.template = Handlebars.compile(`
-            <{{tag}} class="{{class}}" id="{{id}}">
+            <{{tag}} class="{{class}}" id="{{id}}" href="{{href}}">
                 {{text}}
             </{{tag}}>
         `);

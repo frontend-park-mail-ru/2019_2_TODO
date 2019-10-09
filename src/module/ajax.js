@@ -1,5 +1,5 @@
 
-import {startScreen} from '../components/StartScreen/StartScreen.js';
+import StartScreen from '../components/viewes/StartScreen/StartScreen.js';
 
 /** Класс для использования fetch api. */
 class AjaxModule {
@@ -8,15 +8,15 @@ class AjaxModule {
      * @param {HTMLElement} application - элемент для возврата
      * @param {File} imageFile - картинка
      */
-  postImage(application, imageFile) {
+  postAvatar(application, imageFile) {
     const data = new FormData();
     data.append('image', imageFile);
-    AjaxModule.fetchPost('http://93.171.139.196:780/signin/profileImage/', data)
+    this.fetchPost('http://93.171.139.196:780/signin/profileImage/', data)
         .then((res) => {
-          if (res.status === 200) {
-            console.log(res);
-            renderProfile(application);
-          }
+          // if (res.status === 200) {
+          //   console.log(res);
+          //   renderProfile(application);
+          // }
         });
   }
 
@@ -33,10 +33,10 @@ class AjaxModule {
           password: password,
         }))
         .then((rez) => {
-          if (rez.status === 200) {
-            console.log(rez);
-            startScreen(application);
-          }
+          // if (rez.status === 200) {
+          //   console.log(rez);
+          //   startScreen(application);
+          // }
         });
   }
 
@@ -54,10 +54,10 @@ class AjaxModule {
           password: password,
         })
     ).then((res) => {
-      if (res.status === 200) {
-        console.log('sdcsdv');
-        startScreen(application);
-      }
+      // if (res.status === 200) {
+      //   console.log('sdcsdv');
+      //   startScreen(application);
+      // }
     });
   }
 
@@ -68,9 +68,9 @@ class AjaxModule {
   logOut(application) {
     this.fetchGet('http://93.171.139.196:780/logout/')
         .then((res) => {
-          if (res.status === 200) {
-            startScreen(application);
-          }
+          // if (res.status === 200) {
+          //   startScreen(application);
+          // }
         });
   }
 

@@ -12,8 +12,9 @@ export class InputComponent extends BaseComponent {
     super();
     this.context = context;
     this.template = Handlebars.compile(`
-            <input type="{{type}}" id="{{id}}" 
-            placeholder="{{placeholder}}" class="{{class}}">
+            <input type="{{type}}" id="{{id}}" href="{{href}}"
+            placeholder="{{placeholder}}" class="{{class}}"
+            value="{{text}}">
         `);
   }
 }

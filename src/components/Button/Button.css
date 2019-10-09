@@ -10,9 +10,9 @@
     border-radius: 20px;
 }
 
-button {
+.button {
     color: white;
-
+    text-align: center;
     min-width: 90px;
     min-height: 20px;
     background: darkslategrey;
@@ -22,7 +22,7 @@ button {
     margin: 3px;
 }
 
-button:focus{
+.button:focus{
     background: #ffd700;
     color: black;
     outline: none;
