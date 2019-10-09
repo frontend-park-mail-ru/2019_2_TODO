@@ -6,7 +6,7 @@ import {signUpScreen} from '../SignUpScreen/SignUpScreen.js';
 import {signInScreen} from '../SignInScreen/SignInScreen.js';
 import {renderProfile} from '../Profile/Profile.js';
 import {InfoBar} from '../InfoBar/InfoBar.js';
-import AjaxModule from "../../module/ajax";
+import AjaxModule from "../../module/ajax.js";
 
 const application = document.getElementById('application');
 
@@ -49,7 +49,7 @@ export class HeaderComponent {
     const backButton = new ButtonComponent({
       text: 'Startscreen',
       class: 'header__button_back',
-      section: 'start',
+      section: 'start',this._parent.parentElement
     });
     head.innerHTML += backButton.render();
     const text = new TextComponent({
