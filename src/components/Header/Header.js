@@ -95,11 +95,6 @@ export class HeaderComponent {
 
     head.addEventListener('click', evtListener);
     this._parent.appendChild(head);
-    const lOButton = document.getElementById('logout');
-    lOButton.addEventListener('click', evt => {
-      evt.preventDefault();
-      AjaxModule.logOut(application);
-    });
   }
 }
 
