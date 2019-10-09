@@ -10,13 +10,18 @@ import AjaxModule from "../../module/ajax.js";
 
 const application = document.getElementById('application');
 
+const test = application => {
+  AjaxModule.logOut(application);
+};
+
 const evtListener = (evt) => {
+  evt.preventDefault();
   const functions = {
     start: startScreen,
     signUp: signUpScreen,
     signIn: signInScreen,
     profile: renderProfile,
-    logout: AjaxModule.logOut
+    logout: test
     // about: null,
   };
   const {target} = evt;
@@ -93,7 +98,6 @@ export class HeaderComponent {
     }
     head.innerHTML += chip.render();
     head.innerHTML += text.render();
-
     head.addEventListener('click', evtListener);
     this._parent.appendChild(head);
   }
