@@ -57,7 +57,7 @@ export const renderProfile = (
         form.innerHTML += closeButton.render();
         const avatar = new ImageComponent({
           class: 'profileForm__avatar',
-          source: resT.image,
+          source: JSON.parse(resT).image,
         });
         const avatarInput = new InputComponent({
           type: 'file',
