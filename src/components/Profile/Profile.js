@@ -1,12 +1,16 @@
 import BaseComponent from '../BaseComponent/BaseComponent.js';
-import {StartScreen} from '../StartScreen/StartScreen.js';
+import {startScreen} from '../StartScreen/StartScreen.js';
 import {ButtonComponent} from '../Button/Button.js';
 import {ImageComponent} from '../Image/Image.js';
-import {TextComponent} from '../TextComponent/Text.js';
 import {InputComponent} from '../Input/Input.js';
 import AjaxModule from '../../module/ajax.js';
 
+/** Класс профиля */
 export class Profile extends BaseComponent {
+  /**
+   * Создать профиль
+   * @param {string} context - контекст для профиля
+   */
   constructor(context) {
     super();
     this.context = context;
@@ -22,13 +26,20 @@ export class Profile extends BaseComponent {
   }
 }
 
-/*
-* @param {HTMLElement} application - контейнер HTML,
-* в котором отрисовывается верстка
-* @param {Object} context - контекст для шаблонизатора
+/**
+ * Отрисоват профиль
+ * @param {HTMLElement} application - контейнер HTML,
+ * в котором отрисовывается верстка
+ * @param {Object} context - контекст для шаблонизатора
  */
-export const RenderProfile = (application, context = {avatar: './assets/gold_fishka.jpg', nickname: 'nickname', score: '1000'}) => {
-  AjaxModule._fetchGet('http://93.171.139.196:780/signin/')
+export const renderProfile = (
+    application,
+    context = {
+      avatar: './assets/gold_fishka.jpg',
+      nickname: 'nickname',
+      score: '1000',
+    }) => {
+  AjaxModule.fetchGet('http://93.171.139.196:780/signin/')
       .then((res) => {
         return res.text();
       })
@@ -40,17 +51,17 @@ export const RenderProfile = (application, context = {avatar: './assets/gold_fis
         form.className = 'profileForm';
         const closeButton = new ButtonComponent({
           id: 'cl',
-          class: 'ProfileButton',
+          class: 'profileForm__button',
           text: 'close',
         });
         form.innerHTML += closeButton.render();
         const avatar = new ImageComponent({
-          class: 'chip',
-          source: window._image,
+          class: 'profileForm__avatar',
+          source: JSON.parse(resT).image,
         });
         const avatarInput = new InputComponent({
           type: 'file',
-          className: 'avatarInput',
+          class: 'profileForm__input',
           id: 'avatarInput',
           placeholder: JSON.parse(resT).image,
         });
@@ -59,27 +70,26 @@ export const RenderProfile = (application, context = {avatar: './assets/gold_fis
         form.innerHTML += avatarInput.render();
         const changeAvButton = new ButtonComponent({
           type: 'submit',
-          class: 'ProfileButton',
+          class: 'profileForm__button',
           id: 'changeAv',
-
           text: 'Upload avatar',
         });
         form.innerHTML += changeAvButton.render();
 
         const nickname = new InputComponent({
-          className: 'profileText',
+          class: 'profileForm__input',
           id: 'nick',
           placeholder: JSON.parse(resT).username,
         });
         form.innerHTML += nickname.render();
         const password = new InputComponent({
-          class: 'profileText',
+          class: 'profileForm__input',
           id: 'pass',
           type: 'password',
           placeholder: 'new password',
         });
         const passwordRepeat = new InputComponent({
-          class: 'profileText',
+          class: 'profileForm__input',
           id: 'passr',
           type: 'password',
           placeholder: 'repeat Passwor',
@@ -90,7 +100,7 @@ export const RenderProfile = (application, context = {avatar: './assets/gold_fis
         const changeButton = new ButtonComponent({
           id: 'changeNP',
           type: 'submit',
-          class: 'ProfileButton',
+          class: 'profileForm__button',
           text: 'change',
         });
         form.innerHTML += changeButton.render();
@@ -105,11 +115,12 @@ export const RenderProfile = (application, context = {avatar: './assets/gold_fis
           const av = form.elements.avatarInput;
           const data = new FormData();
           data.append('image', av.files[0]);
-          AjaxModule._fetchPost('http://93.171.139.196:780/signin/profileImage/', data)
+          AjaxModule.fetchPost('http://93.171.139.196:780/signin/profileImage/', data)
               .then((res) => {
+                console.log(res.status);
                 if (res.status === 200) {
                   console.log(res);
-                  RenderProfile(application);
+                  renderProfile(application);
                 }
               });
         });
@@ -126,7 +137,7 @@ export const RenderProfile = (application, context = {avatar: './assets/gold_fis
             password.error('PASSWORD_LENGTH', form);
             return;
           }
-          AjaxModule._fetchPost(
+          AjaxModule.fetchPost(
               'http://93.171.139.196:780/signin/profile/',
               JSON.stringify({
                 username: nick,
@@ -136,14 +147,14 @@ export const RenderProfile = (application, context = {avatar: './assets/gold_fis
               .then((res) => {
                 if (res.status === 200) {
                   console.log(res);
-                  RenderProfile(application);
+                  renderProfile(application);
                 }
               });
         });
 
         clButton.addEventListener('click', (evt) => {
           evt.preventDefault();
-          StartScreen(application);
+          startScreen(application);
         });
       });
 };

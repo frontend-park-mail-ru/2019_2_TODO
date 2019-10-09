@@ -6,18 +6,23 @@ import AjaxModule from '../../module/ajax.js';
 * @param {HTMLElement} application - контейнер HTML,
 * в котором отрисовывается верстка
  */
-export const StartScreen = (application) => {
+export const startScreen = (application) => {
   application.innerHTML = '';
-  AjaxModule._fetchGet('http://93.171.139.196:780/signin/')
+  AjaxModule.fetchGet('http://93.171.139.196:780/signin/')
+      .catch((res) => {
+        const header = new HeaderComponent(application);
+        header.render();
+        const deck = new DeckFanComponent(application);
+        deck.render();
+      })
       .then((res) => res.text())
       .then((resText) => {
         console.log(resText);
         if (resText) {
-          //console.log(JSON.parse(resText));
+          console.log(JSON.parse(resText));
           const header = new HeaderComponent(application, true);
-          //console.log(JSON.parse(resText).username);
-          window._image = URL.createObjectURL(resText);
-          //header.render(JSON.parse(resText));
+          console.log(JSON.parse(resText).username);
+          header.render(JSON.parse(resText));
           const deck = new DeckFanComponent(application);
           deck.render();
         } else {

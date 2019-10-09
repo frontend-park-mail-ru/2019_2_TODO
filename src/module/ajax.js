@@ -1,24 +1,101 @@
 
-/*
-*Класс для использования fetch api
- */
+import {startScreen} from '../components/StartScreen/StartScreen.js';
 
+/** Класс для использования fetch api. */
 class AjaxModule {
-  _fetch(url = 'http://93.171.139.196:780/',
-      params = {}
-  ) {
-    return fetch(url, params);
+  /**
+     * отправить картинку
+     * @param {HTMLElement} application - элемент для возврата
+     * @param {File} imageFile - картинка
+     */
+  postImage(application, imageFile) {
+    const data = new FormData();
+    data.append('image', imageFile);
+    AjaxModule.fetchPost('http://93.171.139.196:780/signin/profileImage/', data)
+        .then((res) => {
+          if (res.status === 200) {
+            console.log(res);
+            renderProfile(application);
+          }
+        });
   }
 
-  _fetchPost(
+  /**
+     * Регистрация
+     * @param {HTMLElement} application - элемент для возврата
+     * @param {string} email
+     * @param {string} password
+     */
+  signUp(application, email, password) {
+    this.fetchPost('http://93.171.139.196:780/signup/',
+        JSON.stringify({
+          username: email,
+          password: password,
+        }))
+        .then((rez) => {
+          if (rez.status === 200) {
+            console.log(rez);
+            startScreen(application);
+          }
+        });
+  }
+
+  /**
+     * Авторизация
+     * @param {HTMLElement} application - элемент для возврата
+     * @param {string} email
+     * @param {string} password
+     */
+  signIn(application, email, password) {
+    this.fetchPost(
+        'http://93.171.139.196:780/signin/',
+        JSON.stringify({
+          username: email,
+          password: password,
+        })
+    ).then((res) => {
+      if (res.status === 200) {
+        console.log('sdcsdv');
+        startScreen(application);
+      }
+    });
+  }
+
+  /**
+     * Выход
+     * @param {HTMLElement} application - элемент для возврата
+     */
+  logOut(application) {
+    this.fetchGet('http://93.171.139.196:780/logout/')
+        .then((res) => {
+          if (res.status === 200) {
+            startScreen(application);
+          }
+        });
+  }
+
+  /**
+     * POST запрос
+     * @param {string} url - хост получателя
+     * @param {Object} body - тело запроса
+     * @param {Object} params - параметры запроса
+     * @return {Promise<Response>} - промиз для обработки
+     */
+  fetchPost(
       url = 'http://93.171.139.196:780/',
       body = {},
-      params = {method: 'POST', withCredentials: true, credentials: 'include', body: body}) {
+      params = {method: 'POST', credentials: 'include', body: body}) {
     return fetch(url, params);
   }
 
-  _fetchGet(url = 'http://93.171.139.196:780/',
-      params = {method: 'GET', withCredentials: true, credentials: 'include'}) {
+  /**
+     * GET запрос
+     * @param {string} url - хост получателя
+     * @param {Object} params - параметры запроса
+     * @return {Promise<Response>} - промиз для обработки
+     */
+  fetchGet(url = 'http://93.171.139.196:780/',
+      params = {method: 'GET', credentials: 'include'}) {
     return fetch(url, params);
   }
 }

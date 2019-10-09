@@ -1,18 +1,18 @@
-import {TextComponent} from '../TextComponent/Text.js';
 import BaseComponent from '../BaseComponent/BaseComponent.js';
 
-/*
-* Компонент карты для стартового меню
- */
-
+/** Класс представляющий карточку для стартого экрана. */
 export class CardComponent extends BaseComponent {
+  /**
+   * Создать карточку
+   * @param {string} context -контекст для карточки
+   */
   constructor(context) {
     super();
     this.context = context;
     this.template = Handlebars.compile(`
-            <button class="card">
-                <a class="cardNominal">{{nominal}}</a>
-                <a class="cardText">{{text}}</a>
+            <button class="deckFun__card">
+                <a class="deckFun__card__nominal">{{nominal}}</a>
+                <a class="deckFun__card__text">{{text}}</a>
             </button>`
     );
   }
@@ -35,18 +35,23 @@ const Cards = [{
   nominal: '10',
 }];
 
-/*
-* Класс для нескольких карт
- */
-
+/** Класс для набора карт. */
 export class DeckFanComponent {
+  /**
+   * Создать набор карт
+   * @param {HTMLElement} parent - родитель,
+   * в который вставлются карты
+   */
   constructor(parent = document.body) {
     this._parent = parent;
   }
 
+  /**
+   * отрисовть набор карт
+   */
   render() {
     const container = document.createElement('section');
-    container.className = 'container';
+    container.className = 'deckFun';
     Cards.forEach(({text, nominal}) => {
       const Card = new CardComponent({
         nominal,

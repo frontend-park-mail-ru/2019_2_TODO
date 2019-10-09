@@ -5,6 +5,7 @@
 @import url('./components/DeckFan/DeckFan.css');
 @import url('./components/Input/Input.css');
 @import url('./components/Profile/Profile.css');
+@import url('./components/InfoBar/infoBar.css');
 
 body{
     display: flex;

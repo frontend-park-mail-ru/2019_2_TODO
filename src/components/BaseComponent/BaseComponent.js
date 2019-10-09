@@ -1,10 +1,8 @@
 
-/*
-* Базовый класс для шаблонов, от
-* которого они наследуются.
-*/
-
+/** Базовый класс для шаблонов,
+ *  от которого они наследуются. */
 export default class BaseComponent {
+  /** Создать BaseComponent. */
   constructor() {
     this.context = null;
     this.element = null;
@@ -13,6 +11,9 @@ export default class BaseComponent {
     // this._forAuth = false;
   }
 
+  /** Отрисовать
+   * @return {string} строка для подстановки в HTML.
+   */
   render() {
     if (!this.element) {
       this.element = this.template(this.context);
@@ -20,6 +21,7 @@ export default class BaseComponent {
     return this.element;
   }
 
+  /** Удалить. */
   remove() {
     this.element.parentElement.removeChild(this.element);
   }

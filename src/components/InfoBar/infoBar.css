@@ -1,0 +1,34 @@
+
+.infoBar {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-end;
+    background: #34495F;
+    max-width: 250px;
+    border-radius: 5px;
+    padding: 3px;
+    justify-content: center;
+    align-items: center;
+}
+
+.infoBar__avatar {
+    border-radius: 100px;
+    width: 50px;
+    height: 50px;
+    border:  1px solid crimson ;;
+}
+
+.infoBar__username {
+    color: white;
+    font-family: sans-serif;
+    text-decoration: none;
+}
+
+.infoBar__username:hover {
+    text-decoration: none;
+}
+
+.infoBar__logOutButton {
+    background: none;
+    align-self: auto;
+}

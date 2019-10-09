@@ -1,6 +1,10 @@
 import BaseComponent from '../BaseComponent/BaseComponent.js';
 
+/** Класс представляющий кнопку. */
 export class ButtonComponent extends BaseComponent {
+  /** Создать кнопку
+   * @param {string} context - контекст для кнопки.
+   */
   constructor(context) {
     super();
     this.context = context;
