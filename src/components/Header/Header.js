@@ -6,6 +6,7 @@ import {signUpScreen} from '../SignUpScreen/SignUpScreen.js';
 import {signInScreen} from '../SignInScreen/SignInScreen.js';
 import {renderProfile} from '../Profile/Profile.js';
 import {InfoBar} from '../InfoBar/InfoBar.js';
+import AjaxModule from "../../module/ajax";
 
 const application = document.getElementById('application');
 
@@ -93,6 +94,11 @@ export class HeaderComponent {
     head.innerHTML += text.render();
 
     head.addEventListener('click', evtListener);
+    const lOButton = document.getElementById('logout');
+    lOButton.addEventListener('click', evt => {
+      evt.preventDefault();
+      AjaxModule.logOut(application);
+    });
     this._parent.appendChild(head);
   }
 }

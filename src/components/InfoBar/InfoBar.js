@@ -1,6 +1,7 @@
 import {ImageComponent} from '../Image/Image.js';
 import {TextComponent} from '../TextComponent/Text.js';
 import {ButtonComponent} from '../Button/Button.js';
+import AjaxModule from '../../module/ajax.js';
 
 /** Класс для инвормации о пользователе*/
 export class InfoBar {
@@ -36,8 +37,10 @@ export class InfoBar {
       text: 'Log out',
       class: 'infoBar__logOutButton',
       type: 'submit',
+      id: 'logout',
     });
     infoBar.innerHTML += logOutButton.render();
+
     this._parent.appendChild(infoBar);
   }
 }
