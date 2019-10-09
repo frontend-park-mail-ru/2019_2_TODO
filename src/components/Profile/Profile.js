@@ -57,7 +57,7 @@ export const renderProfile = (
         form.innerHTML += closeButton.render();
         const avatar = new ImageComponent({
           class: 'profileForm__avatar',
-          source: 'http://93.171.139.196:780/images/',
+          source: resT.image,
         });
         const avatarInput = new InputComponent({
           type: 'file',

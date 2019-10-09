@@ -42,7 +42,7 @@ export class HeaderComponent {
    * Отрисовать заголовок
    * @param {string} username - имяпользователя
    */
-  render(username = null) {
+  render(user = null) {
     const head = document.createElement('header');
     head.className = 'header';
     head.id = 'header';
@@ -77,7 +77,7 @@ export class HeaderComponent {
       head.innerHTML += signUpButton.render();
     }
     if (this._authorized) {
-      const infoBar = new InfoBar(head, username.username, 'http://93.171.139.196:780/images/');
+      const infoBar = new InfoBar(head, user.username, user.image);
       infoBar.render();
       // const avatar = new ImageComponent({
       //     src: "",
