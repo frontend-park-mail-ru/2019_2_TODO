@@ -3,8 +3,6 @@ import {TextComponent} from '../TextComponent/Text.js';
 import {ButtonComponent} from '../Button/Button.js';
 import AjaxModule from '../../module/ajax.js';
 
-const application = document.getElementById('application');
-
 /** Класс для инвормации о пользователе*/
 export class InfoBar {
   /**
@@ -35,15 +33,13 @@ export class InfoBar {
       text: this._username,
     });
     infoBar.innerHTML += username.render();
-    const logOutButton = document.createElement('button');
-      logOutButton.textContent = 'Log out';
-      logOutButton.classNames = 'infoBar__logOutButton';
-      logOutButton.type = 'submit';
-      logOutButton.addEventListener('click', evt => {
-      evt.preventDefault();
-      AjaxModule.logOut(application);
+    const logOutButton = new ButtonComponent({
+      text: 'Log out',
+      class: 'infoBar__logOutButton',
+      type: 'submit',
+      section: 'logout',
     });
-      infoBar.appendChild(logOutButton);
+    infoBar.innerHTML += logOutButton.render();
     this._parent.appendChild(infoBar);
   }
 }
