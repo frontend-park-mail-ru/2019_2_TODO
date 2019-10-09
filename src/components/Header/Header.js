@@ -16,7 +16,7 @@ const evtListener = (evt) => {
     signUp: signUpScreen,
     signIn: signInScreen,
     profile: renderProfile,
-    logout: AjaxModule.logOut(application)
+    logout: AjaxModule.logOut
     // about: null,
   };
   const {target} = evt;
