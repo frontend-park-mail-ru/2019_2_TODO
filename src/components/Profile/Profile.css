@@ -11,7 +11,7 @@
 
 .profileForm__avatar {
     border-radius: 100px;
-    border:  2px solid darkblue ;
+    border:  2px solid red;
     max-width: 100px;
     max-height: 100px;
     align-self: center;

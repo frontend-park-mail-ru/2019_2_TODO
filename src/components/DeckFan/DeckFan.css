@@ -36,49 +36,49 @@
 }
 
 
-.card:nth-child(2) {
+.deckFun__card:nth-child(2) {
     background: #793C92;
     border: 1px solid #793C92;
 }
 
-.card:nth-child(2):hover {
+.deckFun__card:nth-child(2):hover {
     background: #ffd700;
     color: black;
     border-color: black;
 }
 
-.card:nth-child(3) {
+.deckFun__card:nth-child(3) {
     background: #565656;
     border: 1px solid rgba(0, 0, 0, 0.4);
 }
 
-.card:nth-child(3):hover {
+.deckFun__card:nth-child(3):hover {
     background: #ffd700;
     color: black;
     border-color: black;
 }
-.card:nth-child(4){
+.deckFun__card:nth-child(4){
     background: #E67E22;
     border: 1px solid #BF3902;
 }
-.card:nth-child(4):hover{
+.deckFun__card:nth-child(4):hover{
     background: #ffd700;
     color: black;
     border-color: black;
 }
-.card:nth-child(5){
+.deckFun__card:nth-child(5){
     background: #BF3902;
     border: 1px solid #E67E22;
 }
 
-.card:nth-child(5):hover {
+.deckFun__card:nth-child(5):hover {
     background: #ffd700;
     color: black;
     border-color: black;
 }
 
 
-.cardText {
+.deckFun__card__text {
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
@@ -86,10 +86,10 @@
     line-height: 56px;
 
 }
-.cardText:hover {
+.deckFun__card__text:hover {
     text-decoration: none;
 }
-.cardNominal {
+.deckFun__card__nominal {
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
@@ -101,7 +101,7 @@
 
 
 }
-.cardNominal:hover {
+.deckFun__card__nominal:hover {
     text-decoration: none;
 
 }
