@@ -6,11 +6,11 @@ import {signUpScreen} from '../SignUpScreen/SignUpScreen.js';
 import {signInScreen} from '../SignInScreen/SignInScreen.js';
 import {renderProfile} from '../Profile/Profile.js';
 import {InfoBar} from '../InfoBar/InfoBar.js';
-import AjaxModule from "../../module/ajax.js";
+import AjaxModule from '../../module/ajax.js';
 
 const application = document.getElementById('application');
 
-const test = application => {
+const logOut = (application) => {
   AjaxModule.logOut(application);
 };
 
@@ -21,7 +21,7 @@ const evtListener = (evt) => {
     signUp: signUpScreen,
     signIn: signInScreen,
     profile: renderProfile,
-    logout: test
+    logout: logOut,
     // about: null,
   };
   const {target} = evt;
@@ -46,7 +46,7 @@ export class HeaderComponent {
 
   /**
    * Отрисовать заголовок
-   * @param {string} username - имяпользователя
+   * @param {Object} user - данные пользователя
    */
   render(user = null) {
     const head = document.createElement('header');
