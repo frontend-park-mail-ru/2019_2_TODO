@@ -35,9 +35,10 @@ export class InfoBar {
     infoBar.innerHTML += username.render();
     const logOutButton = new ButtonComponent({
       text: 'Log out',
-      class: 'infoBar__logOutButton',
+      class: 'button infoBar__logOutButton',
       type: 'submit',
       section: 'logout',
+      id: 'logout',
     });
     infoBar.innerHTML += logOutButton.render();
     this._parent.appendChild(infoBar);
