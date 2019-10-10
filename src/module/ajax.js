@@ -66,7 +66,7 @@ class AjaxModule {
      * @param {HTMLElement} application - элемент для возврата
      */
   logOut(application) {
-    this.fetchGet('http://93.171.139.196:780/')
+    this.fetchGet('http://93.171.139.196:780/logout/')
         .then((res) => {
             console.log(res.status);
           if (res.status === 200) {
