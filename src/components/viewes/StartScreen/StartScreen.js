@@ -37,10 +37,7 @@ export default class StartScreen extends BaseView {
                 }
             });
         this.el.appendChild(application);
-        const logOut = document.getElementById('logout');
-        logOut.addEventListener('click', evt=> {
-            AjaxModule.logOut(application);
-        });
+
 
     }
 }

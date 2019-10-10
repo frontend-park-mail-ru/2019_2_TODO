@@ -106,7 +106,12 @@ export class HeaderComponent {
     }
     head.innerHTML += chip.render();
     head.innerHTML += text.render();
-    //head.addEventListener('click', evtListener);
+    // head.addEventListener('click', evtListener);
+    head.addEventListener('click', evt=> {
+      if (evt.target.dataset.section === 'logout') {
+        AjaxModule.logOut(application);
+      }
+    });
     this._parent.appendChild(head);
   }
 }
