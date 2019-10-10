@@ -64,6 +64,9 @@ export default class Router {
   reRender(path){
     const route = this.routes[path];
     let {View, view, el} = route;
+    if (!el) {
+      this.open(path);
+    }
     this.root.removeChild(el);
     this.routes[path].el = null;
     this.routes[path].view = null;
