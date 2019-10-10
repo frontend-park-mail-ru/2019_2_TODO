@@ -17,7 +17,7 @@ app.use(cookie());
 app.use(fallback('index.html', {root: rootDir}));
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://93.171.139.195:780");
+  res.header("Access-Control-Allow-Origin", "http://93.171.139.195:780/logout/");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Credentials', true);
