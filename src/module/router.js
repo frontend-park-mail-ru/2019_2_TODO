@@ -61,6 +61,13 @@ export default class Router {
     this.routes[path] = {View, view, el};
   }
 
+  reRender(path){
+    const route = this.routes[path];
+    let {View, view, el} = route;
+    this.root.removeChild(el);
+    this.open(path);
+  }
+
   start() {
     this.root.addEventListener('click', function(event) {
       if (!(event.target instanceof HTMLAnchorElement)) {
