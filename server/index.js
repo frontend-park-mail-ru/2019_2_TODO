@@ -15,7 +15,7 @@ app.use(morgan('dev'));
 app.use(body.json());
 app.use(cookie());
 app.use((req, res, next) => {
-  res.set("Access-Control-Allow-Origin", "http://93.171.139.196:780");
+  res.set("Access-Control-Allow-Origin", "*");
   res.set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.set('Access-Control-Allow-Credentials', true);
