@@ -68,6 +68,7 @@ class AjaxModule {
   logOut(application) {
     this.fetchGet('http://93.171.139.196:780/logout/')
         .then((res) => {
+            console.log(res.status);
           if (res.status === 200) {
               window.router.open('/');
           }
