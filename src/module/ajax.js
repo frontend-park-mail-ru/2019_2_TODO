@@ -15,7 +15,7 @@ class AjaxModule {
         .then((res) => {
           if (res.status === 200) {
             console.log(res);
-            window.router.open('/profile');
+            window.router.reRender('/profile');
           }
         });
   }
@@ -33,10 +33,10 @@ class AjaxModule {
           password: password,
         }))
         .then((rez) => {
-          // if (rez.status === 200) {
-          //   console.log(rez);
-          //   startScreen(application);
-          // }
+          if (rez.status === 200) {
+            console.log(rez);
+            window.router.reRender('/');
+          }
         });
   }
 
@@ -54,10 +54,9 @@ class AjaxModule {
           password: password,
         })
     ).then((res) => {
-      // if (res.status === 200) {
-      //   console.log('sdcsdv');
-      //   startScreen(application);
-      // }
+      if (res.status === 200) {
+          window.router.reRender('/');
+      }
     });
   }
 
