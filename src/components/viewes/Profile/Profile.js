@@ -117,14 +117,7 @@ export default class ProfileView extends BaseView {
             const av = form.elements.avatarInput;
             const data = new FormData();
             data.append('image', av.files[0]);
-            AjaxModule.fetchPost('http://93.171.139.196:780/signin/profileImage/', data)
-                .then((res) => {
-                  console.log(res.status);
-                  if (res.status === 200) {
-                    console.log(res);
-                    window.history.pushState(application, 'poker', window.location.pathname);
-                  }
-                });
+            AjaxModule.postAvatar(application, data);
           });
           npButton.addEventListener('click', (evt) => {
             evt.preventDefault();

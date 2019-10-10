@@ -6,7 +6,7 @@ class AjaxModule {
   /**
      * отправить картинку
      * @param {HTMLElement} application - элемент для возврата
-     * @param {File} imageFile - картинка
+     * @param {FormData} imageFile - картинка
      */
   postAvatar(application, imageFile) {
     const data = new FormData();
