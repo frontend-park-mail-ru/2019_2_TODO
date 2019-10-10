@@ -18,7 +18,7 @@ app.use(fallback('index.html', {root: rootDir}));
 
 const corsOtions = {
   origin: 'http://93.171.139.196:780',
-  optionsSuccessStatus: 200
+  optionsSuccessStatus: 301
 };
 app.use(cors(corsOtions));
 app.options('/',cors(corsOtions));
