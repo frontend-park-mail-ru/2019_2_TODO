@@ -66,11 +66,11 @@ class AjaxModule {
      * @param {HTMLElement} application - элемент для возврата
      */
   logOut(application) {
-    this.fetchGet('http://93.171.139.196:780/logout/')
+    this.fetchGet('http://93.171.139.196:780/')
         .then((res) => {
             console.log(res.status);
           if (res.status === 200) {
-              window.router.open('/signUp');
+              window.router.open('/');
           }
         });
   }
