@@ -149,7 +149,6 @@ export default class ProfileView extends BaseView {
                 .then((res) => {
                   if (res.status === 200) {
                     console.log(res);
-                    window.history.pushState(null, '', window.location.pathname);
                   }
                 });
           });
