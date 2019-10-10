@@ -16,12 +16,11 @@ app.use(body.json());
 app.use(cookie());
 app.use(fallback('index.html', {root: rootDir}));
 
-const corsOtions = {
-  origin: 'http://93.171.139.196:780',
-  optionsSuccessStatus: 301
-};
-//app.use(cors(corsOtions));
-app.all('/', cors(corsOtions));
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 const port = process.env.PORT || 80;
 
