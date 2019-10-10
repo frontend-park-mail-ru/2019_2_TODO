@@ -65,6 +65,8 @@ export default class Router {
     const route = this.routes[path];
     let {View, view, el} = route;
     this.root.removeChild(el);
+    this.routes[path].el = null;
+    this.routes[path].view = null;
     this.open(path);
   }
 
