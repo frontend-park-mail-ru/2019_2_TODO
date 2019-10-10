@@ -1,6 +1,7 @@
 import {ImageComponent} from '../Image/Image.js';
 import {TextComponent} from '../TextComponent/Text.js';
 import {ButtonComponent} from '../Button/Button.js';
+import AjaxModule from '../../../module/ajax.js';
 
 /** Класс для инвормации о пользователе*/
 export class InfoBar {
@@ -41,6 +42,10 @@ export class InfoBar {
       id: 'logout',
     });
     infoBar.innerHTML += logOutButton.render();
+    const logOut = infoBar.getElementById('logout');
+    logOut.addEventListener('click', evt=> {
+      AjaxModule.logOut(this._parent);
+    });
     this._parent.appendChild(infoBar);
   }
 }
