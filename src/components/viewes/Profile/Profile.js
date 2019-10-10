@@ -149,6 +149,7 @@ export default class ProfileView extends BaseView {
                 .then((res) => {
                   if (res.status === 200) {
                     console.log(res);
+                    window.router.open('/');
                   }
                 });
           });

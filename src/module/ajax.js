@@ -13,10 +13,10 @@ class AjaxModule {
     data.append('image', imageFile);
     this.fetchPost('http://93.171.139.196:780/signin/profileImage/', data)
         .then((res) => {
-          // if (res.status === 200) {
-          //   console.log(res);
-          //   renderProfile(application);
-          // }
+          if (res.status === 200) {
+            console.log(res);
+            window.router.open('/profile');
+          }
         });
   }
 
@@ -69,7 +69,7 @@ class AjaxModule {
     this.fetchGet('http://93.171.139.196:780/logout/')
         .then((res) => {
           if (res.status === 200) {
-              window.history.pushState(null, '', window.location.pathname);
+              window.router.open('/');
           }
         });
   }

@@ -5,11 +5,11 @@ import SignInScreen from './components/viewes/SignInScreen/SignInScreen.js';
 import ProfileView from './components/viewes/Profile/Profile.js';
 
 const application = document.getElementById('application');
-const router = new Router(application);
+window.router = new Router(application);
 
-router.register('/', StartScreen)
+window.router.register('/', StartScreen)
     .register('/signUp', SignUpScreen)
     .register('/signIn', SignInScreen)
     .register('/profile', ProfileView);
 console.log(router.routes);
-router.start();
+window.router.start();
