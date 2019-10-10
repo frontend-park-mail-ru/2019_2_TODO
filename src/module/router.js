@@ -29,13 +29,13 @@ export default class Router {
       return;
     }
 
-    if (window.location.pathname !== path) {
+    // if (window.location.pathname !== path) {
       window.history.pushState(
           null,
           '',
           path
-      );
-    }
+     );
+    // }
 
     let {View, view, el} = route;
 
