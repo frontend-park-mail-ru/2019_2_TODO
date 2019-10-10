@@ -70,7 +70,7 @@ class AjaxModule {
         .then((res) => {
             console.log(res.status);
           if (res.status === 200) {
-              //window.router.open('/');
+              window.router.open('/');
           }
         });
   }
