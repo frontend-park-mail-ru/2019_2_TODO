@@ -54,7 +54,9 @@ class AjaxModule {
           password: password,
         })
     ).then((res) => {
+        console.log('asca');
       if (res.status === 200) {
+          console.log('___');
           window.router.reRender('/');
       }
     });
