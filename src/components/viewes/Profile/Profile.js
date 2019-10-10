@@ -4,8 +4,8 @@ import {ButtonComponent} from '../../Button/Button.js';
 import {ImageComponent} from '../../Image/Image.js';
 import {InputComponent} from '../../Input/Input.js';
 import AjaxModule from '../../../module/ajax.js';
-import BaseView from "../BaseView/BaseView.js";
-import {TextComponent} from "../../TextComponent/Text.js";
+import BaseView from '../BaseView/BaseView.js';
+import {TextComponent} from '../../TextComponent/Text.js';
 
 /** Класс профиля */
 export class Profile extends BaseComponent {
@@ -28,7 +28,7 @@ export class Profile extends BaseComponent {
   }
 }
 
-export default class ProfileView extends BaseView{
+export default class ProfileView extends BaseView {
   constructor(element, context = {
     avatar: './assets/gold_fishka.jpg',
     nickname: 'nickname',
@@ -122,7 +122,7 @@ export default class ProfileView extends BaseView{
                   console.log(res.status);
                   if (res.status === 200) {
                     console.log(res);
-                    window.history.pushState(application,'poker', window.location.pathname);
+                    window.history.pushState(application, 'poker', window.location.pathname);
                   }
                 });
           });
@@ -149,7 +149,7 @@ export default class ProfileView extends BaseView{
                 .then((res) => {
                   if (res.status === 200) {
                     console.log(res);
-                    window.history.pushState(application,'poker', window.location.pathname);
+                    window.history.pushState(null, '', window.location.pathname);
                   }
                 });
           });

@@ -3,15 +3,15 @@ import {HeaderComponent} from '../../Header/Header.js';
 import {ButtonComponent} from '../../Button/Button.js';
 import {TextComponent} from '../../TextComponent/Text.js';
 import AjaxModule from '../../../module/ajax.js';
-import BaseView from "../BaseView/BaseView.js";
+import BaseView from '../BaseView/BaseView.js';
 
 /*
 * @param {HTMLElement} application - контейнер HTML,
 * в котором отрисовывается верстка
  */
 
-export default class SignUpScreen extends BaseView{
-  constructor(element){
+export default class SignUpScreen extends BaseView {
+  constructor(element) {
     super(element);
   }
 
@@ -59,7 +59,7 @@ export default class SignUpScreen extends BaseView{
     const SubmitButton = new ButtonComponent({
       type: 'submit',
       text: 'Sign up!',
-      class: 'button'
+      class: 'button',
     });
     form.innerHTML += SubmitButton.render();
 

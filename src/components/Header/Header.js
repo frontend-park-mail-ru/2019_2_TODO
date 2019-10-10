@@ -1,12 +1,12 @@
 import {ButtonComponent} from '../Button/Button.js';
 import {TextComponent} from '../TextComponent/Text.js';
 import {ImageComponent} from '../Image/Image.js';
-//import {StartScreen} from '../viewes/StartScreen/StartScreen.js';
+// import {StartScreen} from '../viewes/StartScreen/StartScreen.js';
 // import {signUpScreen} from '../viewes/SignUpScreen/SignUpScreen.js';
 // import {signInScreen} from '../viewes/SignInScreen/SignInScreen.js';
 import {InfoBar} from '../InfoBar/InfoBar.js';
 import AjaxModule from '../../module/ajax.js';
-import {InputComponent} from "../Input/Input.js";
+import {InputComponent} from '../Input/Input.js';
 
 const application = document.getElementById('application');
 
@@ -107,8 +107,8 @@ export class HeaderComponent {
     head.innerHTML += chip.render();
     head.innerHTML += text.render();
     // head.addEventListener('click', evtListener);
-    head.addEventListener('click', evt=> {
-      const {target} = evt
+    head.addEventListener('click', (evt)=> {
+      const {target} = evt;
       if (target.dataset.section === 'logout') {
         AjaxModule.logOut(application);
       }

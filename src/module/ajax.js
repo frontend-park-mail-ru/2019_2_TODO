@@ -68,9 +68,9 @@ class AjaxModule {
   logOut(application) {
     this.fetchGet('http://93.171.139.196:780/logout/')
         .then((res) => {
-          // if (res.status === 200) {
-          //   startScreen(application);
-          // }
+          if (res.status === 200) {
+              window.history.pushState(null, '', window.location.pathname);
+          }
         });
   }
 

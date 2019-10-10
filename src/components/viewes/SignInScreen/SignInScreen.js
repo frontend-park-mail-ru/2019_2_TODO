@@ -4,17 +4,15 @@ import InputError, {InputComponent} from '../../Input/Input.js';
 import {ButtonComponent} from '../../Button/Button.js';
 // import StartScreen from '../StartScreen/StartScreen.js';
 import AjaxModule from '../../../module/ajax.js';
-import BaseView from "../BaseView/BaseView.js";
+import BaseView from '../BaseView/BaseView.js';
 
 
-
-export default class SignInScreen extends BaseView{
-  constructor(element){
+export default class SignInScreen extends BaseView {
+  constructor(element) {
     super(element);
   }
 
   render() {
-
     this.el.innerHTML = '';
     const application = document.createElement('section');
     const header = new HeaderComponent(application);
@@ -66,7 +64,7 @@ export default class SignInScreen extends BaseView{
             username: email.value,
             password: password.value,
           })
-      )
+      );
       // .then((res) => {
       //   if (res.status === 200) {
       //     console.log('sdcsdv');
