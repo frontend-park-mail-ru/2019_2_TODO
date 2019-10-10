@@ -20,8 +20,8 @@ const corsOtions = {
   origin: 'http://93.171.139.196:780',
   optionsSuccessStatus: 301
 };
-app.use(cors(corsOtions));
-app.options('/',cors(corsOtions));
+//app.use(cors(corsOtions));
+app.all('/', cors(corsOtions));
 
 const port = process.env.PORT || 80;
 
