@@ -5,7 +5,7 @@ import {ImageComponent} from '../../Image/Image.js';
 import {InputComponent} from '../../Input/Input.js';
 import AjaxModule from '../../../module/ajax.js';
 import BaseView from "../BaseView/BaseView.js";
-import {TextComponent} from "../../TextComponent/Text";
+import {TextComponent} from "../../TextComponent/Text.js";
 
 /** Класс профиля */
 export class Profile extends BaseComponent {
