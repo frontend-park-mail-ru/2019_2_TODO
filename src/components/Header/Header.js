@@ -4,7 +4,6 @@ import {ImageComponent} from '../Image/Image.js';
 //import {StartScreen} from '../viewes/StartScreen/StartScreen.js';
 // import {signUpScreen} from '../viewes/SignUpScreen/SignUpScreen.js';
 // import {signInScreen} from '../viewes/SignInScreen/SignInScreen.js';
-import {renderProfile} from '../viewes/Profile/Profile.js';
 import {InfoBar} from '../InfoBar/InfoBar.js';
 import AjaxModule from '../../module/ajax.js';
 import {InputComponent} from "../Input/Input.js";
