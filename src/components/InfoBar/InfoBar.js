@@ -42,10 +42,6 @@ export class InfoBar {
       id: 'logout',
     });
     infoBar.innerHTML += logOutButton.render();
-    const logOut = infoBar.getElementById('logout');
-    logOut.addEventListener('click', evt=> {
-      AjaxModule.logOut(this._parent);
-    });
     this._parent.appendChild(infoBar);
   }
 }
