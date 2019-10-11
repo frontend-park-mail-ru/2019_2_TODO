@@ -7,5 +7,10 @@
     align-self: start;
 }
 
+.header__top-section {
+    display: flex;
+    flex-direction: row;
+}
+
 
 

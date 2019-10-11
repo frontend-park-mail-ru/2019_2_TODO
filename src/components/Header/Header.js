@@ -52,6 +52,10 @@ export class HeaderComponent {
     const head = document.createElement('header');
     head.className = 'header';
     head.id = 'header';
+    const topSection = document.createElement('div');
+    topSection.className = 'header__top-section';
+    head.appendChild(topSection);
+
     const backButton = new TextComponent({
       tag: 'a',
       text: 'Startscreen',
@@ -59,7 +63,7 @@ export class HeaderComponent {
       class: 'button header__button_back',
       section: 'start',
     });
-    head.innerHTML += backButton.render();
+    topSection.innerHTML += backButton.render();
     const text = new TextComponent({
       tag: 'h1',
       class: '',
@@ -91,7 +95,7 @@ export class HeaderComponent {
       head.innerHTML += signUpButton.render();
     }
     if (this._authorized) {
-      const infoBar = new InfoBar(head, user.username, user.image);
+      const infoBar = new InfoBar(topSection, user.username, user.image);
       infoBar.render();
       // const avatar = new ImageComponent({
       //     src: "",
