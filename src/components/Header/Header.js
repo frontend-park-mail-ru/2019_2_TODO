@@ -74,6 +74,9 @@ export class HeaderComponent {
       section: 'start',
     });
     if (!this._authorized) {
+      const buttonColumn = document.createElement('div');
+      buttonColumn.className = 'column';
+      topSection.appendChild(buttonColumn);
       const signInButton = new TextComponent({
         tag: 'a',
         type: 'button',
@@ -82,7 +85,7 @@ export class HeaderComponent {
         text: 'Sign in',
         section: 'signIn',
       });
-      topSection.innerHTML += signInButton.render();
+      buttonColumn.innerHTML += signInButton.render();
       const signUpButton = new TextComponent({
         type: 'button',
         tag: 'a',
@@ -91,7 +94,7 @@ export class HeaderComponent {
         text: 'Sign up',
         section: 'signUp',
       });
-      topSection.innerHTML += signUpButton.render();
+      buttonColumn.innerHTML += signUpButton.render();
     }
     if (this._authorized) {
       const infoBar = new InfoBar(topSection, user.username, user.image);
