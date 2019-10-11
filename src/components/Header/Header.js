@@ -1,4 +1,4 @@
-// import {ButtonComponent} from '../Button/Button.js';
+import {ButtonComponent} from '../Button/Button.js';
 import {TextComponent} from '../TextComponent/Text.js';
 import {ImageComponent} from '../Image/Image.js';
 // import {StartScreen} from '../viewes/StartScreen/StartScreen.js';
@@ -6,7 +6,7 @@ import {ImageComponent} from '../Image/Image.js';
 // import {signInScreen} from '../viewes/SignInScreen/SignInScreen.js';
 import {InfoBar} from '../InfoBar/InfoBar.js';
 import AjaxModule from '../../module/ajax.js';
-// import {InputComponent} from '../Input/Input.js';
+import {InputComponent} from '../Input/Input.js';
 
 const application = document.getElementById('application');
 
@@ -52,8 +52,6 @@ export class HeaderComponent {
     const head = document.createElement('header');
     head.className = 'header';
     head.id = 'header';
-    const topSection = document.createElement('div');
-    topSection.className = 'header__top-section';
     const backButton = new TextComponent({
       tag: 'a',
       text: 'Startscreen',
@@ -61,8 +59,7 @@ export class HeaderComponent {
       class: 'button header__button_back',
       section: 'start',
     });
-    topSection.innerHTML += backButton.render();
-    head.appendChild(topSection);
+    head.innerHTML += backButton.render();
     const text = new TextComponent({
       tag: 'h1',
       class: '',
@@ -94,7 +91,7 @@ export class HeaderComponent {
       head.innerHTML += signUpButton.render();
     }
     if (this._authorized) {
-      const infoBar = new InfoBar(topSection, user.username, user.image);
+      const infoBar = new InfoBar(head, user.username, user.image);
       infoBar.render();
       // const avatar = new ImageComponent({
       //     src: "",
