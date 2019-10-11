@@ -10,7 +10,7 @@
 .header__top-section {
     display: flex;
     flex-direction: row;
-
+    align-items: center;
 }
 
 
