@@ -82,7 +82,7 @@ export class HeaderComponent {
         text: 'Sign in',
         section: 'signIn',
       });
-      head.innerHTML += signInButton.render();
+      topSection.innerHTML += signInButton.render();
       const signUpButton = new TextComponent({
         type: 'button',
         tag: 'a',
@@ -91,7 +91,7 @@ export class HeaderComponent {
         text: 'Sign up',
         section: 'signUp',
       });
-      head.innerHTML += signUpButton.render();
+      topSection.innerHTML += signUpButton.render();
     }
     if (this._authorized) {
       const infoBar = new InfoBar(topSection, user.username, user.image);
