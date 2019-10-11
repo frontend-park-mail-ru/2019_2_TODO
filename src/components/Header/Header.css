@@ -10,7 +10,8 @@
 .header__top-section {
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: space-between;
+    align-items: baseline;
 }
 
 

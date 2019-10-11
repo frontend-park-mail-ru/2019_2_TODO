@@ -3,13 +3,12 @@
     display: flex;
     flex-direction: row;
     align-self: flex-end;
-    justify-self: end;
     background: #34495F;
     max-width: 250px;
     border-radius: 5px;
     padding: 3px;
-    justify-content: space-between;
-    align-items: baseline;
+    justify-content: center;
+    align-items: center;
 }
 
 .infoBar__avatar {
