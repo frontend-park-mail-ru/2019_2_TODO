@@ -44,22 +44,22 @@ export default class SignInScreen extends BaseView {
     });
     form.innerHTML += SubmitButton.render();
     form.addEventListener('submit', function(e) {
-          e.preventDefault();
+      e.preventDefault();
 
-          const email = form.elements.email;
-          const password = form.elements.password;
-          if (!email.value.length) {
-            InputError.e('NO_USERNAME', form);
-            password.value = '';
-            return;
-          }
-          if (password.value.length < 5) {
-            password.value = '';
-            InputError.e('PASSWORD_LENGTH', form);
-            return;
-          }
-          AjaxModule.signIn(application, email.value, password.value);
-        }
+      const email = form.elements.email;
+      const password = form.elements.password;
+      if (!email.value.length) {
+        InputError.e('NO_USERNAME', form);
+        password.value = '';
+        return;
+      }
+      if (password.value.length < 5) {
+        password.value = '';
+        InputError.e('PASSWORD_LENGTH', form);
+        return;
+      }
+      AjaxModule.signIn(application, email.value, password.value);
+    }
     );
     this.el.appendChild(application);
   }

@@ -61,9 +61,9 @@ export default class Router {
     this.routes[path] = {View, view, el};
   }
 
-  reRender(path){
+  reRender(path) {
     const route = this.routes[path];
-    let {View, view, el} = route;
+    const {View, view, el} = route;
     if (!el) {
       this.open(path);
     }

@@ -52,10 +52,10 @@ class AjaxModule {
           password: password,
         })
     ).then((res) => {
-        console.log('asca');
+      console.log('asca');
       if (res.status === 200) {
-          console.log('___');
-          window.router.reRender('/');
+        console.log('___');
+        window.router.reRender('/');
       }
     });
   }
@@ -67,9 +67,9 @@ class AjaxModule {
   logOut(application) {
     this.fetchGet('http://93.171.139.196:780/logout/')
         .then((res) => {
-            console.log(res.status);
+          console.log(res.status);
           if (res.status === 200) {
-              window.router.reRender('/');
+            window.router.reRender('/');
           }
         });
   }
