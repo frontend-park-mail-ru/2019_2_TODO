@@ -77,7 +77,7 @@ export class HeaderComponent {
       const signInButton = new TextComponent({
         tag: 'a',
         type: 'button',
-        class: 'button',
+        class: 'button header__sign-in-button',
         href: 'signIn',
         text: 'Sign in',
         section: 'signIn',
