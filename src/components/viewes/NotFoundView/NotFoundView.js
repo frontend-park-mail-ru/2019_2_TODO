@@ -1,5 +1,5 @@
 import BaseView from '../BaseView/BaseView.js';
-import {TextComponent} from '../../TextComponent/Text';
+import {TextComponent} from '../../TextComponent/Text.js';
 
 
 export default class NotFoundView extends BaseView {

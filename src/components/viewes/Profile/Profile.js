@@ -1,5 +1,4 @@
 import BaseComponent from '../../BaseComponent/BaseComponent.js';
-import StartScreen from '../StartScreen/StartScreen.js';
 import {ButtonComponent} from '../../Button/Button.js';
 import {ImageComponent} from '../../Image/Image.js';
 import {InputComponent} from '../../Input/Input.js';
