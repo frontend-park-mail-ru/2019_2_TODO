@@ -15,7 +15,7 @@ export default class NotFoundView extends BaseView {
           text: 'Not Found',
           class: 'notfound',
         });
-    application.innerText = text.render();
+    application.innerHTML = text.render();
     this.el.appendChild(application);
   }
 }

@@ -52,7 +52,7 @@ export class HeaderComponent {
     const head = document.createElement('header');
     head.className = 'header';
     head.id = 'header';
-    const topSection = document.createElement('div');
+    const topSection = document.createElement('section');
     topSection.className = 'header__top-section';
     const backButton = new TextComponent({
       tag: 'a',
