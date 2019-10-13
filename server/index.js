@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 app.use(express.static(rootDir));
 app.use(fallback('index.html', {root: rootDir}));
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
   console.log(`Server listening port ${port}`);

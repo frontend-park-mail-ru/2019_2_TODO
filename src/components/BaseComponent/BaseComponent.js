@@ -3,8 +3,8 @@
  *  от которого они наследуются. */
 export default class BaseComponent {
   /** Создать BaseComponent. */
-  constructor() {
-    this.context = null;
+  constructor(context = null) {
+    this.context = context;
     this.element = null;
     this.template = null;
     // this._needAuth = false;

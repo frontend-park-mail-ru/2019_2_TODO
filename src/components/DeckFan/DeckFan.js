@@ -7,8 +7,7 @@ export class CardComponent extends BaseComponent {
    * @param {string} context -контекст для карточки
    */
   constructor(context) {
-    super();
-    this.context = context;
+    super(context);
     this.template = Handlebars.compile(`
             <button class="deckFun__card">
                 <a class="deckFun__card__nominal">{{nominal}}</a>

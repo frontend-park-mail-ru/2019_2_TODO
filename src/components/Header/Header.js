@@ -10,27 +10,7 @@ import AjaxModule from '../../module/ajax.js';
 
 const application = document.getElementById('application');
 
-const logOut = (application) => {
-  AjaxModule.logOut(application);
-};
 
-// const evtListener = (evt) => {
-//   evt.preventDefault();
-//   const functions = {
-//     //start: startScreen,
-//     // signUp: signUpScreen,
-//     // signIn: signInScreen,
-//     profile: renderProfile,
-//     logout: logOut,
-//     // about: null,
-//   };
-//   const {target} = evt;
-//   if ((target instanceof HTMLButtonElement) ||
-//       (target instanceof HTMLImageElement)) {
-//     evt.preventDefault();
-//     functions[target.dataset.section](application);
-//   }
-// };
 
 /** Класс заголовка */
 export class HeaderComponent {
@@ -99,16 +79,6 @@ export class HeaderComponent {
     if (this._authorized) {
       const infoBar = new InfoBar(topSection, user.username, user.image);
       infoBar.render();
-      // const avatar = new ImageComponent({
-      //     src: "",
-      //     class: "avatar"
-      // });
-      // const profileButton = new ButtonComponent({
-      //   text: username.username,
-      //   section: 'profile',
-      // });
-      // head.innerHTML += avatar.render();
-      // head.innerHTML += profileButton.render();
     }
     head.innerHTML += chip.render();
     head.innerHTML += text.render();
