@@ -107,7 +107,7 @@ export default class ChangeProfileView extends BaseView {
               password.error('PASSWORDS_MATCH', form);
               return;
             }
-            if (pass.length < 5) {
+            if ((pass.length < 5)&&(pass.length > 0)) {
               password.error('PASSWORD_LENGTH', form);
               return;
             }
