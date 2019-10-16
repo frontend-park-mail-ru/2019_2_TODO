@@ -12,6 +12,7 @@ export class CardComponent extends BaseComponent {
             <a class="deckFun__card" href="{{href}}">
                 <h1 class="deckFun__card__nominal">{{nominal}}</h1>
                 <h1 class="deckFun__card__text">{{text}}</h1>
+                <h1> </h1>
             </a>`
     );
   }
