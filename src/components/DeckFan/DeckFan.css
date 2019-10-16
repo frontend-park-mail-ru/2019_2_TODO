@@ -3,7 +3,7 @@
     margin-top: auto;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
 }
 
@@ -84,6 +84,7 @@
     font-weight: normal;
     font-size: 35px;
     line-height: 56px;
+    justify-self: center;
 
 }
 .deckFun__card__text:hover {
@@ -96,7 +97,6 @@
     font-size: 35px;
     line-height: 56px;
     align-self: start;
-    justify-self: start;
     margin: 3px;
     /*position: absolute;*/
     /*top: 5px;*/
