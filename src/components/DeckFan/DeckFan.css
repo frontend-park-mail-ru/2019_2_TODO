@@ -88,7 +88,7 @@
 
 }
 .deckFun__card__text:hover {
-    color: black;
+    /*color: black;*/
     text-decoration: none;
 }
 .deckFun__card__nominal {
