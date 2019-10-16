@@ -13,11 +13,11 @@ export class ProfileComponent extends BaseComponent {
         this.context = context;
         this.template = Handlebars.compile(`
         <form class="profileForm">
-            <a class="button" id="closeButton" href="/">Close</a>
-            <img class="avatar" src="{{avatar}}" alt="">
-            <a class="profileText">{{nickname}}</a>
-            <a class="profileText">{{score}}</a>
-            <a class="button", href="/profileChange">Change</a> 
+            <a class="button profileForm__button" id="closeButton" href="/">Close</a>
+            <img class="profileForm__avatar" src="{{avatar}}" alt="">
+            <a class="profileForm__text">{{nickname}}</a>
+            <a class="profileForm__text">{{score}}</a>
+            <a class="button profileForm__button", href="/profileChange">Change</a> 
         </form>
         `);
     }
