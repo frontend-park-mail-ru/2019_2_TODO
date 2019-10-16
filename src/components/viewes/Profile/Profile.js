@@ -1,5 +1,6 @@
 import BaseComponent from "../../BaseComponent/BaseComponent.js";
 import BaseView from "../BaseView/BaseView.js";
+import AjaxModule from "../../../module/ajax";
 
 
 /** Класс профиля */
@@ -24,18 +25,27 @@ export class ProfileComponent extends BaseComponent {
 }
 
 
-export default class ProfileView extends BaseView{
+export default class ProfileView extends BaseView {
     constructor(element) {
         super(element);
     }
 
     render() {
         this.el.innerHTML = '';
-        const prof = new ProfileComponent({
-            avatar: window.avatar,
-            nickname: window.username,
-            score: 1000
-        })
-        this.el.innerHTML = prof.render();
+        const application = this.el;
+        AjaxModule.fetchGet('http://93.171.139.196:780/signin/')
+            .then((res) => {
+                return res.text();
+            })
+            .then((resT) => {
+                window.avatar = JSON.parse(resT).image;
+                window.username = JSON.parse(resT).username;
+                const prof = new ProfileComponent({
+                    avatar: window.avatar,
+                    nickname: window.username,
+                    score: 1000
+                });
+                application.innerHTML = prof.render();
+            })
     }
 }
