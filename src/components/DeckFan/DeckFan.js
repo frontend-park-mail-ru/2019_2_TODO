@@ -11,7 +11,7 @@ export class CardComponent extends BaseComponent {
     this.template = Handlebars.compile(`
             <a class="deckFun__card" href="{{href}}">
                 <h1 class="deckFun__card__nominal">{{nominal}}</h1>
-                <a class="deckFun__card__text">{{text}}</a>
+                <h1 class="deckFun__card__text">{{text}}</h1>
             </a>`
     );
   }
