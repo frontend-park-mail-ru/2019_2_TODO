@@ -96,6 +96,7 @@
     font-size: 35px;
     line-height: 56px;
     align-self: start;
+    justify-self: start;
     margin: 3px;
     /*position: absolute;*/
     /*top: 5px;*/
