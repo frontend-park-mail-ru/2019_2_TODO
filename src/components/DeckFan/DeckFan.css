@@ -20,7 +20,7 @@
     box-sizing: border-box;
     border-radius: 20px;
     margin: 30px;
-    position: relative;
+    /*position: relative;*/
     background: #2980B9;
     border: 1px solid rgba(0, 0, 0, 0.5);
 }
