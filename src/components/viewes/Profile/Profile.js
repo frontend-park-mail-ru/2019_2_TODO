@@ -1,6 +1,6 @@
 import BaseComponent from "../../BaseComponent/BaseComponent.js";
 import BaseView from "../BaseView/BaseView.js";
-import AjaxModule from "../../../module/ajax";
+import AjaxModule from "../../../module/ajax.js";
 
 
 /** Класс профиля */
