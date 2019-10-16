@@ -11,10 +11,10 @@ export class InfoBar {
      * @param {string} username - имя пользователя
      * @param {string} avatar - URL автарки поьзователя
      */
-  constructor(parent, username, avatar) {
+  constructor(parent) {
     this._parent = parent;
-    this._username = username;
-    this._avatar = avatar;
+    this._username = window.username;
+    this._avatar = window.avatar;
   }
   /** отрисовать InfoBar*/
   render() {

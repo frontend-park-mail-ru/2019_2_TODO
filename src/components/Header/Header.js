@@ -26,9 +26,8 @@ export class HeaderComponent {
 
   /**
    * Отрисовать заголовок
-   * @param {Object} user - данные пользователя
    */
-  render(user = null) {
+  render() {
     const head = document.createElement('header');
     head.className = 'header';
     head.id = 'header';
@@ -77,7 +76,7 @@ export class HeaderComponent {
       buttonColumn.innerHTML += signUpButton.render();
     }
     if (this._authorized) {
-      const infoBar = new InfoBar(topSection, user.username, user.image);
+      const infoBar = new InfoBar(topSection);
       infoBar.render();
     }
     head.innerHTML += chip.render();
