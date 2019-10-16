@@ -17,7 +17,7 @@ export class ProfileComponent extends BaseComponent {
             <img class="avatar" src="{{avatar}}" alt="">
             <a class="profileText">{{nickname}}</a>
             <a class="profileText">{{score}}</a>
-            <a class="button", href="/changeProfile">Change</a> 
+            <a class="button", href="/profileChange">Change</a> 
         </form>
         `);
     }
