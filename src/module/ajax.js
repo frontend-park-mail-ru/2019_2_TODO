@@ -1,21 +1,19 @@
 
-import {startScreen} from '../components/StartScreen/StartScreen.js';
+import StartScreen from '../components/viewes/StartScreen/StartScreen.js';
 
 /** Класс для использования fetch api. */
 class AjaxModule {
   /**
      * отправить картинку
      * @param {HTMLElement} application - элемент для возврата
-     * @param {File} imageFile - картинка
+     * @param {FormData} data - картинка
      */
-  postImage(application, imageFile) {
-    const data = new FormData();
-    data.append('image', imageFile);
-    AjaxModule.fetchPost('http://93.171.139.196:780/signin/profileImage/', data)
+  postAvatar(application, data) {
+    this.fetchPost('http://93.171.139.196:780/signin/profileImage/', data)
         .then((res) => {
           if (res.status === 200) {
             console.log(res);
-            renderProfile(application);
+            window.router.reRender('/profile');
           }
         });
   }
@@ -35,7 +33,7 @@ class AjaxModule {
         .then((rez) => {
           if (rez.status === 200) {
             console.log(rez);
-            startScreen(application);
+            window.router.reRender('/');
           }
         });
   }
@@ -54,9 +52,10 @@ class AjaxModule {
           password: password,
         })
     ).then((res) => {
+      console.log('asca');
       if (res.status === 200) {
-        console.log('sdcsdv');
-        startScreen(application);
+        console.log('___');
+        window.router.reRender('/');
       }
     });
   }
@@ -68,8 +67,9 @@ class AjaxModule {
   logOut(application) {
     this.fetchGet('http://93.171.139.196:780/logout/')
         .then((res) => {
+          console.log(res.status);
           if (res.status === 200) {
-            startScreen(application);
+            window.router.reRender('/');
           }
         });
   }

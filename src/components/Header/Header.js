@@ -1,36 +1,16 @@
-import {ButtonComponent} from '../Button/Button.js';
+// import {ButtonComponent} from '../Button/Button.js';
 import {TextComponent} from '../TextComponent/Text.js';
 import {ImageComponent} from '../Image/Image.js';
-import {startScreen} from '../StartScreen/StartScreen.js';
-import {signUpScreen} from '../SignUpScreen/SignUpScreen.js';
-import {signInScreen} from '../SignInScreen/SignInScreen.js';
-import {renderProfile} from '../Profile/Profile.js';
+// import {StartScreen} from '../viewes/StartScreen/StartScreen.js';
+// import {signUpScreen} from '../viewes/SignUpScreen/SignUpScreen.js';
+// import {signInScreen} from '../viewes/SignInScreen/SignInScreen.js';
 import {InfoBar} from '../InfoBar/InfoBar.js';
 import AjaxModule from '../../module/ajax.js';
+// import {InputComponent} from '../Input/Input.js';
 
 const application = document.getElementById('application');
 
-const logOut = (application) => {
-  AjaxModule.logOut(application);
-};
 
-const evtListener = (evt) => {
-  evt.preventDefault();
-  const functions = {
-    start: startScreen,
-    signUp: signUpScreen,
-    signIn: signInScreen,
-    profile: renderProfile,
-    logout: logOut,
-    // about: null,
-  };
-  const {target} = evt;
-  if ((target instanceof HTMLButtonElement) ||
-      (target instanceof HTMLImageElement)) {
-    evt.preventDefault();
-    functions[target.dataset.section](application);
-  }
-};
 
 /** Класс заголовка */
 export class HeaderComponent {
@@ -46,18 +26,22 @@ export class HeaderComponent {
 
   /**
    * Отрисовать заголовок
-   * @param {Object} user - данные пользователя
    */
-  render(user = null) {
+  render() {
     const head = document.createElement('header');
     head.className = 'header';
     head.id = 'header';
-    const backButton = new ButtonComponent({
+    const topSection = document.createElement('section');
+    topSection.className = 'header__top-section';
+    const backButton = new TextComponent({
+      tag: 'a',
       text: 'Startscreen',
-      class: 'header__button_back',
+      href: '/',
+      class: 'button header__button_back',
       section: 'start',
     });
-    head.innerHTML += backButton.render();
+    topSection.innerHTML += backButton.render();
+    head.appendChild(topSection);
     const text = new TextComponent({
       tag: 'h1',
       class: '',
@@ -69,36 +53,41 @@ export class HeaderComponent {
       section: 'start',
     });
     if (!this._authorized) {
-      const signInButton = new ButtonComponent({
-        href: '/SignIn',
+      const buttonColumn = document.createElement('div');
+      buttonColumn.className = 'column';
+      topSection.appendChild(buttonColumn);
+      const signInButton = new TextComponent({
+        tag: 'a',
+        type: 'button',
+        class: 'button header__sign-in-button',
+        href: 'signIn',
         text: 'Sign in',
         section: 'signIn',
       });
-      head.innerHTML += signInButton.render();
-      const signUpButton = new ButtonComponent({
-
+      buttonColumn.innerHTML += signInButton.render();
+      const signUpButton = new TextComponent({
+        type: 'button',
+        tag: 'a',
+        class: 'button',
+        href: 'signUp',
         text: 'Sign up',
         section: 'signUp',
       });
-      head.innerHTML += signUpButton.render();
+      buttonColumn.innerHTML += signUpButton.render();
     }
     if (this._authorized) {
-      const infoBar = new InfoBar(head, user.username, user.image);
+      const infoBar = new InfoBar(topSection);
       infoBar.render();
-      // const avatar = new ImageComponent({
-      //     src: "",
-      //     class: "avatar"
-      // });
-      // const profileButton = new ButtonComponent({
-      //   text: username.username,
-      //   section: 'profile',
-      // });
-      // head.innerHTML += avatar.render();
-      // head.innerHTML += profileButton.render();
     }
     head.innerHTML += chip.render();
     head.innerHTML += text.render();
-    head.addEventListener('click', evtListener);
+    // head.addEventListener('click', evtListener);
+    head.addEventListener('click', (evt)=> {
+      const {target} = evt;
+      if (target.dataset.section === 'logout') {
+        AjaxModule.logOut(application);
+      }
+    });
     this._parent.appendChild(head);
   }
 }

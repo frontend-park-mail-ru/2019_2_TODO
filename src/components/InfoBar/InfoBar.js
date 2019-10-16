@@ -1,6 +1,7 @@
 import {ImageComponent} from '../Image/Image.js';
 import {TextComponent} from '../TextComponent/Text.js';
 import {ButtonComponent} from '../Button/Button.js';
+import AjaxModule from '../../../module/ajax.js';
 
 /** Класс для инвормации о пользователе*/
 export class InfoBar {
@@ -10,10 +11,10 @@ export class InfoBar {
      * @param {string} username - имя пользователя
      * @param {string} avatar - URL автарки поьзователя
      */
-  constructor(parent, username, avatar) {
+  constructor(parent) {
     this._parent = parent;
-    this._username = username;
-    this._avatar = avatar;
+    this._username = window.username;
+    this._avatar = window.avatar;
   }
   /** отрисовать InfoBar*/
   render() {
@@ -28,15 +29,17 @@ export class InfoBar {
     const username = new TextComponent({
       tag: 'a',
       class: 'infoBar__username',
+      href: 'profile',
       section: 'profile',
       text: this._username,
     });
     infoBar.innerHTML += username.render();
     const logOutButton = new ButtonComponent({
       text: 'Log out',
-      class: 'infoBar__logOutButton',
+      class: 'button infoBar__logOutButton',
       type: 'submit',
       section: 'logout',
+      id: 'logout',
     });
     infoBar.innerHTML += logOutButton.render();
     this._parent.appendChild(infoBar);

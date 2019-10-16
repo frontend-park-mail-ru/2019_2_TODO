@@ -7,13 +7,13 @@ export class CardComponent extends BaseComponent {
    * @param {string} context -контекст для карточки
    */
   constructor(context) {
-    super();
-    this.context = context;
+    super(context);
     this.template = Handlebars.compile(`
-            <button class="deckFun__card">
-                <a class="deckFun__card__nominal">{{nominal}}</a>
-                <a class="deckFun__card__text">{{text}}</a>
-            </button>`
+            <a class="deckFun__card" href="{{href}}">
+                <h1 class="deckFun__card__nominal">{{nominal}}</h1>
+                <h1 class="deckFun__card__text">{{text}}</h1>
+                <h1> </h1>
+            </a>`
     );
   }
 }
@@ -21,18 +21,23 @@ export class CardComponent extends BaseComponent {
 const Cards = [{
   text: 'offline',
   nominal: 'A',
+  href: '/offline'
 }, {
   text: 'online',
   nominal: 'K',
+  href: '/online'
 }, {
   text: 'your profile',
   nominal: 'Q',
+  href: '/profile'
 }, {
   text: 'scoreboard',
   nominal: 'J',
+  href: '/scoreboard'
 }, {
   text: 'about',
   nominal: '10',
+  href: '/about'
 }];
 
 /** Класс для набора карт. */
@@ -52,10 +57,11 @@ export class DeckFanComponent {
   render() {
     const container = document.createElement('section');
     container.className = 'deckFun';
-    Cards.forEach(({text, nominal}) => {
+    Cards.forEach(({text, nominal, href}) => {
       const Card = new CardComponent({
         nominal,
         text,
+        href
       });
       container.innerHTML += Card.render();
     });

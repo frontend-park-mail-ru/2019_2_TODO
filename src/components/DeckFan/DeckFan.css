@@ -13,14 +13,14 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     color: #EEEEEE;
     min-width: 206px;
     min-height: 325px;
     box-sizing: border-box;
     border-radius: 20px;
     margin: 30px;
-    position: relative;
+    /*position: relative;*/
     background: #2980B9;
     border: 1px solid rgba(0, 0, 0, 0.5);
 }
@@ -84,9 +84,11 @@
     font-weight: normal;
     font-size: 35px;
     line-height: 56px;
+    justify-self: flex-start;
 
 }
 .deckFun__card__text:hover {
+    color: black;
     text-decoration: none;
 }
 .deckFun__card__nominal {
@@ -95,9 +97,11 @@
     font-weight: normal;
     font-size: 35px;
     line-height: 56px;
-    position: absolute;
-    top: 5px;
-    left: 10px;
+    align-self: start;
+    margin: 3px;
+    /*position: absolute;*/
+    /*top: 5px;*/
+    /*left: 10px;*/
 
 
 }

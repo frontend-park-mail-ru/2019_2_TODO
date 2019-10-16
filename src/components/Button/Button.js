@@ -6,11 +6,10 @@ export class ButtonComponent extends BaseComponent {
    * @param {string} context - контекст для кнопки.
    */
   constructor(context) {
-    super();
-    this.context = context;
+    super(context);
     this.template = Handlebars.compile(`
             <button type="{{type}}" class="{{class}}" id="{{id}}" 
-            href="{{href}}" data-section="{{section}}">{{text}}</button>
+            data-section="{{section}}">{{text}}</button>
         `);
   }
 }
