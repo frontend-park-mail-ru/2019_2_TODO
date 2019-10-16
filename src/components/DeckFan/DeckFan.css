@@ -95,6 +95,7 @@
     font-weight: normal;
     font-size: 35px;
     line-height: 56px;
+    align-self: start;
     /*position: absolute;*/
     /*top: 5px;*/
     /*left: 10px;*/
