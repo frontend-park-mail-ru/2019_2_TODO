@@ -19,7 +19,10 @@
     min-height: 325px;
     box-sizing: border-box;
     border-radius: 20px;
-    margin: 30px;
+    margin-right: -10px;
+    /*-ms-transform: rotate(20deg); !* IE 9 *!*/
+    /*-webkit-transform: rotate(20deg); !* Safari prior 9.0 *!*/
+    transform: rotate(-20deg); /* Standard syntax */
     /*position: relative;*/
     background: #2980B9;
     border: 1px solid rgba(0, 0, 0, 0.5);
@@ -29,6 +32,8 @@
     background: #ffd700;
     color: black;
     border-color: black;
+    transform: translate3d(-50px, -100px, 100px) rotate(-20deg);
+    z-index: 99999;
 }
 
 .deckFun__card:focus {
@@ -39,6 +44,7 @@
 .deckFun__card:nth-child(2) {
     background: #793C92;
     border: 1px solid #793C92;
+    transform: rotate(-10deg);
 }
 
 .deckFun__card:nth-child(2):hover {
@@ -50,6 +56,8 @@
 .deckFun__card:nth-child(3) {
     background: #565656;
     border: 1px solid rgba(0, 0, 0, 0.4);
+    transform: rotate(0deg);
+
 }
 
 .deckFun__card:nth-child(3):hover {
@@ -60,6 +68,8 @@
 .deckFun__card:nth-child(4){
     background: #E67E22;
     border: 1px solid #BF3902;
+    transform: rotate(10deg);
+
 }
 .deckFun__card:nth-child(4):hover{
     background: #ffd700;
@@ -69,6 +79,8 @@
 .deckFun__card:nth-child(5){
     background: #BF3902;
     border: 1px solid #E67E22;
+    transform: rotate(20deg);
+
 }
 
 .deckFun__card:nth-child(5):hover {
