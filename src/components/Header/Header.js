@@ -11,7 +11,6 @@ import AjaxModule from '../../module/ajax.js';
 const application = document.getElementById('application');
 
 
-
 /** Класс заголовка */
 export class HeaderComponent {
   /**

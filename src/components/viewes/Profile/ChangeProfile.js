@@ -6,7 +6,6 @@ import BaseView from '../BaseView/BaseView.js';
 import {TextComponent} from '../../TextComponent/Text.js';
 
 
-
 export default class ChangeProfileView extends BaseView {
   constructor(element, context = {
     avatar: './assets/gold_fishka.jpg',

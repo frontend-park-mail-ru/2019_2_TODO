@@ -8,6 +8,7 @@ export default class NotFoundView extends BaseView {
   }
 
   render() {
+    this.el.innerHTML = '';
     const application = document.createElement('section');
     const text = new TextComponent(
         {

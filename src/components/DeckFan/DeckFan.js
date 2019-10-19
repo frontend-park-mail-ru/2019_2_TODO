@@ -21,23 +21,23 @@ export class CardComponent extends BaseComponent {
 const Cards = [{
   text: 'offline',
   nominal: 'A',
-  href: '/offline'
+  href: '/offline',
 }, {
   text: 'online',
   nominal: 'K',
-  href: '/online'
+  href: '/online',
 }, {
   text: 'your profile',
   nominal: 'Q',
-  href: '/profile'
+  href: '/profile',
 }, {
   text: 'scoreboard',
   nominal: 'J',
-  href: '/scoreboard'
+  href: '/scoreboard',
 }, {
   text: 'about',
   nominal: '10',
-  href: '/about'
+  href: '/about',
 }];
 
 /** Класс для набора карт. */
@@ -61,7 +61,7 @@ export class DeckFanComponent {
       const Card = new CardComponent({
         nominal,
         text,
-        href
+        href,
       });
       container.innerHTML += Card.render();
     });

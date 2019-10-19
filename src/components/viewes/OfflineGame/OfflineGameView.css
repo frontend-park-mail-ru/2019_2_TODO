@@ -1,0 +1,23 @@
+.sect {
+    padding: 0;
+    margin: 0;
+    /*width: 100vw;*/
+    /*height: 100vh;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.canvas {
+    width: 100%;
+    margin: 0;
+    background-image: url('http://localhost:8000/assets/table-removebg-preview.png') ;
+    /*background-repeat: no-repeat;*/
+    height: 90vh;
+    background-size: 90%;
+    background-repeat: no-repeat;
+    background-position: center;
+    /*height: 300px;*/
+    /*padding-bottom: 10%;*/
+    /*padding-top: 10%;*/
+}

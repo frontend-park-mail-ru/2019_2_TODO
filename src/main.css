@@ -6,7 +6,7 @@
 @import url('./components/Input/Input.css');
 @import url('components/viewes/Profile/ChangeProfile.css');
 @import url('./components/InfoBar/infoBar.css');
-@import url('./components/viewes/OfflineGame/OfflineGame.css');
+@import url('components/viewes/OfflineGame/OfflineGameView.css');
 
 body{
     display: flex;
