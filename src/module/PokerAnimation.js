@@ -33,7 +33,7 @@ const givePlayerCardsInit = (key, props) =>{
         jobs[key] = null;
         counter = 80;
         jobs.reverseCards = [closeCardInit, {cards: playerCards, coordinates: playerCoordinates}];
-        // dispatchEvent(new Event('reversCards'))
+        dispatchEvent(new Event('reversCards'))
     }
 };
 const closeCardInit = (key, props)=>{
@@ -108,6 +108,8 @@ jobs.giveCards = [givePlayerCardsInit, {cards: playerCardsBack}];
 export default class PokerGame {
     constructor(){
         this.jobs = {};
+        this.playerCard = [];
+        this.bankCards = [];
     }
 
     startAnimation(){
@@ -119,5 +121,6 @@ export default class PokerGame {
         });
         window.requestAnimationFrame(this.startAnimation)
     }
+
 
 }
