@@ -20,6 +20,10 @@ export default class BaseComponent {
     }
     return this.element;
   }
+  updateContext(context){
+    this.context = context;
+    this.element = this.template(this.context);
+  }
 
   /** Удалить. */
   remove() {

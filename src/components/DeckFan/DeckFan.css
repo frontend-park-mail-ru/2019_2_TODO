@@ -10,6 +10,9 @@
 
 
 .deckFun__card {
+    transition-property: transform;
+    transition-duration: 250ms;
+    transition-timing-function: ease;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -32,8 +35,8 @@
     background: #ffd700;
     color: black;
     border-color: black;
-    transform: translate3d(-50px, -100px, 100px) rotate(-20deg);
-    z-index: 99999;
+    transform: translate3d(-25px, -50px, 50px) rotate(-20deg);
+    z-index: 1;
 }
 
 .deckFun__card:focus {
@@ -45,12 +48,15 @@
     background: #793C92;
     border: 1px solid #793C92;
     transform: rotate(-10deg);
+
 }
 
 .deckFun__card:nth-child(2):hover {
     background: #ffd700;
     color: black;
     border-color: black;
+    transform: translate3d(-25px, -50px, 50px) rotate(-20deg);
+
 }
 
 .deckFun__card:nth-child(3) {
@@ -64,6 +70,7 @@
     background: #ffd700;
     color: black;
     border-color: black;
+    transform: translate3d(-25px, -50px, 50px) rotate(-20deg);
 }
 .deckFun__card:nth-child(4){
     background: #E67E22;
@@ -75,6 +82,7 @@
     background: #ffd700;
     color: black;
     border-color: black;
+    transform: translate3d(-25px, -50px, 50px) rotate(-20deg);
 }
 .deckFun__card:nth-child(5){
     background: #BF3902;
@@ -87,6 +95,7 @@
     background: #ffd700;
     color: black;
     border-color: black;
+    transform: translate3d(-25px, -50px, 50px) rotate(-20deg);
 }
 
 

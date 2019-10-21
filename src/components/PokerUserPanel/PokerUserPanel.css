@@ -1,0 +1,42 @@
+
+
+.poker-user-panel{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-width: 515px;
+    z-index: 1;
+}
+.poker-user-panel__score-bet{
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -50px;
+    margin-right: 3px;
+    min-height: 60px;
+    min-width: 100px;
+    background: gold;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.poker-user-panel__button{
+    min-height: 60px;
+    min-width: 100px;
+    margin-right: 3px;
+    margin-top: -50px;
+    color: #FFFFFF;
+    background: darkslategrey;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.poker-user-panel__button:hover{
+    background: gold;
+    color: black;
+}
+
+.poker-user-panel__button:focus{
+    outline: none;
+}
