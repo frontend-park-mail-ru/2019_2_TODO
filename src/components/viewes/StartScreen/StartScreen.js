@@ -3,6 +3,8 @@ import {DeckFanComponent} from '../../DeckFan/DeckFan.js';
 import AjaxModule from '../../../module/ajax.js';
 import BaseView from '../BaseView/BaseView.js';
 import {ButtonComponent} from "../../Button/Button.js";
+import {ButtonPanel} from "../../ButtonPanel/ButtonPanel.js";
+
 
 
 export default class StartScreen extends BaseView {
@@ -19,7 +21,9 @@ export default class StartScreen extends BaseView {
           header.render();
           const deck = new DeckFanComponent(application);
           deck.render();
-          const but  = new ButtonComponent({text: 'sds'})
+          // Кнопка
+          const button = new ButtonPanel({});
+          application.innerHTML += button.render();
         })
         .then((res) => res.text())
         .then((resText) => {

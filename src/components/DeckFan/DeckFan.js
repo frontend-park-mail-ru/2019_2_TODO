@@ -9,14 +9,13 @@ export class CardComponent extends BaseComponent {
   constructor(context) {
     super(context);
     this.template = Handlebars.compile(`
-            <a class="deckFun__card" href="{{href}}">
+            <div class="deckFun__card">
                 <h1 class="deckFun__card__nominal">{{nominal}}</h1>
-                <h1 class="deckFun__card__text">{{text}}</h1>
-                <h1> </h1>
-            </a>`
+            </div>`
     );
   }
 }
+
 
 const Cards = [{
   text: 'offline',
@@ -38,7 +37,33 @@ const Cards = [{
   text: 'about',
   nominal: '10',
   href: '/about',
+}, {
+  text: 'about',
+  nominal: '9',
+  href: '/about',
+}, {
+  text: 'about',
+  nominal: '8',
+  href: '/about',
 }];
+
+// const F = [{
+//   tag: 'h1',
+//   text: 'offline',
+//   href: '/offline',
+// }, {
+//   tag: 'h1',
+//   text: 'online',
+//   href: '/online',
+// }, {
+//   tag: 'h1',
+//   text: 'your profile',
+//   href: '/profile',
+// }, {
+//   tag: 'h1',
+//   text: 'scoreboard',
+//   href: '/scoreboard',
+// }];
 
 /** Класс для набора карт. */
 export class DeckFanComponent {
@@ -55,6 +80,8 @@ export class DeckFanComponent {
    * отрисовть набор карт
    */
   render() {
+    // console.log('a');
+
     const container = document.createElement('section');
     container.className = 'deckFun';
     Cards.forEach(({text, nominal, href}) => {
@@ -67,4 +94,16 @@ export class DeckFanComponent {
     });
     this._parent.appendChild(container);
   }
+  //   const buttonContainer = document.createElement('section');
+  //   buttonContainer.className = 'newButton';
+  //   F.forEach(({tag, text, href}) => {
+  //     const button = new TextComponent({
+  //       tag,
+  //       text,
+  //       href,
+  //     });
+  //     buttonContainer.innerHTML += button.render();
+  //   });
+  //   this._parent.appendChild(buttonContainer);
+  // }
 }
