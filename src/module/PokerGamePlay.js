@@ -1,9 +1,4 @@
-import {addJob, pokerGame} from "./PokerAnimation.js";
-import {givePlayerCardsInit} from "./PokerAnimation.js";
-import {addPlayerCards} from "./PokerAnimation.js";
-import {bankerCardsInit} from "./PokerAnimation.js";
-import {botCardsInit} from "./PokerAnimation.js";
-import {isStarted} from "./PokerAnimation.js";
+import {PokerAnimation} from "./PokerAnimation.js";
 
 
 const baseDeck = [
@@ -38,22 +33,30 @@ export class game{
         this.setPlayerHand(['As', 'Ah']);
         this.botHand = this.getRandomHand(2);
         this.bankHand = this.getRandomHand(5);
-        if (!isStarted()) {
-            window.requestAnimationFrame(pokerGame);
-        }
-        addPlayerCards(this.playerHand);
-
-        addJob('botCards', botCardsInit);
-        addJob('bankCards', bankerCardsInit);
-        addJob('givePlayerCards', givePlayerCardsInit);
+        const animation = new PokerAnimation();
+        const image = new Image();
+        image.src = 'http://localhost:8000/assets/Ah.png';
+        image.onload = () => {
+            console.log(image)
+        };
+        const canvas = document.getElementById('canvas');
+        // animation.givePlayerCards([image, image]);
+        // const listener = () => {
+        //     animation.giveBankerCards([image, image, image, image, image]);
+        //     canvas.removeEventListener('cardsReversed', listener)
+        //
+        // };
+        // canvas.addEventListener('cardsReversed', listener);
+        animation.giveBankerCards([image, image, image, image, image]);
         const listener = () => {
-            this.blind();
-            // this.blind();
-            updateScoreBet();
-            window.removeEventListener('reversCards', listener, false);
+            animation.reverseBankerCards([image, image, image, image, image], [0,1,2,3,4]);
+            canvas.removeEventListener('endMoveCards', listener)
 
         };
-        window.addEventListener('reversCards', listener)
+        canvas.addEventListener('endMoveCards', listener);
+        // animation.reverseBankerCards([image,image, image], 1)
+        // animation.giveBotCards([image,image]);
+
     }
 
     blind() {
