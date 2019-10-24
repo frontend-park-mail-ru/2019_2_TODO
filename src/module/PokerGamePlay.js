@@ -34,26 +34,26 @@ export class game{
         this.botHand = this.getRandomHand(2);
         this.bankHand = this.getRandomHand(5);
         const animation = new PokerAnimation();
-        const image = new Image();
-        image.src = 'http://localhost:8000/assets/Ah.png';
-        image.onload = () => {
-            console.log(image)
-        };
+        // const image = new Image();
+        // image.src = 'http://localhost:8000/assets/Ah.png';
+        // image.onload = () => {
+        //     console.log(image)
+        // };
         const canvas = document.getElementById('canvas');
-        // animation.givePlayerCards([image, image]);
+        animation.givePlayerCards(['Ah', 'Ah']);
         // const listener = () => {
         //     animation.giveBankerCards([image, image, image, image, image]);
         //     canvas.removeEventListener('cardsReversed', listener)
         //
         // };
         // canvas.addEventListener('cardsReversed', listener);
-        animation.giveBankerCards([image, image, image, image, image]);
-        const listener = () => {
-            animation.reverseBankerCards([image, image, image, image, image], [0,1,2,3,4]);
-            canvas.removeEventListener('endMoveCards', listener)
-
-        };
-        canvas.addEventListener('endMoveCards', listener);
+        // animation.giveBankerCards([image, image, image, image, image]);
+        // const listener = () => {
+        //     animation.reverseBankerCards([image, image, image, image, image], [0,1,2,3,4]);
+        //     canvas.removeEventListener('endMoveCards', listener)
+        //
+        // };
+        // canvas.addEventListener('endMoveCards', listener);
         // animation.reverseBankerCards([image,image, image], 1)
         // animation.giveBotCards([image,image]);
 

@@ -12,7 +12,7 @@
 .deckFun__card {
     transition-property: transform;
     transition-duration: 1s;
-    transition-timing-function: ease;
+    /*transition-timing-function: ease;*/
     display: flex;
     flex-direction: row;
     align-items: center;

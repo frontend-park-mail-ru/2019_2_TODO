@@ -15,22 +15,58 @@ export class PokerAnimation {
         this.cardHeight = 150;
         this.back = new Image();
         this.back.src = 'http://localhost:8000/assets/b151b48f2d77cdd03b17256ce25886a5.jpg';
+        this.back.onload = () => {
+            this.ctx.drawImage(this.back, this.bankerCoordinates.x - 45,
+                this.bankerCoordinates.y - this.cardHeight / 2, this.cardWidth, this.cardHeight);
+        };
         this.ctx = document.getElementById('canvas').getContext('2d');
+        this._playerCards = [];
+        this._bankerCards = [];
+        this._botCards = [];
         // this.ctx.translate(this.bankerCoordinates.x, this.bankerCoordinates.y);
         this.ctx.save();
     }
+    addPlayerCards(cards) {
+        cards.forEach(card => {
+            const image = new Image();
+            image.onload = () => {
+                this._playerCards.push(image)
+            };
+            image.src = 'http://localhost:8000/assets/' + card + '.png';
+        })
+    }
+    addBotCards(cards) {
+        cards.forEach(card => {
+            const image = new Image();
+            image.onload = () => {
+                this._botCards.push(image)
+            };
+            image.src = 'http://localhost:8000/assets/' + card + '.png';
+        });
+    }
+    addBankerCards(cards) {
+        cards.forEach(card => {
+            const image = new Image();
+            image.onload = () => {
+                this._bankerCards.push(image)
+            };
+            image.src = 'http://localhost:8000/assets/' + card + '.png';
+        })
+    }
     givePlayerCards(cards) {
-        this.moveCards(cards, this.bankerCoordinates.x, this.bankerCoordinates.y, 0,
+        this.addPlayerCards(cards);
+        this.moveCards(this._playerCards, this.bankerCoordinates.x, this.bankerCoordinates.y, 0,
             this.playerCoordinates.y - this.bankerCoordinates.y, Math.PI * 2 / 60);
         const listener = () => {
-            this.reverseCards(cards, this.playerCoordinates.x, this.playerCoordinates.y, 4);
+            this.reverseCards(this._playerCards, this.playerCoordinates.x, this.playerCoordinates.y, 4);
             this.ctx.canvas.removeEventListener('endMoveCards', listener)
         };
         this.ctx.canvas.addEventListener('endMoveCards', listener);
     }
     giveBotCards(cards){
+        this.addBotCards(cards);
         this.moveCards(
-            cards,
+            this._botCards,
             this.bankerCoordinates.x,
             this.bankerCoordinates.y,
             this.botCoordnates.x - this.bankerCoordinates.x,
@@ -38,13 +74,14 @@ export class PokerAnimation {
             Math.PI * 2 / 30);
     }
     giveBankerCards(cards) {
-        this.moveCards(cards, this.bankerCoordinates.x, this.bankerCoordinates.y, 0,
+        this.addBankerCards(cards);
+        this.moveCards(this._bankerCards, this.bankerCoordinates.x, this.bankerCoordinates.y, 0,
             this.bankerCardsCoordinates.y - this.bankerCoordinates.y, Math.PI * 2 / 30);
 
     }
     reverseBankerCards(cards, positionParams) {
         positionParams.forEach(param => {
-            this.reverseCards(cards.slice(param, param + 1), this.bankerCardsCoordinates.x -180 + 90 * param, this.bankerCardsCoordinates.y, 4);
+            this.reverseCards(this._bankerCards.slice(param, param + 1), this.bankerCardsCoordinates.x -180 + 90 * param, this.bankerCardsCoordinates.y, 4);
         });
 
 
