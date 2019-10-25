@@ -7,9 +7,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const outPath = path.join(__dirname, '/dist');
 
-// const extractSass = new ExtractTextPlugin({
-//   filename: 'style.css',
-// });
 
 module.exports = {
   entry: {
@@ -51,18 +48,9 @@ module.exports = {
         ],
       },
       {
-        test: /\.handlebars$/,
+        test: /\.hbs/,
         loader: 'handlebars-loader',
-        options: {
-          helperDirs: path.join(__dirname, 'src/app/modules/Helpers'),
-          precompileOptions: {
-            knownHelpersOnly: false,
-          },
-        },
-      },
-      {
-        test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-        loader: 'file-loader?name=fonts/[name].[ext]',
+        exclude: /(node_modules|bower_components)/,
       },
     ],
   },
@@ -78,7 +66,7 @@ module.exports = {
       template: path.join(__dirname, 'src/index.html'),
     }),
     new CopyWebpackPlugin([
-      {from: path.join(__dirname, 'src/assets'), to: path.join(outPath, 'assets')},
+        {from: path.join(__dirname, 'src/assets'), to: path.join(outPath, 'assets')},
     ]),
   ],
   node: {
