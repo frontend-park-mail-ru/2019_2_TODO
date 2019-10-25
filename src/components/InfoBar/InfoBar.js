@@ -1,7 +1,7 @@
 import {ImageComponent} from '../Image/Image.js';
 import {TextComponent} from '../TextComponent/Text.js';
 import {ButtonComponent} from '../Button/Button.js';
-import AjaxModule from '../../../module/ajax.js';
+// import AjaxModule from '../../../module/ajax.js';
 
 /** Класс для инвормации о пользователе*/
 export class InfoBar {
