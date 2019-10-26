@@ -1,5 +1,5 @@
 import BaseComponent from '../BaseComponent/BaseComponent.js';
-
+import template from './TextComponent.hbs';
 /** Класс для текста. */
 export class TextComponent extends BaseComponent {
   /**
@@ -9,10 +9,6 @@ export class TextComponent extends BaseComponent {
   constructor(context) {
     super();
     this.context = context;
-    this.template = Handlebars.compile(`
-            <{{tag}} class="{{class}}" id="{{id}}" href="{{href}}">
-                {{text}}
-            </{{tag}}>
-        `);
+    this.template = template;
   }
 }

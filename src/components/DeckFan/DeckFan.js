@@ -1,5 +1,5 @@
 import BaseComponent from '../BaseComponent/BaseComponent.js';
-
+import template from './DeckFan.hbs';
 /** Класс представляющий карточку для стартого экрана. */
 export class CardComponent extends BaseComponent {
   /**
@@ -8,11 +8,7 @@ export class CardComponent extends BaseComponent {
    */
   constructor(context) {
     super(context);
-    this.template = Handlebars.compile(`
-            <div class="deckFun__card">
-                <h1 class="deckFun__card__nominal">{{nominal}}</h1>
-            </div>`
-    );
+    this.template = template;
   }
 }
 
@@ -80,8 +76,6 @@ export class DeckFanComponent {
    * отрисовть набор карт
    */
   render() {
-    // console.log('a');
-
     const container = document.createElement('section');
     container.className = 'deckFun';
     Cards.forEach(({text, nominal, href}) => {
@@ -94,16 +88,4 @@ export class DeckFanComponent {
     });
     this._parent.appendChild(container);
   }
-  //   const buttonContainer = document.createElement('section');
-  //   buttonContainer.className = 'newButton';
-  //   F.forEach(({tag, text, href}) => {
-  //     const button = new TextComponent({
-  //       tag,
-  //       text,
-  //       href,
-  //     });
-  //     buttonContainer.innerHTML += button.render();
-  //   });
-  //   this._parent.appendChild(buttonContainer);
-  // }
 }

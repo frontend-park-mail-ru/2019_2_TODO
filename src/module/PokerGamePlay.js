@@ -75,7 +75,7 @@ export class game{
     setPlayerHand(cards){
         this.playerHand = cards
     }
-    getRandomHand = (cardsNumber) =>{
+    getRandomHand (cardsNumber){
         const result = [];
         for (let i = 0; i < cardsNumber;) {
             const card = this.deck[Math.floor(Math.random()*this.deck.length)];

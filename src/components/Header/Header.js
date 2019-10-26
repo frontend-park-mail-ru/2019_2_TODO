@@ -80,7 +80,6 @@ export class HeaderComponent {
     }
     head.innerHTML += chip.render();
     head.innerHTML += text.render();
-    // head.addEventListener('click', evtListener);
     head.addEventListener('click', (evt)=> {
       const {target} = evt;
       if (target.dataset.section === 'logout') {
@@ -90,5 +89,3 @@ export class HeaderComponent {
     this._parent.appendChild(head);
   }
 }
-
-// export default 1
