@@ -1,5 +1,5 @@
-import Hand from './Hand.js';
 import Card from '../Card/PokerCard.js';
+import Hand from './Hand.js';
 
 export default class Straight extends Hand {
   constructor(cards, game, canDisqualify) {

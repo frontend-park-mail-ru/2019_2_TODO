@@ -2,17 +2,17 @@ import Hand from '../Hands/Hand.js';
 import StraightFlush from '../Hands/StraightFlush.js';
 import Card from '../Card/PokerCard.js';
 import Game from '../Game/Game.js';
-import FiveOfAKind from '../Hands/FiveOfAKin';
-import FourOfAKindPairPlus from '../Hands/FourOfAKindPairPlus';
-import Flush from '../Hands/Flush';
-import FullHouse from '../Hands/FullHouse';
-import ThreeOfAKind from '../Hands/ThreeOfAKind';
-import ThreePair from '../Hands/ThreePair';
-import TwoPair from '../Hands/TwoPair';
-import OnePair from '../Hands/OnePair';
-import TwoThreeOfAKind from '../Hands/TwoThreeOfAKind';
-import ThreeOfAKindTwoPair from '../Hands/ThreeOfAKindTwoPair';
-import Straight from '../Hands/Straight';
+import FiveOfAKind from '../Hands/FiveOfAKin.js';
+import FourOfAKindPairPlus from '../Hands/FourOfAKindPairPlus.js';
+import Flush from '../Hands/Flush.js';
+import FullHouse from '../Hands/FullHouse.js';
+import ThreeOfAKind from '../Hands/ThreeOfAKind.js';
+import ThreePair from '../Hands/ThreePair.js';
+import TwoPair from '../Hands/TwoPair.js';
+import OnePair from '../Hands/OnePair.js';
+import TwoThreeOfAKind from '../Hands/TwoThreeOfAKind.js';
+import ThreeOfAKindTwoPair from '../Hands/ThreeOfAKindTwoPair.js';
+import Straight from '../Hands/Straight.js';
 /*
    * Base class for handling Pai Gow Poker hands.
    * House Way is in accordance with the MGM Grand Casino, Las Vegas NV.

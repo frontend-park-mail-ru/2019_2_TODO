@@ -19,8 +19,12 @@ import TwoPair from './Hands/TwoPair.js';
 import OnePair from './Hands/OnePair.js';
 import HighCard from './Hands/HighCard.js';
 import PaiGowPokerHelper from './PaiGowPokerHelper/PaiGowPokerHelper.js';
+import Card from "./Card/PokerCard.js";
 
-const exportToGlobal = (global) => {
+console.log('111');
+
+const global  = window;
+  global.Card = Card;
   global.Hand = Hand;
   global.Game = Game;
   global.RoyalFlush = RoyalFlush;
@@ -42,9 +46,4 @@ const exportToGlobal = (global) => {
   global.OnePair = OnePair;
   global.HighCard = HighCard;
   global.PaiGowPokerHelper = PaiGowPokerHelper;
-};
 
-
-if (typeof window !== 'undefined') {
-  exportToGlobal(window);
-}

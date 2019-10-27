@@ -5,6 +5,7 @@
     justify-content: space-between;
     align-items: center;
     min-width: 515px;
+    margin-bottom: -70px;
     z-index: 1;
 }
 
@@ -14,7 +15,7 @@
     align-items: center;
     justify-content: center;
     margin-right: 3px;
-    margin-bottom: -50px;
+    /*margin-bottom: -50px;*/
     min-height: 60px;
     min-width: 100px;
     background: gold;

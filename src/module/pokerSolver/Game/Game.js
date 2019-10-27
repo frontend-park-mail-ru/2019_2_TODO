@@ -4,7 +4,7 @@ import FullHouse from '../Hands/FullHouse.js';
 import Flush from '../Hands/Flush.js';
 import Straight from '../Hands/Straight.js';
 import ThreeOfAKind from '../Hands/ThreeOfAKind.js';
-import TwoPair from '../Hands/TwoPair/js';
+import TwoPair from '../Hands/TwoPair.js';
 import OnePair from '../Hands/OnePair.js';
 import HighCard from '../Hands/HighCard.js';
 import NaturalRoyalFlush from '../Hands/NaturalRoyalFlush.js';

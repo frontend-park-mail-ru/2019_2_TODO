@@ -279,7 +279,7 @@ export default class Hand {
      * @param  {Boolean} canDisqualify Check for a qualified hand.
      * @return {Hand}       Best hand.
      */
-  static solve(cards, game, canDisqualify = false) {
+  static solve(cards, game = 'standard', canDisqualify = false) {
     game = game || 'standard';
     game = (typeof game === 'string') ? new Game(game) : game;
     cards = cards || [''];

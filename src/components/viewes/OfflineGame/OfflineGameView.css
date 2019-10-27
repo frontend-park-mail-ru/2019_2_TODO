@@ -2,7 +2,8 @@
     padding: 0;
     margin: 0;
     /*width: 100vw;*/
-    height: 95vh;
+    background: linear-gradient(grey,black);
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,7 +14,7 @@
     margin: 0;
     background-image: url('http://localhost:8000/assets/table-removebg-preview.png') ;
     /*background-repeat: no-repeat;*/
-    height: 90%;
+    height: 85.9vh;
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;

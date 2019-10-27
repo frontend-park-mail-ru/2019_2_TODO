@@ -22,6 +22,14 @@
     margin: 3px;
 }
 
+button[disabled]{
+    background: grey;
+}
+button[disabled]:hover{
+    background: grey;
+    color: white;
+}
+
 .button:focus{
     background: #ffd700;
     color: black;

@@ -9,7 +9,6 @@ import OfflineGameView from './components/viewes/OfflineGame/OfflineGameView.js'
 
 const application = document.getElementById('application');
 window.router = new Router(application);
-
 window.router.register('/', StartScreen)
     .register('/signUp', SignUpScreen)
     .register('/signIn', SignInScreen)
