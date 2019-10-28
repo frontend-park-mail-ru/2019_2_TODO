@@ -25,7 +25,7 @@ export class game{
         this.bankCards = null;
         this.botCards = null;
         this.animation = new PokerAnimation();
-        this._check = false;
+        this._callCheck = false;
         this._stage = 0;
         if (isNaN(sessionStorage.playerScore)||
             sessionStorage.playerScore <=0 ||
@@ -36,9 +36,11 @@ export class game{
             sessionStorage.secondPlayer = 'bot';
             sessionStorage.playerScore = 1000;
             sessionStorage.botScore = 1000;
+            sessionStorage.botBet = 0;
+            sessionStorage.playerBet = 0;
         }
-
-        // updateScoreBet();
+        this.bot();
+        updateScoreBet();
     }
 
     startRound() {
@@ -92,25 +94,26 @@ export class game{
 
         }
         updateScoreBet();
-        this.animation.removeAllCards();
+        setTimeout(this.animation.removeAllCards, 3000);
         const listener = () => {
           removeEventListener('roundAnimationEnd', listener);
           this.startRound();
         };
         addEventListener('roundAnimationEnd', listener);
     }
-    raise(evt = null, value){
+    raise = (evt = null, value) => {
         const intValue = parseInt(value);
-        if (evt.target.id === 'fourthButton'){
+        if (evt.target.parentElement.id === 'playerPanel'){
             if (sessionStorage.playerScore >= intValue) {
                 sessionStorage.playerScore -= intValue;
                 sessionStorage.playerBet -= -intValue;
                 console.log(sessionStorage.playerBet)
             } else {
-                console.log(2)
+                console.log(2);
                 sessionStorage.playerBet -= -sessionStorage.playerScore;
                 sessionStorage.playerScore = 0;
             }
+            dispatchEvent(new Event('raise'));
         } else {
             if (sessionStorage.botScore >= intValue) {
                 sessionStorage.botScore -= intValue;
@@ -119,9 +122,12 @@ export class game{
                 sessionStorage.botBet -= -sessionStorage.botScore;
                 sessionStorage.botScore = 0;
             }
+            OfflineGameView.enableButtonPanel('playerPanel');
         }
         updateScoreBet();
-    }
+        this._callCheck = true;
+
+    };
     fold = (evt) => {
         if (evt.target.parentElement.id === 'playerPanel') {
             sessionStorage.botScore -= -sessionStorage.playerBet - sessionStorage.botBet;
@@ -140,14 +146,19 @@ export class game{
         };
         addEventListener('roundAnimationEnd', listener);
     };
-    check(evt){
-        if (this._check){
-            this._check = false;
+    check = (evt) => {
+        if (this._callCheck){
+            this._callCheck = false;
           this.nextStage();
         } else {
-            this._check = true;
+            this._callCheck = true;
         }
-    }
+        if (evt.target.parentElement.id === 'playerPanel') {
+            dispatchEvent(new Event('check'));
+        } else {
+            OfflineGameView.enableButtonPanel('playerPanel');
+        }
+    };
     nextStage =() =>{
         // console.log(this.bankCards.slice(0,3));
         if (this._stage === 0) {
@@ -172,8 +183,8 @@ export class game{
     call = (evt) => {
         const botBet = parseInt(sessionStorage.botBet);
         const playerBet = parseInt(sessionStorage.playerBet);
-        const botScore = parseInt(sessionStorage.botScore)
-        const playerScore = parseInt(sessionStorage.playerScore)
+        const botScore = parseInt(sessionStorage.botScore);
+        const playerScore = parseInt(sessionStorage.playerScore);
         if (evt.target.parentElement.id === 'playerPanel') {
 
             if (botBet > playerBet) {
@@ -187,7 +198,7 @@ export class game{
             } else {
 
             }
-
+            dispatchEvent(new Event('call'))
         } else {
             if (botBet < playerBet) {
                 if (botScore < playerBet - botBet) {
@@ -198,11 +209,15 @@ export class game{
                     sessionStorage.botBet =playerBet;
                 }
             }
+            OfflineGameView.enableButtonPanel('playerPanel');
         }
-
-        // evt.target.removeEventListener('click', this.call);
         updateScoreBet();
-        this.nextStage();
+        if (this._callCheck){
+            this._callCheck = false;
+            this.nextStage();
+        } else {
+            this._callCheck = true;
+        }
     };
 
 
@@ -226,7 +241,7 @@ export class game{
             sessionStorage.playerScore -= sessionStorage.playerBet;
             sessionStorage.dealer = 'player';
             sessionStorage.secondPlayer = 'bot';
-
+            dispatchEvent(new Event('blind') )
         }
         updateScoreBet();
     }
@@ -247,4 +262,82 @@ export class game{
         }
         return result;
     };
+
+    bot(){
+        addEventListener('call', () => {
+            setTimeout(() => {
+                if (this.botHand.rank < 2) {
+                    const evt = {};
+                    evt.target = {};
+                    evt.target.parentElement = {};
+                    evt.target.parentElement.id = 'botPanel';
+                    console.log(evt);
+                    this.check(evt)
+                } else {
+                    const evt = {};
+                    evt.target = {};
+                    evt.target.parentElement = {};
+                    evt.target.parentElement.id = 'botPanel';
+                    console.log(evt);
+                    this.raise(evt, 40);
+                }
+            }, 1000)
+        });
+        addEventListener('raise', () => {
+            setTimeout( () => {
+                if (this.botHand.rank < 2) {
+                    const evt = {};
+                    evt.target = {};
+                    evt.target.parentElement = {};
+                    evt.target.parentElement.id = 'botPanel';
+                    console.log(evt);
+                    this.fold(evt);
+                } else if (this.botHand.rank < 5){
+                    const evt = {};
+                    evt.target = {};
+                    evt.target.parentElement = {};
+                    evt.target.parentElement.id = 'botPanel';
+                    console.log(evt);
+                    this.call(evt);
+                } else {
+                    const evt = {};
+                    evt.target = {};
+                    evt.target.parentElement = {};
+                    evt.target.parentElement.id = 'botPanel';
+                    console.log(evt);
+                    this.raise(evt, 40);
+                }
+            }, 1000)
+        });
+        addEventListener('check', () =>{
+            setTimeout( () => {
+                if (this.botHand.rank < 2) {
+                    const evt = {};
+                    evt.target = {};
+                    evt.target.parentElement = {};
+                    evt.target.parentElement.id = 'botPanel';
+                    console.log(evt);
+                    this.check(evt);
+                } else {
+                    const evt = {};
+                    evt.target = {};
+                    evt.target.parentElement = {};
+                    evt.target.parentElement.id = 'botPanel';
+                    console.log(evt);
+                    this.raise(evt, 40);
+                }
+            }, 1000)
+        });
+        addEventListener('blind', () => {
+            setTimeout( () => {
+                const evt = {};
+                evt.target = {};
+                evt.target.parentElement = {};
+                evt.target.parentElement.id = 'botPanel';
+                console.log(evt);
+                this.call(evt);
+            }, 1000)
+
+        })
+    }
 }

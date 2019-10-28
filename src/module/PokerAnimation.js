@@ -222,7 +222,7 @@ export class PokerAnimation {
     window.requestAnimationFrame(move);
     // this.ctx.restore();
   }
-  removeAllCards() {
+  removeAllCards = () => {
       let progress = 1;
       // this.ctx.drawImage(cards[0],100,100,100,100);
       const move = () => {
