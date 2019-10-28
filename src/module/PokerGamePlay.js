@@ -304,7 +304,7 @@ export class game{
             }
         });
         addEventListener('raise', () => {
-            if (this._stage < 3){
+            if (this._stage < 4){
 
                 setTimeout( () => {
                     if (this.botHand.rank < 2) {
