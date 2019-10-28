@@ -60,25 +60,25 @@ const cardCoordinates = {
 
 export class PokerAnimation {
   constructor() {
-    this.bankerCoordinates = {x: 512, y: 210};
-    this.botCoordnates = {x: 850, y: 500};
-    this.playerCoordinates = {x: 512, y: 540};
-    this.bankerCardsCoordinates = {x: 512, y: 370};
-    this.cardWidth = 80;
-    this.cardHeight = 130;
-    this.shapes = [];
-    this.back = new Image();
-    this.back.src = 'assets/AllCards.png';
-    this.back.onload = () => {
-      this.ctx.drawImage(this.back, this.bankerCoordinates.x - 45,
-          this.bankerCoordinates.y - this.cardHeight / 2, this.cardWidth, this.cardHeight);
-    };
-    this.ctx = document.getElementById('canvas').getContext('2d');
-    this._playerCards = [46, 67];
-    this._bankerCards = [46, 67];
-    this._botCards = [46, 67];
-    // this.ctx.translate(this.bankerCoordinates.x, this.bankerCoordinates.y);
-    this.ctx.save();
+      this.bankerCoordinates = {x: 512, y: 210};
+      this.botCoordnates = {x: 850, y: 500};
+      this.playerCoordinates = {x: 512, y: 540};
+      this.bankerCardsCoordinates = {x: 512, y: 370};
+      this.shapes = [];
+      this.back = new Image();
+      this.back.src = 'assets/AllCards.png';
+      this.ctx = document.getElementById('canvas').getContext('2d');
+      this.back.onload = () => {
+          this.ctx.drawImage(this.back, this.bankerCoordinates.x - 45,
+              this.bankerCoordinates.y - this.cardHeight / 2, this.cardWidth, this.cardHeight);
+      };
+      this.cardWidth = this.ctx.canvas.width * 0.07;
+      this.cardHeight = this.ctx.canvas.height * 0.20;
+      this._playerCards = [46, 67];
+      this._bankerCards = [46, 67];
+      this._botCards = [46, 67];
+      // this.ctx.translate(this.bankerCoordinates.x, this.bankerCoordinates.y);
+      this.ctx.save();
   }
   addPlayerCards(cards) {
     cards.forEach((card) => {
@@ -222,7 +222,7 @@ export class PokerAnimation {
     window.requestAnimationFrame(move);
     // this.ctx.restore();
   }
-  removeAllCards = () => {
+  removeAllCards() {
       let progress = 1;
       // this.ctx.drawImage(cards[0],100,100,100,100);
       const move = () => {

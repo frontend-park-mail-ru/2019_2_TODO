@@ -11,6 +11,7 @@ const outPath = path.join(__dirname, '/dist');
 module.exports = {
   entry: {
     main: [
+      './src/module/pokersolver.js',
       './src/main.js',
       './src/main.css',
     ],

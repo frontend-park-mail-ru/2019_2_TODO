@@ -1,6 +1,6 @@
 import {PokerAnimation} from "./PokerAnimation.js";
 import OfflineGameView from "../components/viewes/OfflineGame/OfflineGameView.js";
-// import {Hand} from './pokerSolver/PokerSolver.j;'
+// import Hand from './pokerSolver/Hands/Hand.js';
 
 
 const baseDeck = [

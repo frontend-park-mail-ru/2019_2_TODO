@@ -3,7 +3,7 @@ import template from './PokerBotPanel.hbs';
 
 export class PokerBotPanel extends BaseComponent{
     constructor(context) {
-        super(c
+        super(context);
         this.template = template;
     }
 }

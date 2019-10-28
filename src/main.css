@@ -16,6 +16,7 @@ body{
     flex-direction: column;
     justify-content: space-between;
     background: #27ae60;
+    height: 98vh;
     padding: 0;
     margin: 0;
 }

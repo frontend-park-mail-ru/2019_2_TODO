@@ -78,11 +78,10 @@ export class DeckFanComponent {
   render() {
     const container = document.createElement('section');
     container.className = 'deckFun';
-    Cards.forEach(({text, nominal, href}) => {
+    Cards.forEach(({text, nominal}) => {
       const Card = new CardComponent({
         nominal,
         text,
-        href,
       });
       container.innerHTML += Card.render();
     });
