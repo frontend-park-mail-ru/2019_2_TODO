@@ -22,14 +22,33 @@
     border-radius: 5px;
 }
 .poker-user-panel__button{
-    min-height: 60px;
-    min-width: 100px;
+    height: 60px;
+    width: 100px;
     margin-right: 3px;
     margin-top: -50px;
     color: #FFFFFF;
     background: darkslategrey;
     border: 1px solid black;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+poker-user-panel__button_disabled{
+    height: 60px;
+    width: 100px;
+    margin-right: 3px;
+    margin-top: -50px;
+    color: #FFFFFF;
+    background: gray;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .poker-user-panel__button:hover{
@@ -39,4 +58,20 @@
 
 .poker-user-panel__button:focus{
     outline: none;
+}
+
+.poker-user-panel__button__input{
+    width: 50%;
+    margin: 3%;
+}
+
+.poker-user-panel__button__raise-button{
+    width: 50%;
+    height: 40%;
+    margin: 3%;
+    background: darkslategrey;
+    border-radius: 5px;
+    border: 1px black;
+    color: white;
+
 }

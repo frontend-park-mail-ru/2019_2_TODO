@@ -40,9 +40,9 @@
 
 
 .deckFun__card {
-    -webkit-transition-property: transform;
-    -webkit-transition-delay: 0.1s;
-    -webkit-transition-timing-function: ease;
+    transition-property: transform;
+    transition-delay: 0.1s;
+    transition-timing-function: ease;
     display: flex;
     flex-direction: row;
     align-items: center;
