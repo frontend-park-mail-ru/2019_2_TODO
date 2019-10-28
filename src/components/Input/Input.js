@@ -1,5 +1,6 @@
 import BaseComponent from '../BaseComponent/BaseComponent.js';
-
+import template from './Input.hbs';
+import {TextComponent} from "../TextComponent/Text.js";
 /**
  * Класс для Input
  */
@@ -11,11 +12,7 @@ export class InputComponent extends BaseComponent {
   constructor(context) {
     super();
     this.context = context;
-    this.template = Handlebars.compile(`
-            <input type="{{type}}" id="{{id}}" href="{{href}}"
-            placeholder="{{placeholder}}" class="{{class}}"
-            value="{{text}}">
-        `);
+    this.template = template;
   }
 }
 
@@ -27,7 +24,6 @@ class InputError {
   constructor() {
     this._errText = null;
   }
-
   /**
    * Вывести сообщение об ошибке
    * @param {string} err - тип ошибки
@@ -35,23 +31,27 @@ class InputError {
    */
   e(err, parent) {
     if (this._errText) {
-      this._errText.parentElement.removeChild(this._errText);
+      parent.removeChild(document.getElementById('Err'));
     }
     switch (err) {
       case 'NO_USERNAME': {
-        this._errText = document.createElement('a');
-        this._errText.className = 'error';
-        this._errText.textContent = 'No username';
-        this._errText.id = 'Err';
-        parent.appendChild(this._errText);
+        this._errText = new TextComponent({
+          tag: 'a',
+          class: 'error',
+          text: 'No username',
+          id: 'Err',
+        });
+        parent.innerHTML += this._errText.render();
         break;
       }
       case 'PASSWORD_LENGTH': {
-        this._errText = document.createElement('a');
-        this._errText.className = 'error';
-        this._errText.textContent = 'Password is too short';
-        this._errText.id = 'Err';
-        parent.appendChild(this._errText);
+        this._errText = new TextComponent({
+          tag: 'a',
+          class: 'error',
+          text: 'Password too short',
+          id: 'Err',
+        });
+        parent.innerHTML += this._errText.render();
         break;
       }
       case 'PASSWORDS_MATCH': {

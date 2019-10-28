@@ -9,6 +9,7 @@
 @import url('./components/viewes/OfflineGame/OfflineGameView.css');
 @import url('./components/PokerUserPanel/PokerUserPanel.css');
 @import url('./components/PokerBotPanel/PokerBotPanel.css');
+@import url('./components/ButtonPanel/ButtonPanel.css');
 
 body{
     display: flex;

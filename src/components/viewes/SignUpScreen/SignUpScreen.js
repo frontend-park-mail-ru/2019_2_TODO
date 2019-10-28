@@ -66,26 +66,32 @@ export default class SignUpScreen extends BaseView {
     form.addEventListener('submit', (evt) => {
       evt.preventDefault();
       const email = form.elements.email;
+      const userName = email.value;
       const password = form.elements.password;
       const passwordRepeat = form.elements.passwordRepeat;
       if (!email.value.length) {
         InputError.e('NO_USERNAME', form);
+        console.log(email.value);
         password.value = '';
         passwordRepeat.value = '';
+        form.elements.email = userName;
         return;
       }
       if (password.value !== passwordRepeat.value) {
         password.value = '';
         passwordRepeat.value = '';
         InputError.e('PASSWORDS_MATCH', form);
+        email.value = userName;
         return;
       }
       if (password.value.length < 5) {
         password.value = '';
         passwordRepeat.value = '';
         InputError.e('PASSWORD_LENGTH', form);
+        email.value = userName;
         return;
       }
+      email.value = userName;
       AjaxModule.signUp(application, email.value, password.value);
     });
   }

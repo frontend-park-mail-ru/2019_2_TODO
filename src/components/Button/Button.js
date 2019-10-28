@@ -1,4 +1,5 @@
 import BaseComponent from '../BaseComponent/BaseComponent.js';
+import template from './Button.hbs';
 
 /** Класс представляющий кнопку. */
 export class ButtonComponent extends BaseComponent {
@@ -7,9 +8,6 @@ export class ButtonComponent extends BaseComponent {
    */
   constructor(context) {
     super(context);
-    this.template = Handlebars.compile(`
-            <button type="{{type}}" class="{{class}}" id="{{id}}" 
-            data-section="{{section}}">{{text}}</button>
-        `);
+    this.template = template;
   }
 }
