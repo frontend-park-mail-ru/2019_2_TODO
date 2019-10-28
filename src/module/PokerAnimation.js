@@ -61,7 +61,7 @@ const cardCoordinates = {
 export class PokerAnimation {
   constructor() {
       this.bankerCoordinates = {x: 512, y: 210};
-      this.botCoordnates = {x: 850, y: 500};
+      this.botCoordnates = {x: 850, y: 500, rotate: - Math.PI * 2 / 6};
       this.playerCoordinates = {x: 512, y: 540};
       this.bankerCardsCoordinates = {x: 512, y: 370};
       this.shapes = [];
@@ -72,7 +72,7 @@ export class PokerAnimation {
           this.ctx.drawImage(this.back, this.bankerCoordinates.x - 45,
               this.bankerCoordinates.y - this.cardHeight / 2, this.cardWidth, this.cardHeight);
       };
-      this.cardWidth = this.ctx.canvas.width * 0.07;
+      this.cardWidth = this.ctx.canvas.width * 0.08;
       this.cardHeight = this.ctx.canvas.height * 0.20;
       this._playerCards = [46, 67];
       this._bankerCards = [46, 67];
@@ -143,7 +143,7 @@ export class PokerAnimation {
         this.bankerCoordinates.y,
         this.botCoordnates.x - this.bankerCoordinates.x,
         this.botCoordnates.y - this.bankerCoordinates.y,
-        Math.PI * 2 / 30, 'moveToBot');
+        Math.PI * 2 / 30, 'moveToBot', this.botCoordnates.rotate);
   }
     giveBankerCards(cards) {
     // this.addBankerCards(cards);
@@ -156,7 +156,8 @@ export class PokerAnimation {
     });
   }
     reverseBotCards(cards, endRoundEvent = null){
-      this.reverseCards(cards, this.botCoordnates.x, this.botCoordnates.y, 4, 'botsCardsReversed');
+      this.reverseCards(cards, this.botCoordnates.x, this.botCoordnates.y, 4, 'botsCardsReversed',
+          this.botCoordnates.rotate);
       if (endRoundEvent) {
           const listener = () => {
               this.ctx.canvas.removeEventListener('botsCardsReversed', listener);
@@ -165,19 +166,21 @@ export class PokerAnimation {
           this.ctx.canvas.addEventListener('botsCardsReversed', listener);
       }
   }
-    moveCards(cards, x, y, dx, dy, rotate = 0,event = 'endMoveCards', stepX = dx / 60, stepY = dy/60,) {
+    moveCards(cards, x, y, dx, dy, rotate = 0,event = 'endMoveCards', rotateC = 0, stepX = dx / 60, stepY = dy/60,) {
     let progress = 0;
     let rotated = 0;
     // this.ctx.drawImage(cards[0],100,100,100,100);
     const move = () => {
       this.ctx.save();
+
       this.ctx.translate(x, y);
       this.ctx.drawImage(this.back, 92, 267, 46, 67, -45, -75, this.cardWidth, this.cardHeight);
       this.ctx.translate(dx*progress, dy*progress);
       this.ctx.save();
-      this.ctx.translate( progress*progress*(-(cards.length*90/2) + 45), 0);
-      cards.reduce((differ, card) => {
-        this.ctx.save();
+        this.ctx.rotate(rotateC);
+        this.ctx.translate( progress*progress*(-(cards.length*90/2) + 45), 0);
+        cards.reduce((differ, card) => {
+          this.ctx.save();
         this.ctx.translate(differ, 0);
         this.ctx.rotate(rotated);
         this.ctx.clearRect(- 48, -2 - this.cardHeight / 2, this.cardWidth+6, this.cardHeight+6);
@@ -197,9 +200,10 @@ export class PokerAnimation {
       // this.ctx.translate(rotated*50, rotated*50);
       // this.ctx.rotate(rotated);
       this.ctx.save();
-      this.ctx.translate(progress*progress*(-(cards.length*90/2) + 45), 0);
-      cards.reduce((differ, card) => {
-        this.ctx.save();
+        this.ctx.rotate(rotateC);
+        this.ctx.translate(progress*progress*(-(cards.length*90/2) + 45), 0);
+        cards.reduce((differ, card) => {
+          this.ctx.save();
         this.ctx.translate(differ, 0);
         this.ctx.rotate(rotated);
         this.ctx.drawImage(this.back, 92, 267, 46, 67, -45, -this.cardHeight/2, this.cardWidth, this.cardHeight);
@@ -223,111 +227,122 @@ export class PokerAnimation {
     // this.ctx.restore();
   }
   removeAllCards() {
-      let progress = 1;
-      // this.ctx.drawImage(cards[0],100,100,100,100);
-      const move = () => {
-          this.ctx.save();
-          this.ctx.translate(this.bankerCoordinates.x, this.bankerCoordinates.y);
-
-          this.ctx.save();
-          this.ctx.translate((-this.bankerCoordinates.x + this.playerCoordinates.x) * progress,
-              (-this.bankerCoordinates.y + this.playerCoordinates.y) * progress);
-          this.ctx.translate(progress * progress * (-(this._playerCards.length * 90 / 2) + 45), 0);
-          this._playerCards.reduce((differ, card) => {
+      const func = () => {
+          let progress = 1;
+          // this.ctx.drawImage(cards[0],100,100,100,100);
+          const move = () => {
               this.ctx.save();
-              this.ctx.translate(differ, 0);
-              this.ctx.clearRect(-48, -2 - this.cardHeight / 2, this.cardWidth + 6, this.cardHeight + 6);
-              this.ctx.restore();
-              return differ + 90 * (progress * progress);
-          }, 0);
-          this.ctx.restore();
+              this.ctx.translate(this.bankerCoordinates.x, this.bankerCoordinates.y);
 
-          this.ctx.save();
-          this.ctx.translate((-this.bankerCoordinates.x + this.botCoordnates.x) * progress,
-              (-this.bankerCoordinates.y + this.botCoordnates.y) * progress);
-          this.ctx.translate(progress * progress * (-(this._botCards.length * 90 / 2) + 45), 0);
-          this._botCards.reduce((differ, card) => {
               this.ctx.save();
-              this.ctx.translate(differ, 0);
-              this.ctx.clearRect(-48, -2 - this.cardHeight / 2, this.cardWidth + 6, this.cardHeight + 6);
+              this.ctx.translate((-this.bankerCoordinates.x + this.playerCoordinates.x) * progress,
+                  (-this.bankerCoordinates.y + this.playerCoordinates.y) * progress);
+              this.ctx.translate(progress * progress * (-(this._playerCards.length * 90 / 2) + 45), 0);
+              this._playerCards.reduce((differ, card) => {
+                  this.ctx.save();
+                  this.ctx.translate(differ, 0);
+                  this.ctx.clearRect(-48, -2 - this.cardHeight / 2, this.cardWidth + 6, this.cardHeight + 6);
+                  this.ctx.restore();
+                  return differ + 90 * (progress * progress);
+              }, 0);
               this.ctx.restore();
-              return differ + 90 * (progress * progress);
-          }, 0);
 
-
-          this.ctx.restore();
-
-          this.ctx.save();
-          this.ctx.translate((-this.bankerCoordinates.x + this.bankerCardsCoordinates.x) * progress,
-              (-this.bankerCoordinates.y + this.bankerCardsCoordinates.y) * progress);
-          this.ctx.translate(progress * progress * (-(this._bankerCards.length * 90 / 2) + 45), 0);
-          this._bankerCards.reduce((differ, card) => {
               this.ctx.save();
-              this.ctx.translate(differ, 0);
-              this.ctx.clearRect(-48, -2 - this.cardHeight / 2, this.cardWidth + 6, this.cardHeight + 6);
+              this.ctx.translate((-this.bankerCoordinates.x + this.botCoordnates.x) * progress,
+                  (-this.bankerCoordinates.y + this.botCoordnates.y) * progress);
+              this.ctx.rotate(this.botCoordnates.rotate);
+              this.ctx.translate(progress * progress * (-(this._botCards.length * 90 / 2) + 45), 0);
+              this._botCards.reduce((differ, card) => {
+                  this.ctx.save();
+                  this.ctx.translate(differ, 0);
+                  this.ctx.clearRect(-48, -2 - this.cardHeight / 2, this.cardWidth + 6, this.cardHeight + 6);
+                  this.ctx.restore();
+                  return differ + 90 * (progress * progress);
+              }, 0);
+
+
               this.ctx.restore();
-              return differ + 90 * (progress * progress);
-          }, 0);
-          this.ctx.restore();
 
-          progress -= 1 / 60;
-
-          this.ctx.save();
-          this.ctx.translate((-this.bankerCoordinates.x + this.playerCoordinates.x) * progress,
-              (-this.bankerCoordinates.y + this.playerCoordinates.y) * progress);
-          this.ctx.translate(progress * progress * (-(this._playerCards.length * 90 / 2) + 45), 0);
-          this._playerCards.reduce((differ, card) => {
               this.ctx.save();
-              this.ctx.translate(differ, 0);
-              this.ctx.drawImage(this.back, ...cardCoordinates[card], -45, -this.cardHeight / 2, this.cardWidth, this.cardHeight);
+              this.ctx.translate((-this.bankerCoordinates.x + this.bankerCardsCoordinates.x) * progress,
+                  (-this.bankerCoordinates.y + this.bankerCardsCoordinates.y) * progress);
+              this.ctx.translate(progress * progress * (-(this._bankerCards.length * 90 / 2) + 45), 0);
+              this._bankerCards.reduce((differ, card) => {
+                  this.ctx.save();
+                  this.ctx.translate(differ, 0);
+                  this.ctx.clearRect(-48, -2 - this.cardHeight / 2, this.cardWidth + 6, this.cardHeight + 6);
+                  this.ctx.restore();
+                  return differ + 90 * (progress * progress);
+              }, 0);
               this.ctx.restore();
-              return differ + 90 * (progress * progress);
-          }, 0);
-          this.ctx.restore();
 
-          this.ctx.save();
-          this.ctx.translate((-this.bankerCoordinates.x + this.botCoordnates.x) * progress,
-              (-this.bankerCoordinates.y + this.botCoordnates.y) * progress);
-          this.ctx.translate(progress * progress * (-(this._botCards.length * 90 / 2) + 45), 0);
-          this._botCards.reduce((differ, card) => {
+              progress -= 1 / 60;
+
               this.ctx.save();
-              this.ctx.translate(differ, 0);
-              this.ctx.drawImage(this.back, ...cardCoordinates[card], -45, -this.cardHeight / 2, this.cardWidth, this.cardHeight);
+              this.ctx.translate((-this.bankerCoordinates.x + this.playerCoordinates.x) * progress,
+                  (-this.bankerCoordinates.y + this.playerCoordinates.y) * progress);
+              this.ctx.translate(progress * progress * (-(this._playerCards.length * 90 / 2) + 45), 0);
+              this._playerCards.reduce((differ, card) => {
+                  this.ctx.save();
+                  this.ctx.translate(differ, 0);
+                  this.ctx.drawImage(this.back, ...cardCoordinates[card], -45, -this.cardHeight / 2, this.cardWidth, this.cardHeight);
+                  this.ctx.restore();
+                  return differ + 90 * (progress * progress);
+              }, 0);
               this.ctx.restore();
-              return differ + 90 * (progress * progress);
-          }, 0);
-          this.ctx.restore();
 
-
-          this.ctx.save();
-          console.log(-this.bankerCoordinates.y + this.bankerCardsCoordinates.y);
-          this.ctx.translate((-this.bankerCoordinates.x + this.bankerCardsCoordinates.x) * progress * progress,
-              (-this.bankerCoordinates.y + this.bankerCardsCoordinates.y) * progress);
-          this.ctx.translate(progress * progress * (-(this._bankerCards.length * 90 / 2) + 45), 0);
-          this._bankerCards.reduce((differ, card) => {
               this.ctx.save();
-              this.ctx.translate(differ, 0);
-              this.ctx.drawImage(this.back, ...cardCoordinates[card], -45, -this.cardHeight / 2, this.cardWidth, this.cardHeight);
+              this.ctx.translate((-this.bankerCoordinates.x + this.botCoordnates.x) * progress,
+                  (-this.bankerCoordinates.y + this.botCoordnates.y) * progress);
+              this.ctx.rotate(this.botCoordnates.rotate);
+              this.ctx.translate(progress * progress * (-(this._botCards.length * 90 / 2) + 45), 0);
+              this._botCards.reduce((differ, card) => {
+                  this.ctx.save();
+                  this.ctx.translate(differ, 0);
+                  this.ctx.drawImage(this.back, ...cardCoordinates[card], -45, -this.cardHeight / 2, this.cardWidth, this.cardHeight);
+                  this.ctx.restore();
+                  return differ + 90 * (progress * progress);
+              }, 0);
               this.ctx.restore();
-              return differ + 90 * (progress * progress);
-          }, 0);
-          this.ctx.restore();
-          this.ctx.drawImage(this.back, 92, 267, 46, 67, -45, -75, this.cardWidth, this.cardHeight);
-          this.ctx.restore();
 
-          // console.log(Math.min(stepX / dx, stepY / dy));
-          // console.log(progress);
-          if (progress >= 0) {
+
+              this.ctx.save();
+              console.log(-this.bankerCoordinates.y + this.bankerCardsCoordinates.y);
+              this.ctx.translate((-this.bankerCoordinates.x + this.bankerCardsCoordinates.x) * progress * progress,
+                  (-this.bankerCoordinates.y + this.bankerCardsCoordinates.y) * progress);
+              this.ctx.translate(progress * progress * (-(this._bankerCards.length * 90 / 2) + 45), 0);
+              this._bankerCards.reduce((differ, card) => {
+                  this.ctx.save();
+                  this.ctx.translate(differ, 0);
+                  this.ctx.drawImage(this.back, ...cardCoordinates[card], -45, -this.cardHeight / 2, this.cardWidth, this.cardHeight);
+                  this.ctx.restore();
+                  return differ + 90 * (progress * progress);
+              }, 0);
+              this.ctx.restore();
+              this.ctx.drawImage(this.back, 92, 267, 46, 67, -45, -75, this.cardWidth, this.cardHeight);
+              this.ctx.restore();
+
+              // console.log(Math.min(stepX / dx, stepY / dy));
               // console.log(progress);
-              requestAnimationFrame(move);
-          }else {
-              dispatchEvent(new Event('roundAnimationEnd'))
-          }
+              if (progress >= 0) {
+                  // console.log(progress);
+                  requestAnimationFrame(move);
+              } else {
+                  this.ctx.save();
+                  this.ctx.clearRect(0,0,1024, 768);
+                  this.ctx.translate(this.bankerCoordinates.x, this.bankerCoordinates.y);
+                  this.ctx.drawImage(this.back, 92, 267, 46, 67, -45, -75, this.cardWidth, this.cardHeight);
+                  this.ctx.restore();
+                  dispatchEvent(new Event('roundAnimationEnd'))
+              }
+          };
+          requestAnimationFrame(move);
+
       };
-      requestAnimationFrame(move);
+      func(this);
   }
 
-  reverseCards(cards, x, y, turnRate, event = 'cardsReversed') {
+  reverseCards(cards, x, y, turnRate, event = 'cardsReversed', rotateC = 0) {
     let progress = 0;
     let turned = 0;
       console.log(cards);
@@ -335,10 +350,11 @@ export class PokerAnimation {
       this.ctx.save();
       this.ctx.translate(x, y);
       this.ctx.save();
-      this.ctx.translate( -(cards.length*90/2) + 45, 0);
-      this.ctx.translate(turned / 2, 0);
-      cards.reduce((differ, card) => {
-        this.ctx.save();
+        this.ctx.rotate(rotateC);
+        this.ctx.translate( -(cards.length*90/2) + 45, 0);
+        this.ctx.translate(turned / 2, 0);
+        cards.reduce((differ, card) => {
+          this.ctx.save();
         this.ctx.translate(differ, 0);
         this.ctx.clearRect(- 45, -1 - this.cardHeight / 2, this.cardWidth -turned, this.cardHeight + 2);
         this.ctx.restore();
@@ -348,10 +364,11 @@ export class PokerAnimation {
       turned += turnRate;
 
       this.ctx.save();
-      this.ctx.translate( -(cards.length*90/2) + 45, 0);
-      this.ctx.translate(turned / 2, 0);
-      cards.reduce((differ, card) => {
-        // const image = turned >= this.cardWidth ? card : this.back;
+        this.ctx.rotate(rotateC);
+        this.ctx.translate( -(cards.length*90/2) + 45, 0);
+        this.ctx.translate(turned / 2, 0);
+        cards.reduce((differ, card) => {
+          // const image = turned >= this.cardWidth ? card : this.back;
         this.ctx.save();
         this.ctx.translate(differ, 0);
         if (turned >= this.cardWidth) {

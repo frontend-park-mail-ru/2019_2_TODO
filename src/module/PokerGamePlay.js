@@ -94,7 +94,7 @@ export class game{
 
         }
         updateScoreBet();
-        setTimeout(this.animation.removeAllCards, 3000);
+        setTimeout(() => {this.animation.removeAllCards()}, 3000);
         const listener = () => {
           removeEventListener('roundAnimationEnd', listener);
           this.startRound();
@@ -188,6 +188,7 @@ export class game{
                 this.animation.reverseBotCards(this.botCards, 'endOfRound');
             }
             this._stage++;
+            console.log(this._stage);
         };
         func();
     };
@@ -281,68 +282,77 @@ export class game{
 
     bot(){
         addEventListener('call', () => {
-            setTimeout(() => {
-                if (this.botHand.rank < 2) {
-                    const evt = {};
-                    evt.target = {};
-                    evt.target.parentElement = {};
-                    evt.target.parentElement.id = 'botPanel';
-                    console.log(evt);
-                    this.check(evt)
-                } else {
-                    const evt = {};
-                    evt.target = {};
-                    evt.target.parentElement = {};
-                    evt.target.parentElement.id = 'botPanel';
-                    console.log(evt);
-                    this.raise(evt, 40);
-                }
-            }, 1000)
+            if (this._stage < 3){
+
+                setTimeout(() => {
+                    if (this.botHand.rank < 2) {
+                        const evt = {};
+                        evt.target = {};
+                        evt.target.parentElement = {};
+                        evt.target.parentElement.id = 'botPanel';
+                        console.log(evt);
+                        this.check(evt)
+                    } else {
+                        const evt = {};
+                        evt.target = {};
+                        evt.target.parentElement = {};
+                        evt.target.parentElement.id = 'botPanel';
+                        console.log(evt);
+                        this.raise(evt, 40);
+                    }
+                }, 1000)
+            }
         });
         addEventListener('raise', () => {
-            setTimeout( () => {
-                if (this.botHand.rank < 2) {
-                    const evt = {};
-                    evt.target = {};
-                    evt.target.parentElement = {};
-                    evt.target.parentElement.id = 'botPanel';
-                    console.log(evt);
-                    this.fold(evt);
-                } else if (this.botHand.rank < 5){
-                    const evt = {};
-                    evt.target = {};
-                    evt.target.parentElement = {};
-                    evt.target.parentElement.id = 'botPanel';
-                    console.log(evt);
-                    this.call(evt);
-                } else {
-                    const evt = {};
-                    evt.target = {};
-                    evt.target.parentElement = {};
-                    evt.target.parentElement.id = 'botPanel';
-                    console.log(evt);
-                    this.raise(evt, 40);
-                }
-            }, 1000)
+            if (this._stage < 3){
+
+                setTimeout( () => {
+                    if (this.botHand.rank < 2) {
+                        const evt = {};
+                        evt.target = {};
+                        evt.target.parentElement = {};
+                        evt.target.parentElement.id = 'botPanel';
+                        console.log(evt);
+                        this.fold(evt);
+                    } else if (this.botHand.rank < 5){
+                        const evt = {};
+                        evt.target = {};
+                        evt.target.parentElement = {};
+                        evt.target.parentElement.id = 'botPanel';
+                        console.log(evt);
+                        this.call(evt);
+                    } else {
+                        const evt = {};
+                        evt.target = {};
+                        evt.target.parentElement = {};
+                        evt.target.parentElement.id = 'botPanel';
+                        console.log(evt);
+                        this.raise(evt, 40);
+                    }
+                }, 1000)
+            }
         });
         addEventListener('check', () =>{
-            setTimeout( () => {
-                if (this.botHand.rank < 2) {
-                    const evt = {};
-                    evt.target = {};
-                    evt.target.parentElement = {};
-                    evt.target.parentElement.id = 'botPanel';
-                    console.log(evt);
-                    this.check(evt);
-                } else {
-                    const evt = {};
-                    evt.target = {};
-                    evt.target.parentElement = {};
-                    evt.target.parentElement.id = 'botPanel';
-                    console.log(evt);
-                    this.raise(evt, 40);
-                }
-            }, 1000)
+            if (this._stage < 3) {
+
+                setTimeout( () => {
+                    if (this.botHand.rank < 2) {
+                        const evt = {};
+                        evt.target = {};
+                        evt.target.parentElement = {};
+                        evt.target.parentElement.id = 'botPanel';
+                        console.log(evt);
+                        this.check(evt);
+                    } else {
+                        const evt = {};
+                        evt.target = {};
+                        evt.target.parentElement = {};
+                        evt.target.parentElement.id = 'botPanel';
+                        console.log(evt);
+                        this.raise(evt, 40);
+                    }
+                }, 1000)
+            }
         });
         addEventListener('blind', () => {
             setTimeout( () => {
