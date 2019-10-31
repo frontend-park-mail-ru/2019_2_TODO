@@ -40,8 +40,10 @@
 
 
 .deckFun__card {
-    transition-property: transform;
-    transition-delay: 0.1s;
+    -webkit-transition-property: transform;
+    -moz-transition-property: transform;
+    -o-transition-property: transform;
+    transition-duration: 500ms;
     transition-timing-function: ease;
     display: flex;
     flex-direction: row;
@@ -68,7 +70,7 @@
     background: #ffd700;
     color: black;
     border-color: black;
-    transform: translate3d(-25px, -50px, 50px) rotate(-30deg);
+    transform: translate(0px, -50px) rotate(-30deg);
 }
 
 .deckFun__card:focus {
@@ -79,14 +81,15 @@
 .deckFun__card:nth-child(2) {
     background: #793C92;
     border: 1px solid #793C92;
-    transform: translate3d(0px, -40px, 100px) rotate(-20deg);
+    transform: translate(0px, -40px) rotate(-20deg);
 }
 
-/*.deckFun__card:nth-child(2):hover {*/
-/*    background: #ffd700;*/
-/*    color: black;*/
-/*    border-color: black;*/
-/*}*/
+.deckFun__card:nth-child(2):hover {
+    background: #ffd700;
+    color: black;
+    border-color: black;
+    transform: translate(0px, -70px) rotate(-20deg);
+}
 
 .deckFun__card:nth-child(3) {
     background: #565656;
@@ -95,22 +98,24 @@
 
 }
 
-/*.deckFun__card:nth-child(3):hover {*/
-/*    background: #ffd700;*/
-/*    color: black;*/
-/*    border-color: black;*/
-/*}*/
+.deckFun__card:nth-child(3):hover {
+    background: #ffd700;
+    color: black;
+    border-color: black;
+    transform: translate3d(0px, -90px, 100px) rotate(-10deg);
+}
 .deckFun__card:nth-child(4){
     background: #E67E22;
     border: 1px solid #BF3902;
     transform: translate3d(0px, -70px, 100px) rotate(0deg);
 
 }
-/*.deckFun__card:nth-child(4):hover{*/
-/*    background: #ffd700;*/
-/*    color: black;*/
-/*    border-color: black;*/
-/*}*/
+.deckFun__card:nth-child(4):hover{
+    background: #ffd700;
+    color: black;
+    border-color: black;
+    transform: translate3d(0px, -120px, 50px) rotate(0deg);
+}
 .deckFun__card:nth-child(5){
     background: #BF3902;
     border: 1px solid #E67E22;
@@ -118,11 +123,12 @@
 
 }
 
-/*.deckFun__card:nth-child(5):hover {*/
-/*    background: #ffd700;*/
-/*    color: black;*/
-/*    border-color: black;*/
-/*}*/
+.deckFun__card:nth-child(5):hover {
+    background: #ffd700;
+    color: black;
+    border-color: black;
+    transform: translate3d(0px, -90px, 50px) rotate(10deg);
+}
 
 .deckFun__card:nth-child(6){
     background: #bf3292;
@@ -131,11 +137,12 @@
 
 }
 
-/*.deckFun__card:nth-child(6):hover {*/
-/*    background: #ffd700;*/
-/*    color: black;*/
-/*    border-color: black;*/
-/*}*/
+.deckFun__card:nth-child(6):hover {
+    background: #ffd700;
+    color: black;
+    border-color: black;
+    transform: translate3d(0px, -65px, 50px) rotate(20deg);
+}
 
 .deckFun__card:nth-child(7){
     background: #BF3902;
@@ -144,11 +151,12 @@
 
 }
 
-/*.deckFun__card:nth-child(7):hover {*/
-/*    background: #ffd700;*/
-/*    color: black;*/
-/*    border-color: black;*/
-/*}*/
+.deckFun__card:nth-child(7):hover {
+    background: #ffd700;
+    color: black;
+    border-color: black;
+    transform: translate3d(0px, -20px, 50px) rotate(30deg);
+}
 
 
 

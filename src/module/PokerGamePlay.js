@@ -1,6 +1,5 @@
 import {PokerAnimation} from "./PokerAnimation.js";
 import OfflineGameView from "../components/viewes/OfflineGame/OfflineGameView.js";
-// import Hand from './pokerSolver/Hands/Hand.js';
 
 
 const baseDeck = [
@@ -27,6 +26,12 @@ export class game{
         this.animation = new PokerAnimation();
         this._callCheck = false;
         this._stage = 0;
+        this.bot();
+        updateScoreBet();
+    }
+
+    startRound() {
+        this._stage = 0;
         if (isNaN(sessionStorage.playerScore)||
             sessionStorage.playerScore <=0 ||
             isNaN(sessionStorage.botScore) ||
@@ -39,12 +44,6 @@ export class game{
             sessionStorage.botBet = 0;
             sessionStorage.playerBet = 0;
         }
-        this.bot();
-        updateScoreBet();
-    }
-
-    startRound() {
-        this._stage = 0;
         OfflineGameView.disableButtonPanel('playerPanel');
         this.deck = baseDeck;
         sessionStorage.botScore -= -sessionStorage.botBet - sessionStorage.playerBet;
@@ -56,16 +55,17 @@ export class game{
         const bankCards = this.getRandomHand(5);
         this.bankCards = bankCards;
         this.botCards = botsCards;
-        this.playerHand = Hand.solve([...playersCards, ...bankCards]);
-        this.botHand = Hand.solve([...botsCards, ...bankCards]);
-        console.log(Hand.winners([this.playerHand, this.botHand]));
+        this.playerHand = HandSolve([...playersCards, ...bankCards]);
+        this.botHand = HandSolve([...botsCards, ...bankCards]);
+        console.log(this.playerHand, this.botHand);
+        console.log(PokerWinners([this.playerHand, this.botHand]));
 
         // const canvas = document.getElementById('canvas');
         this.animation.startRoundAnimation(playersCards, botsCards, bankCards);
         const startAnimationListener = () => {
             this.bets();
             if (sessionStorage.dealer !== 'player'){
-                OfflineGameView.enableButtonPanel('playerPanel');
+                OfflineGameView.enableButtonPanel('Call');
             }
             removeEventListener('endOfStartAnimation', startAnimationListener)
         };
@@ -73,7 +73,7 @@ export class game{
 
     }
     endRound(){
-        const winners = Hand.winners([this.playerHand, this.botHand]);
+        const winners = PokerWinners([this.playerHand, this.botHand]);
         if (winners.length === 2) {
             sessionStorage.playerScore -= -sessionStorage.playerBet;
             sessionStorage.botScore -= -sessionStorage.botBet;
@@ -124,7 +124,7 @@ export class game{
                     sessionStorage.botBet -= -sessionStorage.botScore;
                     sessionStorage.botScore = 0;
                 }
-                OfflineGameView.enableButtonPanel('playerPanel');
+                OfflineGameView.enableButtonPanel('Call');
             }
             updateScoreBet();
             this._callCheck = true;
@@ -164,7 +164,7 @@ export class game{
             if (evt.target.parentElement.id === 'playerPanel') {
                 dispatchEvent(new Event('check'));
             } else {
-                OfflineGameView.enableButtonPanel('playerPanel');
+                OfflineGameView.enableButtonPanel('Check');
             }
         };
         func(evt);
@@ -224,7 +224,7 @@ export class game{
                         sessionStorage.botBet = playerBet;
                     }
                 }
-                OfflineGameView.enableButtonPanel('playerPanel');
+                OfflineGameView.enableButtonPanel('Check');
             }
             updateScoreBet();
             if (this._callCheck) {
@@ -282,7 +282,7 @@ export class game{
 
     bot(){
         addEventListener('call', () => {
-            if (this._stage < 3){
+            if (this._stage < 4){
 
                 setTimeout(() => {
                     if (this.botHand.rank < 2) {
@@ -333,8 +333,7 @@ export class game{
             }
         });
         addEventListener('check', () =>{
-            if (this._stage < 3) {
-
+            if (this._stage < 4) {
                 setTimeout( () => {
                     if (this.botHand.rank < 2) {
                         const evt = {};

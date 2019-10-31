@@ -1,5 +1,5 @@
 import Hand from './Hand.js';
-
+const values = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'];
 export default class Flush extends Hand {
   constructor(cards, game, canDisqualify) {
     super(cards, 'Flush', game, canDisqualify);
