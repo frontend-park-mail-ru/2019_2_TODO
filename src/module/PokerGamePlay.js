@@ -57,8 +57,8 @@ export class game{
         this.botCards = botsCards;
         this.playerHand = HandSolve([...playersCards, ...bankCards]);
         this.botHand = HandSolve([...botsCards, ...bankCards]);
-        console.log(this.playerHand, this.botHand);
-        console.log(PokerWinners([this.playerHand, this.botHand]));
+        // console.log(this.playerHand, this.botHand);
+        // console.log(PokerWinners([this.playerHand, this.botHand]));
 
         // const canvas = document.getElementById('canvas');
         this.animation.startRoundAnimation(playersCards, botsCards, bankCards);
@@ -109,9 +109,9 @@ export class game{
                 if (sessionStorage.playerScore >= intValue) {
                     sessionStorage.playerScore -= intValue;
                     sessionStorage.playerBet -= -intValue;
-                    console.log(sessionStorage.playerBet)
+                    // console.log(sessionStorage.playerBet)
                 } else {
-                    console.log(2);
+                    // console.log(2);
                     sessionStorage.playerBet -= -sessionStorage.playerScore;
                     sessionStorage.playerScore = 0;
                 }
@@ -175,7 +175,7 @@ export class game{
             if (this._stage === 0) {
                 this.animation.reverseBankerCards(this.bankCards, [0, 1, 2]);
             } else if (this._stage === 1) {
-                console.log(this.bankCards.slice(3, 4));
+                // console.log(this.bankCards.slice(3, 4));
                 this.animation.reverseBankerCards(this.bankCards, [3]);
             } else if (this._stage === 2) {
                 this.animation.reverseBankerCards(this.bankCards, [4]);
@@ -188,7 +188,7 @@ export class game{
                 this.animation.reverseBotCards(this.botCards, 'endOfRound');
             }
             this._stage++;
-            console.log(this._stage);
+            // console.log(this._stage);
         };
         func();
     };
@@ -290,14 +290,14 @@ export class game{
                         evt.target = {};
                         evt.target.parentElement = {};
                         evt.target.parentElement.id = 'botPanel';
-                        console.log(evt);
+                        // console.log(evt);
                         this.check(evt)
                     } else {
                         const evt = {};
                         evt.target = {};
                         evt.target.parentElement = {};
                         evt.target.parentElement.id = 'botPanel';
-                        console.log(evt);
+                        // console.log(evt);
                         this.raise(evt, 40);
                     }
                 }, 1000)
@@ -312,21 +312,21 @@ export class game{
                         evt.target = {};
                         evt.target.parentElement = {};
                         evt.target.parentElement.id = 'botPanel';
-                        console.log(evt);
+                        // console.log(evt);
                         this.fold(evt);
                     } else if (this.botHand.rank < 5){
                         const evt = {};
                         evt.target = {};
                         evt.target.parentElement = {};
                         evt.target.parentElement.id = 'botPanel';
-                        console.log(evt);
+                        // console.log(evt);
                         this.call(evt);
                     } else {
                         const evt = {};
                         evt.target = {};
                         evt.target.parentElement = {};
                         evt.target.parentElement.id = 'botPanel';
-                        console.log(evt);
+                        // console.log(evt);
                         this.raise(evt, 40);
                     }
                 }, 1000)
@@ -340,14 +340,14 @@ export class game{
                         evt.target = {};
                         evt.target.parentElement = {};
                         evt.target.parentElement.id = 'botPanel';
-                        console.log(evt);
+                        // console.log(evt);
                         this.check(evt);
                     } else {
                         const evt = {};
                         evt.target = {};
                         evt.target.parentElement = {};
                         evt.target.parentElement.id = 'botPanel';
-                        console.log(evt);
+                        // console.log(evt);
                         this.raise(evt, 40);
                     }
                 }, 1000)
@@ -359,7 +359,7 @@ export class game{
                 evt.target = {};
                 evt.target.parentElement = {};
                 evt.target.parentElement.id = 'botPanel';
-                console.log(evt);
+                // console.log(evt);
                 this.call(evt);
             }, 1000)
 

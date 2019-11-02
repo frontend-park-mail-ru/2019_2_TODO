@@ -3,9 +3,9 @@ const CACHE_NAME = 'offline';
 const {assets} = global.serviceWorkerOption;
 // ссылки на кэшируемые файлы
 const cacheUrls = [
-    '/',
     'assets/AllCards.png',
     'assets/table-removebg-preview.png',
+    '/offline',
     // 'index.html',
     // 'main.css',
     // 'main.js',
@@ -15,7 +15,7 @@ const cacheUrls = [
     ...assets,
 ];
 console.log(assets);
-console.log(cacheUrls)
+console.log(cacheUrls);
 // assets.append(cacheUrls[0])
 self.addEventListener('install', event => {
     // задержим обработку события
@@ -36,9 +36,11 @@ self.addEventListener('fetch', event => {
     const request = event.request;
     event.respondWith(
     caches.match(request).then(response => {
-        if (response) {
+        if (!navigator.onLine){
+            if (response) {
 
-            return response
+                return response
+            }
         }
 
         // Load and cache known assets.
@@ -58,7 +60,7 @@ self.addEventListener('fetch', event => {
                         return cache.put(request, responseCache)
                     })
                     .then(() => {
-                    })
+                    });
 
                 return responseNetwork
             })

@@ -1,61 +1,63 @@
 
 
 const cardCoordinates = {
-    'Ac': [0, 0, 46, 67],
-    '2c': [46, 0, 46, 67],
-    '3c': [92, 0, 46, 67],
-    '4c': [138, 0, 46, 67],
-    '5c': [184, 0, 46, 67],
-    '6c': [230, 0, 46, 67],
-    '7c': [276, 0, 46, 67],
-    '8c': [322, 0, 46, 67],
-    '9c': [368, 0, 46, 67],
-    'Tc': [414, 0, 46, 67],
-    'Jc': [460, 0, 46, 67],
-    'Qc': [506, 0, 46, 67],
-    'Kc': [552, 0, 46, 67],
+    'Ac': [1, 412, 94, 131],
+    '2c': [100, 412, 94, 131],
+    '3c': [200, 412, 94, 131],
+    '4c': [296, 412, 94, 131],
+    '5c': [395, 412, 94, 131],
+    '6c': [495, 412, 94, 131],
+    '7c': [594, 412, 94, 131],
+    '8c': [692, 412, 94, 131],
+    '9c': [791, 412, 94, 131],
+    'Tc': [890, 412, 94, 131],
+    'Jc': [990, 412, 94, 131],
+    'Qc': [1088, 412, 94, 131],
+    'Kc': [1186, 412, 94, 131],
 
-    'Ad': [0, 67, 46, 67],
-    '2d': [46, 67, 46, 67],
-    '3d': [92, 67, 46, 67],
-    '4d': [138, 67, 46, 67],
-    '5d': [184, 67, 46, 67],
-    '6d': [230, 67, 46, 67],
-    '7d': [276, 67, 46, 67],
-    '8d': [322, 67, 46, 67],
-    '9d': [368, 67, 46, 67],
-    'Td': [414, 67, 46, 67],
-    'Jd': [460, 67, 46, 67],
-    'Qd': [506, 67, 46, 67],
-    'Kd': [552, 67, 46, 67],
+    'Ad': [1, 274, 94, 131],
+    '2d': [100, 274, 94, 131],
+    '3d': [200, 274, 94, 131],
+    '4d': [296, 274, 94, 131],
+    '5d': [395, 274, 94, 131],
+    '6d': [495, 274, 94, 131],
+    '7d': [594, 274, 94, 131],
+    '8d': [692, 274, 94, 131],
+    '9d': [791, 274, 94, 131],
+    'Td': [890, 274, 94, 131],
+    'Jd': [990, 274, 94, 131],
+    'Qd': [1088, 274, 94, 131],
+    'Kd': [1186, 274, 94, 131],
 
-    'Ah': [0, 134, 46, 67],
-    '2h': [46, 134, 46, 67],
-    '3h': [92, 134, 46, 67],
-    '4h': [138, 134, 46, 67],
-    '5h': [184, 134, 46, 67],
-    '6h': [230, 134, 46, 67],
-    '7h': [276, 134, 46, 67],
-    '8h': [322, 134, 46, 67],
-    '9h': [368, 134, 46, 67],
-    'Th': [414, 134, 46, 67],
-    'Jh': [460, 134, 46, 67],
-    'Qh': [506, 134, 46, 67],
-    'Kh': [552, 134, 46, 67],
+    'Ah': [1, 1, 94, 131],
+    '2h': [100, 1, 94, 131],
+    '3h': [200, 1, 94, 131],
+    '4h': [296, 1, 94, 131],
+    '5h': [395, 1, 94, 131],
+    '6h': [495, 1, 94, 131],
+    '7h': [594, 1, 94, 131],
+    '8h': [692, 1, 94, 131],
+    '9h': [791, 1, 94, 131],
+    'Th': [890, 1, 94, 131],
+    'Jh': [990, 1, 94, 131],
+    'Qh': [1088, 1, 94, 131],
+    'Kh': [1186, 1, 94, 131],
 
-    'As': [0, 201, 46, 67],
-    '2s': [46, 201, 46, 67],
-    '3s': [92, 201, 46, 67],
-    '4s': [138, 201, 46, 67],
-    '5s': [184, 201, 46, 67],
-    '6s': [230, 201, 46, 67],
-    '7s': [276, 201, 46, 67],
-    '8s': [322, 201, 46, 67],
-    '9s': [368, 201, 46, 67],
-    'Ts': [414, 201, 46, 67],
-    'Js': [460, 201, 46, 67],
-    'Qs': [506, 201, 46, 67],
-    'Ks': [552, 201, 46, 67],
+    'As': [1, 139, 94, 131],
+    '2s': [100, 139, 94, 131],
+    '3s': [200, 139, 94, 131],
+    '4s': [296, 139, 94, 131],
+    '5s': [395, 139, 94, 131],
+    '6s': [495, 139, 94, 131],
+    '7s': [594, 139, 94, 131],
+    '8s': [692, 139, 94, 131],
+    '9s': [791, 139, 94, 131],
+    'Ts': [890, 139, 94, 131],
+    'Js': [990, 139, 94, 131],
+    'Qs': [1088, 139, 94, 131],
+    'Ks': [1186, 139, 94, 131],
+
+    'back': [2, 549, 94, 131],
 };
 
 export class PokerAnimation {
@@ -66,7 +68,7 @@ export class PokerAnimation {
       this.bankerCardsCoordinates = {x: 512, y: 370};
       this.shapes = [];
       this.back = new Image();
-      this.back.src = 'assets/AllCards.png';
+      this.back.src = 'assets/AllCardsHQ.png';
       this.ctx = document.getElementById('canvas').getContext('2d');
       this.back.onload = () => {
           this.ctx.drawImage(this.back, this.bankerCoordinates.x - 45,
@@ -74,9 +76,9 @@ export class PokerAnimation {
       };
       this.cardWidth = this.ctx.canvas.width * 0.08;
       this.cardHeight = this.ctx.canvas.height * 0.20;
-      this._playerCards = [46, 67];
-      this._bankerCards = [46, 67];
-      this._botCards = [46, 67];
+      this._playerCards = [94, 131];
+      this._bankerCards = [94, 131];
+      this._botCards = [94, 131];
       // this.ctx.translate(this.bankerCoordinates.x, this.bankerCoordinates.y);
       this.ctx.save();
   }
@@ -174,7 +176,8 @@ export class PokerAnimation {
       this.ctx.save();
 
       this.ctx.translate(x, y);
-      this.ctx.drawImage(this.back, 92, 267, 46, 67, -45, -75, this.cardWidth, this.cardHeight);
+      this.ctx.clearRect(- 48, -2 - this.cardHeight / 2, this.cardWidth+6, this.cardHeight+6);
+      this.ctx.drawImage(this.back, ...cardCoordinates['back'], -45, -75, this.cardWidth, this.cardHeight);
       this.ctx.translate(dx*progress, dy*progress);
       this.ctx.save();
         this.ctx.rotate(rotateC);
@@ -206,7 +209,7 @@ export class PokerAnimation {
           this.ctx.save();
         this.ctx.translate(differ, 0);
         this.ctx.rotate(rotated);
-        this.ctx.drawImage(this.back, 92, 267, 46, 67, -45, -this.cardHeight/2, this.cardWidth, this.cardHeight);
+        this.ctx.drawImage(this.back, ...cardCoordinates['back'], -this.cardWidth/2 - 5, -this.cardHeight/2, this.cardWidth, this.cardHeight);
         this.ctx.restore();
         return differ + 90*(progress*progress);
       }, 0);
@@ -319,7 +322,7 @@ export class PokerAnimation {
                   return differ + 90 * (progress * progress);
               }, 0);
               this.ctx.restore();
-              this.ctx.drawImage(this.back, 92, 267, 46, 67, -45, -75, this.cardWidth, this.cardHeight);
+              this.ctx.drawImage(this.back, ...cardCoordinates['back'], -45, -75, this.cardWidth, this.cardHeight);
               this.ctx.restore();
 
               // console.log(Math.min(stepX / dx, stepY / dy));
@@ -331,7 +334,7 @@ export class PokerAnimation {
                   this.ctx.save();
                   this.ctx.clearRect(0,0,1024, 768);
                   this.ctx.translate(this.bankerCoordinates.x, this.bankerCoordinates.y);
-                  this.ctx.drawImage(this.back, 92, 267, 46, 67, -45, -75, this.cardWidth, this.cardHeight);
+                  this.ctx.drawImage(this.back, ...cardCoordinates['back'], -45, -75, this.cardWidth, this.cardHeight);
                   this.ctx.restore();
                   dispatchEvent(new Event('roundAnimationEnd'))
               }
@@ -356,7 +359,7 @@ export class PokerAnimation {
         cards.reduce((differ, card) => {
           this.ctx.save();
         this.ctx.translate(differ, 0);
-        this.ctx.clearRect(- 45, -1 - this.cardHeight / 2, this.cardWidth -turned, this.cardHeight + 2);
+        this.ctx.clearRect(- 46, -1 - this.cardHeight / 2, this.cardWidth -turned + 2, this.cardHeight + 2);
         this.ctx.restore();
         return differ + 90;
       }, 0);
@@ -374,7 +377,7 @@ export class PokerAnimation {
         if (turned >= this.cardWidth) {
           this.ctx.drawImage(this.back, ...cardCoordinates[card], - 45, - this.cardHeight / 2, this.cardWidth - turned, this.cardHeight);
         } else {
-          this.ctx.drawImage(this.back, 92, 267, 46, 67, -45, -this.cardHeight / 2, this.cardWidth - turned, this.cardHeight);
+          this.ctx.drawImage(this.back, ...cardCoordinates['back'], -45, -this.cardHeight / 2, this.cardWidth - turned, this.cardHeight);
         }
         this.ctx.restore();
         return differ + 90;
