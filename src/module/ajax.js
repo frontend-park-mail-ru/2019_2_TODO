@@ -25,6 +25,10 @@ class AjaxModule {
      * @param {string} password
      */
   signUp(application, email, password) {
+      console.log(JSON.stringify({
+          username: email,
+          password: password,
+      }));
     this.fetchPost('http://93.171.139.196:780/signup/',
         JSON.stringify({
           username: email,
@@ -84,7 +88,14 @@ class AjaxModule {
   fetchPost(
       url = 'http://93.171.139.196:780/',
       body = {},
-      params = {method: 'POST', credentials: 'include', body: body}) {
+      params = {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          credentials: 'include',
+          body: body}) {
     return fetch(url, params);
   }
 
