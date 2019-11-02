@@ -81,6 +81,7 @@ export class HeaderComponent {
     head.innerHTML += chip.render();
     head.innerHTML += text.render();
     console.log('asd');
+    this._parent.appendChild(head);
     head.addEventListener('click', (evt)=> {
       const {target} = evt;
       console.log(target.id);
@@ -89,6 +90,5 @@ export class HeaderComponent {
         AjaxModule.logOut(application);
       }
     });
-    this._parent.appendChild(head);
   }
 }
