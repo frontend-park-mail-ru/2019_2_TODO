@@ -84,7 +84,7 @@ export class HeaderComponent {
     this._parent.appendChild(head);
     head.addEventListener('click', (evt)=> {
       const {target} = evt;
-      console.log(target.id);
+      console.log(evt);
       if (target.id === 'logout') {
         console.log(target);
         AjaxModule.logOut(application);
