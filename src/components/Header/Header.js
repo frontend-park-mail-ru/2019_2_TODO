@@ -80,6 +80,7 @@ export class HeaderComponent {
     }
     head.innerHTML += chip.render();
     head.innerHTML += text.render();
+    console.log('asd');
     head.addEventListener('click', (evt)=> {
       const {target} = evt;
       console.log(target.id);
