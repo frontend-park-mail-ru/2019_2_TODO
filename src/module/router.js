@@ -1,3 +1,5 @@
+import AjaxModule from "./ajax";
+
 export default class Router {
   constructor(root) {
     this.routes = {};
@@ -76,6 +78,12 @@ export default class Router {
   start() {
     this.root.addEventListener('click', function(event) {
       if (!(event.target instanceof HTMLAnchorElement)) {
+        const {target} = event;
+        console.log(event);
+        if (target.id === 'logout') {
+          console.log(target);
+          AjaxModule.logOut(document.getElementById('application'));
+        }
         return;
       }
 
