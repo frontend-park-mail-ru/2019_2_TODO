@@ -77,6 +77,14 @@ export class HeaderComponent {
     if (this._authorized) {
       const infoBar = new InfoBar(topSection);
       infoBar.render();
+      head.addEventListener('click', (evt)=> {
+        const {target} = evt;
+        console.log(evt);
+        if (target.id === 'logout') {
+          console.log(target);
+          AjaxModule.logOut(application);
+        }
+      });
     }
     head.innerHTML += chip.render();
     head.innerHTML += text.render();
