@@ -82,7 +82,9 @@ export class HeaderComponent {
     head.innerHTML += text.render();
     head.addEventListener('click', (evt)=> {
       const {target} = evt;
+      console.log(target.id);
       if (target.id === 'logout') {
+        console.log(target);
         AjaxModule.logOut(application);
       }
     });
