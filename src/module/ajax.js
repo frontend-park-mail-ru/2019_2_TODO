@@ -9,6 +9,7 @@ class AjaxModule {
      * @param {FormData} data - картинка
      */
   postAvatar(application, data) {
+      console.log(data);
     this.fetchPost('http://93.171.139.196:780/signin/profileImage/', data)
         .then((res) => {
           if (res.status === 200) {
