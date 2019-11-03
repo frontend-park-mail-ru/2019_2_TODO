@@ -57,7 +57,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     historyApiFallback: true,
-    port: 8000,
+    port: 80,
   },
   watch: true,
   devtool: 'source-map',
