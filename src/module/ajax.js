@@ -10,7 +10,10 @@ class AjaxModule {
      */
   postAvatar(application, data) {
       console.log(data);
-    this.fetchPost('http://93.171.139.196:780/signin/profileImage/', data)
+    this.fetchPost('http://93.171.139.196:780/signin/profileImage/', data, {
+        method: 'POST',
+        credentials: 'include',
+        body: data})
         .then((res) => {
           if (res.status === 200) {
             console.log(res);
