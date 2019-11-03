@@ -22,6 +22,7 @@
     color: white;
     font-family: sans-serif;
     text-decoration: none;
+    text-overflow: ellipsis;
 }
 
 .infoBar__username:hover {
