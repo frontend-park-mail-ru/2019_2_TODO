@@ -1,9 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
-const WorkBoxPlugin = require('workbox-webpack-plugin');
 const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const outPath = path.join(__dirname, '/dist');

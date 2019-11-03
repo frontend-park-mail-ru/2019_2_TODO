@@ -3,9 +3,6 @@ const CACHE_NAME = 'offline';
 const {assets} = global.serviceWorkerOption;
 // ссылки на кэшируемые файлы
 const cacheUrls = [
-    'assets/AllCards.png',
-    'assets/table-removebg-preview.png',
-    '/offline',
     // 'index.html',
     // 'main.css',
     // 'main.js',
