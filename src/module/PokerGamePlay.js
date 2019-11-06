@@ -65,7 +65,7 @@ export class game{
         const startAnimationListener = () => {
             this.bets();
             if (sessionStorage.dealer !== 'player'){
-                OfflineGameView.enableButtonPanel('Call');
+                OfflineGameView.enableButtonPanel('call');
             }
             removeEventListener('endOfStartAnimation', startAnimationListener)
         };
@@ -124,7 +124,7 @@ export class game{
                     sessionStorage.botBet -= -sessionStorage.botScore;
                     sessionStorage.botScore = 0;
                 }
-                OfflineGameView.enableButtonPanel('Call');
+                OfflineGameView.enableButtonPanel('call');
             }
             updateScoreBet();
             this._callCheck = true;
@@ -164,7 +164,7 @@ export class game{
             if (evt.target.parentElement.id === 'playerPanel') {
                 dispatchEvent(new Event('check'));
             } else {
-                OfflineGameView.enableButtonPanel('Check');
+                OfflineGameView.enableButtonPanel('check');
             }
         };
         func(evt);
@@ -224,7 +224,7 @@ export class game{
                         sessionStorage.botBet = playerBet;
                     }
                 }
-                OfflineGameView.enableButtonPanel('Check');
+                OfflineGameView.enableButtonPanel('check');
             }
             updateScoreBet();
             if (this._callCheck) {
