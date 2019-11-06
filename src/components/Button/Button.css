@@ -22,6 +22,12 @@
     margin: 3px;
 }
 
+.button-back{
+    grid-area: 1/1;
+    align-self: flex-start;
+    width: 90px;
+}
+
 button[disabled]{
     background: grey;
 }

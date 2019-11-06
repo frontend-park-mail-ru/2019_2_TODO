@@ -1,0 +1,29 @@
+.poker-bot{
+    position: absolute;
+    top: 70vh;
+    right: 10vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -20px;
+    /*grid-area: 2/3;*/
+    /*transform: translate(-50px, -100px);*/
+    z-index: 1;
+}
+
+.poker-bot__score-bet{
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+    margin-right: 3px;
+    /*margin-bottom: -50px;*/
+    min-height: 60px;
+    min-width: 100px;
+    background: gold;
+    align-self: flex-end;
+    width: 90px;
+    border: 1px solid black;
+}
