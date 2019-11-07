@@ -6,7 +6,7 @@
     height: 90vh;
     display: grid;
     grid-template: 1fr 75vh 1fr/ 1fr 10fr 1fr;
-    background-image: url('http://localhost:8000/assets/table-removebg-preview.png') ;
+    background-image: url('/assets/table-removebg-preview.png') ;
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
