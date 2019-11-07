@@ -127,8 +127,10 @@ export class game {
           sessionStorage.playerScore -= intValue;
           sessionStorage.playerBet -= -intValue;
         } else {
-          sessionStorage.playerBet -= -sessionStorage.playerScore;
-          sessionStorage.playerScore = 0;
+          sessionStorage.playerBet =parseInt(sessionStorage.playerBet) +
+              Math.min(parseInt(sessionStorage.playerScore),
+                  parseInt(sessionStorage.botScore)+parseInt(sessionStorage.botBet) - parseInt(sessionStorage.playerBet));
+            sessionStorage.playerScore = parseInt(sessionStorage.playerScore) - sessionStorage.playerBet;
             this._allIn = true;
         }
         dispatchEvent(new Event('raise'));
@@ -138,8 +140,12 @@ export class game {
           sessionStorage.botScore -= intValue;
           sessionStorage.botBet -= -intValue;
         } else {
-          sessionStorage.botBet -= -sessionStorage.botScore;
-          sessionStorage.botScore = 0;
+          // sessionStorage.botBet -= -sessionStorage.botScore;
+          // sessionStorage.botScore = 0;
+            sessionStorage.botBet =parseInt(sessionStorage.botBet) +
+                Math.min(parseInt(sessionStorage.botScore),
+                    parseInt(sessionStorage.playerScore)+parseInt(sessionStorage.playerBet) - parseInt(sessionStorage.botBet));
+            sessionStorage.botScore = parseInt(sessionStorage.botScore) - sessionStorage.botBet;
           this._allIn = true;
         }
         OfflineGameView.enableButtonPanel('call');

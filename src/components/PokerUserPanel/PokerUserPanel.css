@@ -10,7 +10,13 @@
 
     z-index: 1;
 }
-.poker-user-panel__avatar{
+.poker-user-panel__container{
+    /*background: darkslategrey;*/
+    border-radius: 5px;
+    padding: 3px;
+    /*margin-right: 5px;*/
+}
+.poker-user-panel__container__avatar{
     border-radius: 100px;
     height: 50px;
     width: 50px;
