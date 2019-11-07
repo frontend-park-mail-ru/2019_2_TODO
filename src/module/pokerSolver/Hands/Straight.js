@@ -1,6 +1,6 @@
 import Card from '../Card/PokerCard.js';
 import Hand from './Hand.js';
-
+const values = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'];
 export default class Straight extends Hand {
   constructor(cards, game, canDisqualify) {
     super(cards, 'Straight', game, canDisqualify);

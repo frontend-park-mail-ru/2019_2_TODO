@@ -1,25 +1,30 @@
-
-.poker-bot-panel{
+.poker-bot{
+    position: absolute;
+    top: 70vh;
+    right: 10vw;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    min-width: 515px;
     margin-bottom: -20px;
+    /*grid-area: 2/3;*/
+    /*transform: translate(-50px, -100px);*/
     z-index: 1;
 }
 
-.poker-bot-panel__score-bet{
+.poker-bot__score-bet{
     color: black;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 0;
+    border-radius: 5px;
     margin-right: 3px;
     /*margin-bottom: -50px;*/
     min-height: 60px;
     min-width: 100px;
     background: gold;
-    border-radius: 5px;
+    align-self: flex-end;
+    width: 90px;
     border: 1px solid black;
 }

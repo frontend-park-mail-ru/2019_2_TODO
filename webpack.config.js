@@ -1,8 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
-
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const outPath = path.join(__dirname, '/dist');
@@ -11,7 +10,8 @@ const outPath = path.join(__dirname, '/dist');
 module.exports = {
   entry: {
     main: [
-      './src/module/pokersolver.js',
+      './src/module/pokerSolver/PokerSolver.js',
+      // '/src/handlebars.js',
       './src/main.js',
       './src/main.css',
     ],
@@ -38,8 +38,7 @@ module.exports = {
           },
         },
       },
-      {
-        test: /\.css$/,
+      {test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
       {
@@ -67,9 +66,15 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src/index.html'),
     }),
+
     new CopyWebpackPlugin([
         {from: path.join(__dirname, 'src/assets'), to: path.join(outPath, 'assets')},
     ]),
+    new ServiceWorkerWebpackPlugin({
+      entry: path.join(__dirname, 'src/sw.js'),
+      // excludes: ['**/.*', '**/*.map', '*.html'],
+      
+    }),
   ],
   node: {
     fs: 'empty',

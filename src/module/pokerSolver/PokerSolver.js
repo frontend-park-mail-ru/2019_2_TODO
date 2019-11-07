@@ -1,49 +1,67 @@
-import Hand from './Hands/Hand.js';
 import StraightFlush from './Hands/StraightFlush.js';
-import Game from './Game/Game.js';
-import RoyalFlush from './Hands/RoyalFlush.js';
-import NaturalRoyalFlush from './Hands/NaturalRoyalFlush.js';
-import WildRoyalFlush from './Hands/WildRoyalFlush.js';
-import FiveOfAKind from './Hands/FiveOfAKin.js';
-import FourOfAKindPairPlus from './Hands/FourOfAKindPairPlus.js';
 import FourOfAKind from './Hands/FourOfAKind.js';
-import FourWilds from './Hands/FourWild.js';
-import TwoThreeOfAKind from './Hands/TwoThreeOfAKind.js';
-import ThreeOfAKindTwoPair from './Hands/ThreeOfAKindTwoPair.js';
 import FullHouse from './Hands/FullHouse.js';
 import Flush from './Hands/Flush.js';
 import Straight from './Hands/Straight.js';
 import ThreeOfAKind from './Hands/ThreeOfAKind.js';
-import ThreePair from './Hands/ThreePair.js';
 import TwoPair from './Hands/TwoPair.js';
 import OnePair from './Hands/OnePair.js';
 import HighCard from './Hands/HighCard.js';
-import PaiGowPokerHelper from './PaiGowPokerHelper/PaiGowPokerHelper.js';
-import Card from "./Card/PokerCard.js";
 
-console.log('111');
+const game = {
+  'cardsInHand': 5,
+  'handValues': [StraightFlush, FourOfAKind, FullHouse, Flush, Straight, ThreeOfAKind, TwoPair, OnePair, HighCard],
+  'wildValue': null,
+  'wildStatus': 1,
+  'wheelStatus': 0,
+  'sfQualify': 5,
+  'lowestQualified': null,
+  'noKickers': false,
+};
+  window.HandSolve = (cards, canDisqualify = false)  => {
 
-const global  = window;
-  global.Card = Card;
-  global.Hand = Hand;
-  global.Game = Game;
-  global.RoyalFlush = RoyalFlush;
-  global.NaturalRoyalFlush = NaturalRoyalFlush;
-  global.WildRoyalFlush = WildRoyalFlush;
-  global.FiveOfAKind = FiveOfAKind;
-  global.StraightFlush = StraightFlush;
-  global.FourOfAKindPairPlus = FourOfAKindPairPlus;
-  global.FourOfAKind = FourOfAKind;
-  global.FourWilds = FourWilds;
-  global.TwoThreeOfAKind = TwoThreeOfAKind;
-  global.ThreeOfAKindTwoPair = ThreeOfAKindTwoPair;
-  global.FullHouse = FullHouse;
-  global.Flush = Flush;
-  global.Straight = Straight;
-  global.ThreeOfAKind = ThreeOfAKind;
-  global.ThreePair = ThreePair;
-  global.TwoPair = TwoPair;
-  global.OnePair = OnePair;
-  global.HighCard = HighCard;
-  global.PaiGowPokerHelper = PaiGowPokerHelper;
+    cards = cards || [''];
+    const hands = game.handValues;
+    let result = null;
 
+    for (let i = 0; i < hands.length; i++) {
+      result = new hands[i](cards, canDisqualify);
+      if (result.isPossible) {
+        break;
+      }
+    }
+    const handRank = game.handValues.length;
+    let i;
+    for (i=0; i< game.handValues.length; i++) {
+      if (game.handValues[i] === result.constructor) {
+        break;
+      }
+    }
+    result.rank = handRank - i;
+    return result;
+  };
+
+  window.PokerWinners = (hands) => {
+    // const highestRank = Math.max(...Object.values(hands));
+    const highestRank = Math.max.apply(Math, hands.map( (h) => {
+      return h.rank;
+    }));
+    console.log(highestRank);
+    hands = hands.filter((h) => {
+      return h.rank === highestRank;
+    });
+
+    hands = hands.filter((h) => {
+      let lose = false;
+      for (let i = 0; i < hands.length; i++) {
+        lose = h.loseTo(hands[i]);
+        if (lose) {
+          break;
+        }
+      }
+
+      return !lose;
+    });
+
+    return hands;
+  };

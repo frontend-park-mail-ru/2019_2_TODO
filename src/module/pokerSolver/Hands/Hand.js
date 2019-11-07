@@ -1,13 +1,24 @@
 import Card from '../Card/PokerCard.js';
-import Game from '../Game/Game.js';
+
 
 const values = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'];
+const game = {
+  'cardsInHand': 5,
+  // 'handValues': [StraightFlush, FourOfAKind, FullHouse, Flush, Straight, ThreeOfAKind, TwoPair, OnePair, HighCard],
+  'wildValue': null,
+  'wildStatus': 1,
+  'wheelStatus': 0,
+  'sfQualify': 5,
+  'lowestQualified': null,
+  'noKickers': false,
+};
+
 
 /**
  * Base Hand class that handles comparisons of full hands.
  */
 export default class Hand {
-  constructor(cards, name, game, canDisqualify) {
+  constructor(cards, name, canDisqualify = false) {
     this.cardPool = [];
     this.cards = [];
     this.suits = {};
@@ -23,16 +34,7 @@ export default class Hand {
     if (canDisqualify && this.game.lowestQualified) {
       this.alwaysQualifies = false;
     }
-
-    // Get rank based on game.
-    const handRank = this.game.handValues.length;
-    let i;
-    for (i=0; i<this.game.handValues.length; i++) {
-      if (this.game.handValues[i] === this.constructor) {
-        break;
-      }
-    }
-    this.rank = handRank - i;
+    this.rank = 0;
 
     // Set up the pool of cards.
     this.cardPool = cards.map( (c) => {
@@ -238,64 +240,9 @@ export default class Hand {
     return (this.compare(Hand.solve(this.game.lowestQualified, this.game)) <= 0);
   }
 
-  /**
-     * Find highest ranked hands and remove any that don't qualify or lose to another hand.
-     * @param  {Array} hands Hands to evaluate.
-     * @return {Array}       Winning hands.
-     */
-  static winners(hands) {
-    hands = hands.filter( (h) => {
-      return h.qualifiesHigh();
-    });
 
-    const highestRank = Math.max(...Object.values(hands));
-    // const highestRank = Math.max.apply(Math, hands.map( (h) => {
-    //   return h.rank;
-    // }));
 
-    hands = hands.filter( (h) => {
-      return h.rank === highestRank;
-    });
 
-    hands = hands.filter( (h) => {
-      let lose = false;
-      for (let i=0; i<hands.length; i++) {
-        lose = h.loseTo(hands[i]);
-        if (lose) {
-          break;
-        }
-      }
-
-      return !lose;
-    });
-
-    return hands;
-  }
-
-  /**
-     * Build and return the best hand.
-     * @param  {Array} cards Array of cards (['Ad', '3c', 'Th', ...]).
-     * @param  {String} game Game being played.
-     * @param  {Boolean} canDisqualify Check for a qualified hand.
-     * @return {Hand}       Best hand.
-     */
-  static solve(cards, game = 'standard', canDisqualify = false) {
-    game = game || 'standard';
-    game = (typeof game === 'string') ? new Game(game) : game;
-    cards = cards || [''];
-
-    const hands = game.handValues;
-    let result = null;
-
-    for (let i=0; i<hands.length; i++) {
-      result = new hands[i](cards, game, canDisqualify);
-      if (result.isPossible) {
-        break;
-      }
-    }
-
-    return result;
-  }
 
   /**
      * Separate cards based on if they are wild cards.
@@ -321,3 +268,5 @@ export default class Hand {
     return [wilds, nonWilds];
   }
 }
+
+

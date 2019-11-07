@@ -77,15 +77,19 @@ export class HeaderComponent {
     if (this._authorized) {
       const infoBar = new InfoBar(topSection);
       infoBar.render();
+
     }
     head.innerHTML += chip.render();
     head.innerHTML += text.render();
+    console.log('asd');
+    this._parent.appendChild(head);
     head.addEventListener('click', (evt)=> {
       const {target} = evt;
-      if (target.dataset.section === 'logout') {
+      console.log(evt);
+      if (target.id === 'logout') {
+        console.log(target);
         AjaxModule.logOut(application);
       }
     });
-    this._parent.appendChild(head);
   }
 }

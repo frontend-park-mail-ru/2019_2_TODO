@@ -1,3 +1,5 @@
+import AjaxModule from "./ajax";
+
 export default class Router {
   constructor(root) {
     this.routes = {};
@@ -49,7 +51,7 @@ export default class Router {
     }
 
     if (!view.active) {
-      Object.values(this.routes).forEach(function({view}) {
+      Object.values(this.routes).forEach(({view}) => {
         if (view && view.active) {
           view.hide();
         }
@@ -74,8 +76,14 @@ export default class Router {
   }
 
   start() {
-    this.root.addEventListener('click', function(event) {
+    this.root.addEventListener('click', event =>  {
       if (!(event.target instanceof HTMLAnchorElement)) {
+        const {target} = event;
+        //console.log(event);
+        if (target.id === 'logout') {
+          //console.log(target);
+          AjaxModule.logOut(document.getElementById('application'));
+        }
         return;
       }
 
@@ -87,13 +95,13 @@ export default class Router {
       });
 
       this.open(link.pathname);
-    }.bind(this));
+    });
 
-    window.addEventListener('popstate', function() {
+    window.addEventListener('popstate', () =>  {
       const currentPath = window.location.pathname;
 
       this.open(currentPath);
-    }.bind(this));
+    });
 
     const currentPath = window.location.pathname;
 
