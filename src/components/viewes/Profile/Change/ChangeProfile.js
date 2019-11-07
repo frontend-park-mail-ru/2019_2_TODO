@@ -1,10 +1,18 @@
-import {ButtonComponent} from '../../Button/Button.js';
-import {ImageComponent} from '../../Image/Image.js';
-import {InputComponent} from '../../Input/Input.js';
-import AjaxModule from '../../../module/ajax.js';
-import BaseView from '../BaseView/BaseView.js';
-import {TextComponent} from '../../TextComponent/Text.js';
+import {ButtonComponent} from '../../../Button/Button.js';
+import {ImageComponent} from '../../../Image/Image.js';
+import {InputComponent} from '../../../Input/Input.js';
+import AjaxModule from '../../../../module/ajax.js';
+import BaseView from '../../BaseView/BaseView.js';
+import {TextComponent} from '../../../TextComponent/Text.js';
+import BaseComponent from '../../../BaseComponent/BaseComponent.js';
+import template from './ChangeProfile.hbs';
 
+class profileChange extends BaseComponent{
+  constructor(context){
+    super(context)
+    this.template = template;
+  }
+}
 
 export default class ChangeProfileView extends BaseView {
   constructor(element, context = {
@@ -19,6 +27,14 @@ export default class ChangeProfileView extends BaseView {
   render() {
     const application = this.el;
     AjaxModule.fetchGet('http://93.171.139.196:780/signin/')
+        .catch(()=>{
+          this.el.innerHTML = '';
+          const prof = new profileChange({
+            avatar: 'https://jok.io/Images/Shared/unknown_female.png',
+            username: 'username',
+          });
+          this.el.innerHTML += prof.render();
+        })
         .then((res) => {
           return res.text();
         })

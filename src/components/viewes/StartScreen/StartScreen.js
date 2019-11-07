@@ -2,9 +2,7 @@ import {HeaderComponent} from '../../Header/Header.js';
 import {DeckFanComponent} from '../../DeckFan/DeckFan.js';
 import AjaxModule from '../../../module/ajax.js';
 import BaseView from '../BaseView/BaseView.js';
-import {ButtonComponent} from "../../Button/Button.js";
-import {ButtonPanel} from "../../ButtonPanel/ButtonPanel.js";
-
+import {ButtonPanel} from '../../ButtonPanel/ButtonPanel.js';
 
 
 export default class StartScreen extends BaseView {
