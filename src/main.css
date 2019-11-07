@@ -4,7 +4,7 @@
 @import url('./components/Image/Image.css');
 @import url('./components/DeckFan/DeckFan.css');
 @import url('./components/Input/Input.css');
-@import url('./components/viewes/Profile/ChangeProfile.css');
+@import url('components/viewes/Profile/Change/ChangeProfile.css');
 @import url('./components/InfoBar/infoBar.css');
 @import url('./components/viewes/OfflineGame/OfflineGameView.css');
 @import url('./components/PokerUserPanel/PokerUserPanel.css');
@@ -30,6 +30,7 @@ div{
 
 a{
     text-decoration: none;
+    font-family: 'cursive'
 }
 
 
@@ -62,3 +63,7 @@ form {
     flex-direction: column;
 }
 
+.row{
+    display: flex;
+    flex-direction: row;
+}

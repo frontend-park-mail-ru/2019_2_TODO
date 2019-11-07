@@ -1,7 +1,7 @@
 import BaseComponent from '../../BaseComponent/BaseComponent.js';
 import BaseView from '../BaseView/BaseView.js';
 import AjaxModule from '../../../module/ajax.js';
-
+import template from './Profile.hbs';
 
 /** Класс профиля */
 export class ProfileComponent extends BaseComponent {
@@ -12,15 +12,7 @@ export class ProfileComponent extends BaseComponent {
   constructor(context) {
     super();
     this.context = context;
-    this.template = Handlebars.compile(`
-        <form class="profileForm">
-            <a class="button profileForm__button" id="closeButton" href="/">Close</a>
-            <img class="profileForm__avatar" src="{{avatar}}" alt="">
-            <a class="profileForm__text">{{nickname}}</a>
-            <a class="profileForm__text">{{score}}</a>
-            <a class="button profileForm__button", href="/profileChange">Change</a> 
-        </form>
-        `);
+    this.template = template;
   }
 }
 
@@ -35,7 +27,7 @@ export default class ProfileView extends BaseView {
     const application = this.el;
     AjaxModule.fetchGet('http://93.171.139.196:780/signin/')
         .catch(() => {
-          window.avatar = '/assets/gold_fishka.jpg';
+          window.avatar = 'https://jok.io/Images/Shared/unknown_female.png';
           window.username = 'unauthorized';
           const prof = new ProfileComponent({
             avatar: window.avatar,
