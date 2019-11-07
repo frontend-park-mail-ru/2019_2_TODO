@@ -31,7 +31,6 @@ export class game {
         sessionStorage.playerScore <= 0 ||
         isNaN(sessionStorage.botScore) ||
         sessionStorage.botScore <= 0) {
-
       sessionStorage.dealer = 'player';
       sessionStorage.secondPlayer = 'bot';
       sessionStorage.playerScore = 1000;
@@ -69,8 +68,8 @@ export class game {
       if (sessionStorage.dealer !== 'player') {
         OfflineGameView.enableButtonPanel('playerPanel');
       }
-      this.animation.reverseBankerCards(this.bankCards, [0, 1, 2, 3, 4]);
-      this.animation.reverseBotCards(this.botCards, 'random');
+      // this.animation.reverseBankerCards(this.bankCards, [0, 1, 2, 3, 4]);
+      // this.animation.reverseBotCards(this.botCards, 'random');
       removeEventListener('endOfStartAnimation', startAnimationListener);
     };
     addEventListener('endOfStartAnimation', startAnimationListener);

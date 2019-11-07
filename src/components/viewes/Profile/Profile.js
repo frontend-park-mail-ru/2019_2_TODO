@@ -6,9 +6,9 @@ import AjaxModule from '../../../module/ajax.js';
 /** Класс профиля */
 export class ProfileComponent extends BaseComponent {
   /**
-     * Создать профиль
-     * @param {string} context - контекст для профиля
-     */
+   * Создать профиль
+   * @param {string} context - контекст для профиля
+   */
   constructor(context) {
     super();
     this.context = context;
@@ -34,6 +34,16 @@ export default class ProfileView extends BaseView {
     this.el.innerHTML = '';
     const application = this.el;
     AjaxModule.fetchGet('http://93.171.139.196:780/signin/')
+        .catch(() => {
+          window.avatar = './assets/gold_fishka.jpg';
+          window.username = 'asd';
+          const prof = new ProfileComponent({
+            avatar: window.avatar,
+            nickname: window.username,
+            score: 1000,
+          });
+          application.innerHTML = prof.render();
+        })
         .then((res) => {
           return res.text();
         })
