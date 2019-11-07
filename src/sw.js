@@ -9,6 +9,7 @@ const cacheUrls = [
     // 'components/views/OfflineGameView.js',
     // 'components/views/OfflineGameView.js',
     // 'modules/ajax.js',
+    //'assets/gold_fishka.jpg',
     ...assets,
 ];
 console.log(assets);

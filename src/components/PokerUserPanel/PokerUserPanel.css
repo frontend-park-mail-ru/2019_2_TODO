@@ -3,9 +3,11 @@
 .poker-user-panel{
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     min-width: 515px;
+    grid-area: 3/2;
+
     z-index: 1;
 }
 .poker-user-panel__score-bet{
@@ -13,19 +15,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -50px;
+    /*margin-top: -50px;*/
     margin-right: 3px;
     min-height: 60px;
     min-width: 100px;
     background: gold;
     border: 1px solid black;
     border-radius: 5px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 .poker-user-panel__button{
     height: 60px;
     width: 100px;
     margin-right: 3px;
-    margin-top: -50px;
+    /*margin-top: -50px;*/
     color: #FFFFFF;
     background: darkslategrey;
     border: 1px solid black;
@@ -40,7 +44,7 @@ poker-user-panel__button_disabled{
     height: 60px;
     width: 100px;
     margin-right: 3px;
-    margin-top: -50px;
+    /*margin-top: -50px;*/
     color: #FFFFFF;
     background: gray;
     border: 1px solid black;
