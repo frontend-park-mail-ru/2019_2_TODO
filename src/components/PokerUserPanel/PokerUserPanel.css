@@ -3,12 +3,17 @@
 .poker-user-panel{
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     min-width: 515px;
     grid-area: 3/2;
 
     z-index: 1;
+}
+.poker-user-panel__avatar{
+    border-radius: 100px;
+    height: 50px;
+    width: 50px;
 }
 .poker-user-panel__score-bet{
     color: black;

@@ -308,7 +308,6 @@ export class PokerAnimation {
 
 
                 this.ctx.save();
-                console.log(-this.bankerCoordinates.y + this.bankerCardsCoordinates.y);
                 this.ctx.translate((-this.bankerCoordinates.x + this.bankerCardsCoordinates.x) * progress * progress,
                     (-this.bankerCoordinates.y + this.bankerCardsCoordinates.y) * progress);
                 this.ctx.translate(progress * progress * (-(this._bankerCards.length * 90 / 2) + 45), 0);
@@ -346,7 +345,6 @@ export class PokerAnimation {
     reverseCards(cards, x, y, turnRate, event = 'cardsReversed', rotateC = 0) {
         let progress = 0;
         let turned = 0;
-        console.log(cards);
         const reverse = () => {
             this.ctx.save();
             this.ctx.translate(x, y);

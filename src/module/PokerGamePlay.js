@@ -16,7 +16,7 @@ export const updateScoreBet = () => {
 
 export class game {
   constructor() {
-    this.deck = baseDeck;
+    this.deck = [...baseDeck];
     this.playerHand = null;
     this.botHand = null;
     this.bankCards = null;
@@ -24,26 +24,40 @@ export class game {
     this.animation = new PokerAnimation();
     this._callCheck = false;
     this._stage = 0;
+    this._allIn = false;
     if (isNaN(sessionStorage.playerScore) ||
         sessionStorage.playerScore <= 0 ||
         isNaN(sessionStorage.botScore) ||
         sessionStorage.botScore <= 0) {
 
-      sessionStorage.dealer = 'player';
-      sessionStorage.secondPlayer = 'bot';
+
       sessionStorage.playerScore = 1000;
       sessionStorage.botScore = 1000;
       sessionStorage.botBet = 0;
       sessionStorage.playerBet = 0;
     }
+      sessionStorage.dealer = 'player';
+      sessionStorage.secondPlayer = 'bot';
     this.bot();
     updateScoreBet();
   }
 
   startRound() {
+      if (isNaN(sessionStorage.playerScore) ||
+          sessionStorage.playerScore <= 0)
+          {
+          sessionStorage.playerScore = 1000;
+          sessionStorage.botBet = 0;
+      }
+      if (isNaN(sessionStorage.botScore) ||
+          sessionStorage.botScore <= 0){
+          sessionStorage.botScore = 1000;
+          sessionStorage.playerBet = 0;
+      }
     this._stage = 0;
+    this._allIn = false;
     OfflineGameView.disableButtonPanel('playerPanel');
-    this.deck = baseDeck;
+    this.deck = [...baseDeck];
     sessionStorage.botScore = parseInt(sessionStorage.botScore) + parseInt(sessionStorage.botBet) + parseInt(sessionStorage.playerBet);
     sessionStorage.playerBet = 0;
     sessionStorage.bank = 0;
@@ -105,30 +119,28 @@ export class game {
   }
 
   raise(evt = null, value) {
-    console.log('raise');
     const func = (evt, value) => {
       let intValue = parseInt(value);
       if (evt.target.parentElement.id === 'playerPanel') {
           intValue += parseInt(sessionStorage.botBet);
-        if (sessionStorage.playerScore >= intValue) {
+        if (sessionStorage.playerScore > intValue) {
           sessionStorage.playerScore -= intValue;
           sessionStorage.playerBet -= -intValue;
-          console.log(sessionStorage.playerBet);
         } else {
-          console.log(2);
           sessionStorage.playerBet -= -sessionStorage.playerScore;
           sessionStorage.playerScore = 0;
+            this._allIn = true;
         }
-
         dispatchEvent(new Event('raise'));
       } else {
           intValue += parseInt(sessionStorage.playerBet);
-        if (sessionStorage.botScore >= intValue) {
+        if (sessionStorage.botScore > intValue) {
           sessionStorage.botScore -= intValue;
           sessionStorage.botBet -= -intValue;
         } else {
           sessionStorage.botBet -= -sessionStorage.botScore;
           sessionStorage.botScore = 0;
+          this._allIn = true;
         }
         OfflineGameView.enableButtonPanel('call');
       }
@@ -139,7 +151,6 @@ export class game {
   };
 
   fold(evt) {
-    console.log('fold');
     const func = (evt) => {
       sessionStorage.bank = parseInt(sessionStorage.bank) + parseInt(sessionStorage.botBet) + parseInt(sessionStorage.playerBet);
       if (evt.target.parentElement.id === 'playerPanel') {
@@ -164,7 +175,6 @@ export class game {
   };
 
   check(evt) {
-    console.log('check', this._callCheck);
     const func = (evt) => {
       if (this._callCheck) {
         this._callCheck = false;
@@ -180,33 +190,34 @@ export class game {
     };
     func(evt);
   };
-
-  nextStage() {
-    console.log('nextStage');
+  nextStage(allin = false) {
     const func = () => {
-      // console.log(this.bankCards.slice(0,3));
+        console.log(this._allIn);
       if (this._stage === 0) {
         this.animation.reverseBankerCards(this.bankCards, [0, 1, 2]);
       } else if (this._stage === 1) {
-        console.log(this.bankCards.slice(3, 4));
         this.animation.reverseBankerCards(this.bankCards, [3]);
       } else if (this._stage === 2) {
         this.animation.reverseBankerCards(this.bankCards, [4]);
       } else if (this._stage === 3) {
-        console.log('end');
+          this._stage++;
         const listener = () => {
           this.endRound();
           removeEventListener('endOfRound', listener);
         };
         addEventListener('endOfRound', listener);
         this.animation.reverseBotCards(this.botCards, 'endOfRound');
+        return;
       }
       this._stage++;
-      sessionStorage.bank -= -(parseInt(sessionStorage.botBet) + parseInt(sessionStorage.playerBet));
+      sessionStorage.bank = parseInt(sessionStorage.bank)+(parseInt(sessionStorage.botBet) + parseInt(sessionStorage.playerBet));
       sessionStorage.playerBet = 0;
       sessionStorage.botBet = 0;
       updateScoreBet();
       console.log(this._stage);
+      if (this._allIn) {
+          this.nextStage();
+      }
     };
     func();
   };
@@ -218,26 +229,26 @@ export class game {
             const botScore = parseInt(sessionStorage.botScore);
             const playerScore = parseInt(sessionStorage.playerScore);
             if (evt.target.parentElement.id === 'playerPanel') {
-
                 if (botBet > playerBet) {
                     if (playerScore < botBet - playerBet) {
-                        sessionStorage.playerBet -= -playerScore;
+                        sessionStorage.playerBet = parseInt(sessionStorage.playerBet) + playerScore;
                         sessionStorage.playerScore = 0;
+                        this._allIn = true;
                     } else {
                         sessionStorage.playerScore -= botBet - playerBet;
                         sessionStorage.playerBet = botBet;
                     }
                 } else {
-
                 }
                 dispatchEvent(new Event('call'))
             } else {
                 if (botBet < playerBet) {
                     if (botScore < playerBet - botBet) {
-                        sessionStorage.botBet -= botScore;
+                        sessionStorage.botBet = parseInt(sessionStorage.botBet) + botScore;
                         sessionStorage.botScore = 0;
+                        this._allIn = true;
                     } else {
-                        sessionStorage.botScore -= playerBet - botBet;
+                        sessionStorage.botScore = parseInt(sessionStorage.botScore) - (playerBet - botBet);
                         sessionStorage.botBet = playerBet;
                     }
                 }
@@ -257,7 +268,6 @@ export class game {
 
 
     bets() {
-    console.log('bets');
     // document.getElementById('firstButton').textContent = 'Call';
     // document.getElementById('secondButton').textContent = 'Check';
     // document.getElementById('thirdButton').textContent = 'Fold';
@@ -300,48 +310,53 @@ export class game {
     return result;
   };
 
-  getNoRandomHand(cardsNumber) {
-    const result = [];
-    let index = 0;
-    for (let i = 0; i < cardsNumber;) {
-      const card = this.deck[index];
-      this.deck[index] = null;
-      if (card) {
-        result.push(card);
-        i++;
-      }
-      index++;
-    }
-    return result;
-  }
 
     bot(){
         addEventListener('call', () => {
-            if (this._stage < 4){
 
-                setTimeout(() => {
-                    if (this.botHand.rank < 2) {
+            // if (this._allIn){ return}
+            setTimeout(() => {
+                if (this._stage < 4) {
+                    if (this._allIn){
                         const evt = {};
                         evt.target = {};
                         evt.target.parentElement = {};
                         evt.target.parentElement.id = 'botPanel';
                         // console.log(evt);
+                        this.call(evt);
+                        return;
+                    }
+                    if (this.botHand.rank < 2) {
+                        const evt = {};
+                        evt.target = {};
+                        evt.target.parentElement = {};
+                        evt.target.parentElement.id = 'botPanel';
                         this.check(evt)
                     } else {
                         const evt = {};
                         evt.target = {};
                         evt.target.parentElement = {};
                         evt.target.parentElement.id = 'botPanel';
-                        // console.log(evt);
                         this.raise(evt, 40);
                     }
-                }, 1000)
-            }
+                }
+            }, 1000)
+
         });
         addEventListener('raise', () => {
-            if (this._stage < 4){
 
-                setTimeout( () => {
+
+            setTimeout( () => {
+                if (this._stage < 4) {
+                    if (this._allIn){
+                        const evt = {};
+                        evt.target = {};
+                        evt.target.parentElement = {};
+                        evt.target.parentElement.id = 'botPanel';
+                        // console.log(evt);
+                        this.call(evt);
+                        return;
+                    }
                     if (this.botHand.rank < 2) {
                         const evt = {};
                         evt.target = {};
@@ -349,7 +364,7 @@ export class game {
                         evt.target.parentElement.id = 'botPanel';
                         // console.log(evt);
                         this.fold(evt);
-                    } else if (this.botHand.rank < 5){
+                    } else if (this.botHand.rank < 5) {
                         const evt = {};
                         evt.target = {};
                         evt.target.parentElement = {};
@@ -364,12 +379,13 @@ export class game {
                         // console.log(evt);
                         this.raise(evt, 40);
                     }
-                }, 1000)
-            }
+                }
+            }, 1000)
         });
         addEventListener('check', () =>{
-            if (this._stage < 4) {
-                setTimeout( () => {
+
+            setTimeout( () => {
+                if (this._stage < 4) {
                     if (this.botHand.rank < 2) {
                         const evt = {};
                         evt.target = {};
@@ -385,8 +401,9 @@ export class game {
                         // console.log(evt);
                         this.raise(evt, 40);
                     }
-                }, 1000)
-            }
+                }
+            }, 1000)
+
         });
         addEventListener('blind', () => {
             setTimeout( () => {

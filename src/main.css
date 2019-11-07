@@ -8,7 +8,7 @@
 @import url('./components/InfoBar/infoBar.css');
 @import url('./components/viewes/OfflineGame/OfflineGameView.css');
 @import url('./components/PokerUserPanel/PokerUserPanel.css');
-@import url('components/BankPanel/BankPanel.css');
+@import url('./components/BankPanel/BankPanel.css');
 @import url('./components/ButtonPanel/ButtonPanel.css');
 @import url('./components/BotPanel/BotPanel.css');
 
@@ -60,5 +60,7 @@ form {
 .column{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
