@@ -31,22 +31,16 @@
 
 .deckFun{
     margin-top: auto;
-    display: flex;
-    flex-direction: row;
+    @extend %row;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-
-
-.deckFun__card {
-    -webkit-transition-property: transform;
-    -moz-transition-property: transform;
-    -o-transition-property: transform;
+%card{
+    transition-property: transform;
     transition-duration: 500ms;
     transition-timing-function: ease;
-    display: flex;
-    flex-direction: row;
+    @extend %row;
     align-items: center;
     justify-content: space-between;
     color: #EEEEEE;
@@ -54,6 +48,10 @@
     min-height: 280px;
     box-sizing: border-box;
     border-radius: 20px;
+}
+
+.deckFun__card {
+    @extend %card;
     margin-right: -35px;
     margin-left: -35px;
     margin-top: 70px;

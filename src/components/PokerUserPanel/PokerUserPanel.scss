@@ -1,8 +1,7 @@
-
+@import "../../base.scss";
 
 .poker-user-panel{
-    display: flex;
-    flex-direction: row;
+    @extend %row;
     align-items: center;
     justify-content: center;
     min-width: 515px;
@@ -37,6 +36,7 @@
     margin-bottom: 0;
 }
 .poker-user-panel__button{
+    @extend %column;
     height: 60px;
     width: 100px;
     margin-right: 3px;
@@ -45,8 +45,6 @@
     background: darkslategrey;
     border: 1px solid black;
     border-radius: 5px;
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -60,8 +58,7 @@ poker-user-panel__button_disabled{
     background: gray;
     border: 1px solid black;
     border-radius: 5px;
-    display: flex;
-    flex-direction: column;
+    @extend %column;
     align-items: center;
     justify-content: flex-end;
 }

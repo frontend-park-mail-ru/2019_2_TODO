@@ -1,6 +1,7 @@
+@import "../../base.scss";
+
 .header {
-    display: flex;
-    flex-direction: column;
+    @extend %column;
 }
 
 .header__button_back {
@@ -8,8 +9,7 @@
 }
 
 .header__top-section {
-    display: flex;
-    flex-direction: row;
+    @extend %row;
     justify-content: space-between;
     align-items: baseline;
 }
