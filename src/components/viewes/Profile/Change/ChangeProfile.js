@@ -25,7 +25,6 @@ export default class ChangeProfileView extends BaseView {
   }
 
   render() {
-    const application = this.el;
     AjaxModule.fetchGet('http://93.171.139.196:780/signin/')
         .catch(()=>{
           this.el.innerHTML = '';
@@ -111,9 +110,10 @@ export default class ChangeProfileView extends BaseView {
           // application.innerHTML = profile.render();
           // const avButton = document.getElementById('changeAv');
           // const npButton = document.getElementById('changeNP');
-
+          console.log(this.el.id);
           this.el.addEventListener('click', (evt) => {
             evt.preventDefault();
+            console.log('click');
             if (evt.target.id === 'changeAv'){
               const av = document.getElementById('avatarInput');
               const data = new FormData();
@@ -126,6 +126,7 @@ export default class ChangeProfileView extends BaseView {
               const nick = form.elements.nick.value;
               const pass = form.elements.pass.value;
               const passRepeat = form.elements.passr.value;
+              console.log(nick, pass, passRepeat);
               if (pass !== passRepeat) {
                 password.error('PASSWORDS_MATCH', form);
                 return;
@@ -142,6 +143,7 @@ export default class ChangeProfileView extends BaseView {
                   })
               )
                   .then((res) => {
+                    return;
                     if (res.status === 200) {
                       console.log(res);
                       window.router.open('/');

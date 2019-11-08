@@ -6,13 +6,13 @@
         <img class="profileForm__avatar" src="{{avatar}}">
         <div class="profileForm__container">
             <input type="file" class="profileForm__file-input" id="avatarInput">
-            <button class="button profileForm__button" id="changeAv"> Upload avatar</button>
+            <div class="button profileForm__button" id="changeAv"> Upload avatar</div>
         </div>
     </header>
     <div class="profileForm__container" id="inputContainer">
         <input class="profileForm__input" id="nick" placeholder="{{username}}">
-        <input class="profileForm__input" id="pass" placeholder="password">
-        <input class="profileForm__input" id="passr" placeholder="password repeat">
-        <button class="button profileForm__button" href="/profileChange" id="changeAv">Change</button>
+        <input type="password" class="profileForm__input" id="pass" placeholder="password">
+        <input type="password" class="profileForm__input" id="passr" placeholder="password repeat">
+        <div class="button profileForm__button" href="/profileChange" id="changeAv">Change</div>
     </div>
 </form>
