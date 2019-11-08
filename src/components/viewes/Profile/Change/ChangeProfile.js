@@ -1,8 +1,5 @@
-import {ButtonComponent} from '../../../Button/Button.js';
-import {ImageComponent} from '../../../Image/Image.js';
 import AjaxModule from '../../../../module/ajax.js';
 import BaseView from '../../BaseView/BaseView.js';
-import {TextComponent} from '../../../TextComponent/Text.js';
 import BaseComponent from '../../../BaseComponent/BaseComponent.js';
 import template from './ChangeProfile.hbs';
 import InputError from '../../../Input/Input.js';
@@ -39,7 +36,7 @@ export default class ChangeProfileView extends BaseView {
         })
         .then((resT) => {
           console.log(resT);
-          const prof = new profileChange({
+          const prof = new ProfileChange({
             username: JSON.parse(resT).username,
             avatar: JSON.parse(resT).image,
           });
