@@ -1,11 +1,11 @@
 import {ButtonComponent} from '../../../Button/Button.js';
 import {ImageComponent} from '../../../Image/Image.js';
-import {InputComponent} from '../../../Input/Input.js';
 import AjaxModule from '../../../../module/ajax.js';
 import BaseView from '../../BaseView/BaseView.js';
 import {TextComponent} from '../../../TextComponent/Text.js';
 import BaseComponent from '../../../BaseComponent/BaseComponent.js';
 import template from './ChangeProfile.hbs';
+import InputError from "../../../Input/Input.js";
 
 class profileChange extends BaseComponent {
   constructor(context) {
@@ -122,17 +122,16 @@ export default class ChangeProfileView extends BaseView {
             }
             if (evt.target.id === 'changeNP'){
               evt.preventDefault();
-              const form = document.getElementById('inputContainer');
-              const nick = form.elements.nick.value;
-              const pass = form.elements.pass.value;
-              const passRepeat = form.elements.passr.value;
+              const nick = document.getElementById('nick');
+              const pass = document.getElementById('pass');
+              const passRepeat = document.getElementById('passr');
               console.log(nick, pass, passRepeat);
               if (pass !== passRepeat) {
-                password.error('PASSWORDS_MATCH', form);
+                InputError.error('PASSWORDS_MATCH', this.el.lastChild);
                 return;
               }
               if ((pass.length < 5)&&(pass.length > 0)) {
-                password.error('PASSWORD_LENGTH', form);
+                InputError.error('PASSWORD_LENGTH', this.el.lastChild);
                 return;
               }
               AjaxModule.fetchPost(
