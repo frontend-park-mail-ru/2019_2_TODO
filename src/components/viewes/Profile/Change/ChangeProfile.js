@@ -112,9 +112,10 @@ export default class ChangeProfileView extends BaseView {
           // const npButton = document.getElementById('changeNP');
           console.log(this.el.id);
           this.el.addEventListener('click', (evt) => {
-            evt.preventDefault();
+
             console.log('click');
             if (evt.target.id === 'changeAv'){
+              evt.preventDefault();
               const av = document.getElementById('avatarInput');
               const data = new FormData();
               data.append('image', av.files[0]);
