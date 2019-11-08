@@ -143,7 +143,6 @@ export default class ChangeProfileView extends BaseView {
                   })
               )
                   .then((res) => {
-                    return;
                     if (res.status === 200) {
                       console.log(res);
                       window.router.open('/');
