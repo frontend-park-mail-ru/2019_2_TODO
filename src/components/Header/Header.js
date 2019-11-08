@@ -77,7 +77,6 @@ export class HeaderComponent {
     if (this._authorized) {
       const infoBar = new InfoBar(topSection);
       infoBar.render();
-
     }
     head.innerHTML += chip.render();
     head.innerHTML += text.render();

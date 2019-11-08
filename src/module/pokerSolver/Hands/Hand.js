@@ -241,9 +241,6 @@ export default class Hand {
   }
 
 
-
-
-
   /**
      * Separate cards based on if they are wild cards.
      * @param  {Array} cards Array of cards (['Ad', '3c', 'Th', ...]).

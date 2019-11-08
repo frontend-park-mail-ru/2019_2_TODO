@@ -1,6 +1,6 @@
 import BaseComponent from '../BaseComponent/BaseComponent.js';
 import template from './Input.hbs';
-import {TextComponent} from "../TextComponent/Text.js";
+import {TextComponent} from '../TextComponent/Text.js';
 /**
  * Класс для Input
  */

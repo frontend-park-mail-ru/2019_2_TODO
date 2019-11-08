@@ -9,8 +9,8 @@ import OfflineGameView from './components/viewes/OfflineGame/OfflineGameView.js'
 import runtime from 'serviceworker-webpack-plugin/lib/runtime.js';
 
 if ('serviceWorker' in navigator) {
-    console.log(navigator);
-    const registration = runtime.register();
+  console.log(navigator);
+  const registration = runtime.register();
 }
 const application = document.getElementById('application');
 window.router = new Router(application);

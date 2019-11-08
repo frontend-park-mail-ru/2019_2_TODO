@@ -7,9 +7,9 @@ import {TextComponent} from '../../../TextComponent/Text.js';
 import BaseComponent from '../../../BaseComponent/BaseComponent.js';
 import template from './ChangeProfile.hbs';
 
-class profileChange extends BaseComponent{
-  constructor(context){
-    super(context)
+class profileChange extends BaseComponent {
+  constructor(context) {
+    super(context);
     this.template = template;
   }
 }

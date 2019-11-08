@@ -1,4 +1,4 @@
-import AjaxModule from "./ajax";
+import AjaxModule from './ajax';
 
 export default class Router {
   constructor(root) {
@@ -76,12 +76,12 @@ export default class Router {
   }
 
   start() {
-    this.root.addEventListener('click', event =>  {
+    this.root.addEventListener('click', (event) => {
       if (!(event.target instanceof HTMLAnchorElement)) {
         const {target} = event;
-        //console.log(event);
+        // console.log(event);
         if (target.id === 'logout') {
-          //console.log(target);
+          // console.log(target);
           AjaxModule.logOut(document.getElementById('application'));
         }
         return;
@@ -97,7 +97,7 @@ export default class Router {
       this.open(link.pathname);
     });
 
-    window.addEventListener('popstate', () =>  {
+    window.addEventListener('popstate', () => {
       const currentPath = window.location.pathname;
 
       this.open(currentPath);
