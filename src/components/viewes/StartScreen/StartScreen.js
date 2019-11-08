@@ -38,7 +38,7 @@ export default class StartScreen extends BaseView {
             const button = new ButtonPanel({});
             application.innerHTML += button.render();
           } else {
-            const header = new HeaderComponent(application, false, false);
+            const header = new HeaderComponent(application, false, true);
             header.render();
             const deck = new DeckFanComponent(application);
             deck.render();
