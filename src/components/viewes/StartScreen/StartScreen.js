@@ -15,7 +15,7 @@ export default class StartScreen extends BaseView {
     const application = document.createElement('section');
     AjaxModule.fetchGet('http://93.171.139.196:780/signin/')
         .catch((res) => {
-          const header = new HeaderComponent(application);
+          const header = new HeaderComponent(application, false, true);
           header.render();
           const deck = new DeckFanComponent(application);
           deck.render();
@@ -30,7 +30,7 @@ export default class StartScreen extends BaseView {
             console.log(JSON.parse(resText));
             window.username = JSON.parse(resText).username;
             window.avatar = JSON.parse(resText).image;
-            const header = new HeaderComponent(application, true);
+            const header = new HeaderComponent(application, true, false, window.avatar, window.username);
             console.log(window.username);
             header.render();
             const deck = new DeckFanComponent(application);
@@ -38,7 +38,7 @@ export default class StartScreen extends BaseView {
             const button = new ButtonPanel({});
             application.innerHTML += button.render();
           } else {
-            const header = new HeaderComponent(application);
+            const header = new HeaderComponent(application, false, true);
             header.render();
             const deck = new DeckFanComponent(application);
             deck.render();
