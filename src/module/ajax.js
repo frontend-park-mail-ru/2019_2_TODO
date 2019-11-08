@@ -17,8 +17,8 @@ class AjaxModule {
         .then((res) => {
           if (res.status === 200) {
             // console.log(res);
-              window.router.open('/profile');
-            //window.router.reRender('/profile');
+            window.router.open('/profile');
+            // window.router.reRender('/profile');
           }
         });
   }

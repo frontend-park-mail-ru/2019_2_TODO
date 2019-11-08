@@ -3,14 +3,14 @@ const CACHE_NAME = 'offline';
 const {assets} = global.serviceWorkerOption;
 // ссылки на кэшируемые файлы
 const cacheUrls = [
-    // 'index.html',
-    // 'main.scss',
-    // 'main.js',
-    // 'components/views/OfflineGameView.js',
-    // 'components/views/OfflineGameView.js',
-    // 'modules/ajax.js',
-    //'assets/gold_fishka.jpg',
-    ...assets,
+  // 'index.html',
+  // 'main.scss',
+  // 'main.js',
+  // 'components/views/OfflineGameView.js',
+  // 'components/views/OfflineGameView.js',
+  // 'modules/ajax.js',
+  // 'assets/gold_fishka.jpg',
+  ...assets,
 ];
 console.log(assets);
 console.log(cacheUrls);

@@ -5,9 +5,9 @@ import BaseView from '../../BaseView/BaseView.js';
 import {TextComponent} from '../../../TextComponent/Text.js';
 import BaseComponent from '../../../BaseComponent/BaseComponent.js';
 import template from './ChangeProfile.hbs';
-import InputError from "../../../Input/Input.js";
+import InputError from '../../../Input/Input.js';
 
-class profileChange extends BaseComponent {
+class ProfileChange extends BaseComponent {
   constructor(context) {
     super(context);
     this.template = template;
@@ -28,7 +28,7 @@ export default class ChangeProfileView extends BaseView {
     AjaxModule.fetchGet('http://93.171.139.196:780/signin/')
         .catch(()=>{
           this.el.innerHTML = '';
-          const prof = new profileChange({
+          const prof = new ProfileChange({
             avatar: 'https://jok.io/Images/Shared/unknown_female.png',
             username: 'username',
           });
@@ -41,7 +41,7 @@ export default class ChangeProfileView extends BaseView {
           console.log(resT);
           const prof = new profileChange({
             username: JSON.parse(resT).username,
-            avatar: JSON.parse(resT).image
+            avatar: JSON.parse(resT).image,
           });
           this.el.innerHTML = prof.render();
           // const form = document.createElement('form');
@@ -112,16 +112,15 @@ export default class ChangeProfileView extends BaseView {
           // const npButton = document.getElementById('changeNP');
           console.log(this.el.id);
           this.el.addEventListener('click', (evt) => {
-
             console.log('click');
-            if (evt.target.id === 'changeAv'){
+            if (evt.target.id === 'changeAv') {
               evt.preventDefault();
               const av = document.getElementById('avatarInput');
               const data = new FormData();
               data.append('image', av.files[0]);
               AjaxModule.postAvatar(application, data);
             }
-            if (evt.target.id === 'changeNP'){
+            if (evt.target.id === 'changeNP') {
               evt.preventDefault();
               const nick = document.getElementById('nick').value;
               const pass = document.getElementById('pass').value;
