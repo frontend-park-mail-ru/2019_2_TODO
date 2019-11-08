@@ -31,10 +31,10 @@
     width: 90px;
 }
 
-button[disabled]{
+button:disabled{
     background: grey;
 }
-button[disabled]:hover{
+button:disabled:hover{
     background: grey;
     color: white;
 }

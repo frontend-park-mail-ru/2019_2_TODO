@@ -9,7 +9,6 @@ const path = require('path');
 const app = express();
 const cors = require('cors');
 const rootDir = path.resolve(__dirname, '..', 'src');
-const poker = require('pokersolver');
 
 app.use(morgan('dev'));
 

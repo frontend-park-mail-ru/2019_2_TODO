@@ -38,8 +38,11 @@ export class game {
     }
       sessionStorage.dealer = 'player';
       sessionStorage.secondPlayer = 'bot';
-    this.bot();
-    updateScoreBet();
+      if (window.bot !== true){
+          this.bot();
+      }
+      window.bot = true;
+      updateScoreBet();
   }
 
   startRound() {
@@ -127,10 +130,10 @@ export class game {
           sessionStorage.playerScore -= intValue;
           sessionStorage.playerBet -= -intValue;
         } else {
-          sessionStorage.playerBet =parseInt(sessionStorage.playerBet) +
+          sessionStorage.playerBet = parseInt(sessionStorage.playerBet) +
               Math.min(parseInt(sessionStorage.playerScore),
                   parseInt(sessionStorage.botScore)+parseInt(sessionStorage.botBet) - parseInt(sessionStorage.playerBet));
-            sessionStorage.playerScore = parseInt(sessionStorage.playerScore) - sessionStorage.playerBet;
+            sessionStorage.playerScore = Math.max(parseInt(sessionStorage.playerScore) - parseInt(sessionStorage.playerBet), 0);
             this._allIn = true;
         }
         dispatchEvent(new Event('raise'));

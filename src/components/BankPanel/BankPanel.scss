@@ -1,7 +1,7 @@
+@import "../../base.scss";
 
 .poker-bot-panel{
-    display: flex;
-    flex-direction: row;
+    @extend %row;
     justify-content: space-between;
     align-items: center;
     justify-self: center;

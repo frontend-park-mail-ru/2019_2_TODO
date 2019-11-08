@@ -1,9 +1,10 @@
+@import "../../base.scss";
+
 .poker-bot{
     position: absolute;
     top: 70vh;
     right: 10vw;
-    display: flex;
-    flex-direction: row;
+    @extend %row;
     justify-content: center;
     align-items: center;
     margin-bottom: -20px;

@@ -1,7 +1,7 @@
+@import "../../base.scss";
 
 .infoBar {
-    display: flex;
-    flex-direction: row;
+    @extend %row;
     align-self: flex-end;
     background: #34495F;
     max-width: 250px;

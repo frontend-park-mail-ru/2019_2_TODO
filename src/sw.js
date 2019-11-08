@@ -4,7 +4,7 @@ const {assets} = global.serviceWorkerOption;
 // ссылки на кэшируемые файлы
 const cacheUrls = [
     // 'index.html',
-    // 'main.css',
+    // 'main.scss',
     // 'main.js',
     // 'components/views/OfflineGameView.js',
     // 'components/views/OfflineGameView.js',
