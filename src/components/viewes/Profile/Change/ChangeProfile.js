@@ -123,9 +123,9 @@ export default class ChangeProfileView extends BaseView {
             }
             if (evt.target.id === 'changeNP'){
               evt.preventDefault();
-              const nick = document.getElementById('nick');
-              const pass = document.getElementById('pass');
-              const passRepeat = document.getElementById('passr');
+              const nick = document.getElementById('nick').value;
+              const pass = document.getElementById('pass').value;
+              const passRepeat = document.getElementById('passr').value;
               console.log(nick, pass, passRepeat);
               if (pass !== passRepeat) {
                 InputError.error('PASSWORDS_MATCH', this.el.lastChild);
