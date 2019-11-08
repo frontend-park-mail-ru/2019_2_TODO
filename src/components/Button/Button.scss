@@ -1,0 +1,56 @@
+
+
+
+.startButton {
+    position: relative;
+    width: 123px;
+    height: 52px;
+    /*left: 837px;*/
+    /*top: 728px;*/
+
+    background: #337AB7;
+    border-radius: 20px;
+}
+
+.button {
+    color: white;
+    text-align: center;
+    min-width: 90px;
+    min-height: 20px;
+    background: darkslategrey;
+    border: 1px ;
+    border-radius: 3px;
+    align-self: flex-end;
+    margin: 3px;
+    cursor: pointer;
+}
+
+.button-back{
+    grid-area: 1/1;
+    align-self: flex-start;
+    /*position: absolute;*/
+    /*top: 1vh;*/
+    /*left: 3vw;*/
+    width: 90px;
+}
+
+button:disabled{
+    background: grey;
+}
+button:disabled:hover{
+    background: grey;
+    color: white;
+}
+
+.button:focus{
+    background: #ffd700;
+    color: black;
+    outline: none;
+
+}
+.logButton {
+}
+.signButton {
+
+}
+

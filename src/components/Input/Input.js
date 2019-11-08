@@ -1,47 +1,69 @@
-import BaseComponent from '../BaseComponent/BaseComponent.js'
-import { TextComponent } from '../TextComponent/Text.js'
-
+import BaseComponent from '../BaseComponent/BaseComponent.js';
+import template from './Input.hbs';
+import {TextComponent} from '../TextComponent/Text.js';
+/**
+ * Класс для Input
+ */
 export class InputComponent extends BaseComponent {
-  constructor (context) {
-    super()
-    this.context = context
-    this.template = Handlebars.compile(`
-            <input type="{{type}}" id="{{id}}" placeholder="{{placeholder}}">
-        `)
+  /**
+   * Создать Input
+   * @param {string} context - контекст для Input
+   */
+  constructor(context) {
+    super();
+    this.context = context;
+    this.template = template;
   }
+}
 
-  error (err, parent) {
+/** Класс ошибки ввода в Input */
+class InputError {
+  /**
+   * Создать Input
+   */
+  constructor() {
+    this._errText = null;
+  }
+  /**
+   * Вывести сообщение об ошибке
+   * @param {string} err - тип ошибки
+   * @param {HTMLElement} parent - родитель
+   */
+  e(err, parent) {
+    if (this._errText) {
+      parent.removeChild(document.getElementById('Err'));
+    }
     switch (err) {
-      case 'EMAIL_FORMAT':
-      {
-        const errorText = new TextComponent({
+      case 'NO_USERNAME': {
+        this._errText = new TextComponent({
           tag: 'a',
           class: 'error',
-          text: 'Not email'
-        })
-        parent.innerHTML += errorText.render()
-        break
+          text: 'No username',
+          id: 'Err',
+        });
+        parent.innerHTML += this._errText.render();
+        break;
       }
-      case 'PASSWORD_LENGTH':
-      {
-        const errorText = new TextComponent({
+      case 'PASSWORD_LENGTH': {
+        this._errText = new TextComponent({
           tag: 'a',
           class: 'error',
-          text: 'Password is too short'
-        })
-        parent.innerHTML += errorText.render()
-        break
+          text: 'Password too short',
+          id: 'Err',
+        });
+        parent.innerHTML += this._errText.render();
+        break;
       }
-      case 'PASSWORDS_MATCH':
-      {
-        const errorText = new TextComponent({
-          tag: 'a',
-          class: 'error',
-          text: 'Password are not equal'
-        })
-        parent.innerHTML += errorText.render()
-        break
+      case 'PASSWORDS_MATCH': {
+        this._errText = document.createElement('a');
+        this._errText.className = 'error';
+        this._errText.textContent = 'Passwords are not equal';
+        this._errText.id = 'Err';
+        parent.appendChild(this._errText);
+        break;
       }
     }
   }
 }
+
+export default new InputError();

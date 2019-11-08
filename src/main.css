@@ -4,12 +4,22 @@
 @import url('./components/Image/Image.css');
 @import url('./components/DeckFan/DeckFan.css');
 @import url('./components/Input/Input.css');
-@import url('./components/Profile/Profile.css');
+@import url('components/viewes/Profile/Change/ChangeProfile.scss');
+@import url('./components/InfoBar/infoBar.css');
+@import url('./components/viewes/OfflineGame/OfflineGameView.css');
+@import url('./components/PokerUserPanel/PokerUserPanel.css');
+@import url('./components/BankPanel/BankPanel.css');
+@import url('./components/ButtonPanel/ButtonPanel.css');
+@import url('./components/BotPanel/BotPanel.css');
 
 body{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     background: #27ae60;
+    height: 98vh;
+    padding: 0;
+    margin: 0;
 }
 
 div{
@@ -20,12 +30,18 @@ div{
 
 a{
     text-decoration: none;
+    font-family: 'cursive'
 }
+
+
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 section{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 
 }
 
@@ -38,4 +54,18 @@ form {
 
 }
 
+[hidden] {
+    display: none;
+}
 
+.column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+}

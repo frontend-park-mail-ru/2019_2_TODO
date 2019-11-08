@@ -1,0 +1,50 @@
+body{
+  @extend %column;
+  justify-content: space-between;
+  background: #27ae60;
+  //height: 98vh;
+  padding: 0;
+  margin: 0;
+}
+
+div{
+  @extend %column;
+  justify-content: space-around;
+}
+
+a{
+  text-decoration: none;
+}
+
+
+a:hover {
+  text-decoration: none;
+}
+
+section{
+  @extend %column;
+  justify-content: space-around;
+
+}
+
+form {
+  @extend %column;
+  align-items: center;
+  align-self: center;
+  max-width: 320px;
+
+}
+
+[hidden] {
+  display: none;
+}
+
+%column{
+  display: flex;
+  flex-direction: column;
+}
+
+%row{
+  display: flex;
+  flex-direction: row;
+}

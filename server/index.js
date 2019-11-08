@@ -1,19 +1,31 @@
-'use strict'
+'use strict';
 
-const express = require('express')
-const body = require('body-parser')
-const cookie = require('cookie-parser')
-const morgan = require('morgan')
-const path = require('path')
-const app = express()
+const fallback = require('express-history-api-fallback');
+const express = require('express');
+const body = require('body-parser');
+const cookie = require('cookie-parser');
+const morgan = require('morgan');
+const path = require('path');
+const app = express();
+const cors = require('cors');
+const rootDir = path.resolve(__dirname, '..', 'src');
 
-app.use(morgan('dev'))
-app.use(express.static(path.resolve(__dirname, '..', 'src')))
-app.use(body.json())
-app.use(cookie())
+app.use(morgan('dev'));
 
-const port = process.env.PORT || 80
+app.use(body.json());
+app.use(cookie());
+app.use((req, res, next) => {
+  res.set("Access-Control-Allow-Origin", "http://93.171.139.196:780");
+  res.set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.set('Access-Control-Allow-Credentials', true);
+  next();
+});
+app.use(express.static(rootDir));
+app.use(fallback('index.html', {root: rootDir}));
+
+const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
-  console.log(`Server listening port ${port}`)
-})
+  console.log(`Server listening port ${port}`);
+});

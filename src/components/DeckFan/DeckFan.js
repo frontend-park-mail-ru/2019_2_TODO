@@ -1,59 +1,90 @@
-import { TextComponent } from '../TextComponent/Text.js'
-import BaseComponent from '../BaseComponent/BaseComponent.js'
-
-/*
-* Компонент карты для стартового меню
- */
-
+import BaseComponent from '../BaseComponent/BaseComponent.js';
+import template from './DeckFan.hbs';
+/** Класс представляющий карточку для стартого экрана. */
 export class CardComponent extends BaseComponent {
-  constructor (context) {
-    super()
-    this.context = context
-    this.template = Handlebars.compile(`
-            <button class="card">
-                <a class="cardNominal">{{nominal}}</a>
-                <a class="cardText">{{text}}</a>
-            </button>`
-    )
+  /**
+   * Создать карточку
+   * @param {string} context -контекст для карточки
+   */
+  constructor(context) {
+    super(context);
+    this.template = template;
   }
 }
 
+
 const Cards = [{
   text: 'offline',
-  nominal: 'A'
+  nominal: 'A',
+  href: '/offline',
 }, {
   text: 'online',
-  nominal: 'K'
+  nominal: 'K',
+  href: '/online',
 }, {
   text: 'your profile',
-  nominal: 'Q'
+  nominal: 'Q',
+  href: '/profile',
 }, {
   text: 'scoreboard',
-  nominal: 'J'
+  nominal: 'J',
+  href: '/scoreboard',
 }, {
   text: 'about',
-  nominal: '10'
-}]
+  nominal: '10',
+  href: '/about',
+}, {
+  text: 'about',
+  nominal: '9',
+  href: '/about',
+}, {
+  text: 'about',
+  nominal: '8',
+  href: '/about',
+}];
 
-/*
-* Класс для нескольких карт
- */
+// const F = [{
+//   tag: 'h1',
+//   text: 'offline',
+//   href: '/offline',
+// }, {
+//   tag: 'h1',
+//   text: 'online',
+//   href: '/online',
+// }, {
+//   tag: 'h1',
+//   text: 'your profile',
+//   href: '/profile',
+// }, {
+//   tag: 'h1',
+//   text: 'scoreboard',
+//   href: '/scoreboard',
+// }];
 
+/** Класс для набора карт. */
 export class DeckFanComponent {
-  constructor (parent = document.body) {
-    this._parent = parent
+  /**
+   * Создать набор карт
+   * @param {HTMLElement} parent - родитель,
+   * в который вставлются карты
+   */
+  constructor(parent = document.body) {
+    this._parent = parent;
   }
 
-  render () {
-    const container = document.createElement('section')
-    container.className = 'container'
-    Cards.forEach(({ text, nominal }) => {
+  /**
+   * отрисовть набор карт
+   */
+  render() {
+    const container = document.createElement('section');
+    container.className = 'deckFun';
+    Cards.forEach(({text, nominal}) => {
       const Card = new CardComponent({
         nominal,
-        text
-      })
-      container.innerHTML += Card.render()
-    })
-    this._parent.appendChild(container)
+        text,
+      });
+      container.innerHTML += Card.render();
+    });
+    this._parent.appendChild(container);
   }
 }

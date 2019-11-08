@@ -1,26 +1,119 @@
 
-/*
-*Класс для использования fetch api
- */
+import StartScreen from '../components/viewes/StartScreen/StartScreen.js';
 
+/** Класс для использования fetch api. */
 class AjaxModule {
-  _fetch (url = 'http://93.171.139.196:780/',
-    params = {}
-  ) {
-    return fetch(url, params)
+  /**
+     * отправить картинку
+     * @param {HTMLElement} application - элемент для возврата
+     * @param {FormData} data - картинка
+     */
+  postAvatar(application, data) {
+    // console.log(data);
+    this.fetchPost('http://93.171.139.196:780/signin/profileImage/', data, {
+      method: 'POST',
+      credentials: 'include',
+      body: data})
+        .then((res) => {
+          if (res.status === 200) {
+            // console.log(res);
+            window.router.open('/profile');
+            // window.router.reRender('/profile');
+          }
+        });
   }
 
-  _fetchPost (
-    url = 'http://93.171.139.196:780/',
-    body = {},
-    params = { method: 'POST', withCredentials: true, credentials: 'include', body: body }) {
-    return fetch(url, params)
+  /**
+     * Регистрация
+     * @param {HTMLElement} application - элемент для возврата
+     * @param {string} email
+     * @param {string} password
+     */
+  signUp(application, email, password) {
+    console.log(JSON.stringify({
+      username: email,
+      password: password,
+    }));
+    this.fetchPost('http://93.171.139.196:780/signup/',
+        JSON.stringify({
+          username: email,
+          password: password,
+        }))
+        .then((rez) => {
+          if (rez.status === 200) {
+            console.log(rez);
+            window.router.reRender('/');
+          }
+        });
   }
 
-  _fetchGet (url = 'http://93.171.139.196:780/',
-    params = { method: 'GET', withCredentials: true, credentials: 'include' }) {
-    return fetch(url, params)
+  /**
+     * Авторизация
+     * @param {HTMLElement} application - элемент для возврата
+     * @param {string} email
+     * @param {string} password
+     */
+  signIn(application, email, password) {
+    this.fetchPost(
+        'http://93.171.139.196:780/signin/',
+        JSON.stringify({
+          username: email,
+          password: password,
+        })
+    ).then((res) => {
+      console.log('asca');
+      if (res.status === 200) {
+        console.log('___');
+        window.router.reRender('/');
+      }
+    });
+  }
+
+  /**
+     * Выход
+     * @param {HTMLElement} application - элемент для возврата
+     */
+  logOut(application) {
+    this.fetchGet('http://93.171.139.196:780/logout/')
+        .then((res) => {
+          console.log(res.status);
+          if (res.status === 200) {
+            window.router.reRender('/');
+          }
+        });
+  }
+
+  /**
+     * POST запрос
+     * @param {string} url - хост получателя
+     * @param {Object} body - тело запроса
+     * @param {Object} params - параметры запроса
+     * @return {Promise<Response>} - промиз для обработки
+     */
+  fetchPost(
+      url = 'http://93.171.139.196:780/',
+      body = {},
+      params = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        credentials: 'include',
+        body: body}) {
+    return fetch(url, params);
+  }
+
+  /**
+     * GET запрос
+     * @param {string} url - хост получателя
+     * @param {Object} params - параметры запроса
+     * @return {Promise<Response>} - промиз для обработки
+     */
+  fetchGet(url = 'http://93.171.139.196:780/',
+      params = {method: 'GET', credentials: 'include'}) {
+    return fetch(url, params);
   }
 }
 
-export default new AjaxModule()
+export default new AjaxModule();

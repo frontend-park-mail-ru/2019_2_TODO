@@ -1,0 +1,14 @@
+<div class="poker-user-panel" id="playerPanel">
+    <div class="column poker-user-panel__container">
+        <img id="gameAvatar" class="poker-user-panel__container__avatar" src="{{src}}">
+<!--        <b id="gameUsername">{{username}}</b>-->
+    </div>
+    <button id="firstButton" class="poker-user-panel__button">check</button>
+    <button id="secondButton" class="poker-user-panel__button">fold</button>
+    <button type="button" id="thirdButton" class="poker-user-panel__button">
+        <b id="raiseText">raise</b>
+        <input class="poker-user-panel__button__input" id="raiseInput" hidden/>
+    </button>
+
+    <a id="playerBet" class="poker-user-panel__score-bet">{{bet}}</a>
+</div>

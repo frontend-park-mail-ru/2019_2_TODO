@@ -1,11 +1,14 @@
-import BaseComponent from '../BaseComponent/BaseComponent.js'
-
+import BaseComponent from '../BaseComponent/BaseComponent.js';
+import template from './Image.hbs';
+/** Класс представляющий картинку */
 export class ImageComponent extends BaseComponent {
-  constructor (context) {
-    super()
-    this.context = context
-    this.template = Handlebars.compile(`      
-            <img src="{{source}}" data-section="{{section}}" class="{{class}}" alt=""/>
-        `)
+  /**
+   * Создать картинку
+   * @param {string} context - контекст картинки
+   */
+  constructor(context) {
+    super();
+    this.context = context;
+    this.template = template;
   }
 }

@@ -1,0 +1,103 @@
+
+.profileForm{
+    margin-top: 20vh;
+    width: 500px;
+    //max-height: 342px;
+    text-align: center;
+    background: #34495e;
+    border: 1px solid #2b3c4e;
+    padding: 10px;
+    border-radius: 10px;
+    z-index: 50;
+    box-shadow: 0 0 90px black;
+    text-align: center;
+}
+.profileForm__c{
+    height: 30px;
+    width: 30px;
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profileForm__close-button{
+    transition: transform , font-size, color;
+    transition-duration: 500ms;
+    transition-timing-function: ease;
+    font-size: 3vh;
+    /*align-self: flex-end;*/
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+.profileForm__close-button:hover {
+    font-size: calc(3vh + 10px);
+    transform: rotate(180deg);
+}
+.profileForm__close-button:focus{
+    color: white;
+}
+.profileForm__header{
+    min-height: 60%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-self: stretch;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.profileForm__nike{
+    font-size: 22px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.profileForm__actions{
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+
+.profileForm__title{
+    border-bottom: 1px solid #3e5266;
+    padding-bottom: 15px;
+    width: 100%;
+    color: silver;
+    font-size: 18px;
+    padding-top: 14px;
+}
+.profileForm__avatar {
+    border-radius: 5px;
+    max-width: 100px;
+    /*max-height: 100px;*/
+    background-size: 100%;
+    align-self: center;
+}
+
+.profileForm__button{
+    align-self: flex-end;
+    background: gold;
+    color: black;
+    margin-bottom: 3px;
+    margin-right: 0;
+}
+
+.profileForm__text{
+    color: white;
+    font-weight: 900;
+}
+
+.profileForm__file-input{
+    align-self: center;
+    max-width: 177px;
+    margin: 3px;
+}
+
+.profileForm__container{
+    align-self: center;
+    margin: 10px;
+}
+
+.profileForm__input{
+    margin-left: 0;
+    margin-right: 0;
+}

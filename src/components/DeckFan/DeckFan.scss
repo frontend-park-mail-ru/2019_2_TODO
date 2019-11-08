@@ -1,0 +1,218 @@
+/*.newButton{*/
+/*    margin-top: 100px;*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    justify-content: center;*/
+/*    flex-wrap: wrap;*/
+/*}*/
+
+/*.newButton__b{*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    align-items: center;*/
+/*    justify-content: space-between;*/
+/*    color: #89ee66;*/
+/*    min-width: 200px;*/
+/*    min-height: 35px;*/
+/*}*/
+
+/*.newButton__b:hover{*/
+/*    background: #502bff;*/
+/*}*/
+
+/*.newButton__b__text{*/
+/*    font-family: Roboto;*/
+/*    font-style: normal;*/
+/*    font-weight: normal;*/
+/*    font-size: 35px;*/
+/*    line-height: 56px;*/
+/*    justify-self: flex-start;*/
+/*}*/
+
+.deckFun{
+    margin-top: auto;
+    @extend %row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+%card{
+    transition-property: transform;
+    transition-duration: 500ms;
+    transition-timing-function: ease;
+    @extend %row;
+    align-items: center;
+    justify-content: space-between;
+    color: #EEEEEE;
+    min-width: 160px;
+    min-height: 280px;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.deckFun__card {
+    @extend %card;
+    margin-right: -35px;
+    margin-left: -35px;
+    margin-top: 70px;
+    /*-ms-transform: rotate(20deg); !* IE 9 *!*/
+    /*-webkit-transform: rotate(20deg); !* Safari prior 9.0 *!*/
+    transform: rotate(-30deg); /* Standard syntax */
+    /*position: relative;*/
+    background: #2980B9;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+
+}
+
+.deckFun__card:hover {
+    background: #ffd700;
+    color: black;
+    border-color: black;
+    transform: translate(0px, -50px) rotate(-30deg);
+}
+
+.deckFun__card:focus {
+    outline: none;
+}
+
+
+.deckFun__card:nth-child(2) {
+    background: #793C92;
+    border: 1px solid #793C92;
+    transform: translate(0px, -40px) rotate(-20deg);
+}
+
+.deckFun__card:nth-child(2):hover {
+    background: #ffd700;
+    color: black;
+    border-color: black;
+    transform: translate(0px, -70px) rotate(-20deg);
+}
+
+.deckFun__card:nth-child(3) {
+    background: #565656;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    transform: translate3d(0px, -60px, 100px) rotate(-10deg);
+
+}
+
+.deckFun__card:nth-child(3):hover {
+    background: #ffd700;
+    color: black;
+    border-color: black;
+    transform: translate3d(0px, -90px, 100px) rotate(-10deg);
+}
+.deckFun__card:nth-child(4){
+    background: #E67E22;
+    border: 1px solid #BF3902;
+    transform: translate3d(0px, -70px, 100px) rotate(0deg);
+
+}
+.deckFun__card:nth-child(4):hover{
+    background: #ffd700;
+    color: black;
+    border-color: black;
+    transform: translate3d(0px, -120px, 50px) rotate(0deg);
+}
+.deckFun__card:nth-child(5){
+    background: #BF3902;
+    border: 1px solid #E67E22;
+    transform:translate3d(0px, -60px, 100px) rotate(10deg);
+
+}
+
+.deckFun__card:nth-child(5):hover {
+    background: #ffd700;
+    color: black;
+    border-color: black;
+    transform: translate3d(0px, -90px, 50px) rotate(10deg);
+}
+
+.deckFun__card:nth-child(6){
+    background: #bf3292;
+    border: 1px solid #E67E22;
+    transform: translate3d(0px, -35px, 100px) rotate(20deg);
+
+}
+
+.deckFun__card:nth-child(6):hover {
+    background: #ffd700;
+    color: black;
+    border-color: black;
+    transform: translate3d(0px, -65px, 50px) rotate(20deg);
+}
+
+.deckFun__card:nth-child(7){
+    background: #BF3902;
+    border: 1px solid #E67E22;
+    transform: translate3d(0px, 10px, 100px) rotate(30deg);
+
+}
+
+.deckFun__card:nth-child(7):hover {
+    background: #ffd700;
+    color: black;
+    border-color: black;
+    transform: translate3d(0px, -20px, 50px) rotate(30deg);
+}
+
+
+
+.deckFun__card__text {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 35px;
+    line-height: 56px;
+    justify-self: flex-start;
+
+}
+.deckFun__card__text:hover {
+    /*color: black;*/
+    text-decoration: none;
+}
+.deckFun__card__nominal {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 35px;
+    line-height: 56px;
+    align-self: start;
+    margin: 3px;
+    /*position: absolute;*/
+    /*top: 5px;*/
+    /*left: 10px;*/
+
+
+}
+.deckFun__card__nominal:hover {
+    text-decoration: none;
+
+}
+/*button.sixthCard{*/
+/*    position: relative;*/
+/*    min-width: 206px;*/
+/*    min-height: 325px;*/
+/*    !*left: 60%;*!*/
+/*    margin-top: 25px;*/
+/*    !*top: 321px;*!*/
+
+/*    background: #;*/
+/*    border: 1px solid #C46816;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 20px;*/
+/*}*/
+/*button.seventhCard{*/
+/*    position: relative;*/
+/*    min-width: 206px;*/
+/*    min-height: 325px;*/
+/*    !*left: 70%;*!*/
+/*    margin-top: 58px;*/
+
+/*    !*top: 342px;*!*/
+
+/*    background: #;*/
+/*    border: 1px solid #882C07;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 20px;*/
+/*}*/

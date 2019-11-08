@@ -1,11 +1,13 @@
-import BaseComponent from '../BaseComponent/BaseComponent.js'
+import BaseComponent from '../BaseComponent/BaseComponent.js';
+import template from './Button.hbs';
 
+/** Класс представляющий кнопку. */
 export class ButtonComponent extends BaseComponent {
-  constructor (context) {
-    super()
-    this.context = context
-    this.template = Handlebars.compile(`
-            <button type="{{type}}" class="{{class}}" id="{{id}}" href="{{href}}" data-section="{{section}}">{{text}}</button>
-        `)
+  /** Создать кнопку
+   * @param {string} context - контекст для кнопки.
+   */
+  constructor(context) {
+    super(context);
+    this.template = template;
   }
 }
