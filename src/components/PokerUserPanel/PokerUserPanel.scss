@@ -1,39 +1,42 @@
 @import "../../base.scss";
 
-.poker-user-panel{
+.poker-user-panel {
     @extend %row;
     align-items: center;
     justify-content: center;
     min-width: 515px;
     grid-area: 3/2;
     z-index: 1;
-    &__container{
+
+    &__container {
         /*background: darkslategrey;*/
         border-radius: 5px;
         padding: 3px;
         /*margin-right: 5px;*/
-        &__avatar{
+        &__avatar {
             border-radius: 100px;
             height: 50px;
             width: 50px;
         }
+
+        &__score-bet {
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /*margin-top: -50px;*/
+            margin-right: 3px;
+            min-height: 60px;
+            min-width: 100px;
+            background: gold;
+            border: 1px solid black;
+            border-radius: 5px;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
     }
-    &__score-bet{
-        color: black;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        /*margin-top: -50px;*/
-        margin-right: 3px;
-        min-height: 60px;
-        min-width: 100px;
-        background: gold;
-        border: 1px solid black;
-        border-radius: 5px;
-        margin-top: 0;
-        margin-bottom: 0;
-    }
-    &__button{
+
+    &__button {
         @extend %column;
         height: 60px;
         width: 100px;
@@ -45,11 +48,13 @@
         border-radius: 5px;
         align-items: center;
         justify-content: center;
-        &__input{
+
+        &__input {
             width: 50%;
             margin: 3%;
         }
-        &__raise-button{
+
+        &__raise-button {
             width: 50%;
             height: 40%;
             margin: 3%;
@@ -61,7 +66,7 @@
         }
     }
 
-    &__button_disabled{
+    &__button_disabled {
         height: 60px;
         width: 100px;
         margin-right: 3px;
@@ -75,16 +80,13 @@
         justify-content: flex-end;
     }
 
-    &__button:hover{
+    &__button:hover {
         background: gold;
         color: black;
     }
 
-    &__button:focus{
+    &__button:focus {
         outline: none;
     }
-
-
-
-
 }
+
