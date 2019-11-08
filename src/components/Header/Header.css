@@ -10,12 +10,13 @@
 .header__top-section {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: baseline;
 }
 
-.header__sign-in-button {
+.header__sign-in-button{
     justify-self: end;
 }
+
 
 

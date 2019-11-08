@@ -7,7 +7,7 @@ import {TextComponent} from '../../../TextComponent/Text.js';
 import BaseComponent from '../../../BaseComponent/BaseComponent.js';
 import template from './ChangeProfile.hbs';
 
-class profileChange extends BaseComponent{
+class ProfileChange extends BaseComponent{
   constructor(context){
     super(context)
     this.template = template;
@@ -29,7 +29,7 @@ export default class ChangeProfileView extends BaseView {
     AjaxModule.fetchGet('http://93.171.139.196:780/signin/')
         .catch(()=>{
           this.el.innerHTML = '';
-          const prof = new profileChange({
+          const prof = new ProfileChange({
             avatar: 'https://jok.io/Images/Shared/unknown_female.png',
             username: 'username',
           });
