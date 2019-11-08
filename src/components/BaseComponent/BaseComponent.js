@@ -1,14 +1,14 @@
-
 /** Базовый класс для шаблонов,
  *  от которого они наследуются. */
 export default class BaseComponent {
-  /** Создать BaseComponent. */
+  /**
+   * Создать BaseComponent.
+   * @param {object} context - контекст
+   * */
   constructor(context = null) {
     this.context = context;
     this.element = null;
     this.template = null;
-    // this._needAuth = false;
-    // this._forAuth = false;
   }
 
   /** Отрисовать
@@ -20,7 +20,12 @@ export default class BaseComponent {
     }
     return this.element;
   }
-  updateContext(context){
+
+  /**
+   *
+   * @param {object} context - контекст
+   */
+  updateContext(context) {
     this.context = context;
     this.element = this.template(this.context);
   }

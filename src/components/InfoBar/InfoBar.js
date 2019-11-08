@@ -4,9 +4,14 @@
 import BaseComponent from '../BaseComponent/BaseComponent';
 import template from './InfoBar.hbs';
 
-// import AjaxModule from '../../../module/ajax.js';
-
+/**
+ * Информация о пользователе
+ */
 export class InfoBar extends BaseComponent {
+  /**
+   *
+   * @param {object} context - контекст
+   */
   constructor(context) {
     super(context)
     this.template = template;

@@ -1,12 +1,20 @@
 import BaseView from '../BaseView/BaseView.js';
 import {TextComponent} from '../../TextComponent/Text.js';
 
-
+/**
+ *
+ */
 export default class NotFoundView extends BaseView {
+  /**
+   *
+   * @param element
+   */
   constructor(element) {
     super(element);
   }
-
+  /**
+   *
+   */
   render() {
     this.el.innerHTML = '';
     const application = document.createElement('section');

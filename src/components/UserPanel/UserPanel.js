@@ -1,7 +1,14 @@
 import BaseComponent from '../BaseComponent/BaseComponent.js';
 import template from './UserPanel.hbs';
 
-export class UserPanel extends BaseComponent{
+/**
+ * Кнопки игрока
+ */
+export class UserPanel extends BaseComponent {
+  /**
+   *
+   * @param {object} context - контекст
+   */
   constructor(context) {
     super(context);
     this.template = template;

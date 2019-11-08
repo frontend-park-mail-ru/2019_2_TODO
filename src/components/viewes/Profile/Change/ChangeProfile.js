@@ -7,14 +7,29 @@ import {TextComponent} from '../../../TextComponent/Text.js';
 import BaseComponent from '../../../BaseComponent/BaseComponent.js';
 import template from './ChangeProfile.hbs';
 
-class ProfileChange extends BaseComponent{
-  constructor(context){
+/**
+ *
+ */
+class ProfileChange extends BaseComponent {
+  /**
+   *
+   * @param context
+   */
+  constructor(context) {
     super(context)
     this.template = template;
   }
 }
 
+/**
+ *
+ */
 export default class ChangeProfileView extends BaseView {
+  /**
+   *
+   * @param element
+   * @param context
+   */
   constructor(element, context = {
     avatar: './assets/gold_fishka.jpg',
     nickname: 'nickname',
@@ -24,10 +39,13 @@ export default class ChangeProfileView extends BaseView {
     this.context = context;
   }
 
+  /**
+   *
+   */
   render() {
     const application = this.el;
     AjaxModule.fetchGet('http://93.171.139.196:780/signin/')
-        .catch(()=>{
+        .catch(() => {
           this.el.innerHTML = '';
           const prof = new ProfileChange({
             avatar: 'https://jok.io/Images/Shared/unknown_female.png',
@@ -91,7 +109,6 @@ export default class ChangeProfileView extends BaseView {
             type: 'password',
             placeholder: 'repeat Passwor',
           });
-
           form.innerHTML += password.render();
           form.innerHTML += passwordRepeat.render();
           const changeButton = new ButtonComponent({
@@ -101,9 +118,6 @@ export default class ChangeProfileView extends BaseView {
             text: 'change',
           });
           form.innerHTML += changeButton.render();
-
-          // const profile = new ChangeProfile(context);
-          // application.innerHTML = profile.render();
           const avButton = document.getElementById('changeAv');
           const npButton = document.getElementById('changeNP');
           avButton.addEventListener('click', (evt) => {
@@ -122,7 +136,7 @@ export default class ChangeProfileView extends BaseView {
               password.error('PASSWORDS_MATCH', form);
               return;
             }
-            if ((pass.length < 5)&&(pass.length > 0)) {
+            if ((pass.length < 5) && (pass.length > 0)) {
               password.error('PASSWORD_LENGTH', form);
               return;
             }
@@ -144,135 +158,3 @@ export default class ChangeProfileView extends BaseView {
   }
 }
 
-/**
- * Отрисоват профиль
- * @param {HTMLElement} application - контейнер HTML,
- * в котором отрисовывается верстка
- * @param {Object} context - контекст для шаблонизатора
- */
-// export const renderProfile = (
-//     application,
-//     context = {
-//       avatar: './assets/gold_fishka.jpg',
-//       nickname: 'nickname',
-//       score: '1000',
-//     }) => {
-//   AjaxModule.fetchGet('http://93.171.139.196:780/signin/')
-//       .then((res) => {
-//         return res.text();
-//       })
-//       .then((resT) => {
-//         console.log(resT);
-//         const form = document.createElement('form');
-//         application.innerHTML = '';
-//         application.appendChild(form);
-//         form.className = 'profileForm';
-//         const closeButton = new ButtonComponent({
-//           id: 'cl',
-//           class: 'profileForm__button',
-//           text: 'close',
-//         });
-//         form.innerHTML += closeButton.render();
-//         const avatar = new ImageComponent({
-//           class: 'profileForm__avatar',
-//           source: JSON.parse(resT).image,
-//         });
-//         const avatarInput = new InputComponent({
-//           type: 'file',
-//           class: 'profileForm__input',
-//           id: 'avatarInput',
-//           placeholder: JSON.parse(resT).image,
-//         });
-//         avatarInput.render();
-//         form.innerHTML += avatar.render();
-//         form.innerHTML += avatarInput.render();
-//         const changeAvButton = new ButtonComponent({
-//           type: 'submit',
-//           class: 'profileForm__button',
-//           id: 'changeAv',
-//           text: 'Upload avatar',
-//         });
-//         form.innerHTML += changeAvButton.render();
-//
-//         const nickname = new InputComponent({
-//           class: 'profileForm__input',
-//           id: 'nick',
-//           placeholder: JSON.parse(resT).username,
-//         });
-//         form.innerHTML += nickname.render();
-//         const password = new InputComponent({
-//           class: 'profileForm__input',
-//           id: 'pass',
-//           type: 'password',
-//           placeholder: 'new password',
-//         });
-//         const passwordRepeat = new InputComponent({
-//           class: 'profileForm__input',
-//           id: 'passr',
-//           type: 'password',
-//           placeholder: 'repeat Passwor',
-//         });
-//
-//         form.innerHTML += password.render();
-//         form.innerHTML += passwordRepeat.render();
-//         const changeButton = new ButtonComponent({
-//           id: 'changeNP',
-//           type: 'submit',
-//           class: 'profileForm__button',
-//           text: 'change',
-//         });
-//         form.innerHTML += changeButton.render();
-//
-//         // const profile = new ChangeProfile(context);
-//         // application.innerHTML = profile.render();
-//         const clButton = document.getElementById('cl');
-//         const avButton = document.getElementById('changeAv');
-//         const npButton = document.getElementById('changeNP');
-//         avButton.addEventListener('click', (evt) => {
-//           evt.preventDefault();
-//           const av = form.elements.avatarInput;
-//           const data = new FormData();
-//           data.append('image', av.files[0]);
-//           AjaxModule.fetchPost('http://93.171.139.196:780/signin/profileImage/', data)
-//               .then((res) => {
-//                 console.log(res.status);
-//                 if (res.status === 200) {
-//                   console.log(res);
-//                   renderProfile(application);
-//                 }
-//               });
-//         });
-//         npButton.addEventListener('click', (evt) => {
-//           evt.preventDefault();
-//           const nick = form.elements.nick.value;
-//           const pass = form.elements.pass.value;
-//           const passRepeat = form.elements.passr.value;
-//           if (pass !== passRepeat) {
-//             password.error('PASSWORDS_MATCH', form);
-//             return;
-//           }
-//           if (pass.length < 5) {
-//             password.error('PASSWORD_LENGTH', form);
-//             return;
-//           }
-//           AjaxModule.fetchPost(
-//               'http://93.171.139.196:780/signin/profile/',
-//               JSON.stringify({
-//                 username: nick,
-//                 password: pass,
-//               })
-//           )
-//               .then((res) => {
-//                 if (res.status === 200) {
-//                   console.log(res);
-//                   renderProfile(application);
-//                 }
-//               });
-//         });
-//
-//         clButton.addEventListener('click', (evt) => {
-//           evt.preventDefault();
-//           //startScreen(application);
-//         });
-//       });
-// };

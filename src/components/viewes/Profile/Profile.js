@@ -16,12 +16,21 @@ export class ProfileComponent extends BaseComponent {
   }
 }
 
-
+/**
+ *
+ */
 export default class ProfileView extends BaseView {
+  /**
+   *
+   * @param element
+   */
   constructor(element) {
     super(element);
   }
 
+  /**
+   *
+   */
   render() {
     this.el.innerHTML = '';
     const application = this.el;

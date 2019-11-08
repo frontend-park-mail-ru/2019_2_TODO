@@ -1,5 +1,6 @@
 import BaseComponent from '../BaseComponent/BaseComponent.js';
 import template from './DeckFan.hbs';
+
 /** Класс представляющий карточку для стартого экрана. */
 export class CardComponent extends BaseComponent {
   /**
@@ -42,24 +43,6 @@ const Cards = [{
   nominal: '8',
   href: '/about',
 }];
-
-// const F = [{
-//   tag: 'h1',
-//   text: 'offline',
-//   href: '/offline',
-// }, {
-//   tag: 'h1',
-//   text: 'online',
-//   href: '/online',
-// }, {
-//   tag: 'h1',
-//   text: 'your profile',
-//   href: '/profile',
-// }, {
-//   tag: 'h1',
-//   text: 'scoreboard',
-//   href: '/scoreboard',
-// }];
 
 /** Класс для набора карт. */
 export class DeckFanComponent {
