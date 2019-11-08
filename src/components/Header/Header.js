@@ -25,9 +25,12 @@ export class HeaderComponent {
    * @param {HTMLElement} parent - родитель
    * @param {boolean} authorized - флаг авторизации
    */
-  constructor(parent = document.body, authorized = false, back = false) {
+  constructor(parent = document.body, authorized = false,
+              back = false, avatar = './assets/gold_fishka.jpg', username = 'nickname') {
     this._parent = parent;
     this._authorized = authorized;
+    this._avatar = avatar;
+    this._username = username;
     if (back) {
       this._back = 'hidden';
     } else {
@@ -48,8 +51,8 @@ export class HeaderComponent {
       this._parent.innerHTML += head.render();
     } else {
       const infoBar = new InfoBar({
-        avatar: './assets/gold_fishka.jpg',
-        username: 'nickname',
+        avatar: this._avatar,
+        username: this._username,
       });
       this._parent.innerHTML += infoBar.render();
       const head = new Header({

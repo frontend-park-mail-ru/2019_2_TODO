@@ -30,7 +30,7 @@ export default class StartScreen extends BaseView {
             console.log(JSON.parse(resText));
             window.username = JSON.parse(resText).username;
             window.avatar = JSON.parse(resText).image;
-            const header = new HeaderComponent(application, true);
+            const header = new HeaderComponent(application, true, false, window.avatar, window.username);
             console.log(window.username);
             header.render();
             const deck = new DeckFanComponent(application);
