@@ -16,7 +16,7 @@ export default class StartScreen extends BaseView {
     const application = document.createElement('section');
     AjaxModule.fetchGet('http://93.171.139.196:780/signin/')
         .catch((res) => {
-          const header = new HeaderComponent(application, true);
+          const header = new HeaderComponent(application, false);
           header.render();
           const menuBar = new MenuBar(application);
           menuBar.render();
