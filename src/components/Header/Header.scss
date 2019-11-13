@@ -1,21 +1,61 @@
 @import "../../base.scss";
 
 .header {
-    @extend %column;
+  @extend %column;
+  background: linear-gradient(black, rgba(30, 30, 30, .6));
+  padding: 20px;
+  margin-bottom: 100px;
 
-    &__button_back {
-        align-self: start;
+  &__button_back {
+    align-self: start;
+  }
+
+  &__top-section {
+    @extend %row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+    &__left-container {
+      @extend %row;
+      align-items: center;
+
+      &__label {
+        font-family: 'Monoton', cursive;
+        justify-self: flex-start;
+        color: #b4b9b6;
+        font-size: 30px;
+        cursor: pointer;
+      }
     }
-    &__top-section {
-        @extend %row;
-        justify-content: flex-end;
-        align-items: baseline;
+
+    &__button {
+      border: 1px solid #b4b9b6;
+      border-radius: 20px;
+      padding: 11px 25px 9px;
+      margin-left: 50px;
+      font-family: 'Yeon+Sung', cursive;
+      justify-self: flex-start;
+      color: #2ecc71;
+      font-size: 30px;
+      cursor: pointer;
     }
-    &__sign-in-button{
-        justify-self: end;
-    }
+  }
+
+  &__sign-in-button {
+    justify-self: end;
+    border: 1px solid #b4b9b6;
+    border-radius: 20px;
+    padding: 11px 25px 9px;
+      color: #2ecc71
+  }
 }
 
+.logo {
+  height: 50px;
+  width: 60px;
+  align-self: flex-start;
+}
 
 
 

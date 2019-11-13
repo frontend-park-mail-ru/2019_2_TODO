@@ -59,7 +59,7 @@ export default class SignUpScreen extends BaseView {
     const SubmitButton = new ButtonComponent({
       type: 'submit',
       text: 'Sign up!',
-      class: 'button',
+      class: 'button-small',
     });
     form.innerHTML += SubmitButton.render();
 

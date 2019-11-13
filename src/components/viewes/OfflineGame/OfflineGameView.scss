@@ -8,14 +8,16 @@
     height: 90vh;
     display: grid;
     grid-template: 1fr 75vh 1fr/ 1fr 10fr 1fr;
-    background-image: url('/assets/table-removebg-preview.png') ;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
+
+
 }
 
 .canvas {
     width: 100%;
+    background-image: url('/assets/table_new.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
     margin: 0;
     height: 80vh;
     grid-area: 2/2;

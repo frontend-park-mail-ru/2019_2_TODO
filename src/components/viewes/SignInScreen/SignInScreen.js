@@ -2,7 +2,6 @@ import {HeaderComponent} from '../../Header/Header.js';
 import {TextComponent} from '../../TextComponent/Text.js';
 import InputError, {InputComponent} from '../../Input/Input.js';
 import {ButtonComponent} from '../../Button/Button.js';
-// import StartScreen from '../StartScreen/StartScreen.js';
 import AjaxModule from '../../../module/ajax.js';
 import BaseView from '../BaseView/BaseView.js';
 
@@ -39,7 +38,7 @@ export default class SignInScreen extends BaseView {
     form.innerHTML += PassInput.render();
     const SubmitButton = new ButtonComponent({
       type: 'submit',
-      class: 'button',
+      class: 'button-small',
       text: 'Sign in!',
     });
     form.innerHTML += SubmitButton.render();

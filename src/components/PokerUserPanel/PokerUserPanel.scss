@@ -19,23 +19,23 @@
             width: 50px;
         }
 
-        &__score-bet {
-            color: black;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            /*margin-top: -50px;*/
-            margin-right: 3px;
-            min-height: 60px;
-            min-width: 100px;
-            background: gold;
-            border: 1px solid black;
-            border-radius: 5px;
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-    }
 
+    }
+    &__score-bet {
+        color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /*margin-top: -50px;*/
+        margin-right: 3px;
+        min-height: 60px;
+        min-width: 100px;
+        background: gold;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
     &__button {
         @extend %column;
         height: 60px;

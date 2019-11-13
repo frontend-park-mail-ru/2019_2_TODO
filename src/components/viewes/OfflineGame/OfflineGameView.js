@@ -1,10 +1,10 @@
-import BaseView from '../BaseView/BaseView.js';
 import PokerUserPanel from '../../PokerUserPanel/PokerUserPanel.js';
 import {game} from '../../../module/PokerGamePlay.js';
 import {BotPanel} from '../../BotPanel/BotPanel.js';
 import {ButtonComponent} from '../../Button/Button.js';
 import {BankPanel} from '../../BankPanel/BankPanel.js';
 import AjaxModule from '../../../module/ajax.js';
+import BaseView from '../BaseView/BaseView';
 
 export default class OfflineGameView extends BaseView {
   constructor(element) {

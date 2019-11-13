@@ -13,13 +13,39 @@
 }
 
 .button {
-    color: white;
+    color: black;
     text-align: center;
-    min-width: 90px;
-    min-height: 20px;
-    background: darkslategrey;
-    border: 1px ;
-    border-radius: 3px;
+    //min-width: 150px;
+    //min-height: 40px;
+    background: #2ecc71;
+    //@extend %column;
+    display: flex;
+    font-size: 20px;
+    line-height: 20px;
+    padding: 11px 25px 9px;;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid darkslategray;
+    border-radius: 20px;
+    align-self: flex-end;
+    margin: 3px;
+    cursor: pointer;
+}
+.button-small {
+    color: black;
+    text-align: center;
+    width: 110px;
+    height: 20px;
+    background: #2ecc71;
+    //@extend %column;
+    display: flex;
+    //font-size: 20px;
+    line-height: 20px;
+    padding: 11px 25px 9px;;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid darkslategray;
+    border-radius: 5px;
     align-self: flex-end;
     margin: 3px;
     cursor: pointer;

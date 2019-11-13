@@ -1,11 +1,21 @@
 <header class="header">
     <div id="topSection" class="header__top-section">
-        <div {{hiddenSign}}>
-            <a class="button header__sign-in-button" href="/signIn">Sign in</a>
-            <a class="button header__sign-in-button" href="/signUp">Sign up</a>
-            <a class="button header__button_back" href="/" {{hiddenBack}}>Back</a>
+        <div class="header__top-section__left-container">
+            <img src="../../assets/logo.png" class="logo"/>
+            <a class="header__top-section__left-container__label" href="/">
+                Just Poker
+            </a>
+            <a class="header__top-section__button">
+                Online
+            </a>
+            <a class="header__top-section__button" href="/offline">
+                Offline
+            </a>
+        </div>
+        <div {{hiddenSign}} class="buttonPanel__row">
+            <a class=" header__button_back" href="/" {{hiddenBack}}>Back</a>
+            <a class=" header__sign-in-button" href="/signIn">Login</a>
+            <a class=" header__sign-in-button" href="/signUp">Sign up</a>
         </div>
     </div>
-    <img class="chip" src="./assets/gold_fishka.jpg">
-    <h1>Online Poker Game</h1>
 </header>

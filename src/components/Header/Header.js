@@ -26,7 +26,7 @@ export class HeaderComponent {
    * @param {boolean} authorized - флаг авторизации
    */
   constructor(parent = document.body, authorized = false,
-              back = false, avatar = './assets/gold_fishka.jpg', username = 'nickname') {
+              back = false, avatar = './assets/gold_fishka.jpg', username = 'nickname', UPIN = true) {
     this._parent = parent;
     this._authorized = authorized;
     this._avatar = avatar;

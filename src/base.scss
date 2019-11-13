@@ -1,12 +1,22 @@
 body{
   @extend %column;
   justify-content: space-between;
-  background: #27ae60;
-  //height: 98vh;
+  background-image: url("assets/Backgrounds_Black_wallpaper_with_card_symbol_078600_.jpg");
+  background-repeat: no-repeat;
+  background-position: center ;
+  background-size: 100%;
+  height: 100vh;
   padding: 0;
   margin: 0;
 }
-
+html{
+  background: radial-gradient(#0e263e,black );
+}
+.footer{
+  background: linear-gradient(black, darkslategray);
+  position: absolute;
+  bottom: 1px;
+}
 div{
   @extend %column;
   justify-content: space-around;
@@ -32,6 +42,10 @@ form {
   align-items: center;
   align-self: center;
   max-width: 320px;
+  background: #34495e;
+  border: 1px solid #2b3c4e;
+  border-radius: 20px;
+  box-shadow: 0 0 90px black;
 
 }
 
