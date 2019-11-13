@@ -55,9 +55,7 @@ export class HeaderComponent {
       const head = new Header({
         hiddenSign: 'hidden',
       });
-      this._parent.innerHTML += head.render();
-      document.getElementById('topSection').innerHTML += infoBar.render();
-
+      this._parent.innerHTML += head.render() + infoBar.render();
     }
   }
 }
