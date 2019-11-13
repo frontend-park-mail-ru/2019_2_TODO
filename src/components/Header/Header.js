@@ -57,7 +57,6 @@ export class HeaderComponent {
       });
       this._parent.innerHTML += head.render();
       document.getElementById('topSection').innerHTML += infoBar.render();
-
     }
   }
 }
