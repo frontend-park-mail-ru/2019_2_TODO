@@ -30,7 +30,8 @@
       }
     }
     &__right-container{
-      @extend %row
+      display: flex;
+      flex-direction: row;
     }
     &__button {
       border: 1px solid #b4b9b6;
@@ -51,7 +52,8 @@
     transition-timing-function: ease;
     justify-self: end;
     margin: 3px;
-    @extend %column;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     border: 1px solid #2ecc71;

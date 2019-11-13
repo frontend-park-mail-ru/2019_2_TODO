@@ -77,17 +77,25 @@ export default class Router {
 
   start() {
     this.root.addEventListener('click', (event) => {
+      // if (event.target instanceof HTMLImageElement) {
+      //   console.log(event.target.href);
+      // }
       if (!(event.target instanceof HTMLAnchorElement)) {
+        // event.preventDefault();
         const {target} = event;
-        // console.log(event);
+        if (target.id === 'infoAvatar') {
+          event.preventDefault();
+          console.log('wefwe');
+          window.router.open('/profile');
+        }
         if (target.id === 'logout') {
           // console.log(target);
           AjaxModule.logOut(document.getElementById('application'));
         }
         return;
       }
-
       event.preventDefault();
+      // event.stopImmediatePropagation();
       const link = event.target;
 
       console.log({

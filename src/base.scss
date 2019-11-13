@@ -37,7 +37,10 @@ section{
   justify-content: space-around;
 
 }
-
+.full-ize{
+  height: 100%;
+  width: 100%;
+}
 form {
   @extend %column;
   margin-top: 23vh;
