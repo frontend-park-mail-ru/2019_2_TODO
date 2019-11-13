@@ -31,11 +31,6 @@ export class HeaderComponent {
     this._authorized = authorized;
     this._avatar = avatar;
     this._username = username;
-    if (back) {
-      this._back = 'hidden';
-    } else {
-      this._back = '';
-    }
   }
 
 
@@ -45,7 +40,6 @@ export class HeaderComponent {
   render() {
     if (!this._authorized) {
       const head = new Header({
-        hiddenBack: this._back,
         hiddenSign: '',
       });
       this._parent.innerHTML += head.render();
@@ -56,7 +50,6 @@ export class HeaderComponent {
       });
       this._parent.innerHTML += infoBar.render();
       const head = new Header({
-        hiddenBack: this._back,
         hiddenSign: 'hidden',
       });
       this._parent.innerHTML += head.render();

@@ -4,7 +4,8 @@
   @extend %column;
   background: linear-gradient(black, rgba(30, 30, 30, .6));
   padding: 20px;
-  margin-bottom: 100px;
+  padding-right: 0;
+  //margin-bottom: 100px;
 
   &__button_back {
     align-self: start;
@@ -28,7 +29,9 @@
         cursor: pointer;
       }
     }
-
+    &__right-container{
+      @extend %row
+    }
     &__button {
       border: 1px solid #b4b9b6;
       border-radius: 20px;
@@ -43,11 +46,25 @@
   }
 
   &__sign-in-button {
+    transition: color;
+    transition-duration: 100ms;
+    transition-timing-function: ease;
     justify-self: end;
-    border: 1px solid #b4b9b6;
+    margin: 3px;
+    @extend %column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #2ecc71;
     border-radius: 20px;
     padding: 11px 25px 9px;
-      color: #2ecc71
+    color: #2ecc71
+  }
+  &__sign-in-button:nth-child(1){
+    border: 1px solid #b4b9b6;
+    color: #b4b9b6;
+  }
+  &__sign-in-button:hover{
+    color: gray;
   }
 }
 

@@ -3,6 +3,7 @@ import {DeckFanComponent} from '../../DeckFan/DeckFan.js';
 import AjaxModule from '../../../module/ajax.js';
 import BaseView from '../BaseView/BaseView.js';
 import {ButtonPanel} from '../../ButtonPanel/ButtonPanel.js';
+import {MenuBar} from "../../MenuBar/MenuBar";
 
 
 export default class StartScreen extends BaseView {
@@ -17,18 +18,8 @@ export default class StartScreen extends BaseView {
         .catch((res) => {
           const header = new HeaderComponent(application, false, true);
           header.render();
-          // const img = document.createElement('img');
-          // img.src = 'assets/st.png';
-          // img.className = 'st';
-          // application.appendChild(img);
-          // // const deck = new DeckFanComponent(application);
-          // // deck.render();
-          // // Кнопка
-          // const button = new ButtonPanel({});
-          // application.innerHTML += button.render();
-          const foot = document.createElement('div');
-          foot.className = 'footer';
-          application.appendChild(foot);
+          const menuBar = new MenuBar(application);
+          menuBar.render();
         })
         .then((res) => res.text())
         .then((resText) => {

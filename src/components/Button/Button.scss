@@ -34,20 +34,23 @@
 .button-small {
     color: black;
     text-align: center;
-    width: 110px;
-    height: 20px;
+    width: 6vw;
+    height: 3vh;
     background: #2ecc71;
     //@extend %column;
+
     display: flex;
-    //font-size: 20px;
+    flex-direction: column;
+    font-family: Roboto;
+    font-size: 20px;
     line-height: 20px;
-    padding: 11px 25px 9px;;
+    //padding: 11px 25px 9px;;
     align-items: center;
     justify-content: center;
     border: 1px solid darkslategray;
     border-radius: 5px;
     align-self: flex-end;
-    margin: 3px;
+    margin: 6px;
     cursor: pointer;
 }
 
