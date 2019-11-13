@@ -56,7 +56,9 @@ export class HeaderComponent {
         hiddenSign: 'hidden',
       });
       this._parent.innerHTML += head.render();
+      console.log('qwdqwdqwd');
       document.getElementById('topSection').innerHTML += infoBar.render();
+
     }
   }
 }
