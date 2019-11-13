@@ -2,6 +2,9 @@
 
 
 .infoBar {
+    position: absolute;
+    top: 20px;
+    right: 5px;
     @extend %row;
     align-self: flex-end;
     //background: #34495F;

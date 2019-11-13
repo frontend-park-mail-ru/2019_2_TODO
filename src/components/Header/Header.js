@@ -54,9 +54,9 @@ export class HeaderComponent {
       });
       const head = new Header({
         hiddenSign: 'hidden',
-        tail: infoBar.render(),
       });
       this._parent.innerHTML += head.render();
+      document.getElementById('topSection').innerHTML += infoBar.render();
 
     }
   }
