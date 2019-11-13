@@ -31,17 +31,13 @@ export default class StartScreen extends BaseView {
             const header = new HeaderComponent(application, true, false, window.avatar, window.username);
             console.log(window.username);
             header.render();
-            const deck = new DeckFanComponent(application);
-            deck.render();
-            const button = new ButtonPanel({});
-            application.innerHTML += button.render();
+            const menuBar = new MenuBar(application);
+            menuBar.render();
           } else {
             const header = new HeaderComponent(application, false, true);
             header.render();
-            const deck = new DeckFanComponent(application);
-            deck.render();
-            const button = new ButtonPanel({});
-            application.innerHTML += button.render();
+            const menuBar = new MenuBar(application);
+            menuBar.render();
           }
         });
     this.el.appendChild(application);
