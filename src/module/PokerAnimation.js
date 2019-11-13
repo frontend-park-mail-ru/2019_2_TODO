@@ -166,7 +166,7 @@ export class PokerAnimation {
       this.ctx.canvas.addEventListener('botsCardsReversed', listener);
     }
   }
-  moveCards(cards, x, y, dx, dy, rotate = 0, event = 'endMoveCards', rotateC = 0, stepX = dx / 60, stepY = dy/60,) {
+  moveCards(cards, x, y, dx, dy, rotate = 0, event = 'endMoveCards', rotateC = 0, stepX = dx / 60, stepY = dy/60, dist = 90) {
     let progress = 0;
     let rotated = 0;
     // this.ctx.drawImage(cards[0],100,100,100,100);
@@ -179,14 +179,14 @@ export class PokerAnimation {
       this.ctx.translate(dx*progress, dy*progress);
       this.ctx.save();
       this.ctx.rotate(rotateC);
-      this.ctx.translate( progress*progress*(-(cards.length*90/2) + 45), 0);
+      this.ctx.translate( progress*progress*((cards.length*dist/2) - dist/2), 0);
       cards.reduce((differ, card) => {
         this.ctx.save();
         this.ctx.translate(differ, 0);
         this.ctx.rotate(rotated);
         this.ctx.clearRect(- 48, -2 - this.cardHeight / 2, this.cardWidth+6, this.cardHeight+6);
         this.ctx.restore();
-        return differ + 90*(progress*progress);
+        return differ - dist*(progress*progress);
       }, 0);
       this.ctx.restore();
 
@@ -202,14 +202,14 @@ export class PokerAnimation {
       // this.ctx.rotate(rotated);
       this.ctx.save();
       this.ctx.rotate(rotateC);
-      this.ctx.translate(progress*progress*(-(cards.length*90/2) + 45), 0);
+      this.ctx.translate(progress*progress*((cards.length*dist/2) - dist/2), 0);
       cards.reduce((differ, card) => {
         this.ctx.save();
         this.ctx.translate(differ, 0);
         this.ctx.rotate(rotated);
         this.ctx.drawImage(this.back, ...cardCoordinates['back'], -this.cardWidth/2 - 5, -this.cardHeight/2, this.cardWidth, this.cardHeight);
         this.ctx.restore();
-        return differ + 90*(progress*progress);
+        return differ - dist*(progress*progress);
       }, 0);
       this.ctx.restore();
 
@@ -341,7 +341,7 @@ export class PokerAnimation {
     func(this);
   }
 
-  reverseCards(cards, x, y, turnRate, event = 'cardsReversed', rotateC = 0) {
+  reverseCards(cards, x, y, turnRate, event = 'cardsReversed', rotateC = 0, dist = 90) {
     let progress = 0;
     let turned = 0;
     const reverse = () => {
@@ -349,21 +349,21 @@ export class PokerAnimation {
       this.ctx.translate(x, y);
       this.ctx.save();
       this.ctx.rotate(rotateC);
-      this.ctx.translate( -(cards.length*90/2) + 45, 0);
+      this.ctx.translate( (cards.length*dist/2) - dist/2, 0);
       this.ctx.translate(turned / 2, 0);
       cards.reduce((differ, card) => {
         this.ctx.save();
         this.ctx.translate(differ, 0);
         this.ctx.clearRect(- 46, -1 - this.cardHeight / 2, this.cardWidth -turned + 2, this.cardHeight + 2);
         this.ctx.restore();
-        return differ + 90;
+        return differ - dist;
       }, 0);
       this.ctx.restore();
       turned += turnRate;
 
       this.ctx.save();
       this.ctx.rotate(rotateC);
-      this.ctx.translate( -(cards.length*90/2) + 45, 0);
+      this.ctx.translate( (cards.length*dist/2) - dist/2, 0);
       this.ctx.translate(turned / 2, 0);
       cards.reduce((differ, card) => {
         // const image = turned >= this.cardWidth ? card : this.back;
@@ -375,7 +375,7 @@ export class PokerAnimation {
           this.ctx.drawImage(this.back, ...cardCoordinates['back'], -45, -this.cardHeight / 2, this.cardWidth - turned, this.cardHeight);
         }
         this.ctx.restore();
-        return differ + 90;
+        return differ - dist;
       }, 0);
       this.ctx.restore();
       progress += turnRate/(2 * this.cardWidth);

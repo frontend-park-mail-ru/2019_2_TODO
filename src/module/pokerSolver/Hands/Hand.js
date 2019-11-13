@@ -4,7 +4,6 @@ import Card from '../Card/PokerCard.js';
 const values = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'];
 const game = {
   'cardsInHand': 5,
-  // 'handValues': [StraightFlush, FourOfAKind, FullHouse, Flush, Straight, ThreeOfAKind, TwoPair, OnePair, HighCard],
   'wildValue': null,
   'wildStatus': 1,
   'wheelStatus': 0,

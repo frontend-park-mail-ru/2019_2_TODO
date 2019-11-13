@@ -1,4 +1,4 @@
-
+@import "../../../../base.scss";
 .profileForm{
     margin-top: 20vh;
     width: 500px;
@@ -15,7 +15,7 @@
         height: 30px;
         width: 30px;
         align-self: flex-end;
-        display: flex;
+        @extend %row;
         align-items: center;
         justify-content: center;
     }
