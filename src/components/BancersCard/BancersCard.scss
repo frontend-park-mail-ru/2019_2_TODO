@@ -1,0 +1,13 @@
+.bankerCard {
+  width: 20vw;
+  height: 20vh;
+  border-radius: 100px;
+  display: flex;
+  flex-direction: row;
+  padding-right: 60px;
+  padding-left: 50px;
+  justify-content: flex-start;
+  align-items: center;
+  //border: solid 1px gray;
+  box-shadow:  0px 0px 10px gray;
+}

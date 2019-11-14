@@ -1,44 +1,15 @@
 @import "../../base.scss";
 
-.poker-bot-panel{
-    @extend %row;
-    justify-content: space-between;
-    align-items: center;
-    justify-self: center;
-    grid-area: 1/2;
-    z-index: 1;
-    &__score-bet{
-        color: black;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 0;
-        margin-right: 3px;
-        /*margin-bottom: -50px;*/
-        min-height: 60px;
-        min-width: 100px;
-        background: gold;
-        border-radius: 5px;
-        border: 1px solid black;
-    }
-    &__bank{
-        /*position: absolute;*/
-        /*top: 27vh;*/
-        /*left: calc(50vw - 50px);*/
-        color: black;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 0;
-        margin-right: 3px;
-        /*margin-bottom: -50px;*/
-        min-height: 60px;
-        min-width: 100px;
-        background: #ff365e;
-        border-radius: 5px;
-        border: 1px solid black;
-        margin-top: 1vh;
-    }
+.bank{
+    border-radius: 100px;
+    box-shadow: 0 0 10px grey;
+    padding: 10px;
+    width: 5vw;
+    text-align: center;
+    color: white;
+    margin-top: 12vh;
+    align-self: flex-start;
+    position: absolute;
+    z-index: 2;
 }
-
 

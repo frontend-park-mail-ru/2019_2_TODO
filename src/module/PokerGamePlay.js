@@ -1,5 +1,6 @@
 import {PokerAnimation} from './PokerAnimation.js';
 import OfflineGameView from '../components/viewes/OfflineGame/OfflineGameView.js';
+import {PokerCSSAnimation} from "./PokerCSSAnimation";
 
 const baseDeck = [
   '2d', '3d', '4d', '5d', '6d', '7d', '8d', '9d', 'Td', 'Jd', 'Qd', 'Kd', 'Ad',
@@ -9,9 +10,9 @@ const baseDeck = [
 ];
 
 export const updateScoreBet = () => {
-  document.getElementById('playerBet').innerText = `${window.sessionStorage.playerScore}/${window.sessionStorage.playerBet}`;
+  document.getElementById('userScore').innerText = `${window.sessionStorage.playerScore}/${window.sessionStorage.playerBet}`;
   document.getElementById('bank').innerText = window.sessionStorage.bank;
-  document.getElementById('bot').innerText = `${window.sessionStorage.botScore}/${window.sessionStorage.botBet}`;
+  document.getElementById('botScore').innerText = `${window.sessionStorage.botScore}/${window.sessionStorage.botBet}`;
 };
 
 export class game {
@@ -21,7 +22,7 @@ export class game {
     this.botHand = null;
     this.bankCards = null;
     this.botCards = null;
-    this.animation = new PokerAnimation();
+    this.animation = new PokerCSSAnimation(['user', 'bot']);
     this._callCheck = false;
     this._stage = 0;
     this._allIn = false;
@@ -34,8 +35,14 @@ export class game {
       sessionStorage.botBet = 0;
       sessionStorage.playerBet = 0;
     }
-    sessionStorage.dealer = 'player';
-    sessionStorage.secondPlayer = 'bot';
+    if (sessionStorage.dealer === 'player'){
+      sessionStorage.dealer = 'player';
+      sessionStorage.secondPlayer = 'bot';
+    } else {
+      sessionStorage.dealer = 'bot';
+      sessionStorage.secondPlayer = 'player';
+    }
+    console.log(sessionStorage.dealer)
     if (window.bot !== true) {
       this.bot();
     }
@@ -45,12 +52,12 @@ export class game {
 
   startRound() {
     if (isNaN(sessionStorage.playerScore) ||
-          sessionStorage.playerScore <= 0) {
+        sessionStorage.playerScore <= 0) {
       sessionStorage.playerScore = 1000;
       sessionStorage.botBet = 0;
     }
     if (isNaN(sessionStorage.botScore) ||
-          sessionStorage.botScore <= 0) {
+        sessionStorage.botScore <= 0) {
       sessionStorage.botScore = 1000;
       sessionStorage.playerBet = 0;
     }
@@ -58,7 +65,8 @@ export class game {
     this._allIn = false;
     OfflineGameView.disableButtonPanel('playerPanel');
     this.deck = [...baseDeck];
-    sessionStorage.botScore = parseInt(sessionStorage.botScore) + parseInt(sessionStorage.botBet) + parseInt(sessionStorage.playerBet);
+    sessionStorage.botScore = parseInt(sessionStorage.botScore) + parseInt(sessionStorage.botBet);
+    sessionStorage.playerScore = parseInt(sessionStorage.playerScore) + parseInt(sessionStorage.playerBet);
     sessionStorage.playerBet = 0;
     sessionStorage.bank = 0;
     sessionStorage.botBet = 0;
@@ -73,15 +81,12 @@ export class game {
     // console.log(Hand.winners([this.playerHand, this.botHand]));
 
     // const canvas = document.getElementById('canvas');
-    this.animation.startRoundAnimation(playersCards, botsCards, bankCards);
-    const startAnimationListener = () => {
-      this.bets();
-      if (sessionStorage.dealer !== 'player') {
-        OfflineGameView.enableButtonPanel('call');
-      }
-      removeEventListener('endOfStartAnimation', startAnimationListener);
-    };
-    addEventListener('endOfStartAnimation', startAnimationListener);
+    this.animation.startRoundAnimation();
+    this.animation.showPlayerCards('user', playersCards)
+    this.bets();
+    if (sessionStorage.dealer !== 'player') {
+      OfflineGameView.enableButtonPanel('call');
+    }
   }
 
   endRound() {
@@ -110,11 +115,14 @@ export class game {
     setTimeout(() => {
       this.animation.removeAllCards();
     }, 3000);
-    const listener = () => {
-      removeEventListener('roundAnimationEnd', listener);
+    // const listener = () => {
+    //   removeEventListener('roundAnimationEnd', listener);
+
+    setTimeout(() => {
       this.startRound();
-    };
-    addEventListener('roundAnimationEnd', listener);
+    }, 4000);
+    // };
+    // addEventListener('roundAnimationEnd', listener);
   }
 
   raise(evt = null, value) {
@@ -128,7 +136,7 @@ export class game {
         } else {
           sessionStorage.playerBet = parseInt(sessionStorage.playerBet) +
               Math.min(parseInt(sessionStorage.playerScore),
-                  parseInt(sessionStorage.botScore)+parseInt(sessionStorage.botBet) - parseInt(sessionStorage.playerBet));
+                  parseInt(sessionStorage.botScore) + parseInt(sessionStorage.botBet) - parseInt(sessionStorage.playerBet));
           sessionStorage.playerScore = Math.max(parseInt(sessionStorage.playerScore) - parseInt(sessionStorage.playerBet), 0);
           this._allIn = true;
         }
@@ -141,9 +149,9 @@ export class game {
         } else {
           // sessionStorage.botBet -= -sessionStorage.botScore;
           // sessionStorage.botScore = 0;
-          sessionStorage.botBet =parseInt(sessionStorage.botBet) +
-                Math.min(parseInt(sessionStorage.botScore),
-                    parseInt(sessionStorage.playerScore)+parseInt(sessionStorage.playerBet) - parseInt(sessionStorage.botBet));
+          sessionStorage.botBet = parseInt(sessionStorage.botBet) +
+              Math.min(parseInt(sessionStorage.botScore),
+                  parseInt(sessionStorage.playerScore) + parseInt(sessionStorage.playerBet) - parseInt(sessionStorage.botBet));
           sessionStorage.botScore = parseInt(sessionStorage.botScore) - sessionStorage.botBet;
           this._allIn = true;
         }
@@ -195,27 +203,24 @@ export class game {
     };
     func(evt);
   };
+
   nextStage(allin = false) {
     const func = () => {
       console.log(this._allIn);
       if (this._stage === 0) {
-        this.animation.reverseBankerCards(this.bankCards, [0, 1, 2]);
+        this.animation.showBankCards([0, 1, 2], this.bankCards);
       } else if (this._stage === 1) {
-        this.animation.reverseBankerCards(this.bankCards, [3]);
+        this.animation.showBankCards([3], this.bankCards);
       } else if (this._stage === 2) {
-        this.animation.reverseBankerCards(this.bankCards, [4]);
+        this.animation.showBankCards([4], this.bankCards);
       } else if (this._stage === 3) {
         this._stage++;
-        const listener = () => {
-          this.endRound();
-          removeEventListener('endOfRound', listener);
-        };
-        addEventListener('endOfRound', listener);
-        this.animation.reverseBotCards(this.botCards, 'endOfRound');
+        this.animation.showPlayerCards('bot', this.botCards);
+        this.endRound();
         return;
       }
       this._stage++;
-      sessionStorage.bank = parseInt(sessionStorage.bank)+(parseInt(sessionStorage.botBet) + parseInt(sessionStorage.playerBet));
+      sessionStorage.bank = parseInt(sessionStorage.bank) + (parseInt(sessionStorage.botBet) + parseInt(sessionStorage.playerBet));
       sessionStorage.playerBet = 0;
       sessionStorage.botBet = 0;
       updateScoreBet();
@@ -283,7 +288,9 @@ export class game {
       sessionStorage.botScore -= sessionStorage.botBet;
       sessionStorage.dealer = 'bot';
       sessionStorage.secondPlayer = 'player';
+      console.log('111111')
     } else {
+      console.log('222222')
       sessionStorage.botBet = 20;
       sessionStorage.playerBet = 40;
       sessionStorage.botScore -= sessionStorage.botBet;
@@ -346,7 +353,7 @@ export class game {
       }, 1000);
     });
     addEventListener('raise', () => {
-      setTimeout( () => {
+      setTimeout(() => {
         if (this._stage < 4) {
           if (this._allIn) {
             const evt = {};
@@ -382,8 +389,8 @@ export class game {
         }
       }, 1000);
     });
-    addEventListener('check', () =>{
-      setTimeout( () => {
+    addEventListener('check', () => {
+      setTimeout(() => {
         if (this._stage < 4) {
           if (this.botHand.rank < 2) {
             const evt = {};
@@ -404,7 +411,7 @@ export class game {
       }, 1000);
     });
     addEventListener('blind', () => {
-      setTimeout( () => {
+      setTimeout(() => {
         const evt = {};
         evt.target = {};
         evt.target.parentElement = {};

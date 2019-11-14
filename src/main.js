@@ -6,8 +6,8 @@ import ChangeProfileView from './components/viewes/Profile/Change/ChangeProfile.
 import NotFoundView from './components/viewes/NotFoundView/NotFoundView.js';
 import ProfileView from './components/viewes/Profile/Profile.js';
 import OfflineGameView from './components/viewes/OfflineGame/OfflineGameView.js';
-import test from './components/viewes/test/test.js';
 import runtime from 'serviceworker-webpack-plugin/lib/runtime.js';
+
 
 if ('serviceWorker' in navigator) {
   console.log(navigator);
@@ -21,8 +21,7 @@ window.router.register('/', StartScreen)
     .register('/profileChange', ChangeProfileView)
     .register('/profile', ProfileView)
     .register('/offline', OfflineGameView)
-    .register('/notFound', NotFoundView)
-    .register('/test', test);
+    .register('/notFound', NotFoundView);
 console.log(router.routes);
 window.router.start();
 
