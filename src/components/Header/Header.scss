@@ -27,12 +27,59 @@
         color: #b4b9b6;
         font-size: 30px;
         cursor: pointer;
+        text-transform: uppercase;
+        transition: text-shadow;
+        transition-duration: 1000ms;
+        transition-timing-function: ease;
+        text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #4f4739, 0 0 0.5em #9aa0c0, 0 0 0.1em #4f4739;
+      }
+      &__label:hover{
+        text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #2cff08, 0 0 0.5em #094f0a, 0 0 0.1em #2cff08;
+      }
+
+      &__label span {
+        animation: neon-4 linear infinite 6s;
+      }
+
+      @keyframes neon-4 {
+        3% {
+          color: inherit;
+          text-shadow: inherit;
+        }
+        79%{
+          color: #434f4c;
+        }
+        80% {
+          text-shadow: none;
+        }
+        81% {
+          color: inherit;
+          text-shadow: inherit;
+        }
+        82% {
+          color: #f3ffed;
+          text-shadow: none;
+        }
+        83% {
+          color: inherit;
+          text-shadow: inherit;
+        }
+        92% {
+          color: #0a0a0a;
+          text-shadow: none;
+        }
+        92.5% {
+          color: inherit;
+          text-shadow: inherit;
+        }
       }
     }
-    &__right-container{
+
+    &__right-container {
       display: flex;
       flex-direction: row;
     }
+
     &__button {
       border: 1px solid #b4b9b6;
       border-radius: 20px;
@@ -61,11 +108,13 @@
     padding: 11px 25px 9px;
     color: #2ecc71
   }
-  &__sign-in-button:nth-child(1){
+
+  &__sign-in-button:nth-child(1) {
     border: 1px solid #b4b9b6;
     color: #b4b9b6;
   }
-  &__sign-in-button:hover{
+
+  &__sign-in-button:hover {
     color: gray;
   }
 }

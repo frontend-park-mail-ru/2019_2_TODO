@@ -20,11 +20,6 @@ class Header extends BaseComponent {
 
 /** Класс заголовка */
 export class HeaderComponent {
-  /**
-   * Создать заголовок.
-   * @param {HTMLElement} parent - родитель
-   * @param {boolean} authorized - флаг авторизации
-   */
   constructor(
       parent = document.body,
       authorized = false,
@@ -57,5 +52,11 @@ export class HeaderComponent {
       });
       this._parent.innerHTML += head.render() + infoBar.render();
     }
+  }
+  addListener(){
+    document.getElementById('infoAvatar').addEventListener('click', event => {
+      console.log(event);
+      window.router.open('/profile');
+    });
   }
 }

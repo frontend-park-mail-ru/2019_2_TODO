@@ -77,19 +77,14 @@ export default class Router {
 
   start() {
     this.root.addEventListener('click', (event) => {
-      // if (event.target instanceof HTMLImageElement) {
-      //   console.log(event.target.href);
-      // }
       if (!(event.target instanceof HTMLAnchorElement)) {
-        // event.preventDefault();
         const {target} = event;
-        if (target.id === 'infoAvatar') {
-          event.preventDefault();
-          console.log('wefwe');
-          window.router.open('/profile');
-        }
+        // console.log(document);
+        console.log(target.id);
+        // console.log(target.href);
+        // document.getElementById(target.id).dispatchEvent(new Event('click'));
         if (target.id === 'logout') {
-          // console.log(target);
+
           AjaxModule.logOut(document.getElementById('application'));
         }
         return;
