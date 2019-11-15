@@ -12,10 +12,7 @@ export class PokerCSSAnimation {
       i++;
     });
     this.bankerCards = ['b1', 'b2', 'b3', 'b4', 'b5'];
-  }
-
-  startRoundAnimation() {
-    this.players.forEach(id => {
+    this.players.forEach((id) => {
       const container = document.getElementById(id);
       this[id].reduce((i, cardId) => {
         let ctx;
@@ -23,7 +20,7 @@ export class PokerCSSAnimation {
           ctx = {
             cardId: cardId,
             // second: 'card-second',
-          }
+          };
         } else {
           ctx = {
             cardId: cardId,
@@ -35,11 +32,24 @@ export class PokerCSSAnimation {
       }, 0);
     });
     const bankContainer = document.getElementById('bankerCardId');
-    this.bankerCards.forEach(id => {
+    this.bankerCards.forEach((id) => {
       const card = new Card({
         cardId: id,
       });
       bankContainer.innerHTML += card.render();
+    });
+  }
+
+  startRoundAnimation() {
+    this.players.forEach(id => {
+      this[id].forEach(cardId => {
+        document.getElementById(cardId).dataset['nominal'] = '';
+        document.getElementById(cardId).hidden = false;
+      })
+    });
+    this.bankerCards.forEach(card =>{
+      document.getElementById(card).dataset['nominal'] = '';
+      // document.getElementById(card).hidden = false;
     });
   }
 
@@ -50,19 +60,23 @@ export class PokerCSSAnimation {
   }
 
   showBankCards(indexes, cards) {
-    indexes.forEach(index => {
-      document.getElementById(this.bankerCards[index]).dataset['nominal'] = cards[index];
-    });
+    indexes.reduce((delay, index) => {
+      setTimeout(()=>{
+        document.getElementById(this.bankerCards[index]).dataset['nominal'] = cards[index];
+        document.getElementById(this.bankerCards[index]).hidden = false;
+      }, delay);
+      return delay + 400;
+    },400);
   }
 
   removeAllCards() {
     this.players.forEach(id => {
       this[id].forEach(cardId => {
-        document.getElementById(cardId).remove();
-      })
-    })
+        document.getElementById(cardId).hidden = true;
+      });
+    });
     this.bankerCards.forEach(card =>{
-      document.getElementById(card).remove();
-    })
+      document.getElementById(card).hidden = true;
+    });
   }
 }

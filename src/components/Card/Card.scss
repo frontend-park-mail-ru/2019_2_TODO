@@ -5,10 +5,10 @@
   height: 94px;
   width: 70px;
   border-radius: 5px;
-  margin-left: auto;
+  //margin-left: auto;
   border: solid 1px grey;
   background: url("/assets/back_red.png");
-  background-size: 100%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   //background-position: 100% 100%;
   //background-position: calc(11 * 100% / 12) calc(2 * 100% / 3);
@@ -284,7 +284,6 @@
   background-image: url("/assets/sprite_cards.png");
   background-position: calc(12 * 100% / 12) calc(3 * 100% / 3);
 }
-
 
 .card:nth-child(1){
   //transition-duration: 1000ms;

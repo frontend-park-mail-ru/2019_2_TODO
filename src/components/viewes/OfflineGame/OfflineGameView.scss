@@ -32,14 +32,23 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: calc(50% - 275px);
-    left: calc(50% - 550px);
+    top: calc(50% - 27vh);
+    left: calc(50% - 27vw);
     background-image: url("/assets/table_new.png");
-    height: 550px;
-    width: 1100px;
+    height: 54vh;
+    width: 54vw;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 100%;
+    background-size: 54vw 54vh;
+}
+.startGameButton{
+    align-self: center;
+    z-index: 10;
+}
+.back{
+    position: absolute;
+    top: 1vh;
+    left: 1vw;
 }
 /*.grid-container {*/
 /*    display: grid;*/

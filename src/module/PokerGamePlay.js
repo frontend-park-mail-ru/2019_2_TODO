@@ -92,8 +92,8 @@ export class game {
   endRound() {
     const winners = PokerWinners([this.playerHand, this.botHand]);
     if (winners.length === 2) {
-      sessionStorage.playerScore -= -sessionStorage.playerBet;
-      sessionStorage.botScore -= -sessionStorage.botBet;
+      sessionStorage.playerScore = +sessionStorage.playerScore + sessionStorage.bank/2;
+      sessionStorage.botScore -= +sessionStorage.botScore + sessionStorage.bank/2;
       sessionStorage.bank = 0;
       sessionStorage.botBet = 0;
       sessionStorage.playerBet = 0;
@@ -177,11 +177,9 @@ export class game {
       }
       updateScoreBet();
       this.animation.removeAllCards();
-      const listener = () => {
+      setTimeout(()=>{
         this.startRound();
-        removeEventListener('roundAnimationEnd', listener);
-      };
-      addEventListener('roundAnimationEnd', listener);
+      }, 500);
     };
 
     func(evt);
@@ -206,7 +204,11 @@ export class game {
 
   nextStage(allin = false) {
     const func = () => {
-      console.log(this._allIn);
+      sessionStorage.bank = parseInt(sessionStorage.bank) +
+          (parseInt(sessionStorage.botBet) +
+              parseInt(sessionStorage.playerBet));
+      sessionStorage.playerBet = 0;
+      sessionStorage.botBet = 0;
       if (this._stage === 0) {
         this.animation.showBankCards([0, 1, 2], this.bankCards);
       } else if (this._stage === 1) {
@@ -220,9 +222,6 @@ export class game {
         return;
       }
       this._stage++;
-      sessionStorage.bank = parseInt(sessionStorage.bank) + (parseInt(sessionStorage.botBet) + parseInt(sessionStorage.playerBet));
-      sessionStorage.playerBet = 0;
-      sessionStorage.botBet = 0;
       updateScoreBet();
       console.log(this._stage);
       if (this._allIn) {
@@ -241,7 +240,8 @@ export class game {
       if (evt.target.parentElement.id === 'playerPanel') {
         if (botBet > playerBet) {
           if (playerScore < botBet - playerBet) {
-            sessionStorage.playerBet = parseInt(sessionStorage.playerBet) + playerScore;
+            sessionStorage.playerBet = parseInt(sessionStorage.playerBet) +
+                playerScore;
             sessionStorage.playerScore = 0;
             this._allIn = true;
           } else {
@@ -258,7 +258,8 @@ export class game {
             sessionStorage.botScore = 0;
             this._allIn = true;
           } else {
-            sessionStorage.botScore = parseInt(sessionStorage.botScore) - (playerBet - botBet);
+            sessionStorage.botScore = parseInt(sessionStorage.botScore) -
+                (playerBet - botBet);
             sessionStorage.botBet = playerBet;
           }
         }

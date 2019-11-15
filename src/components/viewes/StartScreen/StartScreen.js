@@ -18,8 +18,6 @@ export default class StartScreen extends BaseView {
           header.render();
           const menuBar = new MenuBar(application);
           menuBar.render();
-          header.addListener();
-
         })
         .then((res) => res.text())
         .then((resText) => {
@@ -33,6 +31,7 @@ export default class StartScreen extends BaseView {
             header.render();
             const menuBar = new MenuBar(application);
             menuBar.render();
+            header.addListener();
           } else {
             const header = new HeaderComponent(application, false);
             header.render();

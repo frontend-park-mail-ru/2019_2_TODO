@@ -6,9 +6,10 @@ import {BankPanel} from '../../BankPanel/BankPanel.js';
 import AjaxModule from '../../../module/ajax.js';
 import BaseView from '../BaseView/BaseView.js';
 import {PlayerInfo} from "../../PlayerInfo/PlayerInfo.js";
-import {Card} from "../../Card/Card.js";
+// import {Card} from "../../Card/Card.js";
 import {BankersCard} from "../../BancersCard/BancersCard";
-import {PokerCSSAnimation} from "../../../module/PokerCSSAnimation";
+import {TextComponent} from "../../TextComponent/Text";
+// import {PokerCSSAnimation} from "../../../module/PokerCSSAnimation";
 
 export default class OfflineGameView extends BaseView {
   constructor(element) {
@@ -20,6 +21,19 @@ export default class OfflineGameView extends BaseView {
 
   render() {
     this.el.innerHTML = '';
+    const backButton = new TextComponent({
+      tag: 'a',
+      text: 'back',
+      class: 'button-small back',
+      href: '/',
+    });
+    this.el.innerHTML += backButton.render();
+    const startButton = new ButtonComponent({
+      text: 'start',
+      class: 'button startGameButton',
+      id: 'startGame',
+    });
+    this.el.innerHTML += startButton.render();
     this.el.className = 'sect';
     const table = document.createElement('div');
     table.className = 'table';
@@ -44,8 +58,6 @@ export default class OfflineGameView extends BaseView {
     this.el.innerHTML += botInfo.render();
     const playerButton = new PokerUserPanel();
     this.el.innerHTML += playerButton.render();
-    this.game = new game();
-    this.game.startRound();
     const raiseButton = new ButtonComponent({
       id: 'raiseButton',
       text: 'raise',
@@ -77,6 +89,11 @@ export default class OfflineGameView extends BaseView {
       OfflineGameView.disableButtonPanel();
       this.game.raise({target: {parentElement: {id: 'playerPanel'}}}, document.getElementById('raiseInput').value);
     });
+    document.getElementById('startGame').addEventListener('click', (evt)=>{
+      this.game = new game();
+      this.game.startRound();
+      document.getElementById('startGame').hidden = true;
+    }, {once: true});
     // const card = new Card({
     //   nominal: 'As',
     // });
