@@ -207,6 +207,7 @@ export class game {
       sessionStorage.botBet = 0;
       if (this._allIn) {
         this.animation.showBankCards([0, 1, 2, 3, 4], this.bankCards);
+        this.animation.showPlayerCards('bot', this.botCards)
         this.endRound();
         updateScoreBet();
         return;
