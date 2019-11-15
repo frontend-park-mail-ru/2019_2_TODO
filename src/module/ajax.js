@@ -9,14 +9,12 @@ class AjaxModule {
      * @param {FormData} data - картинка
      */
   postAvatar(application, data) {
-    // console.log(data);
     this.fetchPost('http://93.171.139.196:780/signin/profileImage/', data, {
       method: 'POST',
       credentials: 'include',
       body: data})
         .then((res) => {
           if (res.status === 200) {
-            // console.log(res);
             window.router.open('/profile');
             // window.router.reRender('/profile');
           }
@@ -30,10 +28,6 @@ class AjaxModule {
      * @param {string} password
      */
   signUp(application, email, password) {
-    console.log(JSON.stringify({
-      username: email,
-      password: password,
-    }));
     this.fetchPost('http://93.171.139.196:780/signup/',
         JSON.stringify({
           username: email,
@@ -41,7 +35,6 @@ class AjaxModule {
         }))
         .then((rez) => {
           if (rez.status === 200) {
-            console.log(rez);
             window.router.reRender('/');
           }
         });
@@ -61,9 +54,7 @@ class AjaxModule {
           password: password,
         })
     ).then((res) => {
-      console.log('asca');
       if (res.status === 200) {
-        console.log('___');
         window.router.reRender('/');
       }
     });
@@ -76,7 +67,6 @@ class AjaxModule {
   logOut(application) {
     this.fetchGet('http://93.171.139.196:780/logout/')
         .then((res) => {
-          console.log(res.status);
           if (res.status === 200) {
             window.router.reRender('/');
           }
