@@ -79,10 +79,6 @@ export default class Router {
     this.root.addEventListener('click', (event) => {
       if (!(event.target instanceof HTMLAnchorElement)) {
         const {target} = event;
-        // console.log(document);
-        console.log(target.id);
-        // console.log(target.href);
-        // document.getElementById(target.id).dispatchEvent(new Event('click'));
         if (target.id === 'logout') {
 
           AjaxModule.logOut(document.getElementById('application'));
@@ -93,9 +89,6 @@ export default class Router {
       // event.stopImmediatePropagation();
       const link = event.target;
 
-      console.log({
-        pathname: link.pathname,
-      });
 
       this.open(link.pathname);
     });

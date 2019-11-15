@@ -55,7 +55,6 @@ export class HeaderComponent {
   }
   addListener(){
     document.getElementById('infoAvatar').addEventListener('click', event => {
-      console.log(event);
       window.router.open('/profile');
     });
   }

@@ -45,7 +45,6 @@ window.PokerWinners = (hands) => {
   const highestRank = Math.max.apply(Math, hands.map( (h) => {
     return h.rank;
   }));
-  console.log(highestRank);
   hands = hands.filter((h) => {
     return h.rank === highestRank;
   });

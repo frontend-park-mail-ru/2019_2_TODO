@@ -42,7 +42,6 @@ export class game {
       sessionStorage.dealer = 'bot';
       sessionStorage.secondPlayer = 'player';
     }
-    console.log(sessionStorage.dealer)
     if (window.bot !== true) {
       this.bot();
     }
@@ -78,9 +77,6 @@ export class game {
     this.botCards = botsCards;
     this.playerHand = HandSolve([...playersCards, ...bankCards]);
     this.botHand = HandSolve([...botsCards, ...bankCards]);
-    // console.log(Hand.winners([this.playerHand, this.botHand]));
-
-    // const canvas = document.getElementById('canvas');
     this.animation.startRoundAnimation();
     this.animation.showPlayerCards('user', playersCards)
     this.bets();
@@ -209,6 +205,12 @@ export class game {
               parseInt(sessionStorage.playerBet));
       sessionStorage.playerBet = 0;
       sessionStorage.botBet = 0;
+      if (this._allIn) {
+        this.animation.showBankCards([0, 1, 2, 3, 4], this.bankCards);
+        this.endRound();
+        updateScoreBet();
+        return;
+      }
       if (this._stage === 0) {
         this.animation.showBankCards([0, 1, 2], this.bankCards);
       } else if (this._stage === 1) {
@@ -223,10 +225,7 @@ export class game {
       }
       this._stage++;
       updateScoreBet();
-      console.log(this._stage);
-      if (this._allIn) {
-        this.nextStage();
-      }
+
     };
     func();
   };
@@ -289,9 +288,7 @@ export class game {
       sessionStorage.botScore -= sessionStorage.botBet;
       sessionStorage.dealer = 'bot';
       sessionStorage.secondPlayer = 'player';
-      console.log('111111')
     } else {
-      console.log('222222')
       sessionStorage.botBet = 20;
       sessionStorage.playerBet = 40;
       sessionStorage.botScore -= sessionStorage.botBet;
@@ -333,7 +330,7 @@ export class game {
             evt.target = {};
             evt.target.parentElement = {};
             evt.target.parentElement.id = 'botPanel';
-            // console.log(evt);
+            
             this.call(evt);
             return;
           }
@@ -361,7 +358,7 @@ export class game {
             evt.target = {};
             evt.target.parentElement = {};
             evt.target.parentElement.id = 'botPanel';
-            // console.log(evt);
+            
             this.call(evt);
             return;
           }
@@ -370,21 +367,21 @@ export class game {
             evt.target = {};
             evt.target.parentElement = {};
             evt.target.parentElement.id = 'botPanel';
-            // console.log(evt);
+            
             this.fold(evt);
           } else if (this.botHand.rank < 5) {
             const evt = {};
             evt.target = {};
             evt.target.parentElement = {};
             evt.target.parentElement.id = 'botPanel';
-            // console.log(evt);
+            
             this.call(evt);
           } else {
             const evt = {};
             evt.target = {};
             evt.target.parentElement = {};
             evt.target.parentElement.id = 'botPanel';
-            // console.log(evt);
+            
             this.raise(evt, 40);
           }
         }
@@ -398,14 +395,14 @@ export class game {
             evt.target = {};
             evt.target.parentElement = {};
             evt.target.parentElement.id = 'botPanel';
-            // console.log(evt);
+            
             this.check(evt);
           } else {
             const evt = {};
             evt.target = {};
             evt.target.parentElement = {};
             evt.target.parentElement.id = 'botPanel';
-            // console.log(evt);
+            
             this.raise(evt, 40);
           }
         }
@@ -417,7 +414,7 @@ export class game {
         evt.target = {};
         evt.target.parentElement = {};
         evt.target.parentElement.id = 'botPanel';
-        // console.log(evt);
+        
         this.call(evt);
       }, 1000);
     });

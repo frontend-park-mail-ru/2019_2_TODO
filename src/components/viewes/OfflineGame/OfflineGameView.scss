@@ -1,75 +1,63 @@
 
-
 .sect {
-    position: relative;
-    padding: 0;
-    margin: 0;
-    /*width: 100vw;*/
-    /*background: linear-gradient(grey,black);*/
-    height: 100vh;
-    //display: grid;
-    //flex-direction: column;
-    //align-items: center;
-    //justify-content: center;
-    background-image: url("/assets/nami.png");
-    //grid-template: 1fr 1fr 1fr 1f 1f / 1f 1f 1fr 1fr 1fr;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  background-image: url("/assets/nami.png");
 }
 
-.canvas {
-    width: 100%;
-    background-image: url('/assets/table_new.png');
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin: 0;
-    height: 80vh;
-    grid-area: 2/2;
+.table {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: calc(50% - 27vh);
+  left: calc(50% - 27vw);
+  background-image: url("/assets/table_new.png");
+  height: 54vh;
+  width: 54vw;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 54vw 54vh;
 }
 
-.table{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: calc(50% - 27vh);
-    left: calc(50% - 27vw);
-    background-image: url("/assets/table_new.png");
-    height: 54vh;
-    width: 54vw;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 54vw 54vh;
+.startGameButton {
+  align-self: center;
+  z-index: 10;
 }
-.startGameButton{
-    align-self: center;
-    z-index: 10;
+
+.back {
+  position: absolute;
+  top: 1vh;
+  left: 1vw;
+  color: #2ecc71;
+  padding: 5px;
+  width: 50px;
+    font-family: "Alfa Slab One";
+  text-align: center;
+  border-radius: 100px;
+  border: solid 1px #2ecc71;
 }
-.back{
-    position: absolute;
-    top: 1vh;
-    left: 1vw;
+.back:hover{
+    text-shadow:
+            0 0 6px rgba(0,0,0,0.98),
+            0 0 30px rgba(0,0,0,0.42),
+            0 0 12px rgba(	46, 204, 113,0.58),
+            0 0 22px rgba(	46, 204, 113,0.84),
+            0 0 38px rgba(	46, 204, 113,0.88),
+            0 0 60px rgba(	46, 204, 113,1);
+
 }
-/*.grid-container {*/
-/*    display: grid;*/
-/*    grid-template-areas:*/
-/*    !*background-image: url('http://localhost:8000/assets/table-removebg-preview.png');*!*/
-/*    "header header"*/
-/*    "sidebar content"*/
-/*    "sidebar content";*/
-/*    grid-template-columns: 150px 1fr;*/
-/*    grid-template-rows: 50px 1fr 50px;*/
-/*    background: #2980B9;*/
-/*}*/
-/*header {*/
-/*    grid-area: header;*/
-/*    background: #10394f;*/
-/*}*/
-/*aside {*/
-/*    grid-area: sidebar;*/
-/*    background: #bf3292;*/
-/*}*/
-/*main {*/
-/*    background: #34495F;*/
-/*    grid-area: content;*/
-/*}*/
+
+.raise-slider {
+  position: absolute;
+  bottom: 10vh;
+  width: 18%;
+  left: calc(41% - 10px);
+  outline: none;
+  border: initial;
+  appearance: none;
+  cursor: pointer;
+}

@@ -33,6 +33,7 @@ export default class SignUpScreen extends BaseView {
       id: 'email',
       error: 'NO_USERNAME',
       placeholder: 'Email',
+      class: 'input',
     });
     form.innerHTML += EmailInput.render();
     const PassInput = new InputComponent({
@@ -40,6 +41,7 @@ export default class SignUpScreen extends BaseView {
       id: 'password',
       error: 'PASSWORD_LENGTH',
       placeholder: 'Password',
+      class: 'input',
     });
     form.innerHTML += PassInput.render();
     const PassRepeat = new InputComponent({
@@ -47,6 +49,7 @@ export default class SignUpScreen extends BaseView {
       id: 'passwordRepeat',
       error: 'PASSWORD_REPEAT',
       placeholder: 'Repeat your password',
+      class: 'input',
     });
     form.innerHTML += PassRepeat.render();
     // const avatarInput = new InputComponent({
@@ -71,7 +74,6 @@ export default class SignUpScreen extends BaseView {
       const passwordRepeat = form.elements.passwordRepeat;
       if (!email.value.length) {
         InputError.e('NO_USERNAME', form);
-        console.log(email.value);
         password.value = '';
         passwordRepeat.value = '';
         form.elements.email = userName;
