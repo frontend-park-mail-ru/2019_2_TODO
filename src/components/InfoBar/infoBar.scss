@@ -1,36 +1,48 @@
 @import "../../base.scss";
 
+
 .infoBar {
+    position: absolute;
+    top: 20px;
+    right: 5px;
     @extend %row;
     align-self: flex-end;
-    background: #34495F;
+    //background: #34495F;
     max-width: 250px;
     border-radius: 5px;
     padding: 3px;
     justify-content: center;
     align-items: center;
+
+    &__avatar {
+        border-radius: 5px;
+        width: 50px;
+        height: 50px;
+        border:  1px solid ;
+        cursor: pointer;
+    }
+
+    &__username {
+        color: white;
+        font-family: sans-serif;
+        text-decoration: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__username:hover {
+        text-decoration: none;
+    }
+
+    &__logOutButton {
+        color: white;
+        background: none;
+        margin-left: 10px;
+        align-self: center;
+        border: none;
+        cursor: pointer;
+        font-size: 30px;
+        //color: #2ecc71;
+    }
 }
 
-.infoBar__avatar {
-    border-radius: 100px;
-    width: 50px;
-    height: 50px;
-    border:  1px solid crimson ;;
-}
-
-.infoBar__username {
-    color: white;
-    font-family: sans-serif;
-    text-decoration: none;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.infoBar__username:hover {
-    text-decoration: none;
-}
-
-.infoBar__logOutButton {
-    background: none;
-    align-self: auto;
-}

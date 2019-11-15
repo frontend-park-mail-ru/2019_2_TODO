@@ -2,6 +2,7 @@ import BaseComponent from '../../BaseComponent/BaseComponent.js';
 import BaseView from '../BaseView/BaseView.js';
 import AjaxModule from '../../../module/ajax.js';
 import template from './Profile.hbs';
+import {HeaderComponent} from "../../Header/Header";
 
 /** Класс профиля */
 export class ProfileComponent extends BaseComponent {
@@ -40,6 +41,8 @@ export default class ProfileView extends BaseView {
           return res.text();
         })
         .then((resT) => {
+          const header = new HeaderComponent(this.el);
+          header.render();
           window.avatar = JSON.parse(resT).image;
           window.username = JSON.parse(resT).username;
           const prof = new ProfileComponent({

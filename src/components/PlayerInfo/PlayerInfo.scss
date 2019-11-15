@@ -1,0 +1,50 @@
+
+
+.player-info{
+  position: absolute;
+  width: 115px;
+  &__card-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  &__panel{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: solid 1px rgb(50,50,50);
+    background: #0a0a0a;
+    height: 50px;
+    width: 100%;
+    color: white;
+    margin-top: -50px;
+    background: linear-gradient(rgb(50,50,50), black);
+    z-index: 5;
+    &__score{
+      margin: 0;
+    }
+  }
+}
+.player-info:nth-child(4) {
+  bottom: 18vh;
+  left: calc(50% - 57px);
+}
+
+.player-info:nth-child(5){
+  bottom: 25vh;
+  right: 18vw;
+}
+.player-info:nth-child(6){
+  bottom: 25vh;
+  left: 18vw;
+}
+.player-info:nth-child(7){
+  top: 25vh;
+  right: 18vw;
+}
+.player-info:nth-child(8){
+  top: 25vh;
+  left: 18vw;
+}

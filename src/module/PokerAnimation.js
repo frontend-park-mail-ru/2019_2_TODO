@@ -214,8 +214,6 @@ export class PokerAnimation {
       this.ctx.restore();
 
 
-      // console.log(Math.min(stepX / dx, stepY / dy));
-      // console.log(progress);
       if (progress < 1) {
         this.ctx.restore();
         window.requestAnimationFrame(move);
@@ -322,10 +320,7 @@ export class PokerAnimation {
         this.ctx.drawImage(this.back, ...cardCoordinates['back'], -45, -75, this.cardWidth, this.cardHeight);
         this.ctx.restore();
 
-        // console.log(Math.min(stepX / dx, stepY / dy));
-        // console.log(progress);
         if (progress >= 0) {
-          // console.log(progress);
           requestAnimationFrame(move);
         } else {
           this.ctx.save();

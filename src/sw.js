@@ -12,13 +12,10 @@ const cacheUrls = [
   // 'assets/gold_fishka.jpg',
   ...assets,
 ];
-console.log(assets);
-console.log(cacheUrls);
 // assets.append(cacheUrls[0])
 self.addEventListener('install', (event) => {
   // задержим обработку события
   // если произойдёт ошибка, serviceWorker не установится
-  // console.log('asd');
   event.waitUntil(
       // находим в глобальном хранилище Cache-объект с нашим именем
       // если такого не существует, то он будет создан
