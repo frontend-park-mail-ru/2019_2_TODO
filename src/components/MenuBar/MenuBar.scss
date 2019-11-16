@@ -1,0 +1,32 @@
+@import "../../base.scss";
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Alfa+Slab+One|Righteous|Rye&display=swap');
+.menu-bar{
+  @extend %column;
+  margin-top: 22vh;
+  align-items: center;
+
+  font-size: 30px;
+
+  &__button{
+    transition: text-shadow;
+    transition-duration: 100ms;
+    transition-timing-function: ease;
+    font-family: Alfa Slab One;
+    //font-weight: 600;
+    //font-palette: 1000;
+    letter-spacing: 1px;
+    color: #2ecc71;
+    padding: 10px;
+    border-radius: 100px;
+  }
+  &__button:hover{
+    text-shadow:
+    0 0 6px rgba(0,0,0,0.98),
+    0 0 30px rgba(0,0,0,0.42),
+    0 0 12px rgba(	46, 204, 113,0.58),
+    0 0 22px rgba(	46, 204, 113,0.84),
+    0 0 38px rgba(	46, 204, 113,0.88),
+    0 0 60px rgba(	46, 204, 113,1);
+
+  }
+}

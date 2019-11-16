@@ -1,5 +1,6 @@
 import {PokerAnimation} from './PokerAnimation.js';
 import OfflineGameView from '../components/viewes/OfflineGame/OfflineGameView.js';
+import {PokerCSSAnimation} from "./PokerCSSAnimation";
 
 const baseDeck = [
   '2d', '3d', '4d', '5d', '6d', '7d', '8d', '9d', 'Td', 'Jd', 'Qd', 'Kd', 'Ad',
@@ -9,9 +10,9 @@ const baseDeck = [
 ];
 
 export const updateScoreBet = () => {
-  document.getElementById('playerBet').innerText = `${window.sessionStorage.playerScore}/${window.sessionStorage.playerBet}`;
+  document.getElementById('userScore').innerText = `${window.sessionStorage.playerScore}/${window.sessionStorage.playerBet}`;
   document.getElementById('bank').innerText = window.sessionStorage.bank;
-  document.getElementById('bot').innerText = `${window.sessionStorage.botScore}/${window.sessionStorage.botBet}`;
+  document.getElementById('botScore').innerText = `${window.sessionStorage.botScore}/${window.sessionStorage.botBet}`;
 };
 
 export class game {
@@ -21,7 +22,7 @@ export class game {
     this.botHand = null;
     this.bankCards = null;
     this.botCards = null;
-    this.animation = new PokerAnimation();
+    this.animation = new PokerCSSAnimation(['user', 'bot']);
     this._callCheck = false;
     this._stage = 0;
     this._allIn = false;
@@ -34,8 +35,13 @@ export class game {
       sessionStorage.botBet = 0;
       sessionStorage.playerBet = 0;
     }
-    sessionStorage.dealer = 'player';
-    sessionStorage.secondPlayer = 'bot';
+    if (sessionStorage.dealer === 'player'){
+      sessionStorage.dealer = 'player';
+      sessionStorage.secondPlayer = 'bot';
+    } else {
+      sessionStorage.dealer = 'bot';
+      sessionStorage.secondPlayer = 'player';
+    }
     if (window.bot !== true) {
       this.bot();
     }
@@ -45,12 +51,12 @@ export class game {
 
   startRound() {
     if (isNaN(sessionStorage.playerScore) ||
-          sessionStorage.playerScore <= 0) {
+        sessionStorage.playerScore <= 0) {
       sessionStorage.playerScore = 1000;
       sessionStorage.botBet = 0;
     }
     if (isNaN(sessionStorage.botScore) ||
-          sessionStorage.botScore <= 0) {
+        sessionStorage.botScore <= 0) {
       sessionStorage.botScore = 1000;
       sessionStorage.playerBet = 0;
     }
@@ -58,7 +64,8 @@ export class game {
     this._allIn = false;
     OfflineGameView.disableButtonPanel('playerPanel');
     this.deck = [...baseDeck];
-    sessionStorage.botScore = parseInt(sessionStorage.botScore) + parseInt(sessionStorage.botBet) + parseInt(sessionStorage.playerBet);
+    sessionStorage.botScore = parseInt(sessionStorage.botScore) + parseInt(sessionStorage.botBet);
+    sessionStorage.playerScore = parseInt(sessionStorage.playerScore) + parseInt(sessionStorage.playerBet);
     sessionStorage.playerBet = 0;
     sessionStorage.bank = 0;
     sessionStorage.botBet = 0;
@@ -70,25 +77,19 @@ export class game {
     this.botCards = botsCards;
     this.playerHand = HandSolve([...playersCards, ...bankCards]);
     this.botHand = HandSolve([...botsCards, ...bankCards]);
-    // console.log(Hand.winners([this.playerHand, this.botHand]));
-
-    // const canvas = document.getElementById('canvas');
-    this.animation.startRoundAnimation(playersCards, botsCards, bankCards);
-    const startAnimationListener = () => {
-      this.bets();
-      if (sessionStorage.dealer !== 'player') {
-        OfflineGameView.enableButtonPanel('call');
-      }
-      removeEventListener('endOfStartAnimation', startAnimationListener);
-    };
-    addEventListener('endOfStartAnimation', startAnimationListener);
+    this.animation.startRoundAnimation();
+    this.animation.showPlayerCards('user', playersCards)
+    this.bets();
+    if (sessionStorage.dealer !== 'player') {
+      OfflineGameView.enableButtonPanel('call');
+    }
   }
 
   endRound() {
     const winners = PokerWinners([this.playerHand, this.botHand]);
     if (winners.length === 2) {
-      sessionStorage.playerScore -= -sessionStorage.playerBet;
-      sessionStorage.botScore -= -sessionStorage.botBet;
+      sessionStorage.playerScore = +sessionStorage.playerScore + sessionStorage.bank/2;
+      sessionStorage.botScore -= +sessionStorage.botScore + sessionStorage.bank/2;
       sessionStorage.bank = 0;
       sessionStorage.botBet = 0;
       sessionStorage.playerBet = 0;
@@ -110,11 +111,14 @@ export class game {
     setTimeout(() => {
       this.animation.removeAllCards();
     }, 3000);
-    const listener = () => {
-      removeEventListener('roundAnimationEnd', listener);
+    // const listener = () => {
+    //   removeEventListener('roundAnimationEnd', listener);
+
+    setTimeout(() => {
       this.startRound();
-    };
-    addEventListener('roundAnimationEnd', listener);
+    }, 4000);
+    // };
+    // addEventListener('roundAnimationEnd', listener);
   }
 
   raise(evt = null, value) {
@@ -128,7 +132,7 @@ export class game {
         } else {
           sessionStorage.playerBet = parseInt(sessionStorage.playerBet) +
               Math.min(parseInt(sessionStorage.playerScore),
-                  parseInt(sessionStorage.botScore)+parseInt(sessionStorage.botBet) - parseInt(sessionStorage.playerBet));
+                  parseInt(sessionStorage.botScore) + parseInt(sessionStorage.botBet) - parseInt(sessionStorage.playerBet));
           sessionStorage.playerScore = Math.max(parseInt(sessionStorage.playerScore) - parseInt(sessionStorage.playerBet), 0);
           this._allIn = true;
         }
@@ -141,9 +145,9 @@ export class game {
         } else {
           // sessionStorage.botBet -= -sessionStorage.botScore;
           // sessionStorage.botScore = 0;
-          sessionStorage.botBet =parseInt(sessionStorage.botBet) +
-                Math.min(parseInt(sessionStorage.botScore),
-                    parseInt(sessionStorage.playerScore)+parseInt(sessionStorage.playerBet) - parseInt(sessionStorage.botBet));
+          sessionStorage.botBet = parseInt(sessionStorage.botBet) +
+              Math.min(parseInt(sessionStorage.botScore),
+                  parseInt(sessionStorage.playerScore) + parseInt(sessionStorage.playerBet) - parseInt(sessionStorage.botBet));
           sessionStorage.botScore = parseInt(sessionStorage.botScore) - sessionStorage.botBet;
           this._allIn = true;
         }
@@ -169,11 +173,9 @@ export class game {
       }
       updateScoreBet();
       this.animation.removeAllCards();
-      const listener = () => {
+      setTimeout(()=>{
         this.startRound();
-        removeEventListener('roundAnimationEnd', listener);
-      };
-      addEventListener('roundAnimationEnd', listener);
+      }, 500);
     };
 
     func(evt);
@@ -195,34 +197,38 @@ export class game {
     };
     func(evt);
   };
+
   nextStage(allin = false) {
     const func = () => {
-      console.log(this._allIn);
+      sessionStorage.bank = parseInt(sessionStorage.bank) +
+          (parseInt(sessionStorage.botBet) +
+              parseInt(sessionStorage.playerBet));
+      sessionStorage.playerBet = 0;
+      sessionStorage.botBet = 0;
+      if (this._allIn) {
+        this.animation.showBankCards([0, 1, 2, 3, 4], this.bankCards);
+        this.animation.showPlayerCards('bot', this.botCards);
+        setTimeout(()=>{
+          this.endRound();
+          updateScoreBet();
+        }, 2500);
+        return;
+      }
       if (this._stage === 0) {
-        this.animation.reverseBankerCards(this.bankCards, [0, 1, 2]);
+        this.animation.showBankCards([0, 1, 2], this.bankCards);
       } else if (this._stage === 1) {
-        this.animation.reverseBankerCards(this.bankCards, [3]);
+        this.animation.showBankCards([3], this.bankCards);
       } else if (this._stage === 2) {
-        this.animation.reverseBankerCards(this.bankCards, [4]);
+        this.animation.showBankCards([4], this.bankCards);
       } else if (this._stage === 3) {
         this._stage++;
-        const listener = () => {
-          this.endRound();
-          removeEventListener('endOfRound', listener);
-        };
-        addEventListener('endOfRound', listener);
-        this.animation.reverseBotCards(this.botCards, 'endOfRound');
+        this.animation.showPlayerCards('bot', this.botCards);
+        this.endRound();
         return;
       }
       this._stage++;
-      sessionStorage.bank = parseInt(sessionStorage.bank)+(parseInt(sessionStorage.botBet) + parseInt(sessionStorage.playerBet));
-      sessionStorage.playerBet = 0;
-      sessionStorage.botBet = 0;
       updateScoreBet();
-      console.log(this._stage);
-      if (this._allIn) {
-        this.nextStage();
-      }
+
     };
     func();
   };
@@ -236,7 +242,8 @@ export class game {
       if (evt.target.parentElement.id === 'playerPanel') {
         if (botBet > playerBet) {
           if (playerScore < botBet - playerBet) {
-            sessionStorage.playerBet = parseInt(sessionStorage.playerBet) + playerScore;
+            sessionStorage.playerBet = parseInt(sessionStorage.playerBet) +
+                playerScore;
             sessionStorage.playerScore = 0;
             this._allIn = true;
           } else {
@@ -253,7 +260,8 @@ export class game {
             sessionStorage.botScore = 0;
             this._allIn = true;
           } else {
-            sessionStorage.botScore = parseInt(sessionStorage.botScore) - (playerBet - botBet);
+            sessionStorage.botScore = parseInt(sessionStorage.botScore) -
+                (playerBet - botBet);
             sessionStorage.botBet = playerBet;
           }
         }
@@ -325,7 +333,7 @@ export class game {
             evt.target = {};
             evt.target.parentElement = {};
             evt.target.parentElement.id = 'botPanel';
-            // console.log(evt);
+            
             this.call(evt);
             return;
           }
@@ -346,14 +354,14 @@ export class game {
       }, 1000);
     });
     addEventListener('raise', () => {
-      setTimeout( () => {
+      setTimeout(() => {
         if (this._stage < 4) {
           if (this._allIn) {
             const evt = {};
             evt.target = {};
             evt.target.parentElement = {};
             evt.target.parentElement.id = 'botPanel';
-            // console.log(evt);
+            
             this.call(evt);
             return;
           }
@@ -362,54 +370,54 @@ export class game {
             evt.target = {};
             evt.target.parentElement = {};
             evt.target.parentElement.id = 'botPanel';
-            // console.log(evt);
+            
             this.fold(evt);
           } else if (this.botHand.rank < 5) {
             const evt = {};
             evt.target = {};
             evt.target.parentElement = {};
             evt.target.parentElement.id = 'botPanel';
-            // console.log(evt);
+            
             this.call(evt);
           } else {
             const evt = {};
             evt.target = {};
             evt.target.parentElement = {};
             evt.target.parentElement.id = 'botPanel';
-            // console.log(evt);
+            
             this.raise(evt, 40);
           }
         }
       }, 1000);
     });
-    addEventListener('check', () =>{
-      setTimeout( () => {
+    addEventListener('check', () => {
+      setTimeout(() => {
         if (this._stage < 4) {
           if (this.botHand.rank < 2) {
             const evt = {};
             evt.target = {};
             evt.target.parentElement = {};
             evt.target.parentElement.id = 'botPanel';
-            // console.log(evt);
+            
             this.check(evt);
           } else {
             const evt = {};
             evt.target = {};
             evt.target.parentElement = {};
             evt.target.parentElement.id = 'botPanel';
-            // console.log(evt);
+            
             this.raise(evt, 40);
           }
         }
       }, 1000);
     });
     addEventListener('blind', () => {
-      setTimeout( () => {
+      setTimeout(() => {
         const evt = {};
         evt.target = {};
         evt.target.parentElement = {};
         evt.target.parentElement.id = 'botPanel';
-        // console.log(evt);
+        
         this.call(evt);
       }, 1000);
     });

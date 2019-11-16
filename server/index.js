@@ -27,5 +27,4 @@ app.use(fallback('index.html', {root: rootDir}));
 const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
-  console.log(`Server listening port ${port}`);
 });

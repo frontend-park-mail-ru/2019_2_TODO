@@ -1,9 +1,13 @@
 @import "../../base.scss";
 
+
 .infoBar {
+    position: absolute;
+    top: 20px;
+    right: 5px;
     @extend %row;
     align-self: flex-end;
-    background: #34495F;
+    //background: #34495F;
     max-width: 250px;
     border-radius: 5px;
     padding: 3px;
@@ -11,10 +15,11 @@
     align-items: center;
 
     &__avatar {
-        border-radius: 100px;
+        border-radius: 5px;
         width: 50px;
         height: 50px;
-        border:  1px solid crimson ;;
+        border:  1px solid ;
+        cursor: pointer;
     }
 
     &__username {
@@ -30,8 +35,14 @@
     }
 
     &__logOutButton {
+        color: white;
         background: none;
-        align-self: auto;
+        margin-left: 10px;
+        align-self: center;
+        border: none;
+        cursor: pointer;
+        font-size: 30px;
+        //color: #2ecc71;
     }
 }
 

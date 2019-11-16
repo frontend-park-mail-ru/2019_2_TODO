@@ -1,0 +1,297 @@
+
+.card{
+  transition: opacity;
+  transition-timing-function: ease;
+  height: 94px;
+  width: 70px;
+  border-radius: 5px;
+  //margin-left: auto;
+  border: solid 1px grey;
+  background: url("/assets/back_red.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  //background-position: 100% 100%;
+  //background-position: calc(11 * 100% / 12) calc(2 * 100% / 3);
+  z-index: 3;
+  animation: moveCard linear 1000ms;
+  @keyframes moveCard{
+    0%{
+      opacity: 0;
+    }
+    100%{
+      opacity: 1;
+    }
+  }
+}
+
+.card[data-nominal="Ad"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(0 * 100% / 12) calc(0 * 100% / 3);
+}
+.card[data-nominal="Kd"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(1 * 100% / 12) calc(0 * 100% / 3);
+}
+.card[data-nominal="Qd"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(2 * 100% / 12) calc(0 * 100% / 3);
+}
+.card[data-nominal="Jd"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(3 * 100% / 12) calc(0 * 100% / 3);
+}
+.card[data-nominal="Td"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(4 * 100% / 12) calc(0 * 100% / 3);
+}
+.card[data-nominal="9d"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(5 * 100% / 12) calc(0 * 100% / 3);
+}
+.card[data-nominal="8d"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(6 * 100% / 12) calc(0 * 100% / 3);
+}
+.card[data-nominal="7d"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(7 * 100% / 12) calc(0 * 100% / 3);
+}
+.card[data-nominal="6d"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(8 * 100% / 12) calc(0 * 100% / 3);
+}
+.card[data-nominal="5d"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(9 * 100% / 12) calc(0 * 100% / 3);
+}
+.card[data-nominal="4d"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(10 * 100% / 12) calc(0 * 100% / 3);
+}
+.card[data-nominal="3d"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(11 * 100% / 12) calc(0 * 100% / 3);
+}
+.card[data-nominal="2d"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(12 * 100% / 12) calc(0 * 100% / 3);
+}
+.card[data-nominal="Ac"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(0 * 100% / 12) calc(1 * 100% / 3);
+}
+.card[data-nominal="Kc"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(1 * 100% / 12) calc(1 * 100% / 3);
+}
+.card[data-nominal="Qc"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(2 * 100% / 12) calc(1 * 100% / 3);
+}
+.card[data-nominal="Jc"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(3 * 100% / 12) calc(1 * 100% / 3);
+}
+.card[data-nominal="Tc"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(4 * 100% / 12) calc(1 * 100% / 3);
+}
+.card[data-nominal="9c"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(5 * 100% / 12) calc(1 * 100% / 3);
+}
+.card[data-nominal="8c"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(6 * 100% / 12) calc(1 * 100% / 3);
+}
+.card[data-nominal="7c"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(7 * 100% / 12) calc(1 * 100% / 3);
+}
+.card[data-nominal="6c"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(8 * 100% / 12) calc(1 * 100% / 3);
+}
+.card[data-nominal="5c"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(9 * 100% / 12) calc(1 * 100% / 3);
+}
+.card[data-nominal="4c"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(10 * 100% / 12) calc(1 * 100% / 3);
+}
+.card[data-nominal="3c"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(11 * 100% / 12) calc(1 * 100% / 3);
+}
+.card[data-nominal="2c"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(12 * 100% / 12) calc(1 * 100% / 3);
+}
+.card[data-nominal="Ah"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(0 * 100% / 12) calc(2 * 100% / 3);
+}
+.card[data-nominal="Kh"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(1 * 100% / 12) calc(2 * 100% / 3);
+}
+.card[data-nominal="Qh"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(2 * 100% / 12) calc(2 * 100% / 3);
+}
+.card[data-nominal="Jh"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(3 * 100% / 12) calc(2 * 100% / 3);
+}
+.card[data-nominal="Th"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(4 * 100% / 12) calc(2 * 100% / 3);
+}
+.card[data-nominal="9h"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(5 * 100% / 12) calc(2 * 100% / 3);
+}
+.card[data-nominal="8h"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(6 * 100% / 12) calc(2 * 100% / 3);
+}
+.card[data-nominal="7h"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(7 * 100% / 12) calc(2 * 100% / 3);
+}
+.card[data-nominal="6h"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(8 * 100% / 12) calc(2 * 100% / 3);
+}
+.card[data-nominal="5h"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(9 * 100% / 12) calc(2 * 100% / 3);
+}
+.card[data-nominal="4h"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(10 * 100% / 12) calc(2 * 100% / 3);
+}
+.card[data-nominal="3h"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(11 * 100% / 12) calc(2 * 100% / 3);
+}
+.card[data-nominal="2h"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(12 * 100% / 12) calc(2 * 100% / 3);
+}
+.card[data-nominal="As"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(0 * 100% / 12) calc(3 * 100% / 3);
+}
+.card[data-nominal="Ks"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(1 * 100% / 12) calc(3 * 100% / 3);
+}
+.card[data-nominal="Qs"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(2 * 100% / 12) calc(3 * 100% / 3);
+}
+.card[data-nominal="Js"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(3 * 100% / 12) calc(3 * 100% / 3);
+}
+.card[data-nominal="Ts"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(4 * 100% / 12) calc(3 * 100% / 3);
+}
+.card[data-nominal="9s"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(5 * 100% / 12) calc(3 * 100% / 3);
+}
+.card[data-nominal="8s"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(6 * 100% / 12) calc(3 * 100% / 3);
+}
+.card[data-nominal="7s"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(7 * 100% / 12) calc(3 * 100% / 3);
+}
+.card[data-nominal="6s"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(8 * 100% / 12) calc(3 * 100% / 3);
+}
+.card[data-nominal="5s"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(9 * 100% / 12) calc(3 * 100% / 3);
+}
+.card[data-nominal="4s"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(10 * 100% / 12) calc(3 * 100% / 3);
+}
+.card[data-nominal="3s"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(11 * 100% / 12) calc(3 * 100% / 3);
+}
+.card[data-nominal="2s"]{
+  background-size: auto;
+  background-image: url("/assets/sprite_cards.png");
+  background-position: calc(12 * 100% / 12) calc(3 * 100% / 3);
+}
+
+.card:nth-child(1){
+  //transition-duration: 1000ms;
+}
+.card:nth-child(2){
+  z-index: 4;
+}
+
+.card-second{
+  margin-left: -25px;
+}

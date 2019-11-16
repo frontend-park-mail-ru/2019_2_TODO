@@ -8,8 +8,8 @@ import ProfileView from './components/viewes/Profile/Profile.js';
 import OfflineGameView from './components/viewes/OfflineGame/OfflineGameView.js';
 import runtime from 'serviceworker-webpack-plugin/lib/runtime.js';
 
+
 if ('serviceWorker' in navigator) {
-  console.log(navigator);
   const registration = runtime.register();
 }
 const application = document.getElementById('application');
@@ -21,15 +21,5 @@ window.router.register('/', StartScreen)
     .register('/profile', ProfileView)
     .register('/offline', OfflineGameView)
     .register('/notFound', NotFoundView);
-console.log(router.routes);
 window.router.start();
 
-// if ('serviceWorker' in navigator) {
-//     navigator.serviceWorker.register('sw.js')
-//         .then((registration) => {
-//             console.log('ServiceWorker registration', registration);
-//         })
-//         .catch((err) => {
-//             console.error(err);
-//         });
-// }
