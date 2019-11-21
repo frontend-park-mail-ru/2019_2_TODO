@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './InfoBar.scss'
+
 export const InfoBarTemplate = (props) =>{
     return (
         <div className="infoBar">

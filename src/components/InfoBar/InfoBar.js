@@ -7,7 +7,8 @@ export default class InfoBar extends React.Component {
   constructor(props) {
     super(props);
   }
-  render(){
+
+  render() {
     return InfoBarTemplate(this.props);
   }
 }
