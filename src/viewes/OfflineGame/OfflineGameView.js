@@ -91,6 +91,8 @@ export default class OfflineGameView extends BaseView {
 
 
   static disableButtonPanel() {
+    document.getElementById('user').parentElement.style.border = 'none';
+    document.getElementById('bot').parentElement.style.border = '2px solid gold';
     const element = document.getElementById('playerPanel');
     element.childNodes.forEach((child) => {
       child.disabled = true;
@@ -98,6 +100,8 @@ export default class OfflineGameView extends BaseView {
   }
 
   static enableButtonPanel(text = 'check') {
+    document.getElementById('bot').parentElement.style.border = 'none';
+    document.getElementById('user').parentElement.style.border = '2px solid gold';
     const element = document.getElementById('playerPanel');
     element.childNodes.forEach((child) => {
       child.disabled = false;

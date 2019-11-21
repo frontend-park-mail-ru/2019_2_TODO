@@ -77,4 +77,34 @@ export class PokerCSSAnimation {
       document.getElementById(card).hidden = true;
     });
   }
+  showWinnerCards(cards) {
+    document.getElementById('user').parentElement.style.border = 'none';
+    document.getElementById('bot').parentElement.style.border = 'none';
+    let cardsIds = [];
+    console.log(this.bankerCards);
+    this.bankerCards.forEach(id=>{
+      const card = document.getElementById(id);
+      console.log(card.dataset['nominal']);
+      if (cards.includes(card.dataset['nominal']) ){
+        cardsIds.push(id);
+      }
+    });
+    this.players.forEach(id=>{
+      this[id].forEach(cardId=>{
+        const card = document.getElementById(cardId);
+        console.log(card.dataset['nominal']);
+        if (cards.includes(card.dataset['nominal']) ){
+          cardsIds.push(cardId);
+        }
+      })
+    });
+    cardsIds.forEach(id=>{
+      const  c = document.getElementById(id);
+      c.style.animation = 'winCard 3s';
+      setTimeout(()=>{
+        c.style.animation = '';
+      }, 3000);
+    });
+
+  }
 }

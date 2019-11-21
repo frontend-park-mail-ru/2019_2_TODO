@@ -1,50 +1,68 @@
 
-
-.player-info{
+.player-info {
+  transition: border;
+  transition-duration: 300ms;
   position: absolute;
   width: 115px;
-  &__card-container{
+  border-radius: 5px;
+
+  &__card-container {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    @keyframes showWinner {
+      30% {
+        transform: translate(0, -30px);
+      }
+      70% {
+        transform: translate(0, -30px);
+      }
+    }
   }
-  &__panel{
+
+  &__panel {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    border: solid 1px rgb(50,50,50);
+    border: solid 1px rgb(50, 50, 50);
     background: #0a0a0a;
     height: 50px;
-    width: 100%;
+    width: 98%;
     color: white;
     margin-top: -50px;
-    background: linear-gradient(rgb(50,50,50), black);
+    background: linear-gradient(rgb(50, 50, 50), black);
     z-index: 5;
-    &__score{
+
+    &__score {
       margin: 0;
     }
   }
 }
+
 .player-info:nth-child(4) {
   bottom: 18vh;
-  left: calc(50% - 57px);
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
-.player-info:nth-child(5){
+.player-info:nth-child(5) {
   bottom: 25vh;
   right: 18vw;
 }
-.player-info:nth-child(6){
+
+.player-info:nth-child(6) {
   bottom: 25vh;
   left: 18vw;
 }
-.player-info:nth-child(7){
+
+.player-info:nth-child(7) {
   top: 25vh;
   right: 18vw;
 }
-.player-info:nth-child(8){
+
+.player-info:nth-child(8) {
   top: 25vh;
   left: 18vw;
 }

@@ -34,7 +34,7 @@ export class game {
       sessionStorage.botBet = 0;
       sessionStorage.playerBet = 0;
     }
-    if (sessionStorage.dealer === 'player'){
+    if (sessionStorage.dealer === 'player') {
       sessionStorage.dealer = 'player';
       sessionStorage.secondPlayer = 'bot';
     } else {
@@ -84,11 +84,25 @@ export class game {
     }
   }
 
+  getWinnersCardsId(hands) {
+    let cards = [];
+    hands.forEach(hand =>{
+      const handCards = [];
+      hand.cards.forEach(card=>{
+          handCards.push(card.value + card.suit);
+      });
+      cards = [...cards, ...handCards];
+    });
+    return cards;
+  }
+
   endRound() {
     const winners = PokerWinners([this.playerHand, this.botHand]);
+    console.log(winners);
+    this.animation.showWinnerCards(this.getWinnersCardsId(winners));
     if (winners.length === 2) {
-      sessionStorage.playerScore = +sessionStorage.playerScore + sessionStorage.bank/2;
-      sessionStorage.botScore -= +sessionStorage.botScore + sessionStorage.bank/2;
+      sessionStorage.playerScore = +sessionStorage.playerScore + sessionStorage.bank / 2;
+      sessionStorage.botScore -= +sessionStorage.botScore + sessionStorage.bank / 2;
       sessionStorage.bank = 0;
       sessionStorage.botBet = 0;
       sessionStorage.playerBet = 0;
@@ -172,7 +186,7 @@ export class game {
       }
       updateScoreBet();
       this.animation.removeAllCards();
-      setTimeout(()=>{
+      setTimeout(() => {
         this.startRound();
       }, 500);
     };
@@ -207,7 +221,7 @@ export class game {
       if (this._allIn) {
         this.animation.showBankCards([0, 1, 2, 3, 4], this.bankCards);
         this.animation.showPlayerCards('bot', this.botCards);
-        setTimeout(()=>{
+        setTimeout(() => {
           this.endRound();
           updateScoreBet();
         }, 2500);
@@ -332,7 +346,7 @@ export class game {
             evt.target = {};
             evt.target.parentElement = {};
             evt.target.parentElement.id = 'botPanel';
-            
+
             this.call(evt);
             return;
           }
@@ -350,7 +364,7 @@ export class game {
             this.raise(evt, 40);
           }
         }
-      }, 1000);
+      }, 1500);
     });
     addEventListener('raise', () => {
       setTimeout(() => {
@@ -360,7 +374,7 @@ export class game {
             evt.target = {};
             evt.target.parentElement = {};
             evt.target.parentElement.id = 'botPanel';
-            
+
             this.call(evt);
             return;
           }
@@ -369,25 +383,25 @@ export class game {
             evt.target = {};
             evt.target.parentElement = {};
             evt.target.parentElement.id = 'botPanel';
-            
+
             this.fold(evt);
           } else if (this.botHand.rank < 5) {
             const evt = {};
             evt.target = {};
             evt.target.parentElement = {};
             evt.target.parentElement.id = 'botPanel';
-            
+
             this.call(evt);
           } else {
             const evt = {};
             evt.target = {};
             evt.target.parentElement = {};
             evt.target.parentElement.id = 'botPanel';
-            
+
             this.raise(evt, 40);
           }
         }
-      }, 1000);
+      }, 1500);
     });
     addEventListener('check', () => {
       setTimeout(() => {
@@ -397,18 +411,18 @@ export class game {
             evt.target = {};
             evt.target.parentElement = {};
             evt.target.parentElement.id = 'botPanel';
-            
+
             this.check(evt);
           } else {
             const evt = {};
             evt.target = {};
             evt.target.parentElement = {};
             evt.target.parentElement.id = 'botPanel';
-            
+
             this.raise(evt, 40);
           }
         }
-      }, 1000);
+      }, 1500);
     });
     addEventListener('blind', () => {
       setTimeout(() => {
@@ -416,9 +430,9 @@ export class game {
         evt.target = {};
         evt.target.parentElement = {};
         evt.target.parentElement.id = 'botPanel';
-        
+
         this.call(evt);
-      }, 1000);
+      }, 1500);
     });
   }
 }

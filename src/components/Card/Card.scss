@@ -1,6 +1,6 @@
 
 .card{
-  transition: opacity;
+  transition: opacity, transform;
   transition-timing-function: ease;
   height: 94px;
   width: 70px;
@@ -14,6 +14,14 @@
   //background-position: calc(11 * 100% / 12) calc(2 * 100% / 3);
   z-index: 3;
   animation: moveCard linear 1000ms;
+  @keyframes winCard {
+    15% {
+      transform: translate(0, -30px);
+    }
+    90% {
+      transform: translate(0, -30px);
+    }
+  }
   @keyframes moveCard{
     0%{
       opacity: 0;
