@@ -16,11 +16,10 @@ import StartScreen from '../components/viewes/StartScreen/StartScreen.js';
 class Router extends Component {
     render() {
         const { history } = this.props;
-
         return (
             <div className="App">
                 <Switch>
-                    <Route history={history} path='/home' component={StartScreen}/>
+                    <Route history={history} path='/' component={StartScreen}/>
                     <Route history={history} path='/smt' component={StartScreen}/>
                     {/*<Route history={history} path='/signIn' component={SignInScreen} />*/}
                     {/*<Route history={history} path='/signUn' component={SignUpScreen} />*/}
@@ -28,7 +27,6 @@ class Router extends Component {
                     {/*<Route history={history} path='/signIn' component={SignInScreen} />*/}
                     {/*<Route history={history} path='/signIn' component={SignInScreen} />*/}
                     <Route history={history} component={StartScreen}/>
-                    <Redirect from='/' to='/home'/>
                 </Switch>
             </div>
         );

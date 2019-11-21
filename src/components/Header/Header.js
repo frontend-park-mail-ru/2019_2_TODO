@@ -1,54 +1,71 @@
-import {InfoBar} from '../InfoBar/InfoBar.js';
-import BaseComponent from '../BaseComponent/BaseComponent';
-import template from './Header.hbs';
+import React from 'react'
+import {HeaderTemplate} from "./Header.jsx";
+import InfoBar from "../InfoBar/InfoBar.js";
 
-
-
-class Header extends BaseComponent {
-  constructor(context) {
-    super(context);
-    this.template = template;
-  }
-}
-
-/** Класс заголовка */
-export class HeaderComponent {
-  constructor(
-      parent = document.body,
-      authorized = false,
-      avatar = './assets/gold_fishka.jpg',
-      username = 'nickname',
-  ) {
-    this._parent = parent;
-    this._authorized = authorized;
-    this._avatar = avatar;
-    this._username = username;
+export default class Header extends React.Component {
+  constructor(props) {
+    super(props);
   }
 
-
-  /**
-   * Отрисовать заголовок
-   */
   render() {
-    if (!this._authorized) {
-      const head = new Header({
-        hiddenSign: '',
-      });
-      this._parent.innerHTML += head.render();
-    } else {
-      const infoBar = new InfoBar({
-        avatar: this._avatar,
-        username: this._username,
-      });
-      const head = new Header({
-        hiddenSign: 'hidden',
-      });
-      this._parent.innerHTML += head.render() + infoBar.render();
+    if (this.props.isAuth) {
+      return (
+          <div>
+            <HeaderTemplate {...this.props}/>
+            <InfoBar src={'/assets/logo.jpg'}/>
+          </div>
+      )
     }
-  }
-  addListener(){
-    document.getElementById('infoAvatar').addEventListener('click', event => {
-      window.router.open('/profile');
-    });
+    return HeaderTemplate(this.props);
   }
 }
+
+//
+// class Header extends BaseComponent {
+//   constructor(context) {
+//     super(context);
+//     this.template = template;
+//   }
+// }
+//
+// /** Класс заголовка */
+// export class HeaderComponent {
+//   constructor(
+//       parent = document.body,
+//       authorized = false,
+//       avatar = './assets/gold_fishka.jpg',
+//       username = 'nickname',
+//   ) {
+//     this._parent = parent;
+//     this._authorized = authorized;
+//     this._avatar = avatar;
+//     this._username = username;
+//   }
+//
+//
+//   /**
+//    * Отрисовать заголовок
+//    */
+//   render() {
+//     if (!this._authorized) {
+//       const head = new Header({
+//         hiddenSign: '',
+//       });
+//       this._parent.innerHTML += head.render();
+//     } else {
+//       const infoBar = new InfoBar({
+//         avatar: this._avatar,
+//         username: this._username,
+//       });
+//       const head = new Header({
+//         hiddenSign: 'hidden',
+//       });
+//       this._parent.innerHTML += head.render() + infoBar.render();
+//     }
+//   }
+//   addListener(){
+//     document.getElementById('infoAvatar').addEventListener('click', event => {
+//       window.router.open('/profile');
+//     });
+//   }
+// }
