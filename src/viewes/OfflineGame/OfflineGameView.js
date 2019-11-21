@@ -1,15 +1,15 @@
-import PokerUserPanel from '../../PokerUserPanel/PokerUserPanel.js';
-import {game} from '../../../module/PokerGamePlay.js';
-import {BotPanel} from '../../BotPanel/BotPanel.js';
-import {ButtonComponent} from '../../Button/Button.js';
-import {BankPanel} from '../../BankPanel/BankPanel.js';
-import AjaxModule from '../../../module/ajax.js';
+import PokerUserPanel from '../../components/PokerUserPanel/PokerUserPanel.js';
+import {game} from '../../module/GamePlay/PokerGamePlay.js';
+import {BotPanel} from '../../components/BotPanel/BotPanel.js';
+import {ButtonComponent} from '../../components/Button/Button.js';
+import {BankPanel} from '../../components/BankPanel/BankPanel.js';
+import AjaxModule from '../../module/AjaxModule/ajax.js';
 import BaseView from '../BaseView/BaseView.js';
-import {PlayerInfo} from "../../PlayerInfo/PlayerInfo.js";
+import {PlayerInfo} from "../../components/PlayerInfo/PlayerInfo.js";
 // import {Card} from "../../Card/Card.js";
-import {BankersCard} from "../../BancersCard/BancersCard";
-import {TextComponent} from "../../TextComponent/Text";
-import {InputComponent} from "../../Input/Input";
+import {BankersCard} from "../../components/BancersCard/BancersCard";
+import {TextComponent} from "../../components/TextComponent/Text";
+import {InputComponent} from "../../components/Input/Input";
 // import {PokerCSSAnimation} from "../../../module/PokerCSSAnimation";
 
 export default class OfflineGameView extends BaseView {

@@ -1,4 +1,4 @@
-import {Card} from "../components/Card/Card";
+import {Card} from '../../components/Card/Card';
 
 export class PokerCSSAnimation {
   constructor(players) {
@@ -19,13 +19,12 @@ export class PokerCSSAnimation {
         if (i === 0) {
           ctx = {
             cardId: cardId,
-            // second: 'card-second',
           };
         } else {
           ctx = {
             cardId: cardId,
             second: 'card-second',
-          }
+          };
         }
         const card = new Card(ctx);
         container.innerHTML += card.render();
@@ -47,9 +46,8 @@ export class PokerCSSAnimation {
         document.getElementById(cardId).hidden = false;
       })
     });
-    this.bankerCards.forEach(card =>{
+    this.bankerCards.forEach(card => {
       document.getElementById(card).dataset['nominal'] = '';
-      // document.getElementById(card).hidden = false;
     });
   }
 
@@ -61,12 +59,12 @@ export class PokerCSSAnimation {
 
   showBankCards(indexes, cards) {
     indexes.reduce((delay, index) => {
-      setTimeout(()=>{
+      setTimeout(() => {
         document.getElementById(this.bankerCards[index]).dataset['nominal'] = cards[index];
         document.getElementById(this.bankerCards[index]).hidden = false;
       }, delay);
       return delay + 400;
-    },400);
+    }, 400);
   }
 
   removeAllCards() {
@@ -75,7 +73,7 @@ export class PokerCSSAnimation {
         document.getElementById(cardId).hidden = true;
       });
     });
-    this.bankerCards.forEach(card =>{
+    this.bankerCards.forEach(card => {
       document.getElementById(card).hidden = true;
     });
   }

@@ -1,6 +1,5 @@
-import {PokerAnimation} from './PokerAnimation.js';
-import OfflineGameView from '../components/viewes/OfflineGame/OfflineGameView.js';
-import {PokerCSSAnimation} from "./PokerCSSAnimation";
+import OfflineGameView from '../../viewes/OfflineGame/OfflineGameView.js';
+import {PokerCSSAnimation} from "../Animation/PokerCSSAnimation";
 
 const baseDeck = [
   '2d', '3d', '4d', '5d', '6d', '7d', '8d', '9d', 'Td', 'Jd', 'Qd', 'Kd', 'Ad',

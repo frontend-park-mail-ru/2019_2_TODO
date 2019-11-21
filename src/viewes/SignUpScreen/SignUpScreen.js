@@ -1,8 +1,8 @@
-import InputError, {InputComponent} from '../../Input/Input.js';
-import {HeaderComponent} from '../../Header/Header.js';
-import {ButtonComponent} from '../../Button/Button.js';
-import {TextComponent} from '../../TextComponent/Text.js';
-import AjaxModule from '../../../module/ajax.js';
+import InputError, {InputComponent} from '../../components/Input/Input.js';
+import {HeaderComponent} from '../../components/Header/Header.js';
+import {ButtonComponent} from '../../components/Button/Button.js';
+import {TextComponent} from '../../components/TextComponent/Text.js';
+import AjaxModule from '../../module/AjaxModule/ajax.js';
 import BaseView from '../BaseView/BaseView.js';
 
 /*

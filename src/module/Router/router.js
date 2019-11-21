@@ -1,4 +1,4 @@
-import AjaxModule from './ajax';
+import AjaxModule from '../AjaxModule/ajax';
 
 export default class Router {
   constructor(root) {

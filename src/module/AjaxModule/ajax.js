@@ -1,14 +1,14 @@
 
-import StartScreen from '../components/viewes/StartScreen/StartScreen.js';
+// import StartScreen from '.';
 
 /** Класс для использования fetch api. */
 class AjaxModule {
   /**
-     * отправить картинку
-     * @param {HTMLElement} application - элемент для возврата
-     * @param {FormData} data - картинка
-     */
-  postAvatar(application, data) {
+   * отправить картинку
+   * @param {HTMLElement} application - элемент для возврата
+   * @param {FormData} data - картинка
+   */
+  postAvatar(data) {
     this.fetchPost('http://93.171.139.196:780/signin/profileImage/', data, {
       method: 'POST',
       credentials: 'include',
@@ -22,12 +22,11 @@ class AjaxModule {
   }
 
   /**
-     * Регистрация
-     * @param {HTMLElement} application - элемент для возврата
-     * @param {string} email
-     * @param {string} password
-     */
-  signUp(application, email, password) {
+   * Регистрация
+   * @param {string} email
+   * @param {string} password
+   */
+  signUp(email, password) {
     this.fetchPost('http://93.171.139.196:780/signup/',
         JSON.stringify({
           username: email,
@@ -35,18 +34,19 @@ class AjaxModule {
         }))
         .then((rez) => {
           if (rez.status === 200) {
-            window.router.reRender('/');
+            window.location.pathname = '/';
+            resolve(true);
           }
+          resolve(false);
         });
   }
 
   /**
-     * Авторизация
-     * @param {HTMLElement} application - элемент для возврата
-     * @param {string} email
-     * @param {string} password
-     */
-  signIn(application, email, password) {
+   * Авторизация
+   * @param {string} email
+   * @param {string} password
+   */
+  signIn(email, password) {
     this.fetchPost(
         'http://93.171.139.196:780/signin/',
         JSON.stringify({
@@ -55,15 +55,17 @@ class AjaxModule {
         })
     ).then((res) => {
       if (res.status === 200) {
-        window.router.reRender('/');
+        window.location.pathname = '/';
+        resolve(true);
       }
+      resolve(false);
     });
   }
 
   /**
-     * Выход
-     * @param {HTMLElement} application - элемент для возврата
-     */
+   * Выход
+   * @param {HTMLElement} application - элемент для возврата
+   */
   logOut(application) {
     this.fetchGet('http://93.171.139.196:780/logout/')
         .then((res) => {
@@ -74,12 +76,12 @@ class AjaxModule {
   }
 
   /**
-     * POST запрос
-     * @param {string} url - хост получателя
-     * @param {Object} body - тело запроса
-     * @param {Object} params - параметры запроса
-     * @return {Promise<Response>} - промиз для обработки
-     */
+   * POST запрос
+   * @param {string} url - хост получателя
+   * @param {Object} body - тело запроса
+   * @param {Object} params - параметры запроса
+   * @return {Promise<Response>} - промиз для обработки
+   */
   fetchPost(
       url = 'http://93.171.139.196:780/',
       body = {},
@@ -95,13 +97,13 @@ class AjaxModule {
   }
 
   /**
-     * GET запрос
-     * @param {string} url - хост получателя
-     * @param {Object} params - параметры запроса
-     * @return {Promise<Response>} - промиз для обработки
-     */
+   * GET запрос
+   * @param {string} url - хост получателя
+   * @param {Object} params - параметры запроса
+   * @return {Promise<Response>} - промиз для обработки
+   */
   fetchGet(url = 'http://93.171.139.196:780/',
-      params = {method: 'GET', credentials: 'include'}) {
+           params = {method: 'GET', credentials: 'include'}) {
     return fetch(url, params);
   }
 }
