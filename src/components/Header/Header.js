@@ -1,14 +1,7 @@
-// import {ButtonComponent} from '../Button/Button.js';
-// import {TextComponent} from '../TextComponent/Text.js';
-// import {ImageComponent} from '../Image/Image.js';
-// import {StartScreen} from '../viewes/StartScreen/StartScreen.js';
-// import {signUpScreen} from '../viewes/SignUpScreen/SignUpScreen.js';
-// import {signInScreen} from '../viewes/SignInScreen/SignInScreen.js';
 import {InfoBar} from '../InfoBar/InfoBar.js';
 import BaseComponent from '../BaseComponent/BaseComponent';
 import template from './Header.hbs';
 
-// import {InputComponent} from '../Input/Input.js';
 
 
 class Header extends BaseComponent {

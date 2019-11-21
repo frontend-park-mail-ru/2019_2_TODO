@@ -22,19 +22,16 @@ module.exports = {
 
   target: 'web',
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.jsx'],
     mainFields: ['browser', 'main'],
   },
 
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         use: {
           loader: 'babel-loader',
-          options: {
-            presets: ['env'],
-          },
         },
       },
       {test: /\.s[ac]ss$/,

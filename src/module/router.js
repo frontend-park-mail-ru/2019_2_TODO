@@ -1,106 +1,38 @@
-import AjaxModule from './ajax';
 
-export default class Router {
-  constructor(root) {
-    this.routes = {};
-    this.root = root;
-  }
+import React, { Component } from 'react';
+import {
+    Route,
+    Switch,
+    Redirect,
+    withRouter
+} from "react-router-dom"
+import StartScreen from '../components/viewes/StartScreen/StartScreen.js';
+// import SignUpScreen from './components/viewes/SignUpScreen/SignUpScreen.js';
+// import SignInScreen from './components/viewes/SignInScreen/SignInScreen.js';
+// import ChangeProfileView from './components/viewes/Profile/Change/ChangeProfile.js';
+// import NotFoundView from './components/viewes/NotFoundView/NotFoundView.js';
+// import ProfileView from './components/viewes/Profile/Profile.js';
+// import OfflineGameView from './components/viewes/OfflineGame/OfflineGameView.js';
+class Router extends Component {
+    render() {
+        const { history } = this.props;
 
-  /**
-     * @param {string} path
-     * @param {BaseView} View
-     */
-  register(path, View) {
-    this.routes[path] = {
-      View: View,
-      view: null,
-      el: null,
-    };
-
-    return this;
-  }
-
-  /**
-     * @param {string} path
-     */
-  open(path) {
-    const route = this.routes[path];
-
-    if (!route) {
-      this.open('/notFound');
-      return;
+        return (
+            <div className="App">
+                <Switch>
+                    <Route history={history} path='/home' component={StartScreen}/>
+                    <Route history={history} path='/smt' component={StartScreen}/>
+                    {/*<Route history={history} path='/signIn' component={SignInScreen} />*/}
+                    {/*<Route history={history} path='/signUn' component={SignUpScreen} />*/}
+                    {/*<Route history={history} path='/signIn' component={SignInScreen} />*/}
+                    {/*<Route history={history} path='/signIn' component={SignInScreen} />*/}
+                    {/*<Route history={history} path='/signIn' component={SignInScreen} />*/}
+                    <Route history={history} component={StartScreen}/>
+                    <Redirect from='/' to='/home'/>
+                </Switch>
+            </div>
+        );
     }
-
-    if (window.location.pathname !== path) {
-      window.history.pushState(
-          null,
-          '',
-          path
-      );
-    }
-
-    let {View, view, el} = route;
-
-    if (!el) {
-      el = document.createElement('section');
-      this.root.appendChild(el);
-    }
-
-    if (!view) {
-      view = new View(el);
-    }
-
-    if (!view.active) {
-      Object.values(this.routes).forEach(({view}) => {
-        if (view && view.active) {
-          view.hide();
-        }
-      });
-
-      view.show();
-    }
-
-    this.routes[path] = {View, view, el};
-  }
-
-  reRender(path) {
-    const route = this.routes[path];
-    const {View, view, el} = route;
-    if (!el) {
-      this.open(path);
-    }
-    this.root.removeChild(el);
-    this.routes[path].el = null;
-    this.routes[path].view = null;
-    this.open(path);
-  }
-
-  start() {
-    this.root.addEventListener('click', (event) => {
-      if (!(event.target instanceof HTMLAnchorElement)) {
-        const {target} = event;
-        if (target.id === 'logout') {
-
-          AjaxModule.logOut(document.getElementById('application'));
-        }
-        return;
-      }
-      event.preventDefault();
-      // event.stopImmediatePropagation();
-      const link = event.target;
-
-
-      this.open(link.pathname);
-    });
-
-    window.addEventListener('popstate', () => {
-      const currentPath = window.location.pathname;
-
-      this.open(currentPath);
-    });
-
-    const currentPath = window.location.pathname;
-
-    this.open(currentPath);
-  }
 }
+
+export default withRouter(Router)

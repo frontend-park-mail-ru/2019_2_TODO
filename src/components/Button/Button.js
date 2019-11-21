@@ -1,13 +1,14 @@
-import BaseComponent from '../BaseComponent/BaseComponent.js';
-import template from './Button.hbs';
+import React from 'react';
+import {ButtonTemplate} from './Button.jsx';
+import './Button.scss';
 
-/** Класс представляющий кнопку. */
-export class ButtonComponent extends BaseComponent {
-  /** Создать кнопку
-   * @param {string} context - контекст для кнопки.
-   */
-  constructor(context) {
-    super(context);
-    this.template = template;
+/** Компонент кнопка */
+export default class ButtonComponent extends React.Component{
+    constructor(props){
+        super(props);
+    }
+    /**Рендер кнопки */
+  render(){
+    return ButtonTemplate(this.props);
   }
-}
+};

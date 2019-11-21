@@ -1,11 +1,11 @@
-@import "../../base.scss";
 
 
 .infoBar {
+    display: flex;
+    flex-direction: row;
     position: absolute;
     top: 20px;
     right: 5px;
-    @extend %row;
     align-self: flex-end;
     //background: #34495F;
     max-width: 250px;
@@ -18,10 +18,12 @@
         border-radius: 5px;
         width: 50px;
         height: 50px;
-        border:  1px solid ;
+        border:  1px solid white;
         cursor: pointer;
     }
-
+    &__avatar:focus {
+        text-decoration: none;
+    }
     &__username {
         color: white;
         font-family: sans-serif;

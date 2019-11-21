@@ -1,25 +1,19 @@
-import Router from './module/router.js';
-import StartScreen from './components/viewes/StartScreen/StartScreen.js';
-import SignUpScreen from './components/viewes/SignUpScreen/SignUpScreen.js';
-import SignInScreen from './components/viewes/SignInScreen/SignInScreen.js';
-import ChangeProfileView from './components/viewes/Profile/Change/ChangeProfile.js';
-import NotFoundView from './components/viewes/NotFoundView/NotFoundView.js';
-import ProfileView from './components/viewes/Profile/Profile.js';
-import OfflineGameView from './components/viewes/OfflineGame/OfflineGameView.js';
 import runtime from 'serviceworker-webpack-plugin/lib/runtime.js';
-
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Router} from 'react-router-dom';
+import {createBrowserHistory} from 'history';
+import App from './module/router.js'
+import './main.scss';
 
 if ('serviceWorker' in navigator) {
   const registration = runtime.register();
 }
-const application = document.getElementById('application');
-window.router = new Router(application);
-window.router.register('/', StartScreen)
-    .register('/signUp', SignUpScreen)
-    .register('/signIn', SignInScreen)
-    .register('/profileChange', ChangeProfileView)
-    .register('/profile', ProfileView)
-    .register('/offline', OfflineGameView)
-    .register('/notFound', NotFoundView);
-window.router.start();
 
+const history = createBrowserHistory();
+ReactDOM.render((
+        <Router history={history}>
+          <App/>
+        </Router>
+    ), document.getElementById('application')
+);

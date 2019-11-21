@@ -1,9 +1,13 @@
-import BaseComponent from "../BaseComponent/BaseComponent";
-import template from './Card.hbs';
+import React from 'react';
+import {CardTemplate} from './Card.jsx';
+import './Card.scss';
 
-export class Card extends BaseComponent{
-  constructor(context){
-    super(context);
-    this.template = template;
+
+export default class Card extends React.Component{
+  constructor(props){
+    super(props);
   }
-}
+  render(){
+    return CardTemplate(this.props);
+  }
+};
