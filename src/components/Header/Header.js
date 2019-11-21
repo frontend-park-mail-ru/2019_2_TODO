@@ -16,7 +16,7 @@ export default class Header extends React.Component {
           </div>
       )
     }
-    return HeaderTemplate(this.props);
+    return (<HeaderTemplate {...this.props}/>);
   }
 }
 

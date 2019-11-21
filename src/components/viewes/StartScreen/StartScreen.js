@@ -12,7 +12,7 @@ export default class StartScreen extends React.Component {
                 {/*<InfoBar src={'/assets/logo.jpg'}/>*/}
                 {/*<Button text='hello'/>*/}
                 {/*<Card nominal='Ah' cardId='0' second=''/>*/}
-                <Header isAuth={false}/>
+                <Header isAuth={window.user.isAuth}/>
             </div>
         );
     }

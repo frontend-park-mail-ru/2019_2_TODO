@@ -37,7 +37,7 @@ export default class ProfileView extends BaseView {
           });
           application.innerHTML = prof.render();
         })
-        .then((res) => {
+        .then((res) => {x
           return res.text();
         })
         .then((resT) => {

@@ -23,11 +23,10 @@ class AjaxModule {
 
   /**
      * Регистрация
-     * @param {HTMLElement} application - элемент для возврата
      * @param {string} email
      * @param {string} password
      */
-  signUp(application, email, password) {
+  signUp(email, password) {
     this.fetchPost('http://93.171.139.196:780/signup/',
         JSON.stringify({
           username: email,
@@ -35,18 +34,19 @@ class AjaxModule {
         }))
         .then((rez) => {
           if (rez.status === 200) {
-            window.router.reRender('/');
+            window.location.pathname = '/';
+            resolve(true);
           }
+          resolve(false);
         });
   }
 
   /**
      * Авторизация
-     * @param {HTMLElement} application - элемент для возврата
      * @param {string} email
      * @param {string} password
      */
-  signIn(application, email, password) {
+  signIn(email, password) {
     this.fetchPost(
         'http://93.171.139.196:780/signin/',
         JSON.stringify({
@@ -55,8 +55,10 @@ class AjaxModule {
         })
     ).then((res) => {
       if (res.status === 200) {
-        window.router.reRender('/');
+        window.location.pathname = '/';
+        resolve(true);
       }
+      resolve(false);
     });
   }
 

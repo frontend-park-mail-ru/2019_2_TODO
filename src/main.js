@@ -5,11 +5,13 @@ import {Router} from 'react-router-dom';
 import {createBrowserHistory} from 'history';
 import App from './module/router.js'
 import './main.scss';
+import UserContainer from "./module/UserContainer";
 
 if ('serviceWorker' in navigator) {
   const registration = runtime.register();
 }
-
+window.user = new UserContainer();
+window.user.checkAuth();
 const history = createBrowserHistory();
 ReactDOM.render((
         <Router history={history}>
