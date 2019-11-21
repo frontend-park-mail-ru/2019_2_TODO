@@ -1,7 +1,7 @@
-@import "../../base.scss";
 @import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Alfa+Slab+One|Righteous|Rye&display=swap');
 .menu-bar{
-  @extend %column;
+  display: flex;
+  flex-direction: column;
   margin-top: 22vh;
   align-items: center;
 
