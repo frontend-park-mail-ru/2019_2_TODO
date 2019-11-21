@@ -8,23 +8,6 @@ export default class MenuBar extends React.Component {
   }
 
   render() {
-    return MenuBarTemplate(this.props);
+    return <MenuBarTemplate {...this.props}/>;
   }
 }
-// export class MenuTemplate extends BaseComponent {
-//   constructor(context) {
-//     super(context);
-//     this.template = template;
-//   }
-// }
-//
-// export class MenuBar {
-//   constructor(parent) {
-//     this._parent = parent;
-//   }
-//
-//   render() {
-//     const menuTemplate = new MenuTemplate();
-//     this._parent.innerHTML += menuTemplate.render();
-//   }
-// }
