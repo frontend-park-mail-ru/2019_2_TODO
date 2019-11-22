@@ -8,6 +8,12 @@ export default class MultiPlayer {
     this.socket.onopen = ()=>{
       console.log('opened');
     };
+    this.socket.onmessage = (msg)=>{
+        console.log(msg);
+    };
+    this.socket.onerror = (err)=> {
+        console.log(err);
+    };
     // this.animation = new PokerCSSAnimation();
   }
   addPlayer() {
