@@ -73,8 +73,6 @@ export default class OfflineGameView extends BaseView {
       this.game.raise(evt, document.getElementById('raiseSlider').value);
     });
     document.getElementById('startGame').addEventListener('click', (evt)=>{
-      OfflineGameView.addPlayer('user', 'singleplayer__players');
-      OfflineGameView.addPlayer('bot', 'singleplayer__players');
       OfflineGameView.addPlayer('user', user.username, '1000', 'singleplayer__players');
       OfflineGameView.addPlayer('bot', user.username, '1000', 'singleplayer__players');
       this.game = new game();
