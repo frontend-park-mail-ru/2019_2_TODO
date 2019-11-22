@@ -18,11 +18,11 @@ export default class MultiPlayerView extends OfflineGameView {
       this.game.ready();
     });
     document.getElementById('firstButton').addEventListener('click', (evt) => {
-      OfflineGameView.disableButtonPanel('playerPanel');
+      MultiPlayerView.disableButtonPanel('playerPanel');
       this.game[document.getElementById('firstButton').innerText]();
     });
     document.getElementById('secondButton').addEventListener('click', (evt) => {
-      OfflineGameView.disableButtonPanel('playerPanel');
+      MultiPlayerView.disableButtonPanel('playerPanel');
       this.game.fold();
     });
     document.getElementById('raiseSlider').addEventListener('mousemove', (evt)=>{
