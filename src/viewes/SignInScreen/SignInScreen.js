@@ -59,7 +59,7 @@ export default class SignInScreen extends BaseView {
         InputError.e('PASSWORD_LENGTH', form);
         return;
       }
-      AjaxModule.signIn(application, email.value, password.value);
+      user.auth(email.value, password.value);
     }
     );
     this.el.appendChild(application);

@@ -8,16 +8,18 @@ export default class User {
   }
 
   checkAuth() {
-    return AjaxModule.fetchGet('http://93.171.139.196:780/signup/')
+    return AjaxModule.fetchGet('http://93.171.139.196:780/signin/')
         .catch(() => {
         })
         .then((res) => {
           return res.text();
         })
         .then((resText) => {
-          this.isAuth = true;
-          this.username = JSON.parse(resText).username;
-          this.avatar = JSON.parse(resText).image;
+            if (resText){
+                this.username = JSON.parse(resText).username;
+                this.avatar = JSON.parse(resText).image;
+                this.isAuth = true;
+            }
         })
   }
 
@@ -53,5 +55,8 @@ export default class User {
             window.router.open('/');
           }
         });
+  }
+  logOut(){
+      AjaxModule.logOut()
   }
 }

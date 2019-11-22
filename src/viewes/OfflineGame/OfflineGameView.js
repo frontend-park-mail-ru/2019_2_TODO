@@ -42,8 +42,7 @@ export default class OfflineGameView extends BaseView {
     const playersContainer = document.createElement('div');
     playersContainer.id = this.el.id + '__players';
     this.el.appendChild(playersContainer);
-    OfflineGameView.addPlayer('user', playersContainer.id);
-    OfflineGameView.addPlayer('bot', playersContainer.id);
+
     const raiseSlider = new InputComponent({
       type: 'range',
       id: 'raiseSlider',
@@ -73,6 +72,9 @@ export default class OfflineGameView extends BaseView {
       this.game.raise(evt, document.getElementById('raiseSlider').value);
     });
     document.getElementById('startGame').addEventListener('click', (evt)=>{
+      OfflineGameView.addPlayer('user', 'singleplayer__players');
+      OfflineGameView.addPlayer('bot', 'singleplayer__players');
+      this.game = new game();
       this.game.startRound();
       document.getElementById('startGame').hidden = true;
     }, {once: true});

@@ -57,5 +57,8 @@ export class HeaderComponent {
     document.getElementById('infoAvatar').addEventListener('click', event => {
       window.router.open('/profile');
     });
+    document.getElementById('logout').addEventListener('click', (event)=>{
+      user.logOut();
+    });
   }
 }

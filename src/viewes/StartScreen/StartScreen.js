@@ -17,7 +17,7 @@ export default class StartScreen extends BaseView {
     const menuBar = new MenuBar(application);
     menuBar.render();
     if (user.isAuth){
-      header.addListener();
+      header.addListener('logout');
     }
   }
 }
