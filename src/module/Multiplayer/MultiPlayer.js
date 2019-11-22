@@ -23,6 +23,7 @@ export default class MultiPlayer {
     // this.animation = new PokerCSSAnimation();
   }
   addPlayer(playerInfo) {
+    console.log(playerInfo);
       MultiPlayerView.addPlayer(playerInfo.id, playerInfo.username, playerInfo.score, 'multiplayer__players');
   }
   ready(){
