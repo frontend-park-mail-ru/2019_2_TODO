@@ -27,6 +27,9 @@ export default class MultiPlayer {
     console.log(playerInfo);
       MultiPlayerView.addPlayer(playerInfo.id, playerInfo.username, playerInfo.score, 'multiplayer__players');
   }
+  removePlayer(playerId){
+
+  }
   ready(){
     this.socket.send('ready');
   }
