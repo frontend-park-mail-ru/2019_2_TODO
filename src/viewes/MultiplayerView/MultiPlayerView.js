@@ -17,5 +17,19 @@ export default class MultiPlayerView extends OfflineGameView {
       stG.hidden = true;
       this.game.ready();
     });
+    document.getElementById('firstButton').addEventListener('click', (evt) => {
+      OfflineGameView.disableButtonPanel('playerPanel');
+      this.game[document.getElementById('firstButton').innerText]();
+    });
+    document.getElementById('secondButton').addEventListener('click', (evt) => {
+      OfflineGameView.disableButtonPanel('playerPanel');
+      this.game.fold();
+    });
+    document.getElementById('raiseSlider').addEventListener('mousemove', (evt)=>{
+      document.getElementById('thirdButton').textContent = `raise: ${evt.target.value}`;
+    });
+    document.getElementById('thirdButton').addEventListener('click', (evt)=>{
+      this.game.raise(document.getElementById('raiseSlider').value);
+    });
   }
 }

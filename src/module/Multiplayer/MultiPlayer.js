@@ -35,9 +35,10 @@ export default class MultiPlayer {
   quitGame(){
     this.socket.close();
   }
-  startAnimation(){
+  startGame(playerInfo){
     this.animation = new PokerCSSAnimation(this.players);
     this.animation.prepairGame();
+    this.showPlayerCards(playerInfo);
   }
   showPlayerCards(playerInfo){
     this.animation.showPlayerCards(playerInfo.id, playerInfo.Hand);
@@ -46,6 +47,12 @@ export default class MultiPlayer {
     this.socket.send('ready');
   }
   check() {
-    this.socket.send();
+    this.socket.send('check');
+  }
+  call() {
+    this.socket.send('call');
+  }
+  raise(bet){
+    this.socket.send(`raise: ${bet}`);
   }
 }
