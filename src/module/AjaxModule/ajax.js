@@ -15,9 +15,9 @@ class AjaxModule {
       body: data})
         .then((res) => {
           if (res.status === 200) {
-              user.checkAuth().then(()=>{
-                  window.router.reRender('/profile');
-              });
+              user.checkAuth();
+            window.router.open('/profile');
+            // window.router.reRender('/profile');
           }
         });
   }
@@ -35,8 +35,10 @@ class AjaxModule {
         }))
         .then((rez) => {
           if (rez.status === 200) {
-            router.reRender('/');
+            window.location.pathname = '/';
+            resolve(true);
           }
+          resolve(false);
         });
   }
 
@@ -54,8 +56,10 @@ class AjaxModule {
         })
     ).then((res) => {
       if (res.status === 200) {
-          router.reRender('/');
+        window.location.pathname = '/';
+        resolve(true);
       }
+      resolve(false);
     });
   }
 
