@@ -12,6 +12,8 @@ export default class MultiPlayer {
       console.log(JSON.parse(msg.data));
       const {Command} = JSON.parse(msg.data);
       Object.keys(Command).forEach((key)=>{
+
+        console.log(key);
         this[key](msg.data[key]);
       });
     };
