@@ -3,8 +3,6 @@ import {Card} from '../../components/Card/Card';
 export class PokerCSSAnimation {
   constructor(players) {
     this.players = players;
-  }
-  prepairGame(){
     let i = 0;
     this.players.forEach(id => {
       this[id] = [];
@@ -40,6 +38,7 @@ export class PokerCSSAnimation {
       bankContainer.innerHTML += card.render();
     });
   }
+
   startRoundAnimation() {
     this.players.forEach(id => {
       this[id].forEach(cardId => {
@@ -109,4 +108,3 @@ export class PokerCSSAnimation {
 
   }
 }
-

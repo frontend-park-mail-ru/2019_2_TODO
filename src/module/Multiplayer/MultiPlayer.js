@@ -38,7 +38,6 @@ export default class MultiPlayer {
   startGame(playerInfo){
     console.log('Animation');
     this.animation = new PokerCSSAnimation(this.players);
-    this.animation.prepairGame();
     this.showPlayerCards(playerInfo);
   }
   showPlayerCards(playerInfo){
