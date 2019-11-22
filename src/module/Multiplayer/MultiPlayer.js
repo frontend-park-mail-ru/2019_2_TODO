@@ -1,4 +1,5 @@
 import {PokerCSSAnimation} from '../Animation/PokerCSSAnimation';
+import MultiPlayerView from "../../viewes/MultiplayerView/MultiPlayerView";
 
 
 export default class MultiPlayer {
@@ -8,16 +9,18 @@ export default class MultiPlayer {
       console.log('opened');
     };
     this.socket.onmessage = (msg)=>{
-        console.log(msg);
       console.log(JSON.parse(msg.data));
+      Object.keys(msg.data).forEach((key)=>{
+        this[key](msg.data[key]);
+      });
     };
     this.socket.onerror = (err)=> {
         console.log(err);
     };
     // this.animation = new PokerCSSAnimation();
   }
-  addPlayer() {
-     MultiPlayerView.addPlayer();
+  addPlayers(playerInfo) {
+      MultiPlayerView.addPlayer(playerInfo.id, playerInfo.username, playerInfo.score, 'multiplayer__players');
   }
   ready(){
     this.socket.send('ready');

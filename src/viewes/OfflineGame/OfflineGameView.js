@@ -80,10 +80,10 @@ export default class OfflineGameView extends BaseView {
     }, {once: true});
   }
 
-  static addPlayer(playerId, containerId) {
+  static addPlayer(playerId, username, score, containerId) {
     const playerInfo = new PlayerInfo({
-      username: 'user',
-      score: '1000',
+      username: username,
+      score: score,
       id: playerId,
       playerScoreId: playerId+'Score',
     });
