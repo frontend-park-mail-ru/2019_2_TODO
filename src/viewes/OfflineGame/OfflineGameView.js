@@ -1,23 +1,19 @@
 import PokerUserPanel from '../../components/PokerUserPanel/PokerUserPanel.js';
 import {game} from '../../module/GamePlay/PokerGamePlay.js';
-import {BotPanel} from '../../components/BotPanel/BotPanel.js';
 import {ButtonComponent} from '../../components/Button/Button.js';
 import {BankPanel} from '../../components/BankPanel/BankPanel.js';
-import AjaxModule from '../../module/AjaxModule/ajax.js';
 import BaseView from '../BaseView/BaseView.js';
 import {PlayerInfo} from "../../components/PlayerInfo/PlayerInfo.js";
-// import {Card} from "../../Card/Card.js";
 import {BankersCard} from "../../components/BancersCard/BancersCard";
 import {TextComponent} from "../../components/TextComponent/Text";
 import {InputComponent} from "../../components/Input/Input";
-// import {PokerCSSAnimation} from "../../../module/PokerCSSAnimation";
 
 export default class OfflineGameView extends BaseView {
   constructor(element) {
     super(element);
+    this.el.id = 'singleplayer';
     this.card = null;
     this.game = null;
-
   }
 
   render() {
@@ -43,20 +39,11 @@ export default class OfflineGameView extends BaseView {
     table.innerHTML += bankSpan.render();
     table.innerHTML += bankerCard.render();
     this.el.appendChild(table);
-    const playerInfo = new PlayerInfo({
-      username: 'user',
-      score: '1000',
-      id: 'user',
-      playerScoreId: 'userScore',
-    });
-    this.el.innerHTML += playerInfo.render();
-    const botInfo = new PlayerInfo({
-      username: 'bot',
-      score: '1000',
-      id: 'bot',
-      playerScoreId: 'botScore',
-    });
-    this.el.innerHTML += botInfo.render();
+    const playersContainer = document.createElement('div');
+    playersContainer.id = this.el.id + '__players';
+    this.el.appendChild(playersContainer);
+    OfflineGameView.addPlayer('user', playersContainer.id);
+    OfflineGameView.addPlayer('bot', playersContainer.id);
     const raiseSlider = new InputComponent({
       type: 'range',
       id: 'raiseSlider',
@@ -68,6 +55,9 @@ export default class OfflineGameView extends BaseView {
     this.el.innerHTML += raiseSlider.render();
     const playerButton = new PokerUserPanel();
     this.el.innerHTML += playerButton.render();
+    this.addHandlers();
+  }
+  addHandlers() {
     document.getElementById('firstButton').addEventListener('click', (evt) => {
       OfflineGameView.disableButtonPanel('playerPanel');
       this.game[document.getElementById('firstButton').innerText](evt);
@@ -83,13 +73,20 @@ export default class OfflineGameView extends BaseView {
       this.game.raise(evt, document.getElementById('raiseSlider').value);
     });
     document.getElementById('startGame').addEventListener('click', (evt)=>{
-      this.game = new game();
       this.game.startRound();
       document.getElementById('startGame').hidden = true;
     }, {once: true});
   }
 
-
+  static addPlayer(playerId, containerId) {
+    const playerInfo = new PlayerInfo({
+      username: 'user',
+      score: '1000',
+      id: playerId,
+      playerScoreId: playerId+'Score',
+    });
+    document.getElementById(containerId).innerHTML += playerInfo.render();
+  }
   static disableButtonPanel() {
     document.getElementById('user').parentElement.style.border = 'none';
     document.getElementById('bot').parentElement.style.border = '2px solid gold';
