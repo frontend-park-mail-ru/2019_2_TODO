@@ -25,7 +25,7 @@ export default class ChangeProfileView extends BaseView {
         const av = document.getElementById('avatarInput');
         const data = new FormData();
         data.append('image', av.files[0]);
-
+        user.changeAvatar(data);
       }
       if (evt.target.id === 'changeNP') {
         evt.preventDefault();
