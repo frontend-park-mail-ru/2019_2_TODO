@@ -15,9 +15,9 @@ class AjaxModule {
       body: data})
         .then((res) => {
           if (res.status === 200) {
-              user.checkAuth();
-            window.router.open('/profile');
-            // window.router.reRender('/profile');
+              user.checkAuth().then(()=>{
+                  window.router.open('/profile');
+              });
           }
         });
   }
@@ -70,6 +70,7 @@ class AjaxModule {
     this.fetchGet('http://93.171.139.196:780/logout/')
         .then((res) => {
           if (res.status === 200) {
+              console.log('sdvs');
             window.router.reRender('/');
           }
         });
