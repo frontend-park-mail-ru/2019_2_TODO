@@ -8,5 +8,8 @@ export default class MultiPlayerView extends OfflineGameView {
     this.game = new MultiPlayer();
   }
   addHandlers() {
+    document.getElementById('startGame').addEventListener('click', (event)=>{
+      this.game.ready();
+    });
   }
 }
