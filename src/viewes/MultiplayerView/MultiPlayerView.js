@@ -29,6 +29,7 @@ export default class MultiPlayerView extends OfflineGameView {
       document.getElementById('thirdButton').textContent = `raise: ${evt.target.value}`;
     });
     document.getElementById('thirdButton').addEventListener('click', (evt)=>{
+      evt.preventDefault();
       this.game.raise(document.getElementById('raiseSlider').value);
     });
   }
