@@ -22,7 +22,7 @@ export default class MultiPlayer {
     };
     // this.animation = new PokerCSSAnimation();
   }
-  addPlayers(playerInfo) {
+  addPlayer(playerInfo) {
       MultiPlayerView.addPlayer(playerInfo.id, playerInfo.username, playerInfo.score, 'multiplayer__players');
   }
   ready(){
