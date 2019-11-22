@@ -33,4 +33,12 @@ export default class MultiPlayerView extends OfflineGameView {
       this.game.raise(document.getElementById('raiseSlider').value);
     });
   }
+  static disableButtonPanel() {
+    // document.getElementById('user').parentElement.style.border = 'none';
+    // document.getElementById('bot').parentElement.style.border = '2px solid gold';
+    const element = document.getElementById('playerPanel');
+    element.childNodes.forEach((child) => {
+      child.disabled = true;
+    });
+  }
 }
