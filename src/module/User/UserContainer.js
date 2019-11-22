@@ -8,7 +8,7 @@ export default class User {
   }
 
   checkAuth() {
-    return AjaxModule.fetchGet('http://93.171.139.196:780/signup/')
+    return AjaxModule.fetchGet('http://93.171.139.196:780/signin/')
         .catch(() => {
         })
         .then((res) => {

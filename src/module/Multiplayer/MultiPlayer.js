@@ -1,5 +1,4 @@
 import {PokerCSSAnimation} from '../Animation/PokerCSSAnimation';
-import MultiPlayerView from '../../viewes/MultiplayerView/MultiPlayerView';
 
 
 export default class MultiPlayer {
