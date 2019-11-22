@@ -94,7 +94,7 @@ export default class SignUpScreen extends BaseView {
         return;
       }
       email.value = userName;
-      AjaxModule.signUp(application, email.value, password.value);
+      user.signUp(email.value, password.value);
     });
   }
 }

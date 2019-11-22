@@ -1,5 +1,5 @@
 import OfflineGameView from '../OfflineGame/OfflineGameView';
-import MultiPlayer from "../../module/Multiplayer/MultiPlayer";
+import MultiPlayer from '../../module/Multiplayer/MultiPlayer';
 
 
 export default class MultiPlayerView extends OfflineGameView {
@@ -7,5 +7,6 @@ export default class MultiPlayerView extends OfflineGameView {
     super(element);
     this.game = new MultiPlayer();
   }
-
+  addHandlers() {
+  }
 }

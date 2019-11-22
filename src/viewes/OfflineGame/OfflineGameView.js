@@ -73,6 +73,7 @@ export default class OfflineGameView extends BaseView {
       this.game.raise(evt, document.getElementById('raiseSlider').value);
     });
     document.getElementById('startGame').addEventListener('click', (evt)=>{
+      this.game = new game();
       this.game.startRound();
       document.getElementById('startGame').hidden = true;
     }, {once: true});
