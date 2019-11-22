@@ -71,7 +71,7 @@ class AjaxModule {
         .then((res) => {
           if (res.status === 200) {
               console.log('sdvs');
-            window.router.reRender('/');
+            window.location.pathname = '/';
           }
         });
   }
