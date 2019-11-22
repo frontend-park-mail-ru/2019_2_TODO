@@ -30,6 +30,9 @@ export default class MultiPlayer {
   removePlayer(playerId){
 
   }
+  quitGame(){
+    this.socket.close();
+  }
   ready(){
     this.socket.send('ready');
   }

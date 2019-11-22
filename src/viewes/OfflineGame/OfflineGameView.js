@@ -22,6 +22,7 @@ export default class OfflineGameView extends BaseView {
       tag: 'a',
       text: 'back',
       class: 'back',
+      id: 'gameOut',
       href: '/',
     });
     this.el.innerHTML += backButton.render();
