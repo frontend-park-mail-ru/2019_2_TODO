@@ -43,7 +43,7 @@ export default class MultiPlayer {
     this.updatePlayerScore(playerInfo);
   }
   showPlayerCards(playerInfo){
-    console.log(playerInfo.hand)
+    console.log(playerInfo.hand);
     this.animation.showPlayerCards(playerInfo.id, playerInfo.hand);
   }
   updatePlayerScore(playerInfo){
@@ -51,6 +51,9 @@ export default class MultiPlayer {
   }
   ready(){
     this.socket.send('ready');
+  }
+  enablePlayer(playerInfo){
+    MultiPlayerView.enableButtonPanel(playerInfo.callCheck);
   }
   check() {
     this.socket.send('check');
