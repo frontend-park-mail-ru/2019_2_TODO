@@ -40,10 +40,14 @@ export default class MultiPlayer {
     this.animation = new PokerCSSAnimation(this.players);
     this.animation.startRoundAnimation();
     this.showPlayerCards(playerInfo);
+    this.updatePlayerScore(playerInfo);
   }
   showPlayerCards(playerInfo){
     console.log(playerInfo.hand)
     this.animation.showPlayerCards(playerInfo.id, playerInfo.hand);
+  }
+  updatePlayerScore(playerInfo){
+    document.getElementById(playerInfo.id+'Score').innerText = `${playerInfo.score}/${playerInfo.bet||0}`;
   }
   ready(){
     this.socket.send('ready');
