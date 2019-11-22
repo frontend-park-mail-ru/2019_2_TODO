@@ -16,7 +16,7 @@ class AjaxModule {
         .then((res) => {
           if (res.status === 200) {
               user.checkAuth().then(()=>{
-                  window.router.open('/profile');
+                  window.router.reRender('/profile');
               });
           }
         });
@@ -35,7 +35,7 @@ class AjaxModule {
         }))
         .then((rez) => {
           if (rez.status === 200) {
-            window.location.pathname = '/';
+            router.reRender('/');
             resolve(true);
           }
           resolve(false);
@@ -56,7 +56,7 @@ class AjaxModule {
         })
     ).then((res) => {
       if (res.status === 200) {
-        window.location.pathname = '/';
+          router.reRender('/');
         resolve(true);
       }
       resolve(false);
