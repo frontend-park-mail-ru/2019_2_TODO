@@ -77,6 +77,12 @@
   &__button:nth-child(3) {
     background: green;
   }
+  &__button:nth-child(2):disabled {
+    background: grey;
+  }
+  &__button:nth-child(3):disabled {
+    background: grey;
+  }
 
   &__button_disabled {
     height: 40px;
