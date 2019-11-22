@@ -30,7 +30,7 @@ export default class SignUpScreen extends BaseView {
     form.innerHTML += Text.render();
     const EmailInput = new InputComponent({
       type: 'email',
-      id: 'email',
+      id: 'emailR',
       error: 'NO_USERNAME',
       placeholder: 'Email',
       class: 'input',
@@ -38,7 +38,7 @@ export default class SignUpScreen extends BaseView {
     form.innerHTML += EmailInput.render();
     const PassInput = new InputComponent({
       type: 'password',
-      id: 'password',
+      id: 'passwordR',
       error: 'PASSWORD_LENGTH',
       placeholder: 'Password',
       class: 'input',
@@ -68,9 +68,9 @@ export default class SignUpScreen extends BaseView {
 
     form.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      const email = form.elements.email;
+      const email = form.elements.emailR;
       const userName = email.value;
-      const password = form.elements.password;
+      const password = form.elements.passwordR;
       const passwordRepeat = form.elements.passwordRepeat;
       if (!email.value.length) {
         InputError.e('NO_USERNAME', form);
