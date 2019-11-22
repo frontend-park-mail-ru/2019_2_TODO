@@ -4,6 +4,7 @@ import MultiPlayerView from "../../viewes/MultiplayerView/MultiPlayerView";
 
 export default class MultiPlayer {
   constructor() {
+    this.players = [];
     this.socket = new WebSocket('ws://93.171.139.196:780/multiplayer/?name='+user.username );
     this.socket.onopen = ()=>{
       console.log('opened');
@@ -21,17 +22,25 @@ export default class MultiPlayer {
     this.socket.onerror = (err)=> {
         console.log(err);
     };
-    // this.animation = new PokerCSSAnimation();
+
   }
   addPlayer(playerInfo) {
     console.log(playerInfo);
       MultiPlayerView.addPlayer(playerInfo.id, playerInfo.username, playerInfo.score, 'multiplayer__players');
+      this.players.push(playerInfo.id);
   }
   removePlayer(playerId){
-
+    document.getElementById(playerId).remove();
   }
   quitGame(){
     this.socket.close();
+  }
+  startAnimation(){
+    this.animation = new PokerCSSAnimation(this.players);
+    this.animation.prepairGame();
+  }
+  showPlayerCards(playerInfo){
+    this.animation.showPlayerCards(playerInfo.id, playerInfo.Hand);
   }
   ready(){
     this.socket.send('ready');
