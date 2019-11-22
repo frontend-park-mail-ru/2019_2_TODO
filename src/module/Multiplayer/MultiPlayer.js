@@ -14,7 +14,8 @@ export default class MultiPlayer {
       Object.keys(Command).forEach((key)=>{
 
         console.log(key);
-        this[key](msg.data[key]);
+
+        this[key](Command[key]);
       });
     };
     this.socket.onerror = (err)=> {
