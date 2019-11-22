@@ -55,9 +55,7 @@ class AjaxModule {
     ).then((res) => {
       if (res.status === 200) {
           router.reRender('/');
-        resolve(true);
       }
-      resolve(false);
     });
   }
 
