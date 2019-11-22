@@ -9,6 +9,7 @@ export default class MultiPlayer {
     };
     this.socket.onmessage = (msg)=>{
         console.log(msg);
+      console.log(JSON.parse(msg.data));
     };
     this.socket.onerror = (err)=> {
         console.log(err);
