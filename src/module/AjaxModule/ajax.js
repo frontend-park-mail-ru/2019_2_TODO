@@ -36,9 +36,7 @@ class AjaxModule {
         .then((rez) => {
           if (rez.status === 200) {
             router.reRender('/');
-            resolve(true);
           }
-          resolve(false);
         });
   }
 
