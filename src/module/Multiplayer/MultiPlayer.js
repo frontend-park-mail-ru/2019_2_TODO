@@ -41,7 +41,7 @@ export default class MultiPlayer {
     this.showPlayerCards(playerInfo);
   }
   showPlayerCards(playerInfo){
-    this.animation.showPlayerCards(playerInfo.id, playerInfo.Hand);
+    this.animation.showPlayerCards(playerInfo.id, playerInfo.hand);
   }
   ready(){
     this.socket.send('ready');
