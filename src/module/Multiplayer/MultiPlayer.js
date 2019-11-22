@@ -3,7 +3,7 @@ import {PokerCSSAnimation} from '../Animation/PokerCSSAnimation';
 
 export default class MultiPlayer {
   constructor() {
-    this.socket = new WebSocket('ws://93.171.139.196:780/multiplayer');
+    this.socket = new WebSocket('ws://93.171.139.196:780/multiplayer/');
     this.socket.onopen = ()=>{
       console.log('opened');
     };
