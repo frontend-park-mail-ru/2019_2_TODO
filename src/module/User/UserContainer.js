@@ -56,4 +56,7 @@ export default class User {
           }
         });
   }
+  logOut(){
+      AjaxModule.logOut()
+  }
 }
