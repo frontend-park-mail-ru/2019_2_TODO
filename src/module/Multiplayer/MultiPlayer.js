@@ -10,7 +10,8 @@ export default class MultiPlayer {
     };
     this.socket.onmessage = (msg)=>{
       console.log(JSON.parse(msg.data));
-      Object.keys(msg.data).forEach((key)=>{
+      const {Command} = JSON.parse(msg.data);
+      Object.keys(Command).forEach((key)=>{
         this[key](msg.data[key]);
       });
     };
