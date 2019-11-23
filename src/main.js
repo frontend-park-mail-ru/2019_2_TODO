@@ -9,7 +9,7 @@ import OfflineGameView from './viewes/OfflineGame/OfflineGameView.js';
 import runtime from 'serviceworker-webpack-plugin/lib/runtime.js';
 import UserContainer from "./module/User/UserContainer";
 import MultiPlayerView from "./viewes/MultiplayerView/MultiPlayerView";
-
+import SupportView from "./viewes/SupportView/SupportView";
 
 if ('serviceWorker' in navigator) {
   const registration = runtime.register();
@@ -24,7 +24,8 @@ window.router.register('/', StartScreen)
     .register('/profile', ProfileView)
     .register('/offline', OfflineGameView)
     .register('/notFound', NotFoundView)
-    .register('/online', MultiPlayerView);
+    .register('/online', MultiPlayerView)
+    .register('/support', SupportView);
 
 window.user.checkAuth().finally(()=>{
   router.start();

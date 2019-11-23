@@ -15,7 +15,7 @@
 @import "components/PlayerInfo/PlayerInfo.scss";
 @import "components/Card/Card.scss";
 @import "components/BancersCard/BancersCard.scss";
-
+@import "viewes/SupportView/SupportView.scss";
 
 @media screen and (orientation:landscape) and (max-device-width: 900px) {
   html{
@@ -34,4 +34,10 @@
     top: 100%;
     left: 0
   }
+}
+
+.cont{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
