@@ -53,10 +53,16 @@ export default class MultiPlayer {
     this.socket.send('ready');
   }
   enablePlayer(playerInfo){
-    MultiPlayerView.enableButtonPanel(playerInfo.callCheck);
+    this.animation.shinePlayer(playerInfo.id);
+    if (playerInfo.id === this.players[0]){
+      MultiPlayerView.enableButtonPanel(playerInfo.callCheck);
+    }
   }
   turnOffPlayer(playerInfo){
     this.animation.removePlayerCards(playerInfo.id);
+  }
+  setCheck(playerInfo){
+
   }
 
   check() {

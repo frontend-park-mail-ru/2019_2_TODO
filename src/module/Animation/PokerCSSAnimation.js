@@ -2,6 +2,7 @@ import {Card} from '../../components/Card/Card';
 
 export class PokerCSSAnimation {
   constructor(players) {
+    this.shining = null;
     this.players = players;
     let i = 0;
     this.players.forEach(id => {
@@ -110,5 +111,13 @@ export class PokerCSSAnimation {
       }, 3000);
     });
 
+  }
+  shinePlayer(id){
+    this.removeShine(this.shining);
+    document.getElementById(id).parentElement.style.border = '2px solid gold';
+    this.shining = id;
+  }
+  removeShine(id){
+    document.getElementById('bot').parentElement.style.border = 'none';
   }
 }
