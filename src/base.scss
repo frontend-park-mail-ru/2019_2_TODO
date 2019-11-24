@@ -6,6 +6,9 @@ body{
   @media (orientation: landscape) {
     height: 100vh;
   }
+  @media (orientation: portrait) {
+    height: 100vw;
+  }
   padding: 0;
   margin: 0;
 }
