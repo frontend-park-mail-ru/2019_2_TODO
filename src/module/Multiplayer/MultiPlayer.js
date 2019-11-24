@@ -52,7 +52,9 @@ export default class MultiPlayer {
     this.players.forEach((id) => {
       this.animation.removeShine(id);
     });
-    this.animation.showWinnerCards(HandSolve(info.hand).cards);
+    const s = HandSolve(info.hand);
+    console.log(s);
+    this.animation.showWinnerCards(s.cards);
     setTimeout(()=>{
       this.animation.removeAllCards();
       this.ready();
