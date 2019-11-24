@@ -53,6 +53,9 @@ export default class MultiPlayer {
       this.animation.removeShine(id);
     });
     this.animation.showWinnerCards(info.hand);
+    setTimeout(()=>{
+      this.animation.removeAllCards();
+    }, 4000);
   }
 
   /**
