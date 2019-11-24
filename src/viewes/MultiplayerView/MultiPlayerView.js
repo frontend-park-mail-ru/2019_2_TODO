@@ -30,6 +30,7 @@ export default class MultiPlayerView extends OfflineGameView {
     });
     document.getElementById('thirdButton').addEventListener('click', (evt)=>{
       evt.preventDefault();
+      MultiPlayerView.disableButtonPanel('playerPanel');
       this.game.raise(document.getElementById('raiseSlider').value);
     });
   }
@@ -49,6 +50,6 @@ export default class MultiPlayerView extends OfflineGameView {
     });
     document.getElementById('firstButton').textContent = text;
     document.getElementById('raiseSlider').max = score;
-    document.getElementById('raiseSlider').value = 20;
+    document.getElementById('raiseSlider').value = 0;
   }
 }
