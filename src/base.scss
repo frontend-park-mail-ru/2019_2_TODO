@@ -3,7 +3,9 @@ body{
   justify-content: space-between;
 
   background-size: 100%;
-  height: 100vh;
+  @media (orientation: landscape) {
+    height: 100vh;
+  }
   padding: 0;
   margin: 0;
 }
