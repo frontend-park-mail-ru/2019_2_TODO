@@ -88,6 +88,7 @@ export default class OfflineGameView extends BaseView {
       username: username,
       score: score+'/0',
       id: playerId,
+      containerId: playerId+'container',
       playerScoreId: playerId+'Score',
     });
     document.getElementById(containerId).innerHTML += playerInfo.render();

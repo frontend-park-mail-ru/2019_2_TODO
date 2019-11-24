@@ -30,7 +30,7 @@ export default class MultiPlayer {
       this.players.push(playerInfo.id);
   }
   removePlayer(playerInfo){
-    document.getElementById(playerInfo.id).remove();
+    document.getElementById(playerInfo.id+'container').remove();
   }
   quitGame(){
     this.socket.close();
