@@ -66,14 +66,18 @@ export class PokerCSSAnimation {
       return delay + 400;
     }, 400);
   }
-
+  removePlayerCards(id){
+    this[id].forEach((cardId) => {
+      document.getElementById(cardId).hidden = true;
+    });
+  }
   removeAllCards() {
-    this.players.forEach(id => {
-      this[id].forEach(cardId => {
+    this.players.forEach((id) => {
+      this[id].forEach((cardId) => {
         document.getElementById(cardId).hidden = true;
       });
     });
-    this.bankerCards.forEach(card => {
+    this.bankerCards.forEach((card) => {
       document.getElementById(card).hidden = true;
     });
   }
