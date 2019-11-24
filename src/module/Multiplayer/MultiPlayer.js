@@ -53,11 +53,12 @@ export default class MultiPlayer {
       this.animation.removeShine(id);
     });
     const hand = HandSolve(info.hand);
+    console.log(hand);
     this.animation.showWinnerCards(this.getWinnersCardsId([hand]));
     setTimeout(()=>{
       this.animation.removeAllCards();
       this.ready();
-    }, 4000);
+    }, 3000);
   }
   getWinnersCardsId(hands) {
     let cards = [];

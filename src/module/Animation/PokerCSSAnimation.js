@@ -89,7 +89,7 @@ export class PokerCSSAnimation {
     console.log(this.bankerCards);
     this.bankerCards.forEach((id)=>{
       const card = document.getElementById(id);
-      console.log(card.dataset['nominal']);
+      // console.log(card.dataset['nominal']);
       if (cards.includes(card.dataset['nominal']) ) {
         cardsIds.push(id);
       }
