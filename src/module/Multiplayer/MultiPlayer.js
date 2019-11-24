@@ -55,6 +55,7 @@ export default class MultiPlayer {
     this.animation.showWinnerCards(info.hand);
     setTimeout(()=>{
       this.animation.removeAllCards();
+      this.ready();
     }, 4000);
   }
 
