@@ -41,4 +41,11 @@ export default class MultiPlayerView extends OfflineGameView {
       child.disabled = true;
     });
   }
+  static enableButtonPanel(text = 'check') {
+    const element = document.getElementById('playerPanel');
+    element.childNodes.forEach((child) => {
+      child.disabled = false;
+    });
+    document.getElementById('firstButton').textContent = text;
+  }
 }
