@@ -48,7 +48,7 @@ export default class MultiPlayerView extends OfflineGameView {
       child.disabled = false;
     });
     document.getElementById('firstButton').textContent = text;
-    document.getElementById('raiseSlider').max = ;
+    document.getElementById('raiseSlider').max = score;
     document.getElementById('raiseSlider').value = 20;
   }
 }
