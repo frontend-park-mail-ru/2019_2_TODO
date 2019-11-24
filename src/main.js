@@ -12,6 +12,9 @@ import MultiPlayerView from './viewes/MultiplayerView/MultiPlayerView';
 import SupportView from './viewes/SupportView/SupportView';
 
 window.screen.orientation.lock('landscape-primary')
+    .catch((smt)=>{
+      console.log(smt);
+    })
     .then((smt)=>{
       console.log(smt, 'locked');
     });
