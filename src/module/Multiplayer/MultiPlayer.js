@@ -52,6 +52,9 @@ export default class MultiPlayer {
   ready(){
     this.socket.send('ready');
   }
+  setCurrentPlayer(playerInfo){
+
+  }
   enablePlayer(playerInfo){
     this.animation.shinePlayer(playerInfo.id);
     if (playerInfo.id === this.players[0]){

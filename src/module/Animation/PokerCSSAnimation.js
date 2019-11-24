@@ -2,7 +2,7 @@ import {Card} from '../../components/Card/Card';
 
 export class PokerCSSAnimation {
   constructor(players) {
-    this.shining = null;
+    this.shining = undefined;
     this.players = players;
     let i = 0;
     this.players.forEach(id => {
@@ -118,7 +118,7 @@ export class PokerCSSAnimation {
     this.shining = id;
   }
   removeShine(id){
-    if (id){
+    if (id !== undefined){
       document.getElementById(id).parentElement.style.border = 'none';
     }
   }
