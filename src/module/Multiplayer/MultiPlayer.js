@@ -45,6 +45,17 @@ export default class MultiPlayer {
   }
 
   /**
+   * Показать победные карты
+   * @param {Object} info
+   */
+  showWinnerCards(info) {
+    this.players.forEach((id) => {
+      this.animation.removeShine(id);
+    });
+    this.animation.showWinnerCards(info.hand);
+  }
+
+  /**
    * выйти из игры
    */
   quitGame() {

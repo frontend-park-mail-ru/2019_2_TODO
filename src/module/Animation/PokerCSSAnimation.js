@@ -83,8 +83,8 @@ export class PokerCSSAnimation {
     });
   }
   showWinnerCards(cards) {
-    document.getElementById('user').parentElement.style.border = 'none';
-    document.getElementById('bot').parentElement.style.border = 'none';
+    // document.getElementById('user').parentElement.style.border = 'none';
+    // document.getElementById('bot').parentElement.style.border = 'none';
     const cardsIds = [];
     console.log(this.bankerCards);
     this.bankerCards.forEach((id)=>{
