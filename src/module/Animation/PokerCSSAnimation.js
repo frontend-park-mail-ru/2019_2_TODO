@@ -118,6 +118,6 @@ export class PokerCSSAnimation {
     this.shining = id;
   }
   removeShine(id){
-    document.getElementById('bot').parentElement.style.border = 'none';
+    document.getElementById(id).parentElement.style.border = 'none';
   }
 }
