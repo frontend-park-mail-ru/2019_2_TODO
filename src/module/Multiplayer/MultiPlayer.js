@@ -29,8 +29,8 @@ export default class MultiPlayer {
       MultiPlayerView.addPlayer(playerInfo.id, playerInfo.username, playerInfo.score, 'multiplayer__players');
       this.players.push(playerInfo.id);
   }
-  removePlayer(playerId){
-    document.getElementById(playerId).remove();
+  removePlayer(playerInfo){
+    document.getElementById(playerInfo.id).remove();
   }
   quitGame(){
     this.socket.close();
