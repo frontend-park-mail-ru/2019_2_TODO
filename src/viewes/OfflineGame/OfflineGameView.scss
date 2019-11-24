@@ -3,7 +3,9 @@
   position: relative;
   padding: 0;
   margin: 0;
-  height: 100vh;
+  @media (orientation: landscape) {
+    height: 100vh;
+  }
   background-image: url("/assets/nami.png");
 }
 
