@@ -55,6 +55,9 @@ export default class MultiPlayer {
   setCurrentPlayer(playerInfo){
 
   }
+  showTableCards(info){
+    this.animation.showBankCards(info.indexes, info.cards);
+  }
   enablePlayer(playerInfo){
     this.animation.shinePlayer(playerInfo.id);
     if (playerInfo.id === this.players[0]){
@@ -78,6 +81,6 @@ export default class MultiPlayer {
     this.socket.send(`raise ${bet}`);
   }
   fold(){
-    this.socket.send('fold')
+    this.socket.send('fold');
   }
 }
