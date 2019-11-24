@@ -1,5 +1,5 @@
 import OfflineGameView from '../../viewes/OfflineGame/OfflineGameView.js';
-import {PokerCSSAnimation} from "../Animation/PokerCSSAnimation";
+import {PokerCSSAnimation} from '../Animation/PokerCSSAnimation';
 
 const baseDeck = [
   '2d', '3d', '4d', '5d', '6d', '7d', '8d', '9d', 'Td', 'Jd', 'Qd', 'Kd', 'Ad',
@@ -14,7 +14,7 @@ export const updateScoreBet = () => {
   document.getElementById('botScore').innerText = `${window.sessionStorage.botScore}/${window.sessionStorage.botBet}`;
 };
 
-export class game {
+export class Game {
   constructor() {
     this.deck = [...baseDeck];
     this.playerHand = null;
@@ -77,7 +77,7 @@ export class game {
     this.playerHand = HandSolve([...playersCards, ...bankCards]);
     this.botHand = HandSolve([...botsCards, ...bankCards]);
     this.animation.startRoundAnimation();
-    this.animation.showPlayerCards('user', playersCards)
+    this.animation.showPlayerCards('user', playersCards);
     this.bets();
     if (sessionStorage.dealer !== 'player') {
       OfflineGameView.enableButtonPanel('call');
@@ -86,10 +86,10 @@ export class game {
 
   getWinnersCardsId(hands) {
     let cards = [];
-    hands.forEach(hand =>{
+    hands.forEach((hand) =>{
       const handCards = [];
-      hand.cards.forEach(card=>{
-          handCards.push(card.value + card.suit);
+      hand.cards.forEach((card)=>{
+        handCards.push(card.value + card.suit);
       });
       cards = [...cards, ...handCards];
     });
@@ -241,7 +241,6 @@ export class game {
       }
       this._stage++;
       updateScoreBet();
-
     };
     func();
   };

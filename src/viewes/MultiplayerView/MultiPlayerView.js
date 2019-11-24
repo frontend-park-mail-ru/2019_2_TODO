@@ -10,7 +10,7 @@ export default class MultiPlayerView extends OfflineGameView {
   }
   addHandlers() {
     document.getElementById('gameOut').addEventListener('click', (event)=>{
-        this.game.quitGame();
+      this.game.quitGame();
     });
     const stG = document.getElementById('startGame');
     stG.addEventListener('click', (event)=>{
@@ -43,7 +43,6 @@ export default class MultiPlayerView extends OfflineGameView {
     });
   }
   static enableButtonPanel(text = 'check', score = 1000) {
-
     const element = document.getElementById('playerPanel');
     element.childNodes.forEach((child) => {
       child.disabled = false;

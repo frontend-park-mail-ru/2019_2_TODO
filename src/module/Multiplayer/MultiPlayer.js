@@ -1,8 +1,9 @@
 import {PokerCSSAnimation} from '../Animation/PokerCSSAnimation';
-import MultiPlayerView from "../../viewes/MultiplayerView/MultiPlayerView";
+import MultiPlayerView from '../../viewes/MultiplayerView/MultiPlayerView';
 
-
+/** Общение по вебсокету с бекэндом*/
 export default class MultiPlayer {
+  /** конструктор*/
   constructor() {
     this.players = [];
     this.socket = new WebSocket('ws://93.171.139.196:780/multiplayer/?name='+user.username );
@@ -13,74 +14,140 @@ export default class MultiPlayer {
       console.log(JSON.parse(msg.data));
       const {Command} = JSON.parse(msg.data);
       Object.keys(Command).forEach((key)=>{
-
         console.log(key);
 
         this[key](Command[key]);
       });
     };
     this.socket.onerror = (err)=> {
-        console.log(err);
+      console.log(err);
     };
+  }
 
-  }
+  /**
+   * добавить игрока
+   * @param {Object} playerInfo
+   */
   addPlayer(playerInfo) {
-    console.log(playerInfo);
-      MultiPlayerView.addPlayer(playerInfo.id, playerInfo.username, playerInfo.score, 'multiplayer__players');
-      this.players.push(playerInfo.id);
+    MultiPlayerView.addPlayer(
+        playerInfo.id,
+        playerInfo.username,
+        playerInfo.score,
+        'multiplayer__players');
+    this.players.push(playerInfo.id);
   }
-  removePlayer(playerInfo){
+  /**
+   * убрать игрока
+   * @param {Object} playerInfo
+   */
+  removePlayer(playerInfo) {
     document.getElementById(playerInfo.id+'container').remove();
   }
-  quitGame(){
+
+  /**
+   * выйти из игры
+   */
+  quitGame() {
     this.socket.close();
   }
-  startGame(playerInfo){
+  /**
+   * Начало игры
+   * @param {Object} playerInfo
+   */
+  startGame(playerInfo) {
     console.log('Animation');
     this.animation = new PokerCSSAnimation(this.players);
     this.animation.startRoundAnimation();
     this.showPlayerCards(playerInfo);
     this.updatePlayerScore(playerInfo);
   }
-  showPlayerCards(playerInfo){
+  /**
+   * Показать карты
+   * @param {Object} playerInfo
+   */
+  showPlayerCards(playerInfo) {
     console.log(playerInfo.hand);
     this.animation.showPlayerCards(playerInfo.id, playerInfo.hand);
   }
-  updatePlayerScore(playerInfo){
-    document.getElementById(playerInfo.id+'Score').innerText = `${playerInfo.score}/${playerInfo.bet||0}`;
+  /**
+   * Обновить счет
+   * @param {Object} playerInfo
+   */
+  updatePlayerScore(playerInfo) {
+    document.getElementById(playerInfo.id+'Score')
+        .innerText = `${playerInfo.score}/${playerInfo.bet||0}`;
   }
-  ready(){
+  /**
+   * Готовность
+   * @param {Object} playerInfo
+   */
+  ready() {
     this.socket.send('ready');
   }
-  setCurrentPlayer(playerInfo){
+  /**
+   * Указать информацию о текущем игроке
+   * @param {Object} playerInfo
+   */
+  setCurrentPlayer(playerInfo) {
 
   }
-  showTableCards(info){
+
+  /**
+   * Показать карты на столе
+   * @param {Object} info
+   */
+  showTableCards(info) {
     this.animation.showBankCards(info.indexes, info.cards);
   }
-  enablePlayer(playerInfo){
+  /**
+   * Передать ход игроку
+   * @param {Object} playerInfo
+   */
+  enablePlayer(playerInfo) {
     this.animation.shinePlayer(playerInfo.id);
-    if (playerInfo.id === this.players[0]){
+    if (playerInfo.id === this.players[0]) {
       MultiPlayerView.enableButtonPanel(playerInfo.callCheck, playerInfo.score);
     }
   }
-  turnOffPlayer(playerInfo){
+  /**
+   * Покинуть раунд
+   * @param {Object} playerInfo
+   */
+  turnOffPlayer(playerInfo) {
     this.animation.removePlayerCards(playerInfo.id);
   }
-  setCheck(playerInfo){
+  /**
+   * Указать игрока, сделавшего check
+   * @param {Object} playerInfo
+   */
+  setCheck(playerInfo) {
 
   }
-
+  /**
+   * Установить счет банка
+   * @param {Object} info
+   */
+  setBank(info) {
+    document.getElementById('bank').textContent = info.score;
+  }
+  /** Сделать check*/
   check() {
     this.socket.send('check');
   }
+  /** Сделать call*/
   call() {
     this.socket.send('call');
   }
-  raise(bet){
+
+  /**
+   * Сделать raise
+   * @param {string} bet
+   */
+  raise(bet) {
     this.socket.send(`raise ${bet}`);
   }
-  fold(){
+  /** Сделать fold*/
+  fold() {
     this.socket.send('fold');
   }
 }

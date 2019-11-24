@@ -1,21 +1,26 @@
 import PokerUserPanel from '../../components/PokerUserPanel/PokerUserPanel.js';
-import {game} from '../../module/GamePlay/PokerGamePlay.js';
+import {Game} from '../../module/GamePlay/PokerGamePlay.js';
 import {ButtonComponent} from '../../components/Button/Button.js';
 import {BankPanel} from '../../components/BankPanel/BankPanel.js';
 import BaseView from '../BaseView/BaseView.js';
-import {PlayerInfo} from "../../components/PlayerInfo/PlayerInfo.js";
-import {BankersCard} from "../../components/BancersCard/BancersCard";
-import {TextComponent} from "../../components/TextComponent/Text";
-import {InputComponent} from "../../components/Input/Input";
+import {PlayerInfo} from '../../components/PlayerInfo/PlayerInfo.js';
+import {BankersCard} from '../../components/BancersCard/BancersCard';
+import {TextComponent} from '../../components/TextComponent/Text';
+import {InputComponent} from '../../components/Input/Input';
 
+/** Игра оффлайн*/
 export default class OfflineGameView extends BaseView {
+  /**
+   * Создать
+   * @param {HTMLElement} element
+   */
   constructor(element) {
     super(element);
     this.el.id = 'singleplayer';
     this.card = null;
     this.game = null;
   }
-
+  /** Отрисовать*/
   render() {
     this.el.innerHTML = '';
     const backButton = new TextComponent({
@@ -57,6 +62,7 @@ export default class OfflineGameView extends BaseView {
     this.el.innerHTML += playerButton.render();
     this.addHandlers();
   }
+  /** Добавить обработчики*/
   addHandlers() {
     document.getElementById('firstButton').addEventListener('click', (evt) => {
       OfflineGameView.disableButtonPanel('playerPanel');
@@ -75,7 +81,7 @@ export default class OfflineGameView extends BaseView {
     document.getElementById('startGame').addEventListener('click', (evt)=>{
       OfflineGameView.addPlayer('user', user.username, '1000', 'singleplayer__players');
       OfflineGameView.addPlayer('bot', user.username, '1000', 'singleplayer__players');
-      this.game = new game();
+      this.game = new Game();
       setTimeout(()=>{
         this.game.startRound();
       }, 1000);

@@ -1,7 +1,7 @@
 import BaseComponent from '../BaseComponent/BaseComponent';
 import template from './ProfileComponent.hbs';
 
-export class ProfileComponent extends BaseComponent {
+export default class ProfileComponent extends BaseComponent {
   constructor(context) {
     super();
     this.context = context;

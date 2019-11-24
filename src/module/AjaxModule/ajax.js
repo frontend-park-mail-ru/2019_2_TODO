@@ -15,7 +15,7 @@ class AjaxModule {
       body: data})
         .then((res) => {
           if (res.status === 200) {
-              user.checkAuth();
+            user.checkAuth();
             window.router.open('/profile');
             // window.router.reRender('/profile');
           }
@@ -70,7 +70,7 @@ class AjaxModule {
     this.fetchGet('http://93.171.139.196:780/logout/')
         .then((res) => {
           if (res.status === 200) {
-              console.log('sdvs');
+            console.log('sdvs');
             window.location.pathname = '/';
           }
         });
@@ -104,7 +104,7 @@ class AjaxModule {
    * @return {Promise<Response>} - промиз для обработки
    */
   fetchGet(url = 'http://93.171.139.196:780/',
-           params = {method: 'GET', credentials: 'include'}) {
+      params = {method: 'GET', credentials: 'include'}) {
     return fetch(url, params);
   }
 }

@@ -2,15 +2,18 @@ import {HeaderComponent} from '../../components/Header/Header.js';
 import {TextComponent} from '../../components/TextComponent/Text.js';
 import InputError, {InputComponent} from '../../components/Input/Input.js';
 import {ButtonComponent} from '../../components/Button/Button.js';
-import AjaxModule from '../../module/AjaxModule/ajax.js';
 import BaseView from '../BaseView/BaseView.js';
 
-
+/** Авторизация*/
 export default class SignInScreen extends BaseView {
+  /**
+   * Создать
+   * @param {HTMLElement} element
+   */
   constructor(element) {
     super(element);
   }
-
+  /** Отрисовать*/
   render() {
     this.el.innerHTML = '';
     const application = document.createElement('section');

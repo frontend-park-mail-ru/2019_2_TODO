@@ -7,9 +7,9 @@ import NotFoundView from './viewes/NotFoundView/NotFoundView.js';
 import ProfileView from './viewes/Profile/Profile.js';
 import OfflineGameView from './viewes/OfflineGame/OfflineGameView.js';
 import runtime from 'serviceworker-webpack-plugin/lib/runtime.js';
-import UserContainer from "./module/User/UserContainer";
-import MultiPlayerView from "./viewes/MultiplayerView/MultiPlayerView";
-import SupportView from "./viewes/SupportView/SupportView";
+import UserContainer from './module/User/UserContainer';
+import MultiPlayerView from './viewes/MultiplayerView/MultiPlayerView';
+import SupportView from './viewes/SupportView/SupportView';
 
 if ('serviceWorker' in navigator) {
   const registration = runtime.register();
