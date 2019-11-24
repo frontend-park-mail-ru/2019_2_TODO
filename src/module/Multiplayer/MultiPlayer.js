@@ -55,7 +55,7 @@ export default class MultiPlayer {
   enablePlayer(playerInfo){
     this.animation.shinePlayer(playerInfo.id);
     if (playerInfo.id === this.players[0]){
-      MultiPlayerView.enableButtonPanel(playerInfo.callCheck);
+      MultiPlayerView.enableButtonPanel(playerInfo.callCheck, playerInfo.score);
     }
   }
   turnOffPlayer(playerInfo){
