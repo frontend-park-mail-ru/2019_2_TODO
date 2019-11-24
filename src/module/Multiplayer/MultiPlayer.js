@@ -52,15 +52,24 @@ export default class MultiPlayer {
     this.players.forEach((id) => {
       this.animation.removeShine(id);
     });
-    const s = HandSolve(info.hand);
-    console.log(s);
-    this.animation.showWinnerCards(s.cards);
+    const hand = HandSolve(info.hand);
+    this.animation.showWinnerCards(this.getWinnersCardsId([hand]));
     setTimeout(()=>{
       this.animation.removeAllCards();
       this.ready();
     }, 4000);
   }
-
+  getWinnersCardsId(hands) {
+    let cards = [];
+    hands.forEach((hand) =>{
+      const handCards = [];
+      hand.cards.forEach((card)=>{
+        handCards.push(card.value + card.suit);
+      });
+      cards = [...cards, ...handCards];
+    });
+    return cards;
+  }
   /**
    * выйти из игры
    */
