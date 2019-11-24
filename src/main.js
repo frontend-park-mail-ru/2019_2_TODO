@@ -11,7 +11,10 @@ import UserContainer from './module/User/UserContainer';
 import MultiPlayerView from './viewes/MultiplayerView/MultiPlayerView';
 import SupportView from './viewes/SupportView/SupportView';
 
-window.screen.orientation.lock('landscape');
+window.screen.orientation.lock('landscape-primary')
+    .then((smt)=>{
+      console.log(smt, 'locked');
+    });
 
 if ('serviceWorker' in navigator) {
   const registration = runtime.register();
