@@ -62,6 +62,9 @@ export default class MultiPlayer {
     this.socket.send('call');
   }
   raise(bet){
-    this.socket.send(`raise: ${bet}`);
+    this.socket.send(`raise ${bet}`);
+  }
+  fold(){
+    this.socket.send('fold')
   }
 }
