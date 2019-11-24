@@ -11,13 +11,13 @@ import UserContainer from './module/User/UserContainer';
 import MultiPlayerView from './viewes/MultiplayerView/MultiPlayerView';
 import SupportView from './viewes/SupportView/SupportView';
 
-window.screen.orientation.lock('landscape-primary')
-    .catch((smt)=>{
-      console.log(smt);
-    })
-    .then((smt)=>{
-      console.log(smt, 'locked');
-    });
+// window.screen.orientation.lock('landscape-primary')
+//     .catch((smt)=>{
+//       console.log(smt);
+//     })
+//     .then((smt)=>{
+//       console.log(smt, 'locked');
+//     });
 
 if ('serviceWorker' in navigator) {
   const registration = runtime.register();
