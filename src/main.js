@@ -32,7 +32,7 @@ window.router.register('/', StartScreen)
     .register('/profile', ProfileView)
     .register('/offline', OfflineGameView)
     .register('/notFound', NotFoundView)
-    .register('/online', MultiPlayerView)
+    .register('/online', TableView)
     .register('/support', SupportView)
     .register('/tables', TableView);
 
