@@ -1,7 +1,8 @@
 import BaseComponent from '../BaseComponent/BaseComponent';
-import template from './BancersCard.hbs';
+import template from './ChangeProfile.hbs';
 
-export class BankersCard extends BaseComponent {
+
+export default class ChangeProfile extends BaseComponent {
   constructor(context) {
     super(context);
     this.template = template;

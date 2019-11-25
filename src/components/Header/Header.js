@@ -53,9 +53,12 @@ export class HeaderComponent {
       this._parent.innerHTML += head.render() + infoBar.render();
     }
   }
-  addListener(){
-    document.getElementById('infoAvatar').addEventListener('click', event => {
+  addListener() {
+    document.getElementById('infoAvatar').addEventListener('click', (event) => {
       window.router.open('/profile');
+    });
+    document.getElementById('logout').addEventListener('click', (event)=>{
+      user.logOut();
     });
   }
 }

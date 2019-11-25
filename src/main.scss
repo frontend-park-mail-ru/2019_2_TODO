@@ -3,9 +3,9 @@
 @import 'components/TextComponent/Text.scss';
 @import 'components/Image/Image.scss';
 @import 'components/Input/Input.scss';
-@import 'components/viewes/Profile/Change/ChangeProfile.scss';
+@import 'components/ProfileComponent/ProfileComponent';
 @import 'components/InfoBar/infoBar.scss';
-@import 'components/viewes/OfflineGame/OfflineGameView.scss';
+@import 'viewes/OfflineGame/OfflineGameView.scss';
 @import 'components/PokerUserPanel/PokerUserPanel.scss';
 @import 'components/BankPanel/BankPanel.scss';
 @import 'components/ButtonPanel/ButtonPanel.scss';
@@ -15,23 +15,43 @@
 @import "components/PlayerInfo/PlayerInfo.scss";
 @import "components/Card/Card.scss";
 @import "components/BancersCard/BancersCard.scss";
+@import "viewes/SupportView/SupportView.scss";
+@import "components/TableComponent/TableComponent.scss";
+@import "viewes/TableView/Table.scss";
 
-
-@media screen and (orientation:landscape) and (max-device-width: 900px) {
-  html{
+@media (orientation: portrait) {
+  html {
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
     -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
     -webkit-transform-origin: left top;
     -moz-transform-origin: left top;
     -ms-transform-origin: left top;
     -o-transform-origin: left top;
     transform-origin: left top;
-    width: 320px; /*Разрешение экрана iPhone*/
     position: absolute;
-    top: 100%;
-    left: 0
+    top: 100vh;
+    height: 100vw;
+    width: 100vh;
   }
+}
+//@media screen and (orientation:portrait) and (max-device-width: 900px) {
+//  html{
+//    -webkit-transform: rotate(-90deg);
+//    -moz-transform: rotate(-90deg);
+//    -ms-transform: rotate(-90deg);
+//    -o-transform: rotate(-90deg);
+//    transform: rotate(-90deg);
+//
+//    width: 320px; /*Разрешение экрана iPhone*/
+//
+//  }
+//}
+
+.cont{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

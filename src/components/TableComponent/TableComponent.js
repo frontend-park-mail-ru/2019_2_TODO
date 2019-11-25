@@ -1,7 +1,7 @@
 import BaseComponent from '../BaseComponent/BaseComponent';
-import template from './BancersCard.hbs';
+import template from './TableComponent.hbs';
 
-export class BankersCard extends BaseComponent {
+export class TableComponent extends BaseComponent {
   constructor(context) {
     super(context);
     this.template = template;
