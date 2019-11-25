@@ -18,7 +18,8 @@ export default class BaseView {
 
   hide() {
     this.isActive = false;
-    this.el.innerHTML = '';
+    this.el.remove();
+    this.el = null;
   }
 
   show() {
