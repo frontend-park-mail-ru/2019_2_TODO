@@ -1,7 +1,9 @@
 
 .tables {
   display: flex;
+  width: 100%;
   flex-direction: row;
   align-self: center;
   flex-wrap: wrap;
+  justify-content: center;
 }
