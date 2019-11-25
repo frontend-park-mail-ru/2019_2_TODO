@@ -29,7 +29,7 @@ export default class TableView extends BaseView {
           return res.text();
         })
         .then((resText)=>{
-          const rooms = JSON.parse(resText);
+          const rooms = JSON.parse(resText).rooms;
           console.log(rooms);
           Object.keys(rooms).forEach((key)=>{
             TableView.addTable(key, rooms[key], '2');
