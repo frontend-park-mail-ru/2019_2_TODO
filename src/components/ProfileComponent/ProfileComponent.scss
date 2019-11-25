@@ -91,6 +91,7 @@
     &__file-input{
         align-self: center;
         width: 65%px;
+        height: 2vh;
         margin: 3px;
     }
 
@@ -103,5 +104,6 @@
     &__input{
         margin-left: 0;
         margin-right: 0;
+        height: 3vh;
     }
 }
