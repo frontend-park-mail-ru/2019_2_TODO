@@ -16,11 +16,10 @@ export default class BaseView {
   }
 
   hide() {
-    this.el.hidden = true;
+    this.el.innerHTML = '';
   }
 
   show() {
-    this.el.hidden = false;
     this.render();
   }
 
