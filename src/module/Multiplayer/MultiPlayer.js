@@ -120,6 +120,17 @@ export default class MultiPlayer {
   }
 
   /**
+   * Закончить игру по fold
+   */
+  endFoldGame() {
+    setTimeout(() => {
+      this.animation.removeAllCards();
+    }, 1000);
+    setTimeout(() => {
+      this.ready();
+    }, 2000);
+  }
+  /**
    * Показать карты на столе
    * @param {Object} info
    */

@@ -36,9 +36,7 @@ class AjaxModule {
         .then((rez) => {
           if (rez.status === 200) {
             window.location.pathname = '/';
-            resolve(true);
           }
-          resolve(false);
         });
   }
 
@@ -57,9 +55,7 @@ class AjaxModule {
     ).then((res) => {
       if (res.status === 200) {
         window.location.pathname = '/';
-        resolve(true);
       }
-      resolve(false);
     });
   }
 
