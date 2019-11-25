@@ -27,8 +27,9 @@ export default class Router {
   /**
    * Открыт путь
    * @param {string} path
+   * @param {any} arg
    */
-  open(path) {
+  open(path, arg = null) {
     const route = this.routes[path];
     if (!route) {
       this.open('/notFound');
@@ -42,13 +43,9 @@ export default class Router {
       );
     }
     let {View, view, el} = route;
-    if (!el) {
-      el = document.createElement('section');
-      this.root.appendChild(el);
-    }
-    if (!view) {
-      view = new View(el);
-    }
+    el = document.createElement('section');
+    this.root.appendChild(el);
+    view = new View(el, arg);
     if (!view.active) {
       Object.values(this.routes).forEach(({view}) => {
         if (view && view.active) {

@@ -19,7 +19,7 @@ export default class StartScreen extends BaseView {
         application,
         user.isAuth,
         user.avatar,
-        user.username
+        user.username,
     );
     header.render();
     const menuBar = new MenuBar(application);

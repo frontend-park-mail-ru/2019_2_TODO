@@ -10,7 +10,7 @@ import runtime from 'serviceworker-webpack-plugin/lib/runtime.js';
 import UserContainer from './module/User/UserContainer';
 import MultiPlayerView from './viewes/MultiplayerView/MultiPlayerView';
 import SupportView from './viewes/SupportView/SupportView';
-
+import TableView from './viewes/TableView/TableView';
 // window.screen.orientation.lock('landscape-primary')
 //     .catch((smt)=>{
 //       console.log(smt);
@@ -32,8 +32,9 @@ window.router.register('/', StartScreen)
     .register('/profile', ProfileView)
     .register('/offline', OfflineGameView)
     .register('/notFound', NotFoundView)
-    .register('/online', MultiPlayerView)
-    .register('/support', SupportView);
+    .register('/online', TableView)
+    .register('/support', SupportView)
+    .register('/tables', TableView);
 
 window.user.checkAuth().finally(()=>{
   router.start();
