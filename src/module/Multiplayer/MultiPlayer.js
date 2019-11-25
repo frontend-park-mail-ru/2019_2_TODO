@@ -4,9 +4,9 @@ import MultiPlayerView from '../../viewes/MultiplayerView/MultiPlayerView';
 /** Общение по вебсокету с бекэндом*/
 export default class MultiPlayer {
   /** конструктор*/
-  constructor() {
+  constructor(addr) {
     this.players = [];
-    this.socket = new WebSocket('ws://93.171.139.196:780/multiplayer/?name='+user.username );
+    this.socket = new WebSocket(`ws://93.171.139.196:780/multiplayer/?name=${user.username}&roomName=${addr}` );
     this.socket.onopen = ()=>{
       console.log('opened');
     };
