@@ -10,7 +10,7 @@
     background: #34495e;
     border: 1px solid #2b3c4e;
     box-shadow: 0 0 90px black;
-    height: 60vh;
+    //height: 60vh;
     text-align: center;
     &__c{
         height: 30px;
@@ -88,7 +88,7 @@
 
     &__file-input{
         align-self: center;
-        max-width: 177px;
+        width: 65%px;
         margin: 3px;
     }
 
