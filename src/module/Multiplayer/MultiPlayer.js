@@ -60,6 +60,11 @@ export default class MultiPlayer {
       this.ready();
     }, 3000);
   }
+  /**
+   * Найти победные карты
+   * @param {Array} hands
+   * @return {Array}
+   */
   getWinnersCardsId(hands) {
     let cards = [];
     hands.forEach((hand) =>{

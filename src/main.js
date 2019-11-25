@@ -10,7 +10,7 @@ import runtime from 'serviceworker-webpack-plugin/lib/runtime.js';
 import UserContainer from './module/User/UserContainer';
 import MultiPlayerView from './viewes/MultiplayerView/MultiPlayerView';
 import SupportView from './viewes/SupportView/SupportView';
-import TableView from './viewes/Table/Table';
+import TableView from './viewes/TableView/TableView';
 // window.screen.orientation.lock('landscape-primary')
 //     .catch((smt)=>{
 //       console.log(smt);
