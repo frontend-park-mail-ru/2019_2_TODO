@@ -33,11 +33,11 @@ export default class ChangeProfileView extends BaseView {
         const pass = document.getElementById('pass').value;
         const passRepeat = document.getElementById('passr').value;
         if (pass !== passRepeat) {
-          InputError.e('PASSWORDS_MATCH', this.el.lastChild);
+          InputError.e('PASSWORDS_MATCH', this.el);
           return;
         }
         if ((pass.length < 5) && (pass.length > 0)) {
-          InputError.e('PASSWORD_LENGTH', this.el.lastChild);
+          InputError.e('PASSWORD_LENGTH', this.el);
           return;
         }
         user.changeData(nick, pass);
