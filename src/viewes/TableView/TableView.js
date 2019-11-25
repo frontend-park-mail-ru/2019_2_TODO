@@ -48,8 +48,8 @@ export default class TableView extends BaseView {
     smt.innerHTML = table.render();
     tables.appendChild(smt);
     smt.addEventListener('click', (event)=>{
-      router.register(`/${id}`, MultiPlayerView);
-      router.open(`/${id}`, id);
+      router.register(`/tables/${id}`, MultiPlayerView);
+      router.open(`/tables/${id}`, id);
     });
   }
 }
