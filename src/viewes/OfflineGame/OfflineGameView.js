@@ -1,27 +1,33 @@
 import PokerUserPanel from '../../components/PokerUserPanel/PokerUserPanel.js';
-import {game} from '../../module/GamePlay/PokerGamePlay.js';
+import {Game} from '../../module/GamePlay/PokerGamePlay.js';
 import {ButtonComponent} from '../../components/Button/Button.js';
 import {BankPanel} from '../../components/BankPanel/BankPanel.js';
 import BaseView from '../BaseView/BaseView.js';
-import {PlayerInfo} from "../../components/PlayerInfo/PlayerInfo.js";
-import {BankersCard} from "../../components/BancersCard/BancersCard";
-import {TextComponent} from "../../components/TextComponent/Text";
-import {InputComponent} from "../../components/Input/Input";
+import {PlayerInfo} from '../../components/PlayerInfo/PlayerInfo.js';
+import {BankersCard} from '../../components/BancersCard/BancersCard';
+import {TextComponent} from '../../components/TextComponent/Text';
+import {InputComponent} from '../../components/Input/Input';
 
+/** Игра оффлайн*/
 export default class OfflineGameView extends BaseView {
+  /**
+   * Создать
+   * @param {HTMLElement} element
+   */
   constructor(element) {
     super(element);
     this.el.id = 'singleplayer';
     this.card = null;
     this.game = null;
   }
-
+  /** Отрисовать*/
   render() {
     this.el.innerHTML = '';
     const backButton = new TextComponent({
       tag: 'a',
       text: 'back',
       class: 'back',
+      id: 'gameOut',
       href: '/',
     });
     this.el.innerHTML += backButton.render();
@@ -56,6 +62,7 @@ export default class OfflineGameView extends BaseView {
     this.el.innerHTML += playerButton.render();
     this.addHandlers();
   }
+  /** Добавить обработчики*/
   addHandlers() {
     document.getElementById('firstButton').addEventListener('click', (evt) => {
       OfflineGameView.disableButtonPanel('playerPanel');
@@ -72,19 +79,22 @@ export default class OfflineGameView extends BaseView {
       this.game.raise(evt, document.getElementById('raiseSlider').value);
     });
     document.getElementById('startGame').addEventListener('click', (evt)=>{
-      OfflineGameView.addPlayer('user', 'singleplayer__players');
-      OfflineGameView.addPlayer('bot', 'singleplayer__players');
-      this.game = new game();
-      this.game.startRound();
+      OfflineGameView.addPlayer('user', user.username, '1000', 'singleplayer__players');
+      OfflineGameView.addPlayer('bot', 'bot', '1000', 'singleplayer__players');
+      this.game = new Game();
+      setTimeout(()=>{
+        this.game.startRound();
+      }, 1000);
       document.getElementById('startGame').hidden = true;
     }, {once: true});
   }
 
-  static addPlayer(playerId, containerId) {
+  static addPlayer(playerId, username, score, containerId) {
     const playerInfo = new PlayerInfo({
-      username: 'user',
-      score: '1000',
+      username: username,
+      score: score+'/0',
       id: playerId,
+      containerId: playerId+'container',
       playerScoreId: playerId+'Score',
     });
     document.getElementById(containerId).innerHTML += playerInfo.render();

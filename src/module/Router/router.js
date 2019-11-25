@@ -1,36 +1,39 @@
 import AjaxModule from '../AjaxModule/ajax';
 
+/** Роутер*/
 export default class Router {
+  /**
+   * Создать роутер
+   * @param {HTMLElement} root
+   */
   constructor(root) {
     this.routes = {};
     this.root = root;
   }
-
   /**
-     * @param {string} path
-     * @param {BaseView} View
-     */
+   * Зарегестривать путь
+   * @param {string} path
+   * @param {BaseView} View
+   * @return {Router}
+   */
   register(path, View) {
     this.routes[path] = {
       View: View,
       view: null,
       el: null,
     };
-
     return this;
   }
-
   /**
-     * @param {string} path
-     */
+   * Открыт путь
+   * @param {string} path
+   */
   open(path) {
     const route = this.routes[path];
-
     if (!route) {
       this.open('/notFound');
       return;
     }
-
     if (window.location.pathname !== path) {
       window.history.pushState(
           null,
@@ -38,34 +41,31 @@ export default class Router {
           path
       );
     }
-
     let {View, view, el} = route;
-
     if (!el) {
       el = document.createElement('section');
       this.root.appendChild(el);
     }
-
     if (!view) {
       view = new View(el);
     }
-
     if (!view.active) {
       Object.values(this.routes).forEach(({view}) => {
         if (view && view.active) {
           view.hide();
         }
       });
-
       view.show();
     }
-
     this.routes[path] = {View, view, el};
   }
-
+  /**
+   * Переотресовать view
+   * @param {string} path
+   */
   reRender(path) {
     const route = this.routes[path];
-    const {View, view, el} = route;
+    const {el} = route;
     if (!el) {
       this.open(path);
     }
@@ -75,12 +75,14 @@ export default class Router {
     this.open(path);
   }
 
+  /**
+   * Начать роутинг
+   */
   start() {
     this.root.addEventListener('click', (event) => {
       if (!(event.target instanceof HTMLAnchorElement)) {
         const {target} = event;
         if (target.id === 'logout') {
-
           AjaxModule.logOut(document.getElementById('application'));
         }
         return;
@@ -88,19 +90,13 @@ export default class Router {
       event.preventDefault();
       // event.stopImmediatePropagation();
       const link = event.target;
-
-
       this.open(link.pathname);
     });
-
     window.addEventListener('popstate', () => {
       const currentPath = window.location.pathname;
-
       this.open(currentPath);
     });
-
     const currentPath = window.location.pathname;
-
     this.open(currentPath);
   }
 }

@@ -49,10 +49,10 @@
 
 .player-info:nth-child(2){
   bottom: 25vh;
-  right: 18vw;
+  left: 18vw;
 }
 .player-info:nth-child(3){
-  bottom: 25vh;
+  top: 25vh;
   left: 18vw;
 }
 .player-info:nth-child(4){
@@ -60,6 +60,6 @@
   right: 18vw;
 }
 .player-info:nth-child(5){
-  top: 25vh;
-  left: 18vw;
+  bottom: 18vh;
+  right: 18vw;
 }

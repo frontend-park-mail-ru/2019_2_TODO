@@ -2,9 +2,10 @@ import {Card} from '../../components/Card/Card';
 
 export class PokerCSSAnimation {
   constructor(players) {
+    this.shining = undefined;
     this.players = players;
     let i = 0;
-    this.players.forEach(id => {
+    this.players.forEach((id) => {
       this[id] = [];
       this[id].push('c' + i);
       i++;
@@ -40,13 +41,13 @@ export class PokerCSSAnimation {
   }
 
   startRoundAnimation() {
-    this.players.forEach(id => {
-      this[id].forEach(cardId => {
+    this.players.forEach((id) => {
+      this[id].forEach((cardId) => {
         document.getElementById(cardId).dataset['nominal'] = '';
         document.getElementById(cardId).hidden = false;
-      })
+      });
     });
-    this.bankerCards.forEach(card => {
+    this.bankerCards.forEach((card) => {
       document.getElementById(card).dataset['nominal'] = '';
     });
   }
@@ -64,47 +65,60 @@ export class PokerCSSAnimation {
         document.getElementById(this.bankerCards[index]).hidden = false;
       }, delay);
       return delay + 400;
-    }, 400);
+    }, 0);
   }
-
+  removePlayerCards(id) {
+    this[id].forEach((cardId) => {
+      document.getElementById(cardId).hidden = true;
+    });
+  }
   removeAllCards() {
-    this.players.forEach(id => {
-      this[id].forEach(cardId => {
+    this.players.forEach((id) => {
+      this[id].forEach((cardId) => {
         document.getElementById(cardId).hidden = true;
       });
     });
-    this.bankerCards.forEach(card => {
+    this.bankerCards.forEach((card) => {
       document.getElementById(card).hidden = true;
     });
   }
   showWinnerCards(cards) {
-    document.getElementById('user').parentElement.style.border = 'none';
-    document.getElementById('bot').parentElement.style.border = 'none';
-    let cardsIds = [];
+    // document.getElementById('user').parentElement.style.border = 'none';
+    // document.getElementById('bot').parentElement.style.border = 'none';
+    const cardsIds = [];
     console.log(this.bankerCards);
-    this.bankerCards.forEach(id=>{
+    this.bankerCards.forEach((id)=>{
       const card = document.getElementById(id);
       console.log(card.dataset['nominal']);
-      if (cards.includes(card.dataset['nominal']) ){
+      if (cards.includes(card.dataset['nominal']) ) {
         cardsIds.push(id);
       }
     });
-    this.players.forEach(id=>{
-      this[id].forEach(cardId=>{
+    this.players.forEach((id)=>{
+      this[id].forEach((cardId)=>{
         const card = document.getElementById(cardId);
         console.log(card.dataset['nominal']);
-        if (cards.includes(card.dataset['nominal']) ){
+        if (cards.includes(card.dataset['nominal']) ) {
           cardsIds.push(cardId);
         }
-      })
+      });
     });
-    cardsIds.forEach(id=>{
-      const  c = document.getElementById(id);
+    cardsIds.forEach((id)=>{
+      const c = document.getElementById(id);
       c.style.animation = 'winCard 3s';
       setTimeout(()=>{
         c.style.animation = '';
       }, 3000);
     });
-
+  }
+  shinePlayer(id) {
+    this.removeShine(this.shining);
+    document.getElementById(id).parentElement.style.border = '2px solid gold';
+    this.shining = id;
+  }
+  removeShine(id) {
+    if (id !== undefined) {
+      document.getElementById(id).parentElement.style.border = 'none';
+    }
   }
 }

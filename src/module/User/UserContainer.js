@@ -15,12 +15,12 @@ export default class User {
           return res.text();
         })
         .then((resText) => {
-            if (resText){
-                this.username = JSON.parse(resText).username;
-                this.avatar = JSON.parse(resText).image;
-                this.isAuth = true;
-            }
-        })
+          if (resText) {
+            this.username = JSON.parse(resText).username;
+            this.avatar = JSON.parse(resText).image;
+            this.isAuth = true;
+          }
+        });
   }
 
   auth(username, password) {
@@ -36,10 +36,10 @@ export default class User {
       this.username = username;
     }
   }
-  changeAvatar(data){
+  changeAvatar(data) {
     AjaxModule.postAvatar(data);
   }
-  changeData(username, password){
+  changeData(username, password) {
     AjaxModule.fetchPost(
         'http://93.171.139.196:780/signin/profile/',
         JSON.stringify({
@@ -49,14 +49,14 @@ export default class User {
     )
         .then((res) => {
           if (res.status === 200) {
-            if (username !== ''){
+            if (username !== '') {
               this.username = username;
             }
             window.router.open('/');
           }
         });
   }
-  logOut(){
-      AjaxModule.logOut()
+  logOut() {
+    AjaxModule.logOut();
   }
 }
