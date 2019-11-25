@@ -44,6 +44,7 @@ export default class TableView extends BaseView {
       id: id,
     });
     const smt = document.createElement('div');
+
     smt.innerHTML = table.render();
     tables.appendChild(smt);
     smt.addEventListener('click', (event)=>{
