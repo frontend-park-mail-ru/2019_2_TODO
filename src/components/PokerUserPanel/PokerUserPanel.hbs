@@ -1,5 +1,8 @@
-<div class="poker-user-panel" id="playerPanel">
-    <button id="secondButton" class="poker-user-panel__button" disabled>fold</button>
-    <button id="firstButton" class="poker-user-panel__button" disabled>check</button>
-    <button type="button" id="thirdButton" class="poker-user-panel__button" disabled>raise: 20</button>
+<div class="poker-user-panel">
+    <input type="range" id="raiseSlider" class="raise-slider" min="20" max="1000">
+    <div class="poker-user-panel__container" id="playerPanel">
+        <button id="secondButton" class="poker-user-panel__container__button" disabled>fold</button>
+        <button id="firstButton" class="poker-user-panel__container__button" disabled>check</button>
+        <button type="button" id="thirdButton" class="poker-user-panel__container__button" disabled>raise: 20</button>
+    </div>
 </div>

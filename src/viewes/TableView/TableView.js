@@ -30,7 +30,7 @@ export default class TableView extends BaseView {
         })
         .then((resText)=>{
           const rooms = JSON.parse(resText).rooms;
-          console.log(rooms);
+          //console.log(rooms);
           Object.keys(rooms).forEach((key)=>{
             TableView.addTable(key, rooms[key], '2');
           });
@@ -45,7 +45,7 @@ export default class TableView extends BaseView {
     });
     const smt = document.createElement('div');
 
-    smt.innerHTML = table.render();
+    smt.appendChild(table.render());
     tables.appendChild(smt);
     smt.addEventListener('click', (event)=>{
       router.register(`/tables/${id}`, MultiPlayerView);

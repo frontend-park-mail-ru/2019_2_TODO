@@ -35,7 +35,7 @@ class AjaxModule {
         }))
         .then((rez) => {
           if (rez.status === 200) {
-            window.location.pathname = '/';
+            router.open('/');
           }
         });
   }
@@ -54,7 +54,7 @@ class AjaxModule {
         })
     ).then((res) => {
       if (res.status === 200) {
-        window.location.pathname = '/';
+        router.open('/');
       }
     });
   }
@@ -66,8 +66,7 @@ class AjaxModule {
     this.fetchGet('http://93.171.139.196:780/logout/')
         .then((res) => {
           if (res.status === 200) {
-            console.log('sdvs');
-            window.location.pathname = '/';
+            router.open('/');
           }
         });
   }

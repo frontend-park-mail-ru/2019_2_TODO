@@ -98,7 +98,7 @@ export class Game {
 
   endRound() {
     const winners = PokerWinners([this.playerHand, this.botHand]);
-    console.log(winners);
+    //console.log(winners);
     this.animation.showWinnerCards(this.getWinnersCardsId(winners));
     if (winners.length === 2) {
       sessionStorage.playerScore = +sessionStorage.playerScore + sessionStorage.bank / 2;
@@ -138,15 +138,21 @@ export class Game {
     const func = (evt, value) => {
       let intValue = parseInt(value);
       if (evt.target.parentElement.id === 'playerPanel') {
-        intValue += parseInt(sessionStorage.botBet);
+        intValue += parseInt(sessionStorage.botBet) -
+            parseInt(sessionStorage.playerBet);
         if (sessionStorage.playerScore > intValue) {
           sessionStorage.playerScore -= intValue;
           sessionStorage.playerBet -= -intValue;
         } else {
           sessionStorage.playerBet = parseInt(sessionStorage.playerBet) +
               Math.min(parseInt(sessionStorage.playerScore),
-                  parseInt(sessionStorage.botScore) + parseInt(sessionStorage.botBet) - parseInt(sessionStorage.playerBet));
-          sessionStorage.playerScore = Math.max(parseInt(sessionStorage.playerScore) - parseInt(sessionStorage.playerBet), 0);
+                  parseInt(sessionStorage.botScore) +
+                  parseInt(sessionStorage.botBet) -
+                  parseInt(sessionStorage.playerBet));
+          sessionStorage.playerScore = Math.max(
+              parseInt(sessionStorage.playerScore) -
+              parseInt(sessionStorage.playerBet),
+              0);
           this._allIn = true;
         }
         dispatchEvent(new Event('raise'));
@@ -159,9 +165,14 @@ export class Game {
           // sessionStorage.botBet -= -sessionStorage.botScore;
           // sessionStorage.botScore = 0;
           sessionStorage.botBet = parseInt(sessionStorage.botBet) +
-              Math.min(parseInt(sessionStorage.botScore),
-                  parseInt(sessionStorage.playerScore) + parseInt(sessionStorage.playerBet) - parseInt(sessionStorage.botBet));
-          sessionStorage.botScore = parseInt(sessionStorage.botScore) - sessionStorage.botBet;
+              Math.min(
+                  parseInt(sessionStorage.botScore),
+                  parseInt(sessionStorage.playerScore) +
+                  parseInt(sessionStorage.playerBet) -
+                  parseInt(sessionStorage.botBet)
+              );
+          sessionStorage.botScore = parseInt(sessionStorage.botScore) -
+              sessionStorage.botBet;
           this._allIn = true;
         }
         OfflineGameView.enableButtonPanel('call');
@@ -174,13 +185,20 @@ export class Game {
 
   fold(evt) {
     const func = (evt) => {
-      sessionStorage.bank = parseInt(sessionStorage.bank) + parseInt(sessionStorage.botBet) + parseInt(sessionStorage.playerBet);
+      sessionStorage.bank =
+          parseInt(sessionStorage.bank) +
+          parseInt(sessionStorage.botBet) +
+          parseInt(sessionStorage.playerBet);
       if (evt.target.parentElement.id === 'playerPanel') {
-        sessionStorage.botScore = parseInt(sessionStorage.bank) + parseInt(sessionStorage.botScore);
+        sessionStorage.botScore =
+            parseInt(sessionStorage.bank) +
+            parseInt(sessionStorage.botScore);
         sessionStorage.playerBet = 0;
         sessionStorage.botBet = 0;
       } else {
-        sessionStorage.playerScore = parseInt(sessionStorage.bank) + parseInt(sessionStorage.playerScore);
+        sessionStorage.playerScore =
+            parseInt(sessionStorage.bank) +
+            parseInt(sessionStorage.playerScore);
         sessionStorage.botBet = 0;
         sessionStorage.playerBet = 0;
       }

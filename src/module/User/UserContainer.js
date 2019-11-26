@@ -16,7 +16,6 @@ export default class User {
         })
         .then((resText) => {
           if (resText) {
-            console.log(resText);
             this.username = JSON.parse(resText).username;
             this.avatar = JSON.parse(resText).image;
             this.isAuth = true;

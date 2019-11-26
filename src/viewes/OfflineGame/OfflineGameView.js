@@ -30,36 +30,26 @@ export default class OfflineGameView extends BaseView {
       id: 'gameOut',
       href: '/',
     });
-    this.el.innerHTML += backButton.render();
+    this.el.appendChild(backButton.render());
     const startButton = new ButtonComponent({
       text: 'start',
       class: 'button startGameButton',
       id: 'startGame',
     });
-    this.el.innerHTML += startButton.render();
+    this.el.appendChild(startButton.render());
     this.el.className = 'sect';
     const table = document.createElement('div');
     table.className = 'table';
     const bankerCard = new BankersCard();
     const bankSpan = new BankPanel({bank: '1000'});
-    table.innerHTML += bankSpan.render();
-    table.innerHTML += bankerCard.render();
+    table.appendChild(bankSpan.render());
+    table.appendChild(bankerCard.render());
     this.el.appendChild(table);
     const playersContainer = document.createElement('div');
     playersContainer.id = this.el.id + '__players';
     this.el.appendChild(playersContainer);
-
-    const raiseSlider = new InputComponent({
-      type: 'range',
-      id: 'raiseSlider',
-      class: 'raise-slider',
-      min: '20',
-      max: '1000',
-      text: '20',
-    });
-    this.el.innerHTML += raiseSlider.render();
     const playerButton = new PokerUserPanel();
-    this.el.innerHTML += playerButton.render();
+    this.el.appendChild(playerButton.render());
     this.addHandlers();
   }
   /** Добавить обработчики*/
@@ -73,6 +63,9 @@ export default class OfflineGameView extends BaseView {
       this.game.fold(evt);
     });
     document.getElementById('raiseSlider').addEventListener('mousemove', (evt)=>{
+      document.getElementById('thirdButton').textContent = `raise: ${evt.target.value}`;
+    });
+    document.getElementById('raiseSlider').addEventListener('change', (evt)=>{
       document.getElementById('thirdButton').textContent = `raise: ${evt.target.value}`;
     });
     document.getElementById('thirdButton').addEventListener('click', (evt)=>{
@@ -92,12 +85,12 @@ export default class OfflineGameView extends BaseView {
   static addPlayer(playerId, username, score, containerId) {
     const playerInfo = new PlayerInfo({
       username: username,
-      score: score+'/0',
+      score: `${score}/0`,
       id: playerId,
-      containerId: playerId+'container',
-      playerScoreId: playerId+'Score',
+      containerId: `${playerId}container`,
+      playerScoreId: `${playerId}Score`,
     });
-    document.getElementById(containerId).innerHTML += playerInfo.render();
+    document.getElementById(containerId).appendChild(playerInfo.render());
   }
   static disableButtonPanel() {
     document.getElementById('user').parentElement.style.border = 'none';

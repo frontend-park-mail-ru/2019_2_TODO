@@ -1,4 +1,3 @@
-
 /**
  * @class BaseView
  * @module BaseView
@@ -8,22 +7,19 @@ export default class BaseView {
     this.el = element;
 
     this.el.dataset.view = this.constructor.name;
-    // this.el.hidden = false;
-    this.isActive = false;
+    this.el.hidden = true;
   }
 
   get active() {
-    return this.isActive;
+    return !this.el.hidden;
   }
 
   hide() {
-    this.isActive = false;
-    this.el.remove();
-    this.el = null;
+    this.el.hidden = true;
   }
 
   show() {
-    this.isActive = true;
+    this.el.hidden = false;
     this.render();
   }
 

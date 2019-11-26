@@ -26,7 +26,7 @@ export default class SignUpScreen extends BaseView {
       tag: 'h3',
       text: 'Registration!',
     });
-    form.innerHTML += Text.render();
+    form.appendChild(Text.render());
     const EmailInput = new InputComponent({
       type: 'email',
       id: 'emailR',
@@ -34,7 +34,7 @@ export default class SignUpScreen extends BaseView {
       placeholder: 'Email',
       class: 'input',
     });
-    form.innerHTML += EmailInput.render();
+    form.appendChild(EmailInput.render());
     const PassInput = new InputComponent({
       type: 'password',
       id: 'passwordR',
@@ -42,7 +42,7 @@ export default class SignUpScreen extends BaseView {
       placeholder: 'Password',
       class: 'input',
     });
-    form.innerHTML += PassInput.render();
+    form.appendChild(PassInput.render());
     const PassRepeat = new InputComponent({
       type: 'password',
       id: 'passwordRepeat',
@@ -50,13 +50,14 @@ export default class SignUpScreen extends BaseView {
       placeholder: 'Repeat your password',
       class: 'input',
     });
-    form.innerHTML += PassRepeat.render();
+    form.appendChild(PassRepeat.render());
     const SubmitButton = new ButtonComponent({
       type: 'submit',
       text: 'Sign up!',
       class: 'button-small',
+      id: 'upBut',
     });
-    form.innerHTML += SubmitButton.render();
+    form.appendChild(SubmitButton.render());
     form.addEventListener('submit', (evt) => {
       evt.preventDefault();
       const email = form.elements.emailR;

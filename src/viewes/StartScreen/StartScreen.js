@@ -22,10 +22,7 @@ export default class StartScreen extends BaseView {
         user.username,
     );
     header.render();
-    const menuBar = new MenuBar(application);
-    menuBar.render();
-    if (user.isAuth) {
-      header.addListener('logout');
-    }
+    const menuBar = new MenuBar({});
+    application.appendChild(menuBar.render());
   }
 }

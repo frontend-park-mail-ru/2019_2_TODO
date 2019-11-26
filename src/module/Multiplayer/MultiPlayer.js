@@ -9,19 +9,17 @@ export default class MultiPlayer {
     this.viewId = viewId;
     this.socket = new WebSocket(`ws://93.171.139.196:780/multiplayer/?name=${user.username}&roomName=${addr}` );
     this.socket.onopen = ()=>{
-      console.log('opened');
     };
     this.socket.onmessage = (msg)=>{
-      console.log(JSON.parse(msg.data));
       const {Command} = JSON.parse(msg.data);
       Object.keys(Command).forEach((key)=>{
-        console.log(key);
+        //console.log(key);
 
         this[key](Command[key]);
       });
     };
     this.socket.onerror = (err)=> {
-      console.log(err);
+      //console.log(err);
     };
   }
 
@@ -54,7 +52,6 @@ export default class MultiPlayer {
       this.animation.removeShine(id);
     });
     const hand = HandSolve(info.hand);
-    console.log(hand);
     this.animation.showWinnerCards(this.getWinnersCardsId([hand]));
     setTimeout(()=>{
       this.animation.removeAllCards();
@@ -88,7 +85,7 @@ export default class MultiPlayer {
    * @param {Object} playerInfo
    */
   startGame(playerInfo) {
-    console.log('Animation');
+    //console.log('Animation');
     this.animation = new PokerCSSAnimation(this.players);
     this.animation.startRoundAnimation();
     this.showPlayerCards(playerInfo);
@@ -99,7 +96,7 @@ export default class MultiPlayer {
    * @param {Object} playerInfo
    */
   showPlayerCards(playerInfo) {
-    console.log(playerInfo.hand);
+    //console.log(playerInfo.hand);
     this.animation.showPlayerCards(playerInfo.id, playerInfo.hand);
   }
   /**

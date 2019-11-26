@@ -12,7 +12,7 @@
   background-repeat: no-repeat;
   //background-position: 100% 100%;
   //background-position: calc(11 * 100% / 12) calc(2 * 100% / 3);
-  z-index: 3;
+  z-index: 5;
   animation: moveCard linear 1000ms;
   @keyframes winCard {
     15% {
@@ -297,7 +297,7 @@
   //transition-duration: 1000ms;
 }
 .card:nth-child(2){
-  z-index: 4;
+  z-index: 6;
 }
 
 .card-second{

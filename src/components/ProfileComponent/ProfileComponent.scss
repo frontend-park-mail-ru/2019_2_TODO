@@ -6,7 +6,7 @@
     text-align: center;
     padding: 10px;
     border-radius: 10px;
-    z-index: 50;
+    z-index: 70;
     background: #34495e;
     border: 1px solid #2b3c4e;
     box-shadow: 0 0 90px black;
@@ -88,6 +88,7 @@
     &__file-input{
         align-self: center;
         max-width: 177px;
+        height: 100%;
         margin: 3px;
     }
 

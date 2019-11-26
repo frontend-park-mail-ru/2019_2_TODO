@@ -13,10 +13,8 @@ import SupportView from './viewes/SupportView/SupportView';
 import TableView from './viewes/TableView/TableView';
 // window.screen.orientation.lock('landscape-primary')
 //     .catch((smt)=>{
-//       console.log(smt);
 //     })
 //     .then((smt)=>{
-//       console.log(smt, 'locked');
 //     });
 
 if ('serviceWorker' in navigator) {

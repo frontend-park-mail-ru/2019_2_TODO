@@ -10,8 +10,7 @@ export class InputComponent extends BaseComponent {
    * @param {string} context - контекст для Input
    */
   constructor(context) {
-    super();
-    this.context = context;
+    super(context);
     this.template = template;
   }
 }
@@ -31,7 +30,7 @@ class InputError {
    */
   e(err, parent) {
     if (this._errText) {
-      parent.removeChild(document.getElementById('Err'));
+      this._errText.remove();
     }
     switch (err) {
       case 'NO_USERNAME': {
@@ -41,7 +40,7 @@ class InputError {
           text: 'No username',
           id: 'Err',
         });
-        parent.innerHTML += this._errText.render();
+        parent.appendChild(this._errText.render());
         break;
       }
       case 'PASSWORD_LENGTH': {
@@ -51,7 +50,7 @@ class InputError {
           text: 'Password too short',
           id: 'Err',
         });
-        parent.innerHTML += this._errText.render();
+        parent.appendChild(this._errText.render());
         break;
       }
       case 'PASSWORDS_MATCH': {

@@ -22,6 +22,6 @@ export default class ProfileView extends BaseView {
       nickname: user.username,
       score: 1000,
     });
-    application.innerHTML = prof.render();
+    application.appendChild(prof.render());
   }
 }

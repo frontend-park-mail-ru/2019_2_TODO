@@ -1,17 +1,13 @@
-// import {ButtonComponent} from '../Button/Button.js';
-// import {TextComponent} from '../TextComponent/Text.js';
-// import {ImageComponent} from '../Image/Image.js';
-// import {StartScreen} from '../viewes/StartScreen/StartScreen.js';
-// import {signUpScreen} from '../viewes/SignUpScreen/SignUpScreen.js';
-// import {signInScreen} from '../viewes/SignInScreen/SignInScreen.js';
 import {InfoBar} from '../InfoBar/InfoBar.js';
 import BaseComponent from '../BaseComponent/BaseComponent';
 import template from './Header.hbs';
 
-// import {InputComponent} from '../Input/Input.js';
-
-
+/** Хедер*/
 class Header extends BaseComponent {
+  /**
+   * Создать
+   * @param {Object} context
+   */
   constructor(context) {
     super(context);
     this.template = template;
@@ -20,6 +16,13 @@ class Header extends BaseComponent {
 
 /** Класс заголовка */
 export class HeaderComponent {
+  /**
+   * Создать
+   * @param {HTMLElement} parent
+   * @param {boolean} authorized
+   * @param {string} avatar
+   * @param {string} username
+   */
   constructor(
       parent = document.body,
       authorized = false,
@@ -41,7 +44,10 @@ export class HeaderComponent {
       const head = new Header({
         hiddenSign: '',
       });
-      this._parent.innerHTML += head.render();
+      this._parent.appendChild(head.render());
+      document.getElementById('pokerDom').addEventListener('click', ()=>{
+        router.open('/');
+      });
     } else {
       const infoBar = new InfoBar({
         avatar: this._avatar,
@@ -50,15 +56,8 @@ export class HeaderComponent {
       const head = new Header({
         hiddenSign: 'hidden',
       });
-      this._parent.innerHTML += head.render() + infoBar.render();
+      this._parent.appendChild(head.render());
+      this._parent.appendChild(infoBar.render());
     }
-  }
-  addListener() {
-    document.getElementById('infoAvatar').addEventListener('click', (event) => {
-      window.router.open('/profile');
-    });
-    document.getElementById('logout').addEventListener('click', (event)=>{
-      user.logOut();
-    });
   }
 }

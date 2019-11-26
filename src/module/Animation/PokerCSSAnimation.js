@@ -28,7 +28,7 @@ export class PokerCSSAnimation {
           };
         }
         const card = new Card(ctx);
-        container.innerHTML += card.render();
+        container.appendChild(card.render());
       }, 0);
     });
     const bankContainer = document.getElementById('bankerCardId');
@@ -36,7 +36,7 @@ export class PokerCSSAnimation {
       const card = new Card({
         cardId: id,
       });
-      bankContainer.innerHTML += card.render();
+      bankContainer.appendChild(card.render());
     });
   }
 
@@ -86,10 +86,8 @@ export class PokerCSSAnimation {
     // document.getElementById('user').parentElement.style.border = 'none';
     // document.getElementById('bot').parentElement.style.border = 'none';
     const cardsIds = [];
-    console.log(this.bankerCards);
     this.bankerCards.forEach((id)=>{
       const card = document.getElementById(id);
-      console.log(card.dataset['nominal']);
       if (cards.includes(card.dataset['nominal']) ) {
         cardsIds.push(id);
       }
@@ -97,7 +95,6 @@ export class PokerCSSAnimation {
     this.players.forEach((id)=>{
       this[id].forEach((cardId)=>{
         const card = document.getElementById(cardId);
-        console.log(card.dataset['nominal']);
         if (cards.includes(card.dataset['nominal']) ) {
           cardsIds.push(cardId);
         }
