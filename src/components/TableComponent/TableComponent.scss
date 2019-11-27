@@ -1,12 +1,25 @@
 .gaming-tables {
   background-image: url("/assets/table_new.png");
-  width: 180px;
-  height: 100px;
+  width: 270px;
+  height: 150px;
   display: flex;
   color: white;
   text-align: center;
   align-items: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  border-radius: 100px;
   margin: auto;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: Roboto;
+}
+
+.gaming-tables:hover {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.98),
+  0 0 30px rgba(0, 0, 0, 0.42),
+  0 0 12px rgba(46, 204, 113, 0.58),
+  0 0 22px rgba(46, 204, 113, 0.84),
+  0 0 38px rgba(46, 204, 113, 0.88),
+  0 0 60px rgba(46, 204, 113, 1);
 }

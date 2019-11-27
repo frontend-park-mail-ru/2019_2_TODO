@@ -31,7 +31,7 @@ export default class SignUpScreen extends BaseView {
       type: 'email',
       id: 'emailR',
       error: 'NO_USERNAME',
-      placeholder: 'Email',
+      placeholder: 'Username',
       class: 'input',
     });
     form.innerHTML += EmailInput.render();

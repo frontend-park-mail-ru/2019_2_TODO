@@ -30,7 +30,7 @@ export default class SignInScreen extends BaseView {
     const EmailInput = new InputComponent({
       id: 'email',
       type: 'email',
-      placeholder: 'Email',
+      placeholder: 'Username',
       class: 'input',
     });
     form.innerHTML += EmailInput.render();

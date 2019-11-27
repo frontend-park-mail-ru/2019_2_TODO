@@ -10,6 +10,7 @@
     background: #34495e;
     border: 1px solid #2b3c4e;
     box-shadow: 0 0 90px black;
+    //height: 60vh;
     text-align: center;
     &__c{
         height: 30px;
@@ -76,6 +77,8 @@
         align-self: flex-end;
         //background: gold;
         //color: black;
+        min-height: 2.5vh;
+        padding: 5px;
         margin-bottom: 3px;
         margin-right: 0;
     }
@@ -87,17 +90,20 @@
 
     &__file-input{
         align-self: center;
-        max-width: 177px;
+        width: 65%px;
+        height: 2vh;
         margin: 3px;
     }
 
     &__container{
         align-self: center;
+        width: 65%;
         margin: 10px;
     }
 
     &__input{
         margin-left: 0;
         margin-right: 0;
+        height: 3vh;
     }
 }
