@@ -72,14 +72,22 @@ export default class OfflineGameView extends BaseView {
       OfflineGameView.disableButtonPanel('playerPanel');
       this.game.fold(evt);
     });
-    document.getElementById('raiseSlider').addEventListener('mousemove', (evt)=>{
-      document.getElementById('thirdButton').textContent = `raise: ${evt.target.value}`;
-    });
+    document.getElementById('raiseSlider').addEventListener(
+        'mousemove',
+        (evt)=>{
+          document.getElementById('thirdButton')
+              .textContent = `raise: ${evt.target.value}`;
+        });
     document.getElementById('thirdButton').addEventListener('click', (evt)=>{
       this.game.raise(evt, document.getElementById('raiseSlider').value);
     });
     document.getElementById('startGame').addEventListener('click', (evt)=>{
-      OfflineGameView.addPlayer('user', user.username, '1000', 'singleplayer__players');
+      OfflineGameView.addPlayer(
+          'user',
+          user.username,
+          '1000',
+          'singleplayer__players',
+      );
       OfflineGameView.addPlayer('bot', 'bot', '1000', 'singleplayer__players');
       this.game = new Game();
       setTimeout(()=>{
@@ -89,6 +97,13 @@ export default class OfflineGameView extends BaseView {
     }, {once: true});
   }
 
+  /**
+   * Добавить игрока
+   * @param {string} playerId
+   * @param {string} username
+   * @param {string} score
+   * @param {string} containerId
+   */
   static addPlayer(playerId, username, score, containerId) {
     const playerInfo = new PlayerInfo({
       username: username,
@@ -99,18 +114,27 @@ export default class OfflineGameView extends BaseView {
     });
     document.getElementById(containerId).innerHTML += playerInfo.render();
   }
+  /** Выключить панель игрока*/
   static disableButtonPanel() {
-    document.getElementById('user').parentElement.style.border = 'none';
-    document.getElementById('bot').parentElement.style.border = '2px solid gold';
+    document.getElementById('user')
+        .parentElement.style.border = 'none';
+    document.getElementById('bot')
+        .parentElement.style.border = '2px solid gold';
     const element = document.getElementById('playerPanel');
     element.childNodes.forEach((child) => {
       child.disabled = true;
     });
   }
 
+  /**
+   * Включить панель игрока
+   * @param {string} text
+   */
   static enableButtonPanel(text = 'check') {
-    document.getElementById('bot').parentElement.style.border = 'none';
-    document.getElementById('user').parentElement.style.border = '2px solid gold';
+    document.getElementById('bot')
+        .parentElement.style.border = 'none';
+    document.getElementById('user')
+        .parentElement.style.border = '2px solid gold';
     const element = document.getElementById('playerPanel');
     element.childNodes.forEach((child) => {
       child.disabled = false;

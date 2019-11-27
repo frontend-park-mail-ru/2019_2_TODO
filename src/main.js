@@ -8,19 +8,12 @@ import ProfileView from './viewes/Profile/Profile.js';
 import OfflineGameView from './viewes/OfflineGame/OfflineGameView.js';
 import runtime from 'serviceworker-webpack-plugin/lib/runtime.js';
 import UserContainer from './module/User/UserContainer';
-import MultiPlayerView from './viewes/MultiplayerView/MultiPlayerView';
 import SupportView from './viewes/SupportView/SupportView';
 import TableView from './viewes/TableView/TableView';
-// window.screen.orientation.lock('landscape-primary')
-//     .catch((smt)=>{
-//       console.log(smt);
-//     })
-//     .then((smt)=>{
-//       console.log(smt, 'locked');
-//     });
 
 if ('serviceWorker' in navigator) {
-  const registration = runtime.register();
+  // const registration =
+  runtime.register();
 }
 window.user = new UserContainer();
 const application = document.getElementById('application');

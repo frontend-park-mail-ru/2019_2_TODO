@@ -1,13 +1,19 @@
 import OfflineGameView from '../OfflineGame/OfflineGameView';
 import MultiPlayer from '../../module/Multiplayer/MultiPlayer';
 
-
+/** Мюльтиплеер*/
 export default class MultiPlayerView extends OfflineGameView {
+  /**
+   * Создать
+   * @param {HTMLElement} element
+   * @param {string} addr
+   */
   constructor(element, addr) {
     super(element);
     this.el.id = 'multiplayer' + addr;
     this.game = new MultiPlayer(addr, this.el.id);
   }
+  /** Добавить обработчики*/
   addHandlers() {
     document.getElementById('gameOut').addEventListener('click', (event)=>{
       this.game.quitGame();
@@ -25,23 +31,30 @@ export default class MultiPlayerView extends OfflineGameView {
       MultiPlayerView.disableButtonPanel('playerPanel');
       this.game.fold();
     });
-    document.getElementById('raiseSlider').addEventListener('mousemove', (evt)=>{
-      document.getElementById('thirdButton').textContent = `raise: ${evt.target.value}`;
-    });
+    document.getElementById('raiseSlider')
+        .addEventListener('mousemove', (evt)=>{
+          document.getElementById('thirdButton')
+              .textContent = `raise: ${evt.target.value}`;
+        });
     document.getElementById('thirdButton').addEventListener('click', (evt)=>{
       evt.preventDefault();
       MultiPlayerView.disableButtonPanel('playerPanel');
       this.game.raise(document.getElementById('raiseSlider').value);
     });
   }
+  /** Выклюxить панель игрока*/
   static disableButtonPanel() {
-    // document.getElementById('user').parentElement.style.border = 'none';
-    // document.getElementById('bot').parentElement.style.border = '2px solid gold';
     const element = document.getElementById('playerPanel');
     element.childNodes.forEach((child) => {
       child.disabled = true;
     });
   }
+
+  /**
+   * Включить панель игрока
+   * @param {string} text
+   * @param {string} score
+   */
   static enableButtonPanel(text = 'check', score = 1000) {
     const element = document.getElementById('playerPanel');
     element.childNodes.forEach((child) => {

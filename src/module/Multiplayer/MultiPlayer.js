@@ -7,7 +7,7 @@ export default class MultiPlayer {
   constructor(addr, viewId) {
     this.players = [];
     this.viewId = viewId;
-    this.socket = new WebSocket(`ws://93.171.139.196:780/multiplayer/?name=${user.username}&roomName=${addr}` );
+    this.socket = new WebSocket(`ws://93.171.139.196:782/multiplayer/?name=${user.username}&roomName=${addr}` );
     this.socket.onopen = ()=>{
       console.log('opened');
     };

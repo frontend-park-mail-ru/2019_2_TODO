@@ -1,12 +1,16 @@
 import BaseView from '../BaseView/BaseView.js';
 import {TextComponent} from '../../components/TextComponent/Text.js';
 
-
+/** View для не найденных страниц*/
 export default class NotFoundView extends BaseView {
+  /**
+     * Создать
+     * @param {Object} element
+     */
   constructor(element) {
     super(element);
   }
-
+  /** Отрисовать*/
   render() {
     this.el.innerHTML = '';
     const application = document.createElement('section');
