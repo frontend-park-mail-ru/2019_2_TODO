@@ -5,11 +5,10 @@
 class AjaxModule {
   /**
    * отправить картинку
-   * @param {HTMLElement} application - элемент для возврата
    * @param {FormData} data - картинка
    */
   postAvatar(data) {
-    this.fetchPost('http://93.171.139.196:780/signin/profileImage/', data, {
+    this.fetchPost('/auth/signin/profileImage/', data, {
       method: 'POST',
       credentials: 'include',
       body: data})
@@ -28,7 +27,7 @@ class AjaxModule {
    * @param {string} password
    */
   signUp(email, password) {
-    this.fetchPost('http://93.171.139.196:780/signup/',
+    this.fetchPost('/auth/signup/',
         JSON.stringify({
           username: email,
           password: password,
@@ -47,7 +46,7 @@ class AjaxModule {
    */
   signIn(email, password) {
     this.fetchPost(
-        'http://93.171.139.196:780/signin/',
+        '/auth/signin/',
         JSON.stringify({
           username: email,
           password: password,
@@ -63,7 +62,7 @@ class AjaxModule {
    * Выход
    */
   logOut() {
-    this.fetchGet('http://93.171.139.196:780/logout/')
+    this.fetchGet('/auth/logout/')
         .then((res) => {
           if (res.status === 200) {
             router.open('/');
@@ -79,7 +78,7 @@ class AjaxModule {
    * @return {Promise<Response>} - промиз для обработки
    */
   fetchPost(
-      url = 'http://93.171.139.196:780/',
+      url = '/auth/',
       body = {},
       params = {
         method: 'POST',
@@ -98,7 +97,7 @@ class AjaxModule {
    * @param {Object} params - параметры запроса
    * @return {Promise<Response>} - промиз для обработки
    */
-  fetchGet(url = 'http://93.171.139.196:780/',
+  fetchGet(url = '/auth/',
       params = {method: 'GET', credentials: 'include'}) {
     return fetch(url, params);
   }
