@@ -19,7 +19,7 @@ module.exports = {
     path: outPath,
     sourceMapFilename: '[file].map',
     filename: 'bundle.js',
-    publicPath: '/bundle.js',
+    publicPath: '/',
   },
 
   target: 'web',
