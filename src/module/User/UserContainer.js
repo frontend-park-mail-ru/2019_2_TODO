@@ -9,7 +9,8 @@ export default class User {
 
   checkAuth() {
     return AjaxModule.fetchGet('/auth/signin/')
-        .catch(() => {
+        .catch((res) => {
+          console.log(res);
         })
         .then((res) => {
           console.log(res);
