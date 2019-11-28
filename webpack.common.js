@@ -18,6 +18,7 @@ module.exports = {
   output: {
     path: outPath,
     filename: 'bundle.js',
+    publicPath: '/',
   },
 
   target: 'web',
