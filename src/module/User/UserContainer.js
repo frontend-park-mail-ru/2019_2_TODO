@@ -12,6 +12,7 @@ export default class User {
         .catch(() => {
         })
         .then((res) => {
+          console.log(res);
           return res.text();
         })
         .then((resText) => {
