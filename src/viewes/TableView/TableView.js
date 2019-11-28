@@ -24,7 +24,7 @@ export default class TableView extends BaseView {
     tables.id = 'tables';
     tables.className = 'tables';
     application.appendChild(tables);
-    AjaxModule.fetchGet('http://93.171.139.196:780/rooms/')
+    AjaxModule.fetchGet('/auth/rooms/')
         .then((res)=>{
           return res.text();
         })

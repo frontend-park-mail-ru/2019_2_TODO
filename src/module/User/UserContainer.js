@@ -8,7 +8,7 @@ export default class User {
   }
 
   checkAuth() {
-    return AjaxModule.fetchGet('http://93.171.139.196:780/signin/')
+    return AjaxModule.fetchGet('/auth/signin/')
         .catch(() => {
         })
         .then((res) => {
@@ -41,7 +41,7 @@ export default class User {
   }
   changeData(username, password) {
     AjaxModule.fetchPost(
-        'http://93.171.139.196:780/signin/profile/',
+        '/auth/signin/profile/',
         JSON.stringify({
           username: username,
           password: password,
