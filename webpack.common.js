@@ -17,6 +17,7 @@ module.exports = {
   },
   output: {
     path: outPath,
+    sourceMapFilename: '[file].map',
     filename: 'bundle.js',
     publicPath: '/',
   },
