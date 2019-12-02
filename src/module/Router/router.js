@@ -73,13 +73,14 @@ export default class Router {
    */
   reRender(path) {
     const route = this.routes[path];
-    const {el, view} = route;
+    const {el} = route;
     if (!el) {
       this.open(path);
-    } else {
-      view.render();
-      this.open(path);
     }
+    this.root.removeChild(el);
+    this.routes[path].el = null;
+    this.routes[path].view = null;
+    this.open(path);
   }
 
   /**

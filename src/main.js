@@ -33,5 +33,5 @@ window.router.register('/', StartScreen)
 window.user.checkAuth().finally(()=>{
   router.start();
 });
-window.roomsController = new RoomController();
+//window.roomsController = new RoomController();
 
