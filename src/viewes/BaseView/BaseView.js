@@ -15,6 +15,7 @@ export default class BaseView {
 
   hide() {
     this.el.hidden = true;
+    this.el.remove();
   }
 
   show() {

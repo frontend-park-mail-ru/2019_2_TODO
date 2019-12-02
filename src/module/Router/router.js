@@ -42,19 +42,17 @@ export default class Router {
       this.open('/notFound');
       return;
     }
-    window.history.pushState(
-        null,
-        '',
-        path
-    );
+    if (window.location.pathname !== path) {
+      window.history.pushState(
+          null,
+          '',
+          path
+      );
+    }
     let {View, view, el} = route;
-    if (!el) {
-      el = document.createElement('section');
-      this.root.appendChild(el);
-    }
-    if (!view) {
-      view = new View(el);
-    }
+    el = document.createElement('section');
+    this.root.appendChild(el);
+    view = new View(el);
     if (!view.active) {
       Object.values(this.routes).forEach(({view, el}) => {
         if (view && view.active) {
