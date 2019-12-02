@@ -42,13 +42,11 @@ export default class Router {
       this.open('/notFound');
       return;
     }
-    if (window.location.pathname !== path) {
-      window.history.pushState(
-          null,
-          '',
-          path
-      );
-    }
+    window.history.pushState(
+        null,
+        '',
+        path
+    );
     let {View, view, el} = route;
     if (!el) {
       el = document.createElement('section');
