@@ -78,6 +78,7 @@ export default class Router {
       this.open(path);
     } else {
       view.render();
+      this.open(path);
     }
   }
 
