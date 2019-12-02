@@ -77,7 +77,7 @@ export default class Router {
     if (!el) {
       this.open(path);
     }
-    this.root.removeChild(el);
+    el.remove();
     this.routes[path].el = null;
     this.routes[path].view = null;
     this.open(path);
