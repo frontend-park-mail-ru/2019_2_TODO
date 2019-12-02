@@ -14,8 +14,9 @@ class AjaxModule {
       body: data})
         .then((res) => {
           if (res.status === 200) {
-            user.checkAuth().then(()=> null);
-            window.router.open('/profile');
+            user.checkAuth().then(()=> {
+              window.router.open('/profile');
+            });
             // window.router.open('/profile');
           }
         });
@@ -54,7 +55,9 @@ class AjaxModule {
         })
     ).then((res) => {
       if (res.status === 200) {
-        return res.text();
+          user.checkAuth().then(()=>{
+            router.open('/');
+          });
       }
     });
   }
