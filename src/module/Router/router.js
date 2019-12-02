@@ -24,6 +24,14 @@ export default class Router {
     };
     return this;
   }
+
+  /**
+   * Удалить путь
+   * @param {string} path
+   */
+  remove(path){
+    this.routes[path] = undefined;
+  }
   /**
    * Открыт путь
    * @param {string} path
@@ -50,7 +58,7 @@ export default class Router {
       view = new View(el);
     }
     if (!view.active) {
-      Object.values(this.routes).forEach(({view}) => {
+      Object.values(this.routes).forEach(({view, el}) => {
         if (view && view.active) {
           view.hide();
         }

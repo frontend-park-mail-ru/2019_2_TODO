@@ -14,8 +14,8 @@ class AjaxModule {
       body: data})
         .then((res) => {
           if (res.status === 200) {
-            user.checkAuth();
-            window.router.open('/profile');
+            user.checkAuth().then(()=> null);
+            window.router.reRender('/profile');
             // window.router.reRender('/profile');
           }
         });
@@ -34,7 +34,7 @@ class AjaxModule {
         }))
         .then((rez) => {
           if (rez.status === 200) {
-            router.open('/');
+            router.reRender('/');
           }
         });
   }
@@ -53,7 +53,7 @@ class AjaxModule {
         })
     ).then((res) => {
       if (res.status === 200) {
-        router.open('/');
+        router.reRender('/');
       }
     });
   }
@@ -65,7 +65,7 @@ class AjaxModule {
     this.fetchGet('/auth/logout/')
         .then((res) => {
           if (res.status === 200) {
-            router.open('/');
+            router.reRender('/');
           }
         });
   }
