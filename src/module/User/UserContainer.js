@@ -54,7 +54,7 @@ export default class User {
             if (username !== '') {
               this.username = username;
             }
-            window.router.reRender('/');
+            window.router.open('/');
           }
         });
   }
