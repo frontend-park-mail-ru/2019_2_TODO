@@ -26,10 +26,12 @@ export default class User {
   }
 
   auth(username, password) {
-    this.isAuth = AjaxModule.signIn(username, password);
-    if (this.isAuth) {
-      this.username = username;
-    }
+    AjaxModule.signIn(username, password).then((resText) => {
+      this.isAuth = true;
+      this.avatar = JSON.parse(resText).image;
+      this.username = JSON.parse(resText).username;
+      router.open('/');
+    });
   }
 
   signUp(username, password) {

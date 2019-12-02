@@ -43,9 +43,10 @@ class AjaxModule {
    * Авторизация
    * @param {string} email
    * @param {string} password
+   * @return {Promise}
    */
   signIn(email, password) {
-    this.fetchPost(
+    return this.fetchPost(
         '/auth/signin/',
         JSON.stringify({
           username: email,
@@ -53,7 +54,7 @@ class AjaxModule {
         })
     ).then((res) => {
       if (res.status === 200) {
-        router.open('/');
+        return res.text();
       }
     });
   }
@@ -65,6 +66,7 @@ class AjaxModule {
     this.fetchGet('/auth/logout/')
         .then((res) => {
           if (res.status === 200) {
+            user.isAuth = false;
             router.open('/');
           }
         });
