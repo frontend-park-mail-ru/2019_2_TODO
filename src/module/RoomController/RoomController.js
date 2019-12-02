@@ -5,7 +5,10 @@ export default class RoomController {
   /** Создать*/
   constructor() {
     this.rooms = [];
-    this.socket = new Promise((resolve, reject) => {
+    this.socket = null;
+  }
+  startSession() {
+    new Promise((resolve, reject) => {
       const socket = new WebSocket('/rooms_controller');
       socket.onopen = () => {
         resolve(socket);
@@ -19,6 +22,10 @@ export default class RoomController {
       socket.onerror = (err) => {
         reject(err);
       };
+    }).then((socket) => {
+      this.socket = socket;
+    }).catch((err)=>{
+      console.log(err);
     });
   }
 
