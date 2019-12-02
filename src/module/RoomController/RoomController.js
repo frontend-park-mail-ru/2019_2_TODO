@@ -5,19 +5,21 @@ export default class RoomController {
   /** Создать*/
   constructor() {
     this.rooms = [];
-    this.socket = new WebSocket('/rooms_controller');
-    this.socket.onopen = ()=>{
-      console.log('Rooms opened');
-    };
-    this.socket.onmessage = (msg)=>{
-      const {Command} = JSON.parse(msg.data);
-      Object.keys(Command).forEach((key)=>{
-        this[key](Command[key]);
-      });
-    };
-    this.socket.onerror = (err) => {
-      console.log(err);
-    };
+    this.socket = new Promise((resolve, reject) => {
+      const socket = new WebSocket('/rooms_controller');
+      socket.onopen = () => {
+        resolve(socket);
+      };
+      socket.onmessage = (msg) => {
+        const {Command} = JSON.parse(msg.data);
+        Object.keys(Command).forEach((key) => {
+          this[key](Command[key]);
+        });
+      };
+      socket.onerror = (err) => {
+        reject(err);
+      };
+    });
   }
 
   /**
