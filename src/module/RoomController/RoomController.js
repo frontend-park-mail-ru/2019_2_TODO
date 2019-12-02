@@ -15,6 +15,9 @@ export default class RoomController {
         this[key](Command[key]);
       });
     };
+    this.socket.onerror = (err) => {
+      console.log(err);
+    };
   }
 
   /**
