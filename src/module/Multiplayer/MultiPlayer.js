@@ -3,23 +3,24 @@ import MultiPlayerView from '../../viewes/MultiplayerView/MultiPlayerView';
 
 /** Общение по вебсокету с бекэндом*/
 export default class MultiPlayer {
-  /** конструктор*/
-  constructor(addr, viewId) {
+  /**
+   *  конструктор
+   * @param {string} viewId
+   */
+  constructor(viewId) {
     this.players = [];
     this.viewId = viewId;
-    this.socket = new WebSocket(`ws://93.171.139.196:780/multiplayer/?name=${user.username}&roomName=${addr}` );
+    const url = new URL(window.location.href);
+    this.socket = new WebSocket(`wss://93.171.139.195:743/multiplayer/?name=${user.username}&roomName=${url.get('room')}` );
     this.socket.onopen = ()=>{
     };
     this.socket.onmessage = (msg)=>{
       const {Command} = JSON.parse(msg.data);
       Object.keys(Command).forEach((key)=>{
-        //console.log(key);
-
         this[key](Command[key]);
       });
     };
     this.socket.onerror = (err)=> {
-      //console.log(err);
     };
   }
 
@@ -85,7 +86,6 @@ export default class MultiPlayer {
    * @param {Object} playerInfo
    */
   startGame(playerInfo) {
-    //console.log('Animation');
     this.animation = new PokerCSSAnimation(this.players);
     this.animation.startRoundAnimation();
     this.showPlayerCards(playerInfo);
@@ -96,7 +96,6 @@ export default class MultiPlayer {
    * @param {Object} playerInfo
    */
   showPlayerCards(playerInfo) {
-    //console.log(playerInfo.hand);
     this.animation.showPlayerCards(playerInfo.id, playerInfo.hand);
   }
   /**

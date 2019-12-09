@@ -3,10 +3,10 @@ import MultiPlayer from '../../module/Multiplayer/MultiPlayer';
 
 
 export default class MultiPlayerView extends OfflineGameView {
-  constructor(element, addr) {
+  constructor(element) {
     super(element);
-    this.el.id = 'multiplayer' + addr;
-    this.game = new MultiPlayer(addr, this.el.id);
+    this.el.id = 'multiplayer';
+    this.game = new MultiPlayer(this.el.id);
   }
   addHandlers() {
     document.getElementById('gameOut').addEventListener('click', (event)=>{

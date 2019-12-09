@@ -12,9 +12,11 @@ export default class BaseView {
   get active() {
     return !this.el.hidden;
   }
-
+  removeHandlers() {
+  }
   hide() {
     this.el.hidden = true;
+    this.removeHandlers();
     this.el.remove();
   }
 
