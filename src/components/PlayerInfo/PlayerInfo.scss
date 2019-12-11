@@ -47,19 +47,22 @@
   transform: translate(-50%, 0);
 }
 
-.player-info:nth-child(2){
+.player-info:nth-child(2) {
   bottom: 25vh;
   left: 18vw;
 }
-.player-info:nth-child(3){
+
+.player-info:nth-child(3) {
   top: 25vh;
   left: 18vw;
 }
-.player-info:nth-child(4){
+
+.player-info:nth-child(4) {
   top: 25vh;
   right: 18vw;
 }
-.player-info:nth-child(5){
+
+.player-info:nth-child(5) {
   bottom: 18vh;
   right: 18vw;
 }

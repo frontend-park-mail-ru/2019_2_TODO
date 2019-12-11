@@ -1,104 +1,110 @@
 
-.profileForm{
-    margin-top: 25vh;
-    min-width: 20vw;
-    //max-height: 342px;
-    text-align: center;
-    padding: 10px;
-    border-radius: 10px;
-    z-index: 70;
-    background: #34495e;
-    border: 1px solid #2b3c4e;
-    box-shadow: 0 0 90px black;
-    text-align: center;
-    &__c{
-        height: 30px;
-        width: 30px;
-        align-self: flex-end;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    &__close-button{
-        transition: transform , font-size, color;
-        transition-duration: 500ms;
-        transition-timing-function: ease;
-        font-size: 3vh;
-        /*align-self: flex-end;*/
-        cursor: pointer;
-        color: white;
-        text-decoration: none;
-    }
-    &__close-button:hover {
-        font-size: calc(3vh + 10px);
-        transform: rotate(180deg);
-    }
-    &__close-button:focus{
-        color: white;
-    }
-    &__header{
-        min-height: 60%;
-        display: flex;
-        flex-direction: column;
-        color: white;
-        align-self: stretch;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
+.profileForm {
+  margin-top: 25vh;
+  min-width: 20vw;
+  //max-height: 342px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 70;
+  background: #34495e;
+  border: 1px solid #2b3c4e;
+  box-shadow: 0 0 90px black;
+  text-align: center;
 
-    &__nike{
-        font-size: 22px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
+  &__c {
+    height: 30px;
+    width: 30px;
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    &__actions{
-        margin-top: 25px;
-        margin-bottom: 5px;
-    }
+  &__close-button {
+    transition: transform, font-size, color;
+    transition-duration: 500ms;
+    transition-timing-function: ease;
+    font-size: 3vh;
+    /*align-self: flex-end;*/
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+  }
 
-    &__title{
-        border-bottom: 1px solid #3e5266;
-        padding-bottom: 15px;
-        width: 100%;
-        color: silver;
-        font-size: 18px;
-        padding-top: 14px;
-    }
-    &__avatar {
-        border-radius: 5px;
-        max-width: 100px;
-        /*max-height: 100px;*/
-        background-size: 100%;
-        align-self: center;
-    }
+  &__close-button:hover {
+    font-size: calc(3vh + 10px);
+    transform: rotate(180deg);
+  }
 
-    &__button{
-        align-self: flex-end;
-        //background: gold;
-        //color: black;
-        margin-bottom: 3px;
-        margin-right: 0;
-    }
+  &__close-button:focus {
+    color: white;
+  }
 
-    &__text{
-        color: white;
-        font-weight: 900;
-    }
+  &__header {
+    min-height: 60%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-self: stretch;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
 
-    &__file-input{
-        align-self: center;
-        max-width: 177px;
-        height: 100%;
-        margin: 3px;
-    }
+  &__nike {
+    font-size: 22px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 
-    &__container{
-        align-self: center;
-        margin: 10px;
-    }
+  &__actions {
+    margin-top: 25px;
+    margin-bottom: 5px;
+  }
 
-    &__input{
-        margin-left: 0;
-        margin-right: 0;
-    }
+  &__title {
+    border-bottom: 1px solid #3e5266;
+    padding-bottom: 15px;
+    width: 100%;
+    color: silver;
+    font-size: 18px;
+    padding-top: 14px;
+  }
+
+  &__avatar {
+    border-radius: 5px;
+    max-width: 100px;
+    /*max-height: 100px;*/
+    background-size: 100%;
+    align-self: center;
+  }
+
+  &__button {
+    align-self: flex-end;
+    //background: gold;
+    //color: black;
+    margin-bottom: 3px;
+    margin-right: 0;
+  }
+
+  &__text {
+    color: white;
+    font-weight: 900;
+  }
+
+  &__file-input {
+    align-self: center;
+    max-width: 177px;
+    height: 100%;
+    margin: 3px;
+  }
+
+  &__container {
+    align-self: center;
+    margin: 10px;
+  }
+
+  &__input {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }

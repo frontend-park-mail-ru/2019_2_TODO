@@ -2,47 +2,47 @@
 
 
 .infoBar {
-    position: absolute;
-    top: 20px;
-    right: 5px;
-    @extend %row;
-    align-self: flex-end;
-    //background: #34495F;
-    max-width: 250px;
+  position: absolute;
+  top: 20px;
+  right: 5px;
+  @extend %row;
+  align-self: flex-end;
+  //background: #34495F;
+  max-width: 250px;
+  border-radius: 5px;
+  padding: 3px;
+  justify-content: center;
+  align-items: center;
+
+  &__avatar {
     border-radius: 5px;
-    padding: 3px;
-    justify-content: center;
-    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid;
+    cursor: pointer;
+  }
 
-    &__avatar {
-        border-radius: 5px;
-        width: 50px;
-        height: 50px;
-        border:  1px solid ;
-        cursor: pointer;
-    }
+  &__username {
+    color: white;
+    font-family: sans-serif;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-    &__username {
-        color: white;
-        font-family: sans-serif;
-        text-decoration: none;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+  &__username:hover {
+    text-decoration: none;
+  }
 
-    &__username:hover {
-        text-decoration: none;
-    }
-
-    &__logOutButton {
-        color: white;
-        background: none;
-        margin-left: 10px;
-        align-self: center;
-        border: none;
-        cursor: pointer;
-        font-size: 30px;
-        //color: #2ecc71;
-    }
+  &__logOutButton {
+    color: white;
+    background: none;
+    margin-left: 10px;
+    align-self: center;
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+    //color: #2ecc71;
+  }
 }
 
