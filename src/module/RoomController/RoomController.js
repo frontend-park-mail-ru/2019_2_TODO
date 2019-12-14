@@ -5,27 +5,18 @@ export default class RoomController {
   constructor() {
     this.rooms = [];
     this.socket = null;
-  }
-  startSession() {
-    new Promise((resolve, reject) => {
-      const socket = new WebSocket('wss://pokertodo.online:743/rooms');
-      socket.onopen = () => {
-        resolve(socket);
-      };
-      socket.onmessage = (msg) => {
-        const {rooms} = JSON.parse(msg.data);
-        this.updateRooms(rooms);
-      };
-      socket.onerror = (err) => {
-        reject(err);
-      };
-    }).then((socket) => {
-      this.socket = socket;
-    }).catch((err)=>{
+    this.socket = new WebSocket('wss://pokertodo.online:743/rooms');
+    this.socket.onopen = (msg) => {
+      console.log(msg);
+    };
+    this.socket.onmessage = (msg) => {
+      const {rooms} = JSON.parse(msg.data);
+      this.updateRooms(rooms);
+    };
+    this.socket.onerror = (err) => {
       console.log(err);
-    });
+    };
   }
-
   /**
    * Добавить коинату
    * @param {Object} room
