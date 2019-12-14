@@ -1,6 +1,7 @@
 import BaseView from '../BaseView/BaseView';
 import {TableComponent} from '../../components/TableComponent/TableComponent';
 import {HeaderComponent} from '../../components/Header/Header';
+import RoomController from "../../module/RoomController/RoomController";
 
 /** Столы*/
 export default class TableView extends BaseView {
@@ -10,6 +11,7 @@ export default class TableView extends BaseView {
    */
   constructor(element) {
     super(element);
+    this.roomsController = new RoomController();
   }
   /** Отрисовать*/
   render() {
@@ -26,15 +28,18 @@ export default class TableView extends BaseView {
     tables.id = 'tables';
     tables.className = 'tables';
     application.appendChild(tables);
-    roomsController.rooms.forEach((room) => {
+    this.roomsController.rooms.forEach((room) => {
       if (room) {
         TableView.addTable(room.id, room.taken, room.places);
       }
     });
-    addEventListener('addRoom', (event)=>{
+    addEventListener('updateRooms', (event)=>{
       event.preventDefault();
-      const room = roomsController.rooms[roomsController.rooms.length-1];
-      TableView.addTable(room.id, room.taken, room.places);
+      tables.innerHTML = '';
+      const rooms = this.roomsController.rooms;
+      Object.keys(rooms).forEach((key) => {
+        TableView.addTable(key, rooms[key], '2');
+      });
     });
   }
 
