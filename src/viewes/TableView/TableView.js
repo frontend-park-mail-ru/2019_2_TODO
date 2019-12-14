@@ -30,7 +30,7 @@ export default class TableView extends BaseView {
     application.appendChild(tables);
     this.roomsController.rooms.forEach((room) => {
       if (room) {
-        TableView.addTable(room.id, room.taken, room.places);
+        this.addTable(room.id, room.taken, room.places);
       }
     });
     addEventListener('updateRooms', (event)=>{
@@ -49,7 +49,7 @@ export default class TableView extends BaseView {
    * @param {string} taken
    * @param {string} places
    */
-  static addTable(id, taken, places) {
+  addTable(id, taken, places) {
     const tables = document.getElementById('tables');
     const table = new TableComponent({
       taken: taken,
@@ -61,6 +61,7 @@ export default class TableView extends BaseView {
     smt.appendChild(table.render());
     tables.appendChild(smt);
     smt.addEventListener('click', (event)=>{
+      this.roomsController.socket.close();
       router.open(`/multiplayer?room=${id}`);
     }, {once: true});
   }
