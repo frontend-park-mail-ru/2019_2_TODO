@@ -37,8 +37,7 @@ export default class Router {
    * @param {string} path
    */
   open(path) {
-    const url = new URL('https://93.171.139.195:743'+path);
-      console.log(url.pathname);
+    const url = new URL(window.location.hostname+path);
     const route = this.routes[url.pathname];
     if (!route) {
       this.open('/notFound');

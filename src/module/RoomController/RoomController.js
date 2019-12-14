@@ -9,7 +9,7 @@ export default class RoomController {
   }
   startSession() {
     new Promise((resolve, reject) => {
-      const socket = new WebSocket('/rooms_controller');
+      const socket = new WebSocket('wss://93.171.139.195:743/rooms_controller');
       socket.onopen = () => {
         resolve(socket);
       };
@@ -35,7 +35,6 @@ export default class RoomController {
    */
   addRoom(room) {
     this.rooms.push(room);
-    router.register('/rooms/'+room.id, MultiPlayerView);
     dispatchEvent(new Event('addRoom'));
   }
 
@@ -45,7 +44,6 @@ export default class RoomController {
    */
   removeRoom(room) {
     this.rooms[this.rooms.indexOf(room)] = null;
-    router.remove('/rooms/'+room.id);
     dispatchEvent(new Event('removeRoom'));
   }
 }

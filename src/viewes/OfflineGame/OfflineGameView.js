@@ -103,13 +103,17 @@ export default class OfflineGameView extends BaseView {
 
   static enableButtonPanel(text = 'check') {
     document.getElementById('bot').parentElement.style.border = 'none';
-    document.getElementById('user').parentElement.style.border = '2px solid gold';
+    document.getElementById('user').parentElement.style.border =
+        '2px solid gold';
     const element = document.getElementById('playerPanel');
     element.childNodes.forEach((child) => {
       child.disabled = false;
     });
     document.getElementById('firstButton').textContent = text;
-    document.getElementById('raiseSlider').max = sessionStorage.playerScore;
+    document.getElementById('raiseSlider').max = Math.min(
+        parseInt(sessionStorage.playerScore),
+        parseInt(sessionStorage.botScore) - parseInt(sessionStorage.playerBet)
+    );
     document.getElementById('raiseSlider').value = 20;
   }
 }
