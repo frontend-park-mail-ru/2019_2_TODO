@@ -10,6 +10,8 @@ export default class MultiPlayerView extends OfflineGameView {
   }
   addHandlers() {
     document.getElementById('gameOut').addEventListener('click', (event)=>{
+      event.preventDefault();
+      router.open('/tables');
       this.game.quitGame();
     });
     const stG = document.getElementById('startGame');
