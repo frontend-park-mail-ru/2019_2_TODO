@@ -25,13 +25,7 @@ export default class StartScreen extends BaseView {
     header.render();
     const div = document.createElement('div');
     div.className = 'body';
-    const menuContext = {};
-    if (user.isAuth) {
-      menuContext.online = '/tables';
-    } else {
-      menuContext.online = '/login';
-    }
-    const menuBar = new MenuBar(menuContext);
+    const menuBar = new MenuBar({});
     const scoreBoard = new ScoreBoard({});
     div.appendChild(menuBar.render());
     div.appendChild(scoreBoard.render());
