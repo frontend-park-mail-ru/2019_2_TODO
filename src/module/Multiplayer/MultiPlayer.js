@@ -14,7 +14,7 @@ export default class MultiPlayer {
     this.socket = new WebSocket(`
     wss://pokertodo.ru:743/online/?name=${user.username}
     &roomName=${url.searchParams.get('room')}
-    &${document.cookie.session_token}
+    &${document.cookie}
     `);
     // console.log(document.cookie.session_token);
     this.socket.onopen = (msg)=>{
