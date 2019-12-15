@@ -27,12 +27,12 @@ export default class ScoreBoard extends BaseComponent {
         })
         .then((resText)=>{
           const {leaders} = JSON.parse(resText);
-          leaders.forEach((leader)=>{
+          leaders.forEach((leader, index)=>{
             const user = new LeaderInfo({
-              score: leader.score,
+              score: leader.points,
               id: leader.id,
               nickname: leader.username,
-              position: leader.position,
+              position: index,
             });
             this.element.children[1].appendChild(user.render());
           });
