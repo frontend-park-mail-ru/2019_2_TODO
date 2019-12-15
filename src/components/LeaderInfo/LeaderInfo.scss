@@ -14,11 +14,13 @@
     //justify-self: center;
     grid-area: 1 / 1;
     margin: 0;
+    height: 100%;
     border-right: solid 1px grey;
   }
   &__name {
     color: #2ecc71;
     margin: 0;
+    height: 100%;
     border-right: solid 1px grey;
     align-self: center;
     //justify-self: center;
@@ -28,6 +30,7 @@
   &__score {
     margin: 0;
     color: #2ecc71;
+    height: 100%;
     align-self: center;
     //justify-self: center;
     //border-right: solid 1px grey;
