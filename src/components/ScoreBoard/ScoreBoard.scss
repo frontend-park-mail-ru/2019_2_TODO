@@ -26,7 +26,13 @@
   }
   &__board {
     overflow: hidden;
-    max-height: 90%;
+    @media (orientation: portrait) {
+      max-height: 70vw;
+    }
+    @media (orientation: landscape) {
+      max-height: 70vh;
+    }
+
     display: flex;
     flex-direction: column;
   }
