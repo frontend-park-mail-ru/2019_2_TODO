@@ -21,7 +21,7 @@ export default class ScoreBoard extends BaseComponent {
    */
   render() {
     this.compile();
-    AjaxModule.fetchGet('https://pokertodo.online:743/leaderboard/')
+    AjaxModule.fetchGet('https://pokertodo.ru:743/scoreboard/')
         .then((res)=>{
           return res.text();
         })
