@@ -29,7 +29,7 @@ export default class Router {
    * Удалить путь
    * @param {string} path
    */
-  remove(path){
+  remove(path) {
     this.routes[path] = undefined;
   }
   /**

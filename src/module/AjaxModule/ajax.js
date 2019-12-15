@@ -55,9 +55,9 @@ class AjaxModule {
         })
     ).then((res) => {
       if (res.status === 200) {
-          user.checkAuth().then(()=>{
-            router.open('/');
-          });
+        user.checkAuth().then(()=>{
+          router.open('/');
+        });
       }
     });
   }

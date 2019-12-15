@@ -98,7 +98,7 @@ export class Game {
 
   endRound() {
     const winners = PokerWinners([this.playerHand, this.botHand]);
-    //console.log(winners);
+    // console.log(winners);
     this.animation.showWinnerCards(this.getWinnersCardsId(winners));
     if (winners.length === 2) {
       sessionStorage.playerScore = +sessionStorage.playerScore + sessionStorage.bank / 2;

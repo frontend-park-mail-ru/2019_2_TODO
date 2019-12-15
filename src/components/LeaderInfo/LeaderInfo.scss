@@ -1,0 +1,29 @@
+
+.leader-info {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 20% 1fr 30%;
+  height: 5vh;
+  border-bottom: solid 1px grey;
+  text-align: center;
+  font-size: 20px;
+  font-family: Alfa Slab One;
+  &__position {
+    color: #2ecc71;
+    grid-area: 1 / 1;
+    margin: 0;
+    border-right: solid 1px grey;
+  }
+  &__name {
+    color: #2ecc71;
+    margin: 0;
+    border-right: solid 1px grey;
+    grid-area: 1 / 2;
+  }
+  &__score {
+    margin: 0;
+    color: #2ecc71;
+    //border-right: solid 1px grey;
+    grid-area: 1 / 3;
+  }
+}

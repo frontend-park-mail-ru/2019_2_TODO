@@ -11,10 +11,10 @@ export default class NotFoundView extends BaseView {
     this.el.innerHTML = '';
     const application = document.createElement('section');
     const back = new TextComponent({
-        tag: 'a',
-        text: 'back',
-        class: 'back',
-        href: '/',
+      tag: 'a',
+      text: 'back',
+      class: 'back',
+      href: '/',
     });
     application.appendChild(back.render());
     const text = new TextComponent(

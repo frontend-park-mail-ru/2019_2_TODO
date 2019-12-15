@@ -1,7 +1,7 @@
 import BaseView from '../BaseView/BaseView';
 import {TableComponent} from '../../components/TableComponent/TableComponent';
 import {HeaderComponent} from '../../components/Header/Header';
-import RoomController from "../../module/RoomController/RoomController";
+import RoomController from '../../module/RoomController/RoomController';
 
 /** Столы*/
 export default class TableView extends BaseView {

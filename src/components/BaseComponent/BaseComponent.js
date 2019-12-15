@@ -64,7 +64,7 @@ export default class BaseComponent {
   /** Убрать хендлеры*/
   removeHandlers() {
     this.handlers.forEach(({event}, {handler}) => {
-      this.element.removeEventListener(event, handler)
+      this.element.removeEventListener(event, handler);
     });
   }
   /** Удалить. */
