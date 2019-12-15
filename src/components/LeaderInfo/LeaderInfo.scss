@@ -10,6 +10,8 @@
   font-family: Alfa Slab One;
   &__position {
     color: #2ecc71;
+    align-self: center;
+    justify-self: center;
     grid-area: 1 / 1;
     margin: 0;
     border-right: solid 1px grey;
@@ -18,11 +20,16 @@
     color: #2ecc71;
     margin: 0;
     border-right: solid 1px grey;
+    align-self: center;
+    justify-self: center;
+    overflow: hidden;
     grid-area: 1 / 2;
   }
   &__score {
     margin: 0;
     color: #2ecc71;
+    align-self: center;
+    justify-self: center;
     //border-right: solid 1px grey;
     grid-area: 1 / 3;
   }

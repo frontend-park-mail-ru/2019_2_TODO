@@ -32,7 +32,7 @@ export default class ScoreBoard extends BaseComponent {
               score: leader.points,
               id: leader.id,
               nickname: leader.username,
-              position: index,
+              position: index + 1,
             });
             this.element.children[1].appendChild(user.render());
           });
