@@ -26,7 +26,7 @@ export default class ScoreBoard extends BaseComponent {
           return res.text();
         })
         .then((resText)=>{
-          const {leaders} = JSON.parse(resText);
+          const leaders = JSON.parse(resText);
           leaders.forEach((leader)=>{
             const user = new LeaderInfo({
               score: leader.score,

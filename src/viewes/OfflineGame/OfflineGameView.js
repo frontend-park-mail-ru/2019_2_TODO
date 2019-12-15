@@ -6,7 +6,6 @@ import BaseView from '../BaseView/BaseView.js';
 import {PlayerInfo} from '../../components/PlayerInfo/PlayerInfo.js';
 import {BankersCard} from '../../components/BancersCard/BancersCard';
 import {TextComponent} from '../../components/TextComponent/Text';
-import {InputComponent} from '../../components/Input/Input';
 
 /** Игра оффлайн*/
 export default class OfflineGameView extends BaseView {
