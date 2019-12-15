@@ -26,8 +26,6 @@ export default class User {
   }
 
   auth(username, password) {
-    this.username = username;
-    this.isAuth = true;
     AjaxModule.signIn(username, password);
   }
 

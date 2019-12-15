@@ -44,9 +44,7 @@ export default class Router {
       return;
     }
     if ((url.pathname === '/tables') || (url.pathname === '/multiplayer')) {
-      console.log('111');
       if (!user.isAuth) {
-        console.log('222')
         this.open('/login');
         return;
       }

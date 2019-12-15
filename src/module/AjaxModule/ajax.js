@@ -35,7 +35,9 @@ class AjaxModule {
         }))
         .then((rez) => {
           if (rez.status === 200) {
-            router.open('/');
+            user.checkAuth().then(()=>{
+              router.open('/');
+            });
           }
         });
   }
