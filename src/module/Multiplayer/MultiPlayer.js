@@ -16,7 +16,7 @@ export default class MultiPlayer {
     &roomName=${url.searchParams.get('room')}
     &${document.cookie}
     `);
-    // console.log(document.cookie.session_token);
+    console.log(document.cookie);
     this.socket.onopen = (msg)=>{
       console.log(msg);
     };
