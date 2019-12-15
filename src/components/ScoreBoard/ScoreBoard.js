@@ -21,12 +21,12 @@ export default class ScoreBoard extends BaseComponent {
    */
   render() {
     this.compile();
-    AjaxModule.fetchGet('/socreboard')
+    AjaxModule.fetchGet('/scoreboard/')
         .then((res)=>{
           return res.text();
         })
         .then((resText)=>{
-          const leaders = JSON.parse(resText);
+          const {leaders} = JSON.parse(resText);
           leaders.forEach((leader)=>{
             const user = new LeaderInfo({
               score: leader.score,
