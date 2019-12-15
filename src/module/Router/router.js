@@ -39,14 +39,17 @@ export default class Router {
   open(path) {
     const url = new URL('https://pokertodo.ru:743'+path);
     const route = this.routes[url.pathname];
-    if (url.pathname === '/tables'||url.pathname === '/multiplayer') {
-      if (!user.isAuth) {
-        this.open('/login');
-      }
-    }
     if (!route) {
       this.open('/notFound');
       return;
+    }
+    if ((url.pathname === '/tables') || (url.pathname === '/multiplayer')) {
+      console.log('111');
+      if (!user.isAuth) {
+        console.log('222')
+        this.open('/login');
+        return;
+      }
     }
     if (window.location.pathname !== path) {
       window.history.pushState(
