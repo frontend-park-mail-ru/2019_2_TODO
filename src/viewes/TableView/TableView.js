@@ -30,7 +30,7 @@ export default class TableView extends BaseView {
     // this.addTable('sdgfkjerngkn', '3', '4');
     this.roomsController.rooms.forEach((room) => {
       if (room) {
-        this.addTable(room.id, room.taken, room.places);
+        this.addTable(room.id, room.taken, room.places, room.users);
       }
     });
     addEventListener('updateRooms', (event)=>{
