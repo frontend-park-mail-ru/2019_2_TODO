@@ -25,7 +25,7 @@
     }
   }
   &__board {
-    overflow: hidden;
+    overflow: auto;
     @media (orientation: portrait) {
       max-height: 70vw;
     }
