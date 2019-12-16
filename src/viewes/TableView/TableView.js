@@ -38,6 +38,7 @@ export default class TableView extends BaseView {
       document.getElementById('tables').innerHTML = '';
       const rooms = this.roomsController.rooms;
       Object.keys(rooms).forEach((key) => {
+        console.log(rooms[key]);
         this.addTable(key, rooms[key].actualPlaces, rooms[key].places, rooms[key].players);
       });
     });
