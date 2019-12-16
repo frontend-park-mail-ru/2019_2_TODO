@@ -16,37 +16,37 @@ export default class SignInScreen extends BaseView {
   /** Отрисовать*/
   render() {
     this.el.innerHTML = '';
-    const application = document.createElement('section');
+    const application = this.el;
     const header = new HeaderComponent(application);
     header.render();
     const form = document.createElement('form');
     form.noValidate = true;
-    application.appendChild(form);
     const Text = new TextComponent({
       tag: 'h3',
       text: 'Authorization!',
     });
-    form.innerHTML += Text.render();
+    form.appendChild(Text.render());
     const EmailInput = new InputComponent({
       id: 'email',
       type: 'email',
-      placeholder: 'Email',
+      placeholder: 'Username',
       class: 'input',
     });
-    form.innerHTML += EmailInput.render();
+    form.appendChild(EmailInput.render());
     const PassInput = new InputComponent({
       id: 'password',
       type: 'password',
       placeholder: 'Password',
       class: 'input',
     });
-    form.innerHTML += PassInput.render();
+    form.appendChild(PassInput.render());
     const SubmitButton = new ButtonComponent({
       type: 'submit',
       class: 'button-small',
       text: 'Sign in!',
     });
-    form.innerHTML += SubmitButton.render();
+    form.appendChild(SubmitButton.render());
+    application.appendChild(form);
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
@@ -57,7 +57,7 @@ export default class SignInScreen extends BaseView {
         password.value = '';
         return;
       }
-      if (password.value.length < 5) {
+      if (password.value.length < 4) {
         password.value = '';
         InputError.e('PASSWORD_LENGTH', form);
         return;
@@ -65,7 +65,6 @@ export default class SignInScreen extends BaseView {
       user.auth(email.value, password.value);
     }
     );
-    this.el.appendChild(application);
   }
 }
 

@@ -1,27 +1,86 @@
 @import "../../base.scss";
 
 .poker-user-panel {
-  @extend %row;
+  @extend %column;
   position: absolute;
   bottom: 3vh;
   left: calc(50% - 255px);
   align-items: center;
   justify-content: center;
   width: 510px;
-  z-index: 1;
+  z-index: 3;
 
   &__container {
-    /*background: darkslategrey;*/
-    border-radius: 5px;
-    padding: 3px;
-    /*margin-right: 5px;*/
-    &__avatar {
-      border-radius: 100px;
-      height: 50px;
-      width: 50px;
+    @extend %row;
+
+    &__button {
+      @extend %column;
+      height: 40px;
+      width: 120px;
+      margin-right: 3px;
+      /*margin-top: -50px;*/
+      color: #FFFFFF;
+      background: #ff4238;
+      border: 1px solid black;
+      border-radius: 5px;
+      align-items: center;
+      justify-content: center;
+
+      &__input {
+        width: 50%;
+        margin: 3%;
+      }
+
+      &__raise-button {
+        width: 50%;
+        height: 40%;
+        margin: 3%;
+        background: darkslategrey;
+        border-radius: 5px;
+        border: 1px black;
+        color: white;
+
+      }
     }
 
+    &__button:nth-child(2) {
+      background: lightseagreen;
+    }
 
+    &__button:nth-child(3) {
+      background: green;
+    }
+
+    &__button:nth-child(2):disabled {
+      background: grey;
+    }
+
+    &__button:nth-child(3):disabled {
+      background: grey;
+    }
+
+    &__button_disabled {
+      height: 40px;
+      width: 120px;
+      margin-right: 3px;
+      /*margin-top: -50px;*/
+      color: #FFFFFF;
+      //background: gray;
+      border: 1px solid black;
+      border-radius: 5px;
+      @extend %column;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    &__button:hover {
+      background: gold;
+      color: black;
+    }
+
+    &__button:focus {
+      outline: none;
+    }
   }
 
   &__score-bet {
@@ -40,71 +99,6 @@
     margin-bottom: 0;
   }
 
-  &__button {
-    @extend %column;
-    height: 40px;
-    width: 120px;
-    margin-right: 3px;
-    /*margin-top: -50px;*/
-    color: #FFFFFF;
-    background: #ff4238;
-    border: 1px solid black;
-    border-radius: 5px;
-    align-items: center;
-    justify-content: center;
 
-    &__input {
-      width: 50%;
-      margin: 3%;
-    }
-
-    &__raise-button {
-      width: 50%;
-      height: 40%;
-      margin: 3%;
-      background: darkslategrey;
-      border-radius: 5px;
-      border: 1px black;
-      color: white;
-
-    }
-  }
-
-  &__button:nth-child(2) {
-    background: lightseagreen;
-  }
-
-  &__button:nth-child(3) {
-    background: green;
-  }
-  &__button:nth-child(2):disabled {
-    background: grey;
-  }
-  &__button:nth-child(3):disabled {
-    background: grey;
-  }
-
-  &__button_disabled {
-    height: 40px;
-    width: 120px;
-    margin-right: 3px;
-    /*margin-top: -50px;*/
-    color: #FFFFFF;
-    //background: gray;
-    border: 1px solid black;
-    border-radius: 5px;
-    @extend %column;
-    align-items: center;
-    justify-content: flex-end;
-  }
-
-  &__button:hover {
-    background: gold;
-    color: black;
-  }
-
-  &__button:focus {
-    outline: none;
-  }
 }
 

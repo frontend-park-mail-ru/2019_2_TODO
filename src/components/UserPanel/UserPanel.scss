@@ -1,9 +1,10 @@
 @import "../../base.scss";
-.user-panel{
-    @extend %row;
-    justify-content: space-between;
-    align-items: center;
-    min-width: 515px;
-    margin-bottom: -20px;
-    z-index: 1;
+
+.user-panel {
+  @extend %row;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 515px;
+  margin-bottom: -20px;
+  z-index: 3;
 }

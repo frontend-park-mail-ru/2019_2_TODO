@@ -8,35 +8,31 @@ import ProfileView from './viewes/Profile/Profile.js';
 import OfflineGameView from './viewes/OfflineGame/OfflineGameView.js';
 import runtime from 'serviceworker-webpack-plugin/lib/runtime.js';
 import UserContainer from './module/User/UserContainer';
-import MultiPlayerView from './viewes/MultiplayerView/MultiPlayerView';
 import SupportView from './viewes/SupportView/SupportView';
 import TableView from './viewes/TableView/TableView';
-// window.screen.orientation.lock('landscape-primary')
-//     .catch((smt)=>{
-//       console.log(smt);
-//     })
-//     .then((smt)=>{
-//       console.log(smt, 'locked');
-//     });
+import MultiPlayerView from './viewes/MultiplayerView/MultiPlayerView';
+// import RoomController from "./module/RoomController/RoomController";
 
 if ('serviceWorker' in navigator) {
-  const registration = runtime.register();
+  // const registration =
+  runtime.register();
 }
 window.user = new UserContainer();
 const application = document.getElementById('application');
 window.router = new Router(application);
 window.router.register('/', StartScreen)
-    .register('/signUp', SignUpScreen)
-    .register('/signIn', SignInScreen)
+    .register('/sign_up', SignUpScreen)
+    .register('/login', SignInScreen)
     .register('/profileChange', ChangeProfileView)
     .register('/profile', ProfileView)
     .register('/offline', OfflineGameView)
     .register('/notFound', NotFoundView)
     .register('/online', TableView)
     .register('/support', SupportView)
+    .register('/multiplayer', MultiPlayerView)
     .register('/tables', TableView);
 
 window.user.checkAuth().finally(()=>{
   router.start();
 });
-
+// window.roomsController = new RoomController();

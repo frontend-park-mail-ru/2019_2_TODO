@@ -1,13 +1,21 @@
 .bankerCard {
-  min-width: 35%;
-  height: 20vh;
+  @media (orientation: portrait) {
+    width: 20vh;
+    min-height: 35%;
+  }
+  @media (orientation: landscape) {
+    min-width: 35%;
+    height: 20vh;
+  }
   border-radius: 100px;
   display: flex;
   flex-direction: row;
   padding-right: 50px;
   padding-left: 50px;
   justify-content: flex-start;
+  justify-self: center;
   align-items: center;
+  z-index: 1;
   //border: solid 1px gray;
-  box-shadow:  0px 0px 10px gray;
+  box-shadow: 0px 0px 10px gray;
 }

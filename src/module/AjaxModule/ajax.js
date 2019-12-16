@@ -5,19 +5,19 @@
 class AjaxModule {
   /**
    * отправить картинку
-   * @param {HTMLElement} application - элемент для возврата
    * @param {FormData} data - картинка
    */
   postAvatar(data) {
-    this.fetchPost('http://93.171.139.196:780/signin/profileImage/', data, {
+    this.fetchPost('/auth/signin/profileImage/', data, {
       method: 'POST',
       credentials: 'include',
       body: data})
         .then((res) => {
           if (res.status === 200) {
-            user.checkAuth();
-            window.router.open('/profile');
-            // window.router.reRender('/profile');
+            user.checkAuth().then(()=> {
+              window.router.open('/profile');
+            });
+            // window.router.open('/profile');
           }
         });
   }
@@ -28,14 +28,16 @@ class AjaxModule {
    * @param {string} password
    */
   signUp(email, password) {
-    this.fetchPost('http://93.171.139.196:780/signup/',
+    this.fetchPost('/auth/signup/',
         JSON.stringify({
           username: email,
           password: password,
         }))
         .then((rez) => {
           if (rez.status === 200) {
-            window.location.pathname = '/';
+            user.checkAuth().then(()=>{
+              router.open('/');
+            });
           }
         });
   }
@@ -44,17 +46,20 @@ class AjaxModule {
    * Авторизация
    * @param {string} email
    * @param {string} password
+   * @return {Promise}
    */
   signIn(email, password) {
-    this.fetchPost(
-        'http://93.171.139.196:780/signin/',
+    return this.fetchPost(
+        '/auth/signin/',
         JSON.stringify({
           username: email,
           password: password,
         })
     ).then((res) => {
       if (res.status === 200) {
-        window.location.pathname = '/';
+        user.checkAuth().then(()=>{
+          router.open('/');
+        });
       }
     });
   }
@@ -63,11 +68,11 @@ class AjaxModule {
    * Выход
    */
   logOut() {
-    this.fetchGet('http://93.171.139.196:780/logout/')
+    this.fetchGet('/auth/logout/')
         .then((res) => {
           if (res.status === 200) {
-            console.log('sdvs');
-            window.location.pathname = '/';
+            user.isAuth = false;
+            router.open('/');
           }
         });
   }
@@ -80,7 +85,7 @@ class AjaxModule {
    * @return {Promise<Response>} - промиз для обработки
    */
   fetchPost(
-      url = 'http://93.171.139.196:780/',
+      url = '/auth/',
       body = {},
       params = {
         method: 'POST',
@@ -99,7 +104,7 @@ class AjaxModule {
    * @param {Object} params - параметры запроса
    * @return {Promise<Response>} - промиз для обработки
    */
-  fetchGet(url = 'http://93.171.139.196:780/',
+  fetchGet(url = '/auth/',
       params = {method: 'GET', credentials: 'include'}) {
     return fetch(url, params);
   }

@@ -1,55 +1,83 @@
 import BaseView from '../BaseView/BaseView';
 import {TableComponent} from '../../components/TableComponent/TableComponent';
 import {HeaderComponent} from '../../components/Header/Header';
-import MultiPlayerView from "../MultiplayerView/MultiPlayerView";
-import AjaxModule from '../../module/AjaxModule/ajax';
+import RoomController from '../../module/RoomController/RoomController';
+import {OnlineComponent} from '../../components/OnlineComponent/OnlineComponent';
 
-
+/** Столы*/
 export default class TableView extends BaseView {
+  /**
+   * Создать
+   * @param {HTMLElement} element
+   */
   constructor(element) {
     super(element);
+    this.roomsController = new RoomController();
   }
-
+  /** Отрисовать*/
   render() {
     this.el.innerHTML = '';
     const application = this.el;
     const header = new HeaderComponent(
-      application,
-      user.isAuth,
-      user.avatar,
-      user.username,
+        application,
+        user.isAuth,
+        user.avatar,
+        user.username,
     );
     header.render();
-    const tables = document.createElement('div');
-    tables.id = 'tables';
-    tables.className = 'tables';
-    application.appendChild(tables);
-    AjaxModule.fetchGet('http://93.171.139.196:780/rooms/')
-        .then((res)=>{
-          return res.text();
-        })
-        .then((resText)=>{
-          const rooms = JSON.parse(resText).rooms;
-          console.log(rooms);
-          Object.keys(rooms).forEach((key)=>{
-            TableView.addTable(key, rooms[key], '2');
-          });
-        });
+    const tables = new OnlineComponent();
+    application.appendChild(tables.render());
+    // this.addTable('sdgfkjerngkn', '3', '4');
+    this.roomsController.rooms.forEach((room) => {
+      if (room) {
+        this.addTable(room.id, room.taken, room.places);
+      }
+    });
+    addEventListener('updateRooms', (event)=>{
+      event.preventDefault();
+      document.getElementById('tables').innerHTML = '';
+      const rooms = this.roomsController.rooms;
+      Object.keys(rooms).forEach((key) => {
+        this.addTable(key, rooms[key], '2');
+      });
+    });
   }
-  static addTable(id, taken, places){
+
+  /**
+   * Доваить стол
+   * @param {string} id
+   * @param {string} taken
+   * @param {string} places
+   * @param {Array} players
+   */
+  addTable(id, taken, places, players = []) {
     const tables = document.getElementById('tables');
     const table = new TableComponent({
+      roomBet: '20/40',
       taken: taken,
       all: places,
       id: id,
-    });
-    const smt = document.createElement('div');
-
-    smt.innerHTML = table.render();
-    tables.appendChild(smt);
-    smt.addEventListener('click', (event)=>{
-      router.register(`/tables/${id}`, MultiPlayerView);
-      router.open(`/tables/${id}`, id);
-    });
+    }, players);
+    tables.appendChild(table.render());
+    table.element.addEventListener('click', (event)=>{
+      this.roomsController.socket.close();
+      router.open(`/multiplayer?room=${id}`);
+    }, {once: true});
   }
+  // static addTable(id, taken, places){
+  //   const tables = document.getElementById('tables');
+  //   const table = new TableComponent({
+  //     taken: taken,
+  //     all: places,
+  //     id: id,
+  //   });
+  //   const smt = document.createElement('div');
+  //
+  //   smt.appendChild(table.render());
+  //   tables.appendChild(smt);
+  //   smt.addEventListener('click', (event)=>{
+  //     router.register(`/tables/${id}`, MultiPlayerView);
+  //     router.open(`/tables/${id}`, id);
+  //   });
+  // }
 }

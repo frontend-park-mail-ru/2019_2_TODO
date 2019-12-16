@@ -3,6 +3,7 @@
   position: relative;
   padding: 0;
   margin: 0;
+  z-index: 0;
   @media (orientation: landscape) {
     height: 100vh;
   }
@@ -11,18 +12,45 @@
   }
   background-image: url("/assets/nami.png");
 }
+@media (orientation: portrait) {
+  .table:before{
+    background-image: url("/assets/table_new.png");
+    background-repeat: no-repeat;
+    background-size: 54vh 54vw;
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: calc(-100%);
+    left: -100%;
+    z-index: 0;
 
+    transform:  rotate(180deg);
+  }
+}
 .table {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  //flex-direction: row;
+  grid-template-columns: 1fr;
+  grid-template-rows: 25% 1fr 25%;
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: calc(50% - 27vh);
-  left: calc(50% - 27vw);
-  background-image: url("/assets/table_new.png");
-  height: 54vh;
-  width: 54vw;
+
+
+  @media (orientation: portrait) {
+    top: calc(50% - 27vw);
+    left: calc(50% - 27vh);
+    height: 54vw;
+    width: 54vh;
+  }
+  @media (orientation: landscape) {
+    background-image: url("/assets/table_new.png");
+    top: calc(50% - 30vh);
+    left: calc(50% - 27vw);
+    height: 54vh;
+    width: 54vw;
+  }
   background-repeat: no-repeat;
   background-position: center;
   background-size: 54vw 54vh;
@@ -30,10 +58,17 @@
 
 .startGameButton {
   position: absolute;
-  top: calc(50vh - 20px);
-  left: calc(50vw - 45px);
-  z-index: 10;
+  @media (orientation: portrait) {
+    left: calc(50vh - 45px);
+    top: calc(50vw - 20px);
+  }
+  @media (orientation: landscape) {
+    top: calc(46vh - 20px);
+    left: calc(50vw - 45px);
+  }
+  z-index: 30;
 }
+
 
 .back {
   position: absolute;
@@ -61,8 +96,8 @@
 .raise-slider {
   position: absolute;
   bottom: 10vh;
-  width: 18%;
-  left: calc(41% - 10px);
+  width: 25vw;
+  //left: calc(25vw - 10px);
   outline: none;
   border: initial;
   appearance: none;
