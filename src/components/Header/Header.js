@@ -24,10 +24,10 @@ export class HeaderComponent {
    * @param {string} username
    */
   constructor(
-      parent = document.body,
-      authorized = false,
-      avatar = './assets/gold_fishka.jpg',
-      username = 'nickname',
+    parent = document.body,
+    authorized = false,
+    avatar = './assets/gold_fishka.jpg',
+    username = 'nickname',
   ) {
     this._parent = parent;
     this._avatar = avatar;
@@ -44,7 +44,7 @@ export class HeaderComponent {
         hiddenSign: '',
       });
       this._parent.appendChild(head.render());
-      document.getElementById('pokerDom').addEventListener('click', ()=>{
+      document.getElementById('pokerDom').addEventListener('click', () => {
         router.open('/');
       });
     } else {

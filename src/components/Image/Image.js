@@ -1,5 +1,6 @@
 import BaseComponent from '../BaseComponent/BaseComponent.js';
 import template from './Image.hbs';
+
 /** Класс представляющий картинку */
 export class ImageComponent extends BaseComponent {
   /**

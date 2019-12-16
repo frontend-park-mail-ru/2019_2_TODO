@@ -1,4 +1,3 @@
-
 /** Базовый класс для шаблонов,
  *  от которого они наследуются. */
 export default class BaseComponent {
@@ -22,6 +21,7 @@ export default class BaseComponent {
     this.compile();
     return this.element;
   }
+
   /** Отрисовать*/
   compile() {
     if (!this.element) {
@@ -30,6 +30,7 @@ export default class BaseComponent {
       this.element = div.childNodes[0];
     }
   }
+
   /**
    * Обновить контекст
    * @param {Object} context
@@ -40,6 +41,7 @@ export default class BaseComponent {
     div.innerHTML = this.template(this.context);
     this.element = div.lastChild;
   }
+
   /** Обновить эелемент*/
   updateElement() {
     const nextChild = this.element.nextSibling;
@@ -61,12 +63,14 @@ export default class BaseComponent {
     this.element.addEventListener(event, handler);
     this.handlers.push({event: event, handler: handler});
   }
+
   /** Убрать хендлеры*/
   removeHandlers() {
     this.handlers.forEach(({event}, {handler}) => {
       this.element.removeEventListener(event, handler);
     });
   }
+
   /** Удалить. */
   remove() {
     this.element.remove();
