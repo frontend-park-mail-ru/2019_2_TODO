@@ -6,6 +6,7 @@ export default class RoomController {
     this.rooms = [];
     this.socket = null;
     this.socket = new WebSocket('wss://pokertodo.ru:743/auth/rooms/');
+    this.socket.bufferedAmount
     this.socket.onopen = (msg) => {
       console.log(msg);
     };
