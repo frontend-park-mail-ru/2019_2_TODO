@@ -33,7 +33,7 @@
     color: white;
     margin-top: -50px;
     background: linear-gradient(rgb(50, 50, 50), black);
-    z-index: 5;
+    z-index: 7;
 
     &__score {
       margin: 0;
@@ -42,24 +42,55 @@
 }
 
 .player-info:nth-child(1) {
-  bottom: 18vh;
-  left: 50%;
-  transform: translate(-50%, 0);
+  @media (orientation: portrait) {
+    bottom: 18vw;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  @media (orientation: landscape) {
+    bottom: 18vh;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
 }
 
 .player-info:nth-child(2){
-  bottom: 25vh;
-  left: 18vw;
+  @media (orientation: portrait) {
+    bottom: 25vw;
+    left: 18vh;
+  }
+  @media (orientation: landscape) {
+    bottom: 25vh;
+    left: 18vw;
+  }
 }
 .player-info:nth-child(3){
-  top: 25vh;
-  left: 18vw;
+  @media (orientation: portrait) {
+    top: 25vw;
+    left: 18vh;
+  }
+  @media (orientation: landscape) {
+    top: 25vh;
+    left: 18vw;
+  }
 }
 .player-info:nth-child(4){
-  top: 25vh;
-  right: 18vw;
+  @media (orientation: portrait) {
+    top: 25vw;
+    right: 18vh;
+  }
+  @media (orientation: landscape) {
+    top: 25vh;
+    right: 18vw;
+  }
 }
 .player-info:nth-child(5){
-  bottom: 18vh;
-  right: 18vw;
+  @media (orientation: portrait) {
+    bottom: 18vw;
+    right: 18vh;
+  }
+  @media (orientation: landscape) {
+    bottom: 18vh;
+    right: 18vw;
+  }
 }

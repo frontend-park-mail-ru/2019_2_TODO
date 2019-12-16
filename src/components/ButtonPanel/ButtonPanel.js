@@ -1,4 +1,3 @@
-
 import BaseComponent from '../BaseComponent/BaseComponent.js';
 import template from './ButtonPanel.hbs';
 

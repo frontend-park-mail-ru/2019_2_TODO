@@ -3,20 +3,21 @@ import MultiPlayerView from '../../viewes/MultiplayerView/MultiPlayerView';
 
 /** Общение по вебсокету с бекэндом*/
 export default class MultiPlayer {
-  /** конструктор*/
-  constructor(addr, viewId) {
+  /**
+   *  конструктор
+   * @param {string} viewId
+   */
+  constructor(viewId) {
     this.players = [];
     this.viewId = viewId;
-    this.socket = new WebSocket(`ws://93.171.139.196:780/multiplayer/?name=${user.username}&roomName=${addr}` );
-    this.socket.onopen = ()=>{
-      console.log('opened');
+    const url = new URL(window.location.href);
+    this.socket = new WebSocket(`wss://pokertodo.ru:743/online/?name=${user.username}&roomName=${url.searchParams.get('room')}&id=${user.id}`);
+    this.socket.onopen = (msg)=>{
+      console.log(msg);
     };
     this.socket.onmessage = (msg)=>{
-      console.log(JSON.parse(msg.data));
       const {Command} = JSON.parse(msg.data);
       Object.keys(Command).forEach((key)=>{
-        console.log(key);
-
         this[key](Command[key]);
       });
     };
@@ -54,7 +55,6 @@ export default class MultiPlayer {
       this.animation.removeShine(id);
     });
     const hand = HandSolve(info.hand);
-    console.log(hand);
     this.animation.showWinnerCards(this.getWinnersCardsId([hand]));
     setTimeout(()=>{
       this.animation.removeAllCards();
@@ -88,7 +88,6 @@ export default class MultiPlayer {
    * @param {Object} playerInfo
    */
   startGame(playerInfo) {
-    console.log('Animation');
     this.animation = new PokerCSSAnimation(this.players);
     this.animation.startRoundAnimation();
     this.showPlayerCards(playerInfo);
@@ -99,7 +98,6 @@ export default class MultiPlayer {
    * @param {Object} playerInfo
    */
   showPlayerCards(playerInfo) {
-    console.log(playerInfo.hand);
     this.animation.showPlayerCards(playerInfo.id, playerInfo.hand);
   }
   /**

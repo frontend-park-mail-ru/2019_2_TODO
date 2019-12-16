@@ -1,17 +1,26 @@
 import AjaxModule from '../AjaxModule/ajax';
 
+/** Класс для работы с информацией пользователя*/
 export default class User {
+  /** Инициализация данных*/
   constructor() {
     this.isAuth = false;
     this.username = 'unAuthorized';
     this.avatar = 'https://jok.io/Images/Shared/unknown_female.png';
+    this.id = null;
   }
 
+  /**
+   * Проверка авторизации
+   * @return {Promise<string>}
+   */
   checkAuth() {
-    return AjaxModule.fetchGet('http://93.171.139.196:780/signin/')
-        .catch(() => {
+    return AjaxModule.fetchGet('/auth/signin/')
+        .catch((res) => {
+          console.log(res);
         })
         .then((res) => {
+          console.log(res);
           return res.text();
         })
         .then((resText) => {
@@ -19,29 +28,48 @@ export default class User {
             this.username = JSON.parse(resText).username;
             this.avatar = JSON.parse(resText).image;
             this.isAuth = true;
+            this.id = JSON.parse(resText).id;
           }
         });
   }
 
+  /**
+   * Авторизация
+   * @param {string} username
+   * @param {string} password
+   */
   auth(username, password) {
-    this.isAuth = AjaxModule.signIn(username, password);
-    if (this.isAuth) {
-      this.username = username;
-    }
+    AjaxModule.signIn(username, password);
   }
 
+  /**
+   * Регистрация
+   * @param {string} username
+   * @param {string} password
+   */
   signUp(username, password) {
     this.isAuth = AjaxModule.signUp(username, password);
     if (this.isAuth) {
       this.username = username;
     }
   }
+
+  /**
+   * Поменять аватар
+   * @param {FormData} data
+   */
   changeAvatar(data) {
     AjaxModule.postAvatar(data);
   }
+
+  /**
+   * Поменять данные
+   * @param {string} username
+   * @param {string} password
+   */
   changeData(username, password) {
     AjaxModule.fetchPost(
-        'http://93.171.139.196:780/signin/profile/',
+        '/auth/signin/profile/',
         JSON.stringify({
           username: username,
           password: password,
@@ -56,6 +84,7 @@ export default class User {
           }
         });
   }
+  /** Лог аут*/
   logOut() {
     AjaxModule.logOut();
   }

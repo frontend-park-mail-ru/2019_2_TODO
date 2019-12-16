@@ -15,8 +15,9 @@ body{
 html{
   background-image: url("assets/Backgrounds_Black_wallpaper_with_card_symbol_078600_.jpg");
   background-repeat: no-repeat;
-  background-position: center ;
-
+  background-position: center;
+  background-position: 0 30%;
+  //background-size: 100% 100%;
 }
 .footer{
   background: linear-gradient(black, darkslategray);
@@ -48,7 +49,7 @@ section{
 }
 form {
   @extend %column;
-  margin-top: 23vh;
+  margin-top: 10%;
   align-items: center;
   align-self: center;
   //width: 20%;
@@ -59,7 +60,11 @@ form {
   //box-shadow: 0 0 90px black;
 
 }
-
+.body {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 [hidden] {
   display: none;
 }

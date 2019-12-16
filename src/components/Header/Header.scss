@@ -35,12 +35,13 @@
         &__span {
           animation: neon-4 linear infinite 6s;
         }
+
         @keyframes neon-4 {
           3% {
             color: inherit;
             text-shadow: inherit;
           }
-          79%{
+          79% {
             color: #434f4c;
           }
           80% {
@@ -68,7 +69,8 @@
           }
         }
       }
-      &__label:hover{
+
+      &__label:hover {
         text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #2cff08, 0 0 0.5em #094f0a, 0 0 0.1em #2cff08;
       }
 

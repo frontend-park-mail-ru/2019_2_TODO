@@ -1,6 +1,7 @@
 import BaseComponent from '../BaseComponent/BaseComponent.js';
 import template from './Input.hbs';
 import {TextComponent} from '../TextComponent/Text.js';
+
 /**
  * Класс для Input
  */
@@ -10,8 +11,7 @@ export class InputComponent extends BaseComponent {
    * @param {string} context - контекст для Input
    */
   constructor(context) {
-    super();
-    this.context = context;
+    super(context);
     this.template = template;
   }
 }
@@ -24,6 +24,7 @@ class InputError {
   constructor() {
     this._errText = null;
   }
+
   /**
    * Вывести сообщение об ошибке
    * @param {string} err - тип ошибки
@@ -31,7 +32,7 @@ class InputError {
    */
   e(err, parent) {
     if (this._errText) {
-      parent.removeChild(document.getElementById('Err'));
+      this._errText.remove();
     }
     switch (err) {
       case 'NO_USERNAME': {
@@ -41,7 +42,7 @@ class InputError {
           text: 'No username',
           id: 'Err',
         });
-        parent.innerHTML += this._errText.render();
+        parent.appendChild(this._errText.render());
         break;
       }
       case 'PASSWORD_LENGTH': {
@@ -51,7 +52,7 @@ class InputError {
           text: 'Password too short',
           id: 'Err',
         });
-        parent.innerHTML += this._errText.render();
+        parent.appendChild(this._errText.render());
         break;
       }
       case 'PASSWORDS_MATCH': {
