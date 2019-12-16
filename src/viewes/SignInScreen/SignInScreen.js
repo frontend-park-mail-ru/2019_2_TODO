@@ -57,7 +57,7 @@ export default class SignInScreen extends BaseView {
         password.value = '';
         return;
       }
-      if (password.value.length < 5) {
+      if (password.value.length < 4) {
         password.value = '';
         InputError.e('PASSWORD_LENGTH', form);
         return;

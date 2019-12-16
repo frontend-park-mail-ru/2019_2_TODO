@@ -25,12 +25,14 @@
     left: -100%;
     z-index: 0;
 
-    transform: rotate(180deg);
+    transform:  rotate(180deg);
   }
 }
 .table {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  //flex-direction: row;
+  grid-template-columns: 1fr;
+  grid-template-rows: 25% 1fr 25%;
   align-items: center;
   justify-content: center;
   position: absolute;
@@ -44,7 +46,7 @@
   }
   @media (orientation: landscape) {
     background-image: url("/assets/table_new.png");
-    top: calc(50% - 27vh);
+    top: calc(50% - 30vh);
     left: calc(50% - 27vw);
     height: 54vh;
     width: 54vw;
@@ -61,7 +63,7 @@
     top: calc(50vw - 20px);
   }
   @media (orientation: landscape) {
-    top: calc(50vh - 20px);
+    top: calc(46vh - 20px);
     left: calc(50vw - 45px);
   }
   z-index: 30;
@@ -94,8 +96,8 @@
 .raise-slider {
   position: absolute;
   bottom: 10vh;
-  width: 18%;
-  left: calc(41% - 10px);
+  width: 25vw;
+  //left: calc(25vw - 10px);
   outline: none;
   border: initial;
   appearance: none;

@@ -30,7 +30,6 @@ export class HeaderComponent {
     username = 'nickname',
   ) {
     this._parent = parent;
-    this._authorized = authorized;
     this._avatar = avatar;
     this._username = username;
   }
@@ -40,7 +39,7 @@ export class HeaderComponent {
    * Отрисовать заголовок
    */
   render() {
-    if (!this._authorized) {
+    if (!user.isAuth) {
       const head = new Header({
         hiddenSign: '',
       });

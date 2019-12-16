@@ -24,16 +24,31 @@ export default class Router {
     };
     return this;
   }
+
+  /**
+   * Удалить путь
+   * @param {string} path
+   */
+  remove(path) {
+    this.routes[path] = undefined;
+  }
   /**
    * Открыт путь
    * @param {string} path
    */
   open(path) {
-    const route = this.routes[path];
+    const url = new URL('https://pokertodo.ru:743'+path);
+    const route = this.routes[url.pathname];
     if (!route) {
       this.open('/notFound');
       return;
     }
+    // if ((url.pathname === '/tables') || (url.pathname === '/multiplayer')) {
+    //   if (!user.isAuth) {
+    //     this.open('/login');
+    //     return;
+    //   }
+    // }
     if (window.location.pathname !== path) {
       window.history.pushState(
           null,
@@ -42,15 +57,11 @@ export default class Router {
       );
     }
     let {View, view, el} = route;
-    if (!el) {
-      el = document.createElement('section');
-      this.root.appendChild(el);
-    }
-    if (!view) {
-      view = new View(el);
-    }
+    el = document.createElement('section');
+    this.root.appendChild(el);
+    view = new View(el);
     if (!view.active) {
-      Object.values(this.routes).forEach(({view}) => {
+      Object.values(this.routes).forEach(({view, el}) => {
         if (view && view.active) {
           view.hide();
         }

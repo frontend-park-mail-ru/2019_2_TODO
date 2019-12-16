@@ -15,8 +15,8 @@ export default class ProfileView extends BaseView {
   render() {
     this.el.innerHTML = '';
     const application = this.el;
-    const header = new HeaderComponent(this.el);
-    header.render();
+    // const header = new HeaderComponent(this.el);
+    // header.render();
     const prof = new Profile({
       avatar: user.avatar,
       nickname: user.username,

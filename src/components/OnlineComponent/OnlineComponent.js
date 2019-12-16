@@ -7,16 +7,16 @@ export class OnlineComponent extends BaseComponent {
     this.template = template;
   }
 }
-
-export class OnlineTable {
-  constructor(
-    parent,
-  ) {
-    this._parent = parent;
-  }
-
-  render() {
-    const table = new OnlineComponent();
-    this._parent.appendChild(table.render());
-  }
-}
+//
+// export class OnlineTable {
+//   constructor(
+//     parent,
+//   ) {
+//     this._parent = parent;
+//   }
+//
+//   render() {
+//     const table = new OnlineComponent();
+//     this._parent.appendChild(table.render());
+//   }
+// }

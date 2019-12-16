@@ -10,6 +10,8 @@ import runtime from 'serviceworker-webpack-plugin/lib/runtime.js';
 import UserContainer from './module/User/UserContainer';
 import SupportView from './viewes/SupportView/SupportView';
 import TableView from './viewes/TableView/TableView';
+import MultiPlayerView from './viewes/MultiplayerView/MultiPlayerView';
+// import RoomController from "./module/RoomController/RoomController";
 
 if ('serviceWorker' in navigator) {
   // const registration =
@@ -27,9 +29,10 @@ window.router.register('/', StartScreen)
     .register('/notFound', NotFoundView)
     .register('/online', TableView)
     .register('/support', SupportView)
+    .register('/multiplayer', MultiPlayerView)
     .register('/tables', TableView);
 
 window.user.checkAuth().finally(()=>{
   router.start();
 });
-
+// window.roomsController = new RoomController();

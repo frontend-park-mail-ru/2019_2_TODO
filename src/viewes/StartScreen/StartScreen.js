@@ -1,6 +1,7 @@
 import {HeaderComponent} from '../../components/Header/Header.js';
 import BaseView from '../BaseView/BaseView.js';
 import {MenuBar} from '../../components/MenuBar/MenuBar';
+import ScoreBoard from '../../components/ScoreBoard/ScoreBoard';
 
 /** Стартовый экран*/
 export default class StartScreen extends BaseView {
@@ -22,7 +23,12 @@ export default class StartScreen extends BaseView {
         user.username,
     );
     header.render();
+    const div = document.createElement('div');
+    div.className = 'body';
     const menuBar = new MenuBar({});
-    application.appendChild(menuBar.render());
+    const scoreBoard = new ScoreBoard({});
+    div.appendChild(menuBar.render());
+    div.appendChild(scoreBoard.render());
+    application.appendChild(div);
   }
 }

@@ -3,9 +3,13 @@
 
 .menu-bar {
   @extend %column;
-  height: 100vh;
+  //height: 100%;
+  margin-top: 10vh;
   justify-content: center;
   align-items: center;
+  align-self: center;
+
+  grid-area: 1/2;
   font-size: 30px;
 
   &__button {
