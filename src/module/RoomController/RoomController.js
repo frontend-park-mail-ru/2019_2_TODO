@@ -15,6 +15,7 @@ export default class RoomController {
         return;
       }
       const {rooms} = JSON.parse(msg.data);
+      console.log(rooms);
       this.updateRooms(rooms);
     };
     this.socket.onerror = (err) => {
