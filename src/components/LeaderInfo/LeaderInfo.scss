@@ -3,7 +3,12 @@
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 20% 1fr 30%;
-  height: 5vh;
+  @media (orientation: portrait) {
+    max-height: 5vw;
+  }
+  @media (orientation: landscape) {
+    max-height: 5vh;
+  }
   border-bottom: solid 1px grey;
   text-align: center;
   font-size: 20px;

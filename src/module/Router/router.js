@@ -43,12 +43,12 @@ export default class Router {
       this.open('/notFound');
       return;
     }
-    // if ((url.pathname === '/tables') || (url.pathname === '/multiplayer')) {
-    //   if (!user.isAuth) {
-    //     this.open('/login');
-    //     return;
-    //   }
-    // }
+    if ((url.pathname === '/tables') || (url.pathname === '/multiplayer')) {
+      if (!user.isAuth) {
+        this.open('/login');
+        return;
+      }
+    }
     if (window.location.pathname !== path) {
       window.history.pushState(
           null,
