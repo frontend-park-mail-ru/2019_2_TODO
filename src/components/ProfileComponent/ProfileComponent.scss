@@ -97,7 +97,11 @@
     height: auto;
     margin: 3px;
   }
-
+  &__container_1 {
+    align-self: center;
+    margin: 10px;
+    //min-height: 165px;
+  }
   &__container {
     align-self: center;
     margin: 10px;
