@@ -2,7 +2,7 @@
 .profileForm {
   margin-top: 25vh;
   min-width: 20vw;
-  //max-height: 342px;
+  max-height: 47vh;
   text-align: center;
   padding: 10px;
   border-radius: 10px;
@@ -106,10 +106,12 @@
     align-self: center;
     margin: 10px;
     min-height: 165px;
+    min-width: 80%;
   }
 
   &__input {
     margin-left: 0;
     margin-right: 0;
+
   }
 }
