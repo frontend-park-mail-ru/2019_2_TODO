@@ -38,8 +38,8 @@ export default class TableView extends BaseView {
       document.getElementById('tables').innerHTML = '';
       const rooms = this.roomsController.rooms;
       Object.keys(rooms).forEach((key) => {
-        console.log(rooms[key]);
-        console.log(Object.keys(rooms[key]));
+        // console.log(rooms[key]);
+        // console.log(Object.keys(rooms[key]));
         this.addTable(key, rooms[key].actualPlaces, rooms[key].places, rooms[key].players);
       });
     });
@@ -53,6 +53,7 @@ export default class TableView extends BaseView {
    * @param {Array} players
    */
   addTable(id, taken, places, players = []) {
+    console.log(id, taken, places, players);
     const tables = document.getElementById('tables');
     const table = new TableComponent({
       roomBet: '20/40',
