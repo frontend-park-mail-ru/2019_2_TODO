@@ -8,7 +8,7 @@ class AjaxModule {
    * @param {FormData} data - картинка
    */
   postAvatar(data) {
-    this.fetchPost('/auth/signin/profileImage/', data, {
+    this.fetchPost('/api/signin/profileImage/', data, {
       method: 'POST',
       credentials: 'include',
       body: data})
