@@ -68,7 +68,7 @@ class AjaxModule {
    * Выход
    */
   logOut() {
-    this.fetchGet('/auth/logout/')
+    this.fetchGet('/api/logout/')
         .then((res) => {
           if (res.status === 200) {
             user.isAuth = false;
