@@ -28,7 +28,7 @@ class AjaxModule {
    * @param {string} password
    */
   signUp(email, password) {
-    this.fetchPost('/auth/signup/',
+    this.fetchPost('/api/signup/',
         JSON.stringify({
           username: email,
           password: password,
@@ -50,7 +50,7 @@ class AjaxModule {
    */
   signIn(email, password) {
     return this.fetchPost(
-        '/auth/signin/',
+        '/api/signin/',
         JSON.stringify({
           username: email,
           password: password,
