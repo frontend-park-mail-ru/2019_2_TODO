@@ -40,7 +40,7 @@ export default class TableView extends BaseView {
       Object.keys(rooms).forEach((key) => {
         this.addTable(
             key,
-            rooms[key].taken,
+            rooms[key].actualPlaces,
             rooms[key].places,
             rooms[key].players
         );
