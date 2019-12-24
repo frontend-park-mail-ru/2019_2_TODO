@@ -47,9 +47,8 @@ export default class SignInScreen extends BaseView {
     });
     form.appendChild(SubmitButton.render());
     application.appendChild(form);
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
       const email = form.elements.email;
       const password = form.elements.password;
       if (!email.value.length) {

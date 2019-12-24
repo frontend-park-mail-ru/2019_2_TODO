@@ -2,6 +2,7 @@ import {HeaderComponent} from '../../components/Header/Header.js';
 import BaseView from '../BaseView/BaseView.js';
 import {MenuBar} from '../../components/MenuBar/MenuBar';
 import ScoreBoard from '../../components/ScoreBoard/ScoreBoard';
+import RoomCreateComponent from "../../components/RoomCreateComponent/RoomCreateComponent";
 
 /** Стартовый экран*/
 export default class StartScreen extends BaseView {

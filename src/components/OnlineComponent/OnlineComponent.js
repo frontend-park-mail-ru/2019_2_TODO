@@ -6,6 +6,14 @@ export class OnlineComponent extends BaseComponent {
     super(context);
     this.template = template;
   }
+  // render() {
+  //   this.compile();
+  //   this.element.children[2].addEventListener('click', (event) => {
+  //     event.preventDefault();
+  //
+  //   });
+  //   return this.element;
+  // }
 }
 //
 // export class OnlineTable {

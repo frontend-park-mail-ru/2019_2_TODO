@@ -3,6 +3,7 @@ import {TableComponent} from '../../components/TableComponent/TableComponent';
 import {HeaderComponent} from '../../components/Header/Header';
 import RoomController from '../../module/RoomController/RoomController';
 import {OnlineComponent} from '../../components/OnlineComponent/OnlineComponent';
+import RoomCreateComponent from "../../components/RoomCreateComponent/RoomCreateComponent";
 
 /** Столы*/
 export default class TableView extends BaseView {
@@ -32,6 +33,12 @@ export default class TableView extends BaseView {
       if (room) {
         this.addTable(room.id, room.actualPlaces, room.places, room.players);
       }
+    });
+    document.getElementById('createRoom').addEventListener('click', (event) => {
+      event.preventDefault();
+      const roomCreater = new RoomCreateComponent({});
+      this.el.appendChild(roomCreater.render());
+      roomCreater.addHandlers();
     });
     addEventListener('updateRooms', (event)=>{
       event.preventDefault();
