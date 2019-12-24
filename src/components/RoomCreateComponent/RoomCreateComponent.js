@@ -19,7 +19,7 @@ export default class RoomCreateComponent extends BaseComponent {
       }));
       AjaxModule.fetchPost('/api/create_room/', JSON.stringify({
         playersInRoom: parseInt(form.elements.playersNumber.value),
-        private: parseInt(form.elements.privacy.value),
+        private: parseInt(form.elements.privacy.value) ? true : false,
         minBet: parseInt(form.elements.blindsValue.value),
         password: '',
       })).then(() => {
