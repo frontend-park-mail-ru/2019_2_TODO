@@ -30,7 +30,7 @@ export default class TableView extends BaseView {
     // this.addTable('sdgfkjerngkn', '3', '4');
     this.roomsController.rooms.forEach((room) => {
       if (room) {
-        this.addTable(room.id, room.taken, room.places, room.users);
+        this.addTable(room.id, room.actualPlaces, room.places, room.players);
       }
     });
     addEventListener('updateRooms', (event)=>{
@@ -38,8 +38,12 @@ export default class TableView extends BaseView {
       document.getElementById('tables').innerHTML = '';
       const rooms = this.roomsController.rooms;
       Object.keys(rooms).forEach((key) => {
-        // console.log(rooms[key]);
-        this.addTable(key, rooms[key], '2');
+        this.addTable(
+            key,
+            rooms[key].taken,
+            rooms[key].places,
+            rooms[key].players
+        );
       });
     });
   }
