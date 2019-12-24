@@ -49,7 +49,7 @@ section{
 }
 form {
   @extend %column;
-  margin-top: 10%;
+  margin-top: calc(100px + 10vh);
   align-items: center;
   align-self: center;
   //width: 20%;

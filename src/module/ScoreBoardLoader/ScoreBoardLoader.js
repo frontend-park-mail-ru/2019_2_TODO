@@ -11,7 +11,7 @@ export default class ScoreBoardLoader {
           return res.text();
         })
         .then((resText)=>{
-          this.leaders = JSON.parse(resText.leaders);
+          this.leaders = JSON.parse(resText).leaders;
         });
   }
 }
