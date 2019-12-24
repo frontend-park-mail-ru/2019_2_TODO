@@ -20,7 +20,7 @@ export default class User {
           console.log(res);
         })
         .then((res) => {
-          console.log(res);
+          //console.log(res);
           return res.text();
         })
         .then((resText) => {

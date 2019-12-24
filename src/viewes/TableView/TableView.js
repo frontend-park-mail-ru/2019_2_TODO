@@ -63,7 +63,7 @@ export default class TableView extends BaseView {
    * @param {Array} players
    */
   addTable(id, taken, places, players = []) {
-    console.log(id, taken, places, players);
+    //console.log(id, taken, places, players);
     const tables = document.getElementById('tables');
     const table = new TableComponent({
       roomBet: '20/40',

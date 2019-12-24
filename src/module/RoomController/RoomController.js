@@ -7,7 +7,7 @@ export default class RoomController {
     this.socket = null;
     this.socket = new WebSocket('wss://pokertodo.ru:743/auth/rooms/');
     this.socket.onopen = (msg) => {
-      console.log(msg);
+      //console.log(msg);
     };
     this.socket.onmessage = (msg) => {
       if (window.location.pathname !== '/tables') {
