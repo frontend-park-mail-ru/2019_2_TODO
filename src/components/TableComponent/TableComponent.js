@@ -14,7 +14,7 @@ export class TableComponent extends BaseComponent {
     this.users.forEach((player)=>{
       const playerInfo = new RoomPlayerInfo({
         avatar: player.avatar,
-        nickname: player.name,
+        nickname: player.username,
       });
       this.element.children[1].appendChild(playerInfo.render());
     });
