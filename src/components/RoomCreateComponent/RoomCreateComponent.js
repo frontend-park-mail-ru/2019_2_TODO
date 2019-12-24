@@ -11,12 +11,6 @@ export default class RoomCreateComponent extends BaseComponent {
     const form = this.element;
     form.addEventListener('submit', (event) => {
       event.preventDefault();
-      console.log(JSON.stringify({
-        playersInRoom: parseInt(form.elements.playersNumber.value),
-          private: parseInt(form.elements.privacy.value) ? true : false,
-        password: '',
-        minBet: parseInt(form.elements.blindsValue.value),
-      }));
       AjaxModule.fetchPost('/api/create_room/', JSON.stringify({
         playersInRoom: parseInt(form.elements.playersNumber.value),
         private: parseInt(form.elements.privacy.value) ? true : false,

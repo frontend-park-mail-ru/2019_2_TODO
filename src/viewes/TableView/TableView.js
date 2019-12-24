@@ -49,7 +49,8 @@ export default class TableView extends BaseView {
             key,
             rooms[key].actualPlaces,
             rooms[key].places,
-            rooms[key].players
+            rooms[key].players,
+            rooms[key].minBet,
         );
       });
     });
@@ -62,11 +63,11 @@ export default class TableView extends BaseView {
    * @param {string} places
    * @param {Array} players
    */
-  addTable(id, taken, places, players = []) {
+  addTable(id, taken, places, players = [], minBet = 20) {
     //console.log(id, taken, places, players);
     const tables = document.getElementById('tables');
     const table = new TableComponent({
-      roomBet: '20/40',
+      roomBet: `${minBet}/${2*minBet}`,
       taken: taken,
       all: places,
       id: id,
