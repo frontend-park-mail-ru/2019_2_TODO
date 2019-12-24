@@ -20,7 +20,7 @@ export default class RoomCreateComponent extends BaseComponent {
       AjaxModule.fetchPost('/api/create_room/', {
         playersInRoom: form.elements.playersNumber.value,
         private: form.elements.privacy.value,
-        minBet: form.elements.blindsValue,
+        minBet: form.elements.blindsValue.value,
         password: '',
       }).then(() => {
         form.remove();
