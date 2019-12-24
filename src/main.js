@@ -11,6 +11,7 @@ import UserContainer from './module/User/UserContainer';
 import SupportView from './viewes/SupportView/SupportView';
 import TableView from './viewes/TableView/TableView';
 import MultiPlayerView from './viewes/MultiplayerView/MultiPlayerView';
+import ScoreBoardLoader from './module/ScoreBoardLoader/ScoreBoardLoader';
 // import RoomController from "./module/RoomController/RoomController";
 
 if ('serviceWorker' in navigator) {
@@ -18,6 +19,7 @@ if ('serviceWorker' in navigator) {
   runtime.register();
 }
 window.user = new UserContainer();
+window.scoreBoard = new ScoreBoardLoader();
 const application = document.getElementById('application');
 window.router = new Router(application);
 window.router.register('/', StartScreen)
@@ -32,7 +34,7 @@ window.router.register('/', StartScreen)
     .register('/multiplayer', MultiPlayerView)
     .register('/tables', TableView);
 
-window.user.checkAuth().finally(()=>{
+Promise.all([user.checkAuth(), scoreBoard.load()]).finally(()=>{
   router.start();
 });
 // window.roomsController = new RoomController();
