@@ -15,7 +15,7 @@ export default class User {
    * @return {Promise<string>}
    */
   checkAuth() {
-    return AjaxModule.fetchGet('/auth/signin/')
+    return AjaxModule.fetchGet('/api/signin/')
         .catch((res) => {
           console.log(res);
         })
@@ -69,7 +69,7 @@ export default class User {
    */
   changeData(username, password) {
     AjaxModule.fetchPost(
-        '/auth/signin/profile/',
+        '/api/signin/profile/',
         JSON.stringify({
           username: username,
           password: password,

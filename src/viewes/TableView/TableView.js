@@ -30,7 +30,7 @@ export default class TableView extends BaseView {
     // this.addTable('sdgfkjerngkn', '3', '4');
     this.roomsController.rooms.forEach((room) => {
       if (room) {
-        this.addTable(room.id, room.taken, room.places);
+        this.addTable(room.id, room.taken, room.places, room.users);
       }
     });
     addEventListener('updateRooms', (event)=>{
@@ -38,6 +38,7 @@ export default class TableView extends BaseView {
       document.getElementById('tables').innerHTML = '';
       const rooms = this.roomsController.rooms;
       Object.keys(rooms).forEach((key) => {
+        // console.log(rooms[key]);
         this.addTable(key, rooms[key], '2');
       });
     });
@@ -51,6 +52,7 @@ export default class TableView extends BaseView {
    * @param {Array} players
    */
   addTable(id, taken, places, players = []) {
+    console.log(id, taken, places, players);
     const tables = document.getElementById('tables');
     const table = new TableComponent({
       roomBet: '20/40',

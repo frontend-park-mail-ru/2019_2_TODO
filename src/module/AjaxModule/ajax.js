@@ -8,7 +8,7 @@ class AjaxModule {
    * @param {FormData} data - картинка
    */
   postAvatar(data) {
-    this.fetchPost('/auth/signin/profileImage/', data, {
+    this.fetchPost('/api/signin/profileImage/', data, {
       method: 'POST',
       credentials: 'include',
       body: data})
@@ -28,7 +28,7 @@ class AjaxModule {
    * @param {string} password
    */
   signUp(email, password) {
-    this.fetchPost('/auth/signup/',
+    this.fetchPost('/api/signup/',
         JSON.stringify({
           username: email,
           password: password,
@@ -50,7 +50,7 @@ class AjaxModule {
    */
   signIn(email, password) {
     return this.fetchPost(
-        '/auth/signin/',
+        '/api/signin/',
         JSON.stringify({
           username: email,
           password: password,
@@ -68,7 +68,7 @@ class AjaxModule {
    * Выход
    */
   logOut() {
-    this.fetchGet('/auth/logout/')
+    this.fetchGet('/api/logout/')
         .then((res) => {
           if (res.status === 200) {
             user.isAuth = false;
