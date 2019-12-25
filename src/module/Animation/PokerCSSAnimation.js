@@ -76,11 +76,11 @@ export class PokerCSSAnimation {
     this.removeShine(this.shining);
     this.players.forEach((id) => {
       this[id].forEach((cardId) => {
-        document.getElementById(cardId).hidden = true;
+        document.getElementById(cardId).remove();
       });
     });
     this.bankerCards.forEach((card) => {
-      document.getElementById(card).hidden = true;
+      document.getElementById(card).remove();
     });
   }
   showWinnerCards(cards) {
@@ -117,6 +117,7 @@ export class PokerCSSAnimation {
   removeShine(id) {
     if (id !== undefined) {
       document.getElementById(id).parentElement.style.border = 'none';
+      console.log(id);
     }
   }
 }
