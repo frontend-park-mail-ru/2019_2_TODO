@@ -73,6 +73,7 @@ export class PokerCSSAnimation {
     });
   }
   removeAllCards() {
+    this.removeShine(this.shining);
     this.players.forEach((id) => {
       this[id].forEach((cardId) => {
         document.getElementById(cardId).hidden = true;
