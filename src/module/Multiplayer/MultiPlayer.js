@@ -24,6 +24,7 @@ export default class MultiPlayer {
     this.socket.onerror = (err)=> {
       console.log(err);
     };
+    this.animation = new PokerCSSAnimation(this.players);
   }
 
   /**
@@ -88,7 +89,6 @@ export default class MultiPlayer {
    * @param {Object} playerInfo
    */
   startGame(playerInfo) {
-    this.animation = new PokerCSSAnimation(this.players);
     this.animation.startRoundAnimation();
     this.showPlayerCards(playerInfo);
     this.updatePlayerScore(playerInfo);

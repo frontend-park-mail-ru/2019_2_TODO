@@ -4,6 +4,9 @@ export class PokerCSSAnimation {
   constructor(players) {
     this.shining = undefined;
     this.players = players;
+  }
+
+  startRoundAnimation() {
     let i = 0;
     this.players.forEach((id) => {
       this[id] = [];
@@ -38,9 +41,6 @@ export class PokerCSSAnimation {
       });
       bankContainer.appendChild(card.render());
     });
-  }
-
-  startRoundAnimation() {
     this.players.forEach((id) => {
       this[id].forEach((cardId) => {
         document.getElementById(cardId).dataset['nominal'] = '';
