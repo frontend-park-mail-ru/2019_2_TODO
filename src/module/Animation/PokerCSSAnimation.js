@@ -12,10 +12,11 @@ export class PokerCSSAnimation {
     newRound.innerText = 'New Round';
     newRound.hidden = false;
     newRound.style.animation = 'fly-in-out 3s';
-    newRound.addEventListener('animationend', ()=>{
+    newRound.addEventListener('animationend', () => {
       newRound.style.animation = '';
       newRound.hidden = true;
     }, {once: true});
+
     let i = 0;
     this.players.forEach((id) => {
       this[id] = [];
@@ -76,11 +77,13 @@ export class PokerCSSAnimation {
       return delay + 400;
     }, 0);
   }
+
   removePlayerCards(id) {
     this[id].forEach((cardId) => {
       document.getElementById(cardId).hidden = true;
     });
   }
+
   removeAllCards() {
     this.removeShine(this.shining);
     this.players.forEach((id) => {
@@ -92,25 +95,26 @@ export class PokerCSSAnimation {
       document.getElementById(card).remove();
     });
   }
+
   showWinnerCards(cards) {
     // document.getElementById('user').parentElement.style.border = 'none';
     // document.getElementById('bot').parentElement.style.border = 'none';
     const cardsIds = [];
-    this.bankerCards.forEach((id)=>{
+    this.bankerCards.forEach((id) => {
       const card = document.getElementById(id);
-      if (cards.includes(card.dataset['nominal']) ) {
+      if (cards.includes(card.dataset['nominal'])) {
         cardsIds.push(id);
       }
     });
-    this.players.forEach((id)=>{
-      this[id].forEach((cardId)=>{
+    this.players.forEach((id) => {
+      this[id].forEach((cardId) => {
         const card = document.getElementById(cardId);
-        if (cards.includes(card.dataset['nominal']) ) {
+        if (cards.includes(card.dataset['nominal'])) {
           cardsIds.push(cardId);
         }
       });
     });
-    cardsIds.forEach((id)=> {
+    cardsIds.forEach((id) => {
       const c = document.getElementById(id);
       c.style.animation = 'winCard 3s';
       c.addEventListener('animationend', () => {
@@ -118,11 +122,13 @@ export class PokerCSSAnimation {
       }, {once: true});
     });
   }
+
   shinePlayer(id) {
     this.removeShine(this.shining);
     document.getElementById(id).parentElement.style.border = '2px solid gold';
     this.shining = id;
   }
+
   removeShine(id) {
     if (id !== undefined) {
       document.getElementById(id).parentElement.style.border = 'none';

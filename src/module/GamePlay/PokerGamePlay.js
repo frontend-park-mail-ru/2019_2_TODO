@@ -9,9 +9,11 @@ const baseDeck = [
 ];
 
 export const updateScoreBet = () => {
-  document.getElementById('userScore').innerText = `${window.sessionStorage.playerScore}/${window.sessionStorage.playerBet}`;
+  document.getElementById('userScore').innerText = window.sessionStorage.playerScore;
   document.getElementById('bank').innerText = window.sessionStorage.bank;
-  document.getElementById('botScore').innerText = `${window.sessionStorage.botScore}/${window.sessionStorage.botBet}`;
+  document.getElementById('scoreSpan0').innerText = sessionStorage.playerBet;
+  document.getElementById('scoreSpan1').innerText = sessionStorage.botBet;
+  document.getElementById('botScore').innerText = window.sessionStorage.botScore;
 };
 
 export class Game {

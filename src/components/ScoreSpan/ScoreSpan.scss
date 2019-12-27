@@ -14,7 +14,7 @@
   }
 }
 
-.ScoreSpan:nth-child(6){
+.ScoreSpan:nth-child(3){
   grid-area: s1;
   @media screen and (max-height: 1080px){
     align-self: flex-end;
@@ -23,15 +23,15 @@
     align-self: flex-start;
   }
 }
-.ScoreSpan:nth-child(7){
+.ScoreSpan:nth-child(4){
   grid-area: s2;
 }
-.ScoreSpan:nth-child(3){
+.ScoreSpan:nth-child(5){
   grid-area: s3;
 }
-.ScoreSpan:nth-child(4){
+.ScoreSpan:nth-child(6){
   grid-area: s4;
 }
-.ScoreSpan:nth-child(5){
+.ScoreSpan:nth-child(7){
   grid-area: s5;
 }
