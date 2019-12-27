@@ -53,6 +53,11 @@
   align-self: flex-end;
   margin: 6px;
   cursor: pointer;
+  @media screen and (orientation: portrait){
+    font-size: 60px;
+    height: 75px;
+    align-self: center;
+  }
 }
 
 .button-back {

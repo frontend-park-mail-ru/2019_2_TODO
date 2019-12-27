@@ -1,6 +1,24 @@
 
 .sect {
-  //position: relative;
+  position: relative;
+  @media screen and (orientation: portrait) {
+    html {
+      -webkit-transform: rotate(-90deg);
+      -moz-transform: rotate(-90deg);
+      -o-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+      transform: rotate(-90deg);
+      -webkit-transform-origin: left top;
+      -moz-transform-origin: left top;
+      -ms-transform-origin: left top;
+      -o-transform-origin: left top;
+      transform-origin: left top;
+      position: absolute;
+      top: 100vh;
+      height: 100vw;
+      width: 100vh;
+    }
+  }
   padding: 0;
   margin: 0;
   z-index: 0;

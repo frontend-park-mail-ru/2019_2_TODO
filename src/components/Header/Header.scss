@@ -6,7 +6,7 @@
   padding: 25px;
   padding-right: 0;
   //margin-bottom: 100px;
-  @media screen and (max-width: 900px) and (orientation: portrait){
+  @media screen and (orientation: portrait) {
   }
   &__button_back {
     align-self: start;
@@ -21,7 +21,7 @@
     &__left-container {
       @extend %row;
       align-items: center;
-      @media screen and (orientation: portrait) and  (max-width: 900px) {
+      @media screen and (orientation: portrait) {
         width: 100%;
         justify-content: flex-start;
       }
@@ -37,8 +37,10 @@
         transition: text-shadow;
         transition-duration: 1000ms;
         transition-timing-function: ease;
-        @media screen and (orientation: portrait) {
-          font-size: 90px;
+        @media screen {
+          @media (orientation: portrait) {
+            font-size: 90px;
+          }
           text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #2cff08, 0 0 0.5em #094f0a, 0 0 0.1em #2cff08;
         }
         &__span {

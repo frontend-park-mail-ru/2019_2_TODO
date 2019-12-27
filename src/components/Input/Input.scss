@@ -6,6 +6,15 @@
   height: 2vh;
   width: calc(150px + 5vw);
   box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #565656;
+  @media screen and (orientation: portrait) {
+    width: 60vw;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 100px;
+    padding: 10px;
+    font-size: 60px;
+    font-family: Roboto;
+  }
 }
 
 .input:focus {
