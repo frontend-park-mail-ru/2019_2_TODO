@@ -6,7 +6,7 @@ export default class ScoreBoardLoader {
     this.leaders = [];
   }
   load() {
-    return AjaxModule.fetchGet('https://pokertodo.ru:743/scoreboard/')
+    return AjaxModule.fetchGet('https://pokertodo.ru/scoreboard/')
         .then((res)=>{
           return res.text();
         })

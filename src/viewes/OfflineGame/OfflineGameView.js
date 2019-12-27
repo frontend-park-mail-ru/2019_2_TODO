@@ -61,6 +61,7 @@ export default class OfflineGameView extends BaseView {
     this.el.appendChild(playersContainer);
     const playerButton = new PokerUserPanel();
     this.el.appendChild(playerButton.render());
+    // this.el.requestFullscreen();
     this.addHandlers();
   }
   /** Добавить обработчики*/
