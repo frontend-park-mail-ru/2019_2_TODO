@@ -18,6 +18,7 @@ export default class ChangeProfileView extends BaseView {
       username: user.username,
       avatar: user.avatar,
     });
+    prof.render().className = 'profileForm-change';
     this.el.appendChild(prof.render());
     this.el.addEventListener('click', (evt) => {
       if (evt.target.id === 'changeAv') {
