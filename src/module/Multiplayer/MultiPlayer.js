@@ -51,7 +51,6 @@ export default class MultiPlayer {
     document.getElementById(playerInfo.id+'container').remove();
 
   }
-
   /**
    * Показать победные карты
    * @param {Object} info
@@ -169,6 +168,14 @@ export default class MultiPlayer {
    */
   setCheck(playerInfo) {
 
+  }
+
+  /**
+   * Указать минимальную ставку
+   * @param {Object} betInfo
+   */
+  minBet(betInfo) {
+    document.getElementById('raiseSlider').min = betInfo.min;
   }
   /**
    * Установить счет банка
