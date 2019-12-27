@@ -30,7 +30,6 @@
   &__board {
     overflow: auto;
     @media (orientation: portrait) {
-      max-height: 70vw;
     }
     @media (orientation: landscape) {
       max-height: 70vh;

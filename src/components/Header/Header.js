@@ -44,7 +44,8 @@ export class HeaderComponent {
         hiddenSign: '',
       });
       this._parent.appendChild(head.render());
-      document.getElementById('pokerDom').addEventListener('click', () => {
+      head.render().children[0].children[0].addEventListener('click', (event)=>{
+        event.preventDefault();
         router.open('/');
       });
     } else {

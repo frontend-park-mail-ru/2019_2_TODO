@@ -22,9 +22,9 @@ export default class ScoreBoard extends BaseComponent {
     this.compile();
     for (let i = 0; i < 10; i++) {
       scoreBoard.leaders.push({
-        score: '1000',
+        points: '1000',
         id: i,
-        nickname: 'player',
+        username: 'player',
         position: i + 1,
       });
     }

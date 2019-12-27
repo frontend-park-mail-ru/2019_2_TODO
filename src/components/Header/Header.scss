@@ -6,7 +6,8 @@
   padding: 25px;
   padding-right: 0;
   //margin-bottom: 100px;
-
+  @media (orientation: portrait) {
+  }
   &__button_back {
     align-self: start;
   }
@@ -20,18 +21,26 @@
     &__left-container {
       @extend %row;
       align-items: center;
+      @media (orientation: portrait) {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
 
       &__label {
         font-family: 'Monoton', cursive;
-        justify-self: flex-start;
         color: #b4b9b6;
         font-size: 30px;
         cursor: pointer;
+        justify-self: center;
         text-transform: uppercase;
         transition: text-shadow;
         transition-duration: 1000ms;
         transition-timing-function: ease;
-        //text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #4f4739, 0 0 0.5em #9aa0c0, 0 0 0.1em #4f4739;
+        @media (orientation: portrait) {
+          font-size: 90px;
+          text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #2cff08, 0 0 0.5em #094f0a, 0 0 0.1em #2cff08;
+        }
         &__span {
           animation: neon-4 linear infinite 6s;
         }
@@ -80,6 +89,9 @@
     &__right-container {
       display: flex;
       flex-direction: row;
+      @media (orientation: portrait) {
+        flex-direction: column;
+      }
     }
 
     &__button {
@@ -128,6 +140,10 @@
   height: 50px;
   width: 75px;
   align-self: flex-start;
+  @media (orientation: portrait) {
+    height: 120px;
+    width: 180px;
+  }
 }
 
 
