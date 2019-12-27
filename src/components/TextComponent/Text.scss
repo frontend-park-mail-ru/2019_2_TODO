@@ -16,3 +16,22 @@ h3 {
 .error:hover {
   text-decoration: none;
 }
+
+.about {
+  color: #2ecc71;
+  font-size: 100px;
+  font-family: 'Permanent Marker', cursive;
+  position: absolute;
+  top: calc(50vh - 200px);
+}
+
+.rules{
+  font-family: 'Permanent Marker', cursive;
+}
+
+.rules-text {
+  color: white;
+  font-family: 'Roboto';
+  font-size: 20px;
+  padding-top: 10px;
+}
