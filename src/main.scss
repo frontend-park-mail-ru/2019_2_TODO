@@ -24,24 +24,24 @@
 @import "components/LeaderInfo/LeaderInfo.scss";
 @import "components/RoomCreateComponent/RoomCreateComponent.scss";
 
-@media (orientation: portrait) {
-  html {
-    -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    -o-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-    transform: rotate(-90deg);
-    -webkit-transform-origin: left top;
-    -moz-transform-origin: left top;
-    -ms-transform-origin: left top;
-    -o-transform-origin: left top;
-    transform-origin: left top;
-    position: absolute;
-    top: 100vh;
-    height: 100vw;
-    width: 100vh;
-  }
-}
+//@media (orientation: portrait) {
+//  html {
+//    -webkit-transform: rotate(-90deg);
+//    -moz-transform: rotate(-90deg);
+//    -o-transform: rotate(-90deg);
+//    -ms-transform: rotate(-90deg);
+//    transform: rotate(-90deg);
+//    -webkit-transform-origin: left top;
+//    -moz-transform-origin: left top;
+//    -ms-transform-origin: left top;
+//    -o-transform-origin: left top;
+//    transform-origin: left top;
+//    position: absolute;
+//    top: 100vh;
+//    height: 100vw;
+//    width: 100vh;
+//  }
+//}
 //@media screen and (orientation:portrait) and (max-device-width: 900px) {
 //  html{
 //    -webkit-transform: rotate(-90deg);

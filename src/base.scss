@@ -13,10 +13,15 @@ body{
   margin: 0;
 }
 html{
-  background-image: url("assets/Backgrounds_Black_wallpaper_with_card_symbol_078600_.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-position: 0 30%;
+  @media (orientation: landscape) {
+    background-image: url("assets/Backgrounds_Black_wallpaper_with_card_symbol_078600_.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position: 0 30%;
+  }
+  @media (orientation: portrait) {
+    background: #1c1c1c;
+  }
   //background-size: 100% 100%;
 }
 //fieldset {
@@ -73,6 +78,11 @@ form {
 
 }
 .body {
+  @media (orientation: portrait){
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr 1fr;

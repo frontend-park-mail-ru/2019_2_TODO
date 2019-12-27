@@ -22,6 +22,9 @@
       color: #2ecc71;
       margin: 0;
       font-family: Roboto;
+      @media (orientation: portrait) {
+        font-size: 120px;
+      }
     }
   }
   &__board {

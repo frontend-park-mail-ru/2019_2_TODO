@@ -45,6 +45,7 @@ export default class MultiPlayer {
    */
   removePlayer(playerInfo) {
     document.getElementById(playerInfo.id+'container').remove();
+
   }
 
   /**
