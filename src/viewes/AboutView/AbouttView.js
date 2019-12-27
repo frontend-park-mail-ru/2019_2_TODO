@@ -8,8 +8,9 @@ export default class AboutView extends BaseView {
   }
 
   render() {
-    this.el.innerHTML = '';
     const application = this.el;
+    application.innerHTML = '';
+    application.style.backgroundImage = 'url("assets/asfalt.png")';
     const header = new HeaderComponent(application);
     header.render();
     const text = new TextComponent({
