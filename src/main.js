@@ -12,6 +12,8 @@ import SupportView from './viewes/SupportView/SupportView';
 import TableView from './viewes/TableView/TableView';
 import MultiPlayerView from './viewes/MultiplayerView/MultiPlayerView';
 import ScoreBoardLoader from './module/ScoreBoardLoader/ScoreBoardLoader';
+import AboutView from './viewes/AboutView/AbouttView';
+import RulesView from './viewes/RulesView/RulesView';
 // import RoomController from "./module/RoomController/RoomController";
 
 if ('serviceWorker' in navigator) {
@@ -32,9 +34,11 @@ window.router.register('/', StartScreen)
     .register('/online', TableView)
     .register('/support', SupportView)
     .register('/multiplayer', MultiPlayerView)
-    .register('/tables', TableView);
+    .register('/tables', TableView)
+    .register('/about', AboutView)
+    .register('/rules', RulesView);
 
-Promise.all([user.checkAuth(), scoreBoard.load()]).finally(()=>{
+Promise.all([user.checkAuth(), scoreBoard.load()]).finally(() => {
   router.start();
 });
 // window.roomsController = new RoomController();
