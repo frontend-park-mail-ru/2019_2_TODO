@@ -11,10 +11,20 @@
   border: 1px solid #2b3c4e;
   box-shadow: 0 0 90px black;
   text-align: center;
+  @media screen and (orientation: portrait){
+    //background: none;
+    justify-content: space-between;
+    margin-top: 10vh;
+    width: 80%;
+  }
 
   &__c {
     height: 30px;
     width: 30px;
+    @media screen and (orientation: portrait){
+      height: 150px;
+      width: 150px;
+    }
     align-self: flex-end;
     display: flex;
     align-items: center;
@@ -30,6 +40,10 @@
     cursor: pointer;
     color: white;
     text-decoration: none;
+    @media screen and (orientation: portrait){
+      font-size: 150px;
+
+    }
   }
 
   &__close-button:hover {
@@ -39,6 +53,7 @@
 
   &__close-button:focus {
     color: white;
+    outline: none;
   }
 
   &__header {
@@ -51,7 +66,7 @@
   }
 
   &__nike {
-    font-size: 22px;
+    font-size: 90px;
     margin-top: 10px;
     margin-bottom: 10px;
   }
@@ -66,7 +81,7 @@
     padding-bottom: 15px;
     width: 100%;
     color: silver;
-    font-size: 18px;
+    font-size: 70px;
     padding-top: 14px;
   }
 
@@ -76,6 +91,11 @@
     /*max-height: 100px;*/
     background-size: 100%;
     align-self: center;
+    @media screen and (orientation: portrait){
+      max-height: 500px;
+      width: 400px;
+      max-width: 500px;
+    }
   }
 
   &__button {
@@ -96,6 +116,10 @@
     max-width: 177px;
     height: auto;
     margin: 3px;
+    @media screen and (orientation: portrait){
+      max-width: 700px;
+      border-radius: 5px;
+    }
   }
   &__container_1 {
     align-self: center;
