@@ -37,7 +37,7 @@ export default class Router {
    * @param {string} path
    */
   open(path) {
-    const url = new URL('https://pokertodo.ru:743'+path);
+    const url = new URL('https://pokertodo.ru'+path);
     const route = this.routes[url.pathname];
     if (!route) {
       this.open('/notFound');

@@ -11,4 +11,4 @@
 Ментор: [Юрий Байков](https://github.com/OkciD)
 
 ## Сервер
-URL: https://pokertodo.ru:743/
+URL: https://pokertodo.ru/
