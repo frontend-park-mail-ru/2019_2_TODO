@@ -21,6 +21,7 @@ export default class OfflineGameView extends BaseView {
     this.card = null;
     this.game = null;
   }
+
   /** Отрисовать*/
   render() {
     this.el.innerHTML = '';
@@ -64,6 +65,7 @@ export default class OfflineGameView extends BaseView {
     this.el.requestFullscreen();
     this.addHandlers();
   }
+
   /** Добавить обработчики*/
   addHandlers() {
     document.getElementById('firstButton').addEventListener('click', (evt) => {
@@ -74,23 +76,20 @@ export default class OfflineGameView extends BaseView {
       OfflineGameView.disableButtonPanel('playerPanel');
       this.game.fold(evt);
     });
-    document.getElementById('raiseSlider').addEventListener('mousemove', (evt)=>{
+    document.getElementById('raiseSlider').addEventListener('mousemove', (evt) => {
       document.getElementById('thirdButton').textContent = `raise: ${evt.target.value}`;
     });
-    document.getElementById('raiseSlider').addEventListener('change', (evt)=>{
+    document.getElementById('raiseSlider').addEventListener('change', (evt) => {
       document.getElementById('thirdButton').textContent = `raise: ${evt.target.value}`;
     });
-    document.getElementById('thirdButton').addEventListener('click', (evt)=>{
+    document.getElementById('thirdButton').addEventListener('click', (evt) => {
       this.game.raise(evt, document.getElementById('raiseSlider').value);
     });
-    document.getElementById('startGame').addEventListener('click', (evt)=>{
+    document.getElementById('startGame').addEventListener('click', (evt) => {
       OfflineGameView.addPlayer('user', user.username, '1000', 'singleplayer__players');
       OfflineGameView.addPlayer('bot', 'bot', '1000', 'singleplayer__players');
-      OfflineGameView.addPlayer('bot1', 'bot', '1000', 'singleplayer__players');
-      OfflineGameView.addPlayer('bot2', 'bot', '1000', 'singleplayer__players');
-      OfflineGameView.addPlayer('bot3', 'bot', '1000', 'singleplayer__players');
       this.game = new Game();
-      setTimeout(()=>{
+      setTimeout(() => {
         this.game.startRound();
       }, 1000);
       document.getElementById('startGame').hidden = true;
@@ -107,6 +106,7 @@ export default class OfflineGameView extends BaseView {
     });
     document.getElementById(containerId).appendChild(playerInfo.render());
   }
+
   static disableButtonPanel() {
     document.getElementById('user').parentElement.style.border = 'none';
     document.getElementById('bot').parentElement.style.border = '2px solid gold';

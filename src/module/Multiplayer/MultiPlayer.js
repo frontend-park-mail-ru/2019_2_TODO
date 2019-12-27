@@ -11,16 +11,45 @@ export default class MultiPlayer {
     this.players = [];
     this.viewId = viewId;
     const url = new URL(window.location.href);
-    this.socket = new WebSocket(`wss://pokertodo.ru/online/?name=${user.username}&roomName=${url.searchParams.get('room')}&id=${user.id}`);
+{/*<<<<<<< HEAD*/}
+{/*    this.socket = new WebSocket(`wss://pokertodo.ru/online/?name=${user.username}&roomName=${url.searchParams.get('room')}&id=${user.id}`);*/}
+// =======
+    this.comandsArray = [];
+    this.needSyncListComands = {
+      showTableCards: true,
+    };
+    this.socket = new WebSocket(`wss://pokertodo.ru:743/online/?name=${user.username}&roomName=${url.searchParams.get('room')}&id=${user.id}`);
+// >>>>>>> c7c45068a4aad6de6c429f2d2b53b2dc71faf05b
     this.socket.onopen = (msg)=>{
-      console.log(msg);
+      addEventListener('sync', () => {
+        for (;;) {
+          if (this.comandsArray.length) {
+            Object.keys(this.comandsArray[0]).forEach((key)=>{
+              this[key](this.comandsArray[0][key]);
+            });
+            this.comandsArray.splice(0, 1);
+            if (this.comandsArray[0].needSync) {
+              break;
+            }
+          }
+        }
+      });
+      dispatchEvent(new Event('sync'));
     };
     this.socket.onmessage = (msg)=>{
       const {Command} = JSON.parse(msg.data);
-      console.log(Command);
-      Object.keys(Command).forEach((key)=>{
-        this[key](Command[key]);
-      });
+{/*<<<<<<< HEAD*/}
+{/*      console.log(Command);*/}
+{/*      Object.keys(Command).forEach((key)=>{*/}
+{/*        this[key](Command[key]);*/}
+{/*      });*/}
+{/*=======*/}
+      if (this.needSyncListComands[Object.keys(Command)[0]]) {
+        Command.needSync = true;
+      }
+      this.comandsArray.push(Command);
+
+// >>>>>>> c7c45068a4aad6de6c429f2d2b53b2dc71faf05b
     };
     this.socket.onerror = (err)=> {
       console.log(err);
@@ -112,7 +141,8 @@ export default class MultiPlayer {
   updatePlayerScore(playerInfo) {
     document.getElementById(playerInfo.id+'Score')
         .innerText = `${playerInfo.score}`;
-    document.getElementById('scoreSpan'+this.players.indexOf(playerInfo.id)).innerText = `${playerInfo.bet||0}`;
+    document.getElementById('scoreSpan'+this.players.indexOf(playerInfo.id))
+        .innerText = `${playerInfo.bet || 0}`;
   }
   /**
    * Готовность
