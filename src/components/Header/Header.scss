@@ -7,6 +7,7 @@
   padding-right: 0;
   //margin-bottom: 100px;
   @media screen and (orientation: portrait) {
+    min-height: 130px;
   }
   &__button_back {
     align-self: start;
@@ -147,6 +148,7 @@
   @media screen and (orientation: portrait) {
     height: 120px;
     width: 180px;
+    align-self: center;
   }
 }
 
