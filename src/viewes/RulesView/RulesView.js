@@ -1,6 +1,6 @@
 import BaseView from '../BaseView/BaseView';
 import {HeaderComponent} from '../../components/Header/Header';
-import {TextComponent} from "../../components/TextComponent/Text";
+import {TextComponent} from '../../components/TextComponent/Text';
 
 export default class RulesView extends BaseView {
   constructor(element) {
@@ -10,6 +10,7 @@ export default class RulesView extends BaseView {
   render() {
     const application = this.el;
     application.innerHTML = '';
+    application.style.backgroundImage = 'url("assets/asfalt.png")';
     const header = new HeaderComponent(application);
     header.render();
     const form = document.createElement('div');
