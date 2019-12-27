@@ -3,12 +3,12 @@ body{
   justify-content: space-between;
 
   background-size: 100%;
-  @media (orientation: landscape) {
-    height: 100vh;
-  }
-  @media screen and (orientation: portrait) {
-    height: 100vw;
-  }
+  //@media (orientation: landscape) {
+  //  height: 100vh;
+  //}
+  //@media screen and (orientation: portrait) {
+  //  height: 100vw;
+  //}
   padding: 0;
   margin: 0;
 }
@@ -68,7 +68,7 @@ form {
 
 }
 .body {
-  @media screen and (max-width: 900px){
+  @media screen and (orientation: portrait){
     display: flex;
     flex-direction: column;
     justify-content: space-between;

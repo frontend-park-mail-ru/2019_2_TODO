@@ -21,7 +21,7 @@
     height: 50px;
     border: 1px solid;
     cursor: pointer;
-    @media screen and (max-width: 900px){
+    @media screen and (orientation: portrait){
       width: 100px;
       height: 100px;
     }
