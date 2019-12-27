@@ -23,6 +23,7 @@
     //height: 100%;
     grid-area: 1 / 1;
     overflow: hidden;
+    -webkit-overflow: 0;
     border-right: solid 1px grey;
 
     &__position {
