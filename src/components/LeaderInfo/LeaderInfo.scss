@@ -4,7 +4,7 @@
   grid-template-rows: 1fr;
   grid-template-columns: 20% 1fr 30%;
   @media screen and (orientation: portrait) {
-    height: 140px;
+    min-height: 140px;
   }
   @media (orientation: landscape) {
     max-height: 5vh;
