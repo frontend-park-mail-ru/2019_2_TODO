@@ -6,6 +6,8 @@ import BaseView from '../BaseView/BaseView.js';
 import {PlayerInfo} from '../../components/PlayerInfo/PlayerInfo.js';
 import {BankersCard} from '../../components/BancersCard/BancersCard';
 import {TextComponent} from '../../components/TextComponent/Text';
+import ScoreSpan from '../../components/ScoreSpan/ScoreSpan';
+import NewRound from '../../components/NewRound/NewRound';
 
 /** Игра оффлайн*/
 export default class OfflineGameView extends BaseView {
@@ -35,6 +37,7 @@ export default class OfflineGameView extends BaseView {
       class: 'button startGameButton',
       id: 'startGame',
     });
+
     this.el.appendChild(startButton.render());
     this.el.className = 'sect';
     const table = document.createElement('div');
@@ -43,7 +46,16 @@ export default class OfflineGameView extends BaseView {
     const bankSpan = new BankPanel({bank: '1000'});
     table.appendChild(bankSpan.render());
     table.appendChild(bankerCard.render());
+    const newRound = new NewRound();
+    this.el.appendChild(newRound.render());
     this.el.appendChild(table);
+    for (let i = 0; i < 5; i++) {
+      const bet = new ScoreSpan({
+        value: '',
+        id: 'scoreSpan' + i,
+      });
+      table.appendChild(bet.render());
+    }
     const playersContainer = document.createElement('div');
     playersContainer.id = this.el.id + '__players';
     this.el.appendChild(playersContainer);
@@ -73,6 +85,9 @@ export default class OfflineGameView extends BaseView {
     document.getElementById('startGame').addEventListener('click', (evt)=>{
       OfflineGameView.addPlayer('user', user.username, '1000', 'singleplayer__players');
       OfflineGameView.addPlayer('bot', 'bot', '1000', 'singleplayer__players');
+      OfflineGameView.addPlayer('bot1', 'bot', '1000', 'singleplayer__players');
+      OfflineGameView.addPlayer('bot2', 'bot', '1000', 'singleplayer__players');
+      OfflineGameView.addPlayer('bot3', 'bot', '1000', 'singleplayer__players');
       this.game = new Game();
       setTimeout(()=>{
         this.game.startRound();
@@ -111,8 +126,10 @@ export default class OfflineGameView extends BaseView {
     document.getElementById('firstButton').textContent = text;
     document.getElementById('raiseSlider').max = Math.min(
         parseInt(sessionStorage.playerScore),
-        parseInt(sessionStorage.botScore) - parseInt(sessionStorage.playerBet)
+        parseInt(sessionStorage.botScore) + parseInt(sessionStorage.playerBet)
     );
-    document.getElementById('raiseSlider').value = 20;
+    document.getElementById('raiseSlider').min = Math.max(20, parseInt(sessionStorage.botBet) - parseInt(sessionStorage.playerBet) + 20);
+    document.getElementById('raiseSlider').value = document.getElementById('raiseSlider').min;
+    document.getElementById('thirdButton').innerText = `raise: ${parseInt(document.getElementById('raiseSlider').value)}`;
   }
 }

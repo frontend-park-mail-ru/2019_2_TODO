@@ -1,13 +1,21 @@
 import {Card} from '../../components/Card/Card';
 
+
 export class PokerCSSAnimation {
   constructor(players) {
     this.shining = undefined;
     this.players = players;
   }
-
   startRoundAnimation(players = this.players) {
     this.players = players;
+    const newRound = document.getElementById('newRoundSpan');
+    newRound.innerText = 'New Round';
+    newRound.hidden = false;
+    newRound.style.animation = 'fly-in-out 3s';
+    newRound.addEventListener('animationend', ()=>{
+      newRound.style.animation = '';
+      newRound.hidden = true;
+    }, {once: true});
     let i = 0;
     this.players.forEach((id) => {
       this[id] = [];
@@ -102,12 +110,12 @@ export class PokerCSSAnimation {
         }
       });
     });
-    cardsIds.forEach((id)=>{
+    cardsIds.forEach((id)=> {
       const c = document.getElementById(id);
       c.style.animation = 'winCard 3s';
-      setTimeout(()=>{
+      c.addEventListener('animationend', () => {
         c.style.animation = '';
-      }, 3000);
+      }, {once: true});
     });
   }
   shinePlayer(id) {
@@ -121,4 +129,6 @@ export class PokerCSSAnimation {
       console.log(id);
     }
   }
+
+
 }

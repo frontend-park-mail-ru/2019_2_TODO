@@ -49,8 +49,18 @@
 .table {
   display: grid;
   //flex-direction: row;
-  grid-template-columns: 1fr;
-  grid-template-rows: 25% 1fr 25%;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 0.35fr 1fr 1fr;
+  grid-template-areas:
+          ". . . . bp bp . . . ."
+          ". s3 s3 . bp bp . s4 s4 ."
+          ". . bc bc bc bc bc bc . ."
+          ". . bc bc bc bc bc bc . ."
+          ". . bc bc bc bc bc bc . ."
+          ". . bc bc bc bc bc bc . ."
+          ". . . . s1 s1 . . . ."
+          ". s2 s2 . s1 s1 . s5 s5 ."
+          ". . . . . . . . . .";
   align-items: center;
   justify-content: center;
   position: absolute;
@@ -65,6 +75,9 @@
   @media (orientation: landscape) {
     background-image: url("/assets/table_new.png");
     top: calc(50% - 30vh);
+    @media screen and (max-height: 700px) {
+    top: calc(50% - 35vh);
+    }
     left: calc(50% - 27vw);
     height: 54vh;
     width: 54vw;

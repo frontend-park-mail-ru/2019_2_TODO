@@ -85,12 +85,12 @@
   }
 }
 .player-info:nth-child(5){
-  @media screen and (orientation: portrait) {
-    bottom: 18vw;
+  @media (orientation: portrait) {
+    bottom: 25vw;
     right: 18vh;
   }
   @media (orientation: landscape) {
-    bottom: 18vh;
+    bottom: 25vh;
     right: 18vw;
   }
 }

@@ -1,0 +1,37 @@
+.ScoreSpan{
+  height: 25px;
+  width: 40px;
+  align-self: center;
+  justify-self: center;
+  //border: solid 1px ;
+  border-radius: 100px;
+  box-shadow: 0px 0px 10px grey;
+  &__value{
+    font-family: Roboto;
+    text-align: center;
+    color: white;
+    font-size: 17px;
+  }
+}
+
+.ScoreSpan:nth-child(6){
+  grid-area: s1;
+  @media screen and (max-height: 1080px){
+    align-self: flex-end;
+  }
+  @media screen and (max-height: 700px){
+    align-self: flex-start;
+  }
+}
+.ScoreSpan:nth-child(7){
+  grid-area: s2;
+}
+.ScoreSpan:nth-child(3){
+  grid-area: s3;
+}
+.ScoreSpan:nth-child(4){
+  grid-area: s4;
+}
+.ScoreSpan:nth-child(5){
+  grid-area: s5;
+}
