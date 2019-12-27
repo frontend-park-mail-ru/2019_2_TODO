@@ -69,8 +69,15 @@ export class PokerCSSAnimation {
   }
 
   showBankCards(indexes, cards) {
+    let i = 0;
     indexes.reduce((delay, index) => {
       setTimeout(() => {
+        document.getElementById(this.bankerCards[index]).addEventListener('animationend', ()=>{
+          i++;
+          if (i===indexes.length) {
+            dispatchEvent(new Event('sync'));
+          }
+        }, {once: true});
         document.getElementById(this.bankerCards[index]).dataset['nominal'] = cards[index];
         document.getElementById(this.bankerCards[index]).hidden = false;
       }, delay);
