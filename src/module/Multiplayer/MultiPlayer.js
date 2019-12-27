@@ -44,6 +44,10 @@ export default class MultiPlayer {
    * @param {Object} playerInfo
    */
   removePlayer(playerInfo) {
+    this.players.splice(
+        this.players.findIndex((value) => value.id === playerInfo.id),
+        1,
+    );
     document.getElementById(playerInfo.id+'container').remove();
 
   }
@@ -90,7 +94,7 @@ export default class MultiPlayer {
    * @param {Object} playerInfo
    */
   startGame(playerInfo) {
-    this.animation.startRoundAnimation();
+    this.animation.startRoundAnimation(this.players);
     this.showPlayerCards(playerInfo);
     this.updatePlayerScore(playerInfo);
   }

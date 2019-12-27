@@ -6,7 +6,8 @@ export class PokerCSSAnimation {
     this.players = players;
   }
 
-  startRoundAnimation() {
+  startRoundAnimation(players) {
+    this.players = players;
     let i = 0;
     this.players.forEach((id) => {
       this[id] = [];
