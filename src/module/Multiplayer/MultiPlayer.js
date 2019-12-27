@@ -177,7 +177,9 @@ export default class MultiPlayer {
    * @param {Object} betInfo
    */
   minBet(betInfo) {
-    document.getElementById('raiseSlider').min = betInfo.minbet;
+    const slider = document.getElementById('raiseSlider');
+    slider.min = Math.min(betInfo.minbet,parseInt(slider.max);
+    document.getElementById('thirdButton').innerText = 'score: '+''
   }
   /**
    * Установить счет банка

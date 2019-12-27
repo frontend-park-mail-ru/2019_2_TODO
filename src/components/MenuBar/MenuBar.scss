@@ -27,7 +27,7 @@
     font-size: 30px;
   }
   &__div {
-    @media screen and (orientation: portrait){
+    @media screen and (max-width: 900px){
       min-height: 140px;
 
     }
