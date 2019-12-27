@@ -20,13 +20,10 @@ export default class ScoreBoard extends BaseComponent {
    */
   render() {
     this.compile();
-    // for (let i = 0; i < 10; i++) {
-    //   scoreBoard.leaders.push({
-    //     points: '1000',
-    //     username: 'player',
-    //   });
-    // }
     scoreBoard.leaders.forEach((leader, index)=> {
+      if (leader.username.length > 15) {
+        leader.username = leader.username.substring(0, 10);
+      }
       const user = new LeaderInfo({
         score: leader.points,
         id: leader.id,
