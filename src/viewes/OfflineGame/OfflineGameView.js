@@ -9,6 +9,7 @@ import {TextComponent} from '../../components/TextComponent/Text';
 import ScoreSpan from '../../components/ScoreSpan/ScoreSpan';
 import NewRound from '../../components/NewRound/NewRound';
 
+
 /** Игра оффлайн*/
 export default class OfflineGameView extends BaseView {
   /**
@@ -20,6 +21,7 @@ export default class OfflineGameView extends BaseView {
     this.el.id = 'singleplayer';
     this.card = null;
     this.game = null;
+    window.playerGrid = [true, true, true, true, true];
   }
 
   /** Отрисовать*/
@@ -59,6 +61,7 @@ export default class OfflineGameView extends BaseView {
     }
     const playersContainer = document.createElement('div');
     playersContainer.id = this.el.id + '__players';
+    playersContainer.className = 'playerContainer';
     this.el.appendChild(playersContainer);
     const playerButton = new PokerUserPanel();
     this.el.appendChild(playerButton.render());
@@ -88,6 +91,9 @@ export default class OfflineGameView extends BaseView {
     document.getElementById('startGame').addEventListener('click', (evt) => {
       OfflineGameView.addPlayer('user', user.username, '1000', 'singleplayer__players');
       OfflineGameView.addPlayer('bot', 'bot', '1000', 'singleplayer__players');
+      OfflineGameView.addPlayer('bot1', 'bot', '1000', 'singleplayer__players');
+      OfflineGameView.addPlayer('bot2', 'bot', '1000', 'singleplayer__players');
+      OfflineGameView.addPlayer('bot3', 'bot', '1000', 'singleplayer__players');
       this.game = new Game();
       setTimeout(() => {
         this.game.startRound();
@@ -104,6 +110,17 @@ export default class OfflineGameView extends BaseView {
       containerId: `${playerId}container`,
       playerScoreId: `${playerId}Score`,
     });
+    let i = 0;
+    while (!playerGrid[i]) {
+      i++;
+    }
+    playerGrid[i] = false;
+    console.log('grid-area: plG'+i+';');
+    playerInfo.render().style = 'grid-area: plG'+i+';';
+    playerInfo.render().dataset['area'] = ''+i;
+    // if (i === 1 || i=== 4) {
+    //   playerInfo.render().style.transform = 'translate(0,-20px);';
+    // }
     document.getElementById(containerId).appendChild(playerInfo.render());
   }
 

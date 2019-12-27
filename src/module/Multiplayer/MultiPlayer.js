@@ -79,6 +79,7 @@ export default class MultiPlayer {
         this.players.findIndex((value) => value.id === playerInfo.id),
         1,
     );
+    playerGrid[document.getElementById(playerInfo.id+'container').dataset['area']] = true;
     document.getElementById(playerInfo.id+'container').remove();
 
   }
