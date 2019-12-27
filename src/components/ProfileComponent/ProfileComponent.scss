@@ -162,7 +162,7 @@
   text-align: center;
   @media screen and (orientation: portrait) {
     //background: none;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-top: 10vh;
     width: 80%;
     min-height: 1300px;
