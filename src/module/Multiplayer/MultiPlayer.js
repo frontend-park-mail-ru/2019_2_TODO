@@ -111,7 +111,7 @@ export default class MultiPlayer {
   updatePlayerScore(playerInfo) {
     document.getElementById(playerInfo.id+'Score')
         .innerText = `${playerInfo.score}`;
-    document.getElementById('ScoreSpan'+this.players.indexOf(playerInfo.id));
+    document.getElementById('ScoreSpan'+this.players.indexOf(playerInfo.id)).innerText = `${playerInfo.bet||0}`;
   }
   /**
    * Готовность
