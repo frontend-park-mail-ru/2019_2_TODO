@@ -18,7 +18,7 @@ export default class MultiPlayer {
     this.needSyncListComands = {
       showTableCards: true,
     };
-    this.socket = new WebSocket(`wss://pokertodo.ru:743/online/?name=${user.username}&roomName=${url.searchParams.get('room')}&id=${user.id}`);
+    this.socket = new WebSocket(`wss://pokertodo.ru/online/?name=${user.username}&roomName=${url.searchParams.get('room')}&id=${user.id}`);
 // >>>>>>> c7c45068a4aad6de6c429f2d2b53b2dc71faf05b
     this.socket.onopen = (msg)=>{
       addEventListener('sync', () => {
