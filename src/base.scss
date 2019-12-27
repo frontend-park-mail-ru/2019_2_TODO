@@ -3,12 +3,12 @@ body{
   justify-content: space-between;
 
   background-size: 100%;
-  //@media (orientation: landscape) {
-  //  height: 100vh;
-  //}
-  //@media screen and (orientation: portrait) {
-  //  height: 100vw;
-  //}
+  @media (orientation: landscape) {
+    height: 100vh;
+  }
+  @media screen and (orientation: portrait) {
+    height: 100vw;
+  }
   padding: 0;
   margin: 0;
 }
