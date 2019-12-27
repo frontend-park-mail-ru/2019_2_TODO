@@ -7,12 +7,12 @@
   @media (orientation: landscape) {
     height: 100vh;
   }
-  @media (orientation: portrait) {
+  @media screen and (orientation: portrait) {
     height: 100vw;
   }
   background-image: url("/assets/nami.png");
 }
-@media (orientation: portrait) {
+@media screen and (orientation: portrait) {
   .table:before{
     background-image: url("/assets/table_new.png");
     background-repeat: no-repeat;
@@ -38,7 +38,7 @@
   position: absolute;
 
 
-  @media (orientation: portrait) {
+  @media screen and (orientation: portrait) {
     top: calc(50% - 27vw);
     left: calc(50% - 27vh);
     height: 54vw;
@@ -58,7 +58,7 @@
 
 .startGameButton {
   position: absolute;
-  @media (orientation: portrait) {
+  @media screen and (orientation: portrait) {
     left: calc(50vh - 45px);
     top: calc(50vw - 20px);
   }

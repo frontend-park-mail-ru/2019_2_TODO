@@ -6,7 +6,7 @@ body{
   @media (orientation: landscape) {
     height: 100vh;
   }
-  @media (orientation: portrait) {
+  @media screen and (orientation: portrait) {
     height: 100vw;
   }
   padding: 0;
@@ -19,7 +19,7 @@ html{
     background-position: center;
     background-position: 0 30%;
   }
-  @media (orientation: portrait) {
+  @media screen and (orientation: portrait) {
     background: #1c1c1c;
   }
   //background-size: 100% 100%;
@@ -78,7 +78,7 @@ form {
 
 }
 .body {
-  @media (orientation: portrait){
+  @media screen and (orientation: portrait){
     display: flex;
     flex-direction: column;
     justify-content: space-between;

@@ -22,14 +22,14 @@
       color: #2ecc71;
       margin: 0;
       font-family: Roboto;
-      @media (orientation: portrait) {
+      @media screen and (orientation: portrait) {
         font-size: 120px;
       }
     }
   }
   &__board {
     overflow: auto;
-    @media (orientation: portrait) {
+    @media screen and (orientation: portrait) {
     }
     @media (orientation: landscape) {
       max-height: 70vh;

@@ -11,7 +11,7 @@
 
   grid-area: 1/2;
   font-size: 30px;
-  @media (orientation: portrait) {
+  @media screen and (orientation: portrait) {
     padding-bottom: 100px;
     border-bottom: solid 1px grey;
     margin-top: 5vh;
@@ -29,10 +29,10 @@
     color: #2ecc71;
     padding: 10px;
     border-radius: 100px;
-  @media (orientation: portrait) {
-    font-size: 120px;
-    margin: 30px;
-  }
+    @media screen and (orientation: portrait) {
+      font-size: 120px;
+      margin: 30px;
+    }
   }
 
   &__button:hover {

@@ -6,7 +6,7 @@
   padding: 25px;
   padding-right: 0;
   //margin-bottom: 100px;
-  @media (orientation: portrait) {
+  @media screen and (max-width: 900px) and (orientation: portrait){
   }
   &__button_back {
     align-self: start;
@@ -21,7 +21,7 @@
     &__left-container {
       @extend %row;
       align-items: center;
-      @media (orientation: portrait) {
+      @media screen and (orientation: portrait) and  (max-width: 900px) {
         width: 100%;
         justify-content: flex-start;
       }
@@ -37,7 +37,7 @@
         transition: text-shadow;
         transition-duration: 1000ms;
         transition-timing-function: ease;
-        @media (orientation: portrait) {
+        @media screen and (orientation: portrait) {
           font-size: 90px;
           text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #2cff08, 0 0 0.5em #094f0a, 0 0 0.1em #2cff08;
         }
@@ -89,7 +89,7 @@
     &__right-container {
       display: flex;
       flex-direction: row;
-      @media (orientation: portrait) {
+      @media screen and (orientation: portrait) {
         flex-direction: column;
       }
     }
@@ -104,6 +104,7 @@
       color: #2ecc71;
       font-size: 30px;
       cursor: pointer;
+
     }
   }
 
@@ -124,6 +125,7 @@
     width: 70px;
     padding: 10px;
     color: #2ecc71
+
   }
 
   &__sign-in-button:nth-child(1) {
@@ -140,7 +142,7 @@
   height: 50px;
   width: 75px;
   align-self: flex-start;
-  @media (orientation: portrait) {
+  @media screen and (orientation: portrait) {
     height: 120px;
     width: 180px;
   }

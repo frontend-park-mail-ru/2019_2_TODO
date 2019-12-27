@@ -56,8 +56,8 @@ export class HeaderComponent {
       const head = new Header({
         hiddenSign: 'hidden',
       });
+      head.render().appendChild(infoBar.render());
       this._parent.appendChild(head.render());
-      this._parent.appendChild(infoBar.render());
     }
   }
 }
