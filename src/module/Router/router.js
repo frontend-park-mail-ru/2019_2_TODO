@@ -58,6 +58,7 @@ export default class Router {
     }
     let {View, view, el} = route;
     el = document.createElement('section');
+    el.className = 'el';
     this.root.appendChild(el);
     view = new View(el);
     if (!view.active) {

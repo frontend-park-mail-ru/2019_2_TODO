@@ -102,7 +102,7 @@ export class Game {
     this.animation.showWinnerCards(this.getWinnersCardsId(winners));
     if (winners.length === 2) {
       sessionStorage.playerScore = +sessionStorage.playerScore + sessionStorage.bank / 2;
-      sessionStorage.botScore -= +sessionStorage.botScore + sessionStorage.bank / 2;
+      sessionStorage.botScore = +sessionStorage.botScore + sessionStorage.bank / 2;
       sessionStorage.bank = 0;
       sessionStorage.botBet = 0;
       sessionStorage.playerBet = 0;
@@ -116,7 +116,6 @@ export class Game {
         sessionStorage.botScore -= -sessionStorage.bank;
         sessionStorage.bank = 0;
         sessionStorage.botBet = 0;
-
         sessionStorage.playerBet = 0;
       }
     }
