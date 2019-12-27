@@ -141,3 +141,25 @@
 
   }
 }
+
+.profileForm-change {
+  margin-top: 25vh;
+  min-width: 20vw;
+  min-height: 47vh;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 70;
+  background: #34495e;
+  border: 1px solid #2b3c4e;
+  box-shadow: 0 0 90px black;
+  text-align: center;
+  @media screen and (orientation: portrait) {
+    //background: none;
+    justify-content: space-between;
+    margin-top: 10vh;
+    min-width: 1300px;
+    //min-
+    max-height: 100vh;
+  }
+}
