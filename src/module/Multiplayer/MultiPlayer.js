@@ -17,6 +17,7 @@ export default class MultiPlayer {
     };
     this.socket.onmessage = (msg)=>{
       const {Command} = JSON.parse(msg.data);
+      console.log(Command);
       Object.keys(Command).forEach((key)=>{
         this[key](Command[key]);
       });
@@ -111,8 +112,6 @@ export default class MultiPlayer {
   updatePlayerScore(playerInfo) {
     document.getElementById(playerInfo.id+'Score')
         .innerText = `${playerInfo.score}`;
-    console.log(this.players);
-    console.log(playerInfo.id);
     document.getElementById('scoreSpan'+this.players.indexOf(playerInfo.id)).innerText = `${playerInfo.bet||0}`;
   }
   /**
@@ -178,7 +177,7 @@ export default class MultiPlayer {
    * @param {Object} betInfo
    */
   minBet(betInfo) {
-    document.getElementById('raiseSlider').min = betInfo.min;
+    document.getElementById('raiseSlider').min = betInfo.minBet;
   }
   /**
    * Установить счет банка
