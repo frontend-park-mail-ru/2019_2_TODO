@@ -74,6 +74,26 @@ export default class OfflineGameView extends BaseView {
             console.log('succes');
           });
     });
+    const dv = document.createElement('div');
+    dv.className = 'sect__full-screen';
+    const fl = new TextComponent({
+      tag: 'h1',
+      class: 'sect__full-screen__text',
+      text: 'Tap to fullscreen!',
+    });
+    fl.render().addEventListener('click', ()=>{
+      this.el.requestFullscreen().then(()=>{
+        screen.orientation.lock('landscape-secondary')
+            .catch((e)=>{
+              console.log(e);
+            })
+            .then(()=>{
+              console.log('succes');
+            });
+      });
+    });
+    dv.appendChild(fl.render());
+    this.el.appendChild(dv);
     this.addHandlers();
   }
 

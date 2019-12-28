@@ -1,50 +1,50 @@
 
 .sect {
   position: relative;
-  @media screen and (orientation: portrait) {
-    html {
-      -webkit-transform: rotate(-90deg);
-      -moz-transform: rotate(-90deg);
-      -o-transform: rotate(-90deg);
-      -ms-transform: rotate(-90deg);
-      transform: rotate(-90deg);
-      -webkit-transform-origin: left top;
-      -moz-transform-origin: left top;
-      -ms-transform-origin: left top;
-      -o-transform-origin: left top;
-      transform-origin: left top;
-      position: absolute;
-      top: 100vh;
-      height: 100vw;
-      width: 100vh;
-    }
-  }
   padding: 0;
   margin: 0;
   z-index: 0;
+  &__full-screen{
+    display: none;
+  }
   @media (orientation: landscape) {
     height: 100vh;
   }
   @media screen and (orientation: portrait) {
-    height: 100vw;
+    //height: 100vw;
+    //z-index: 1000;
+    &__full-screen{
+      //position: absolute;
+      z-index: 1001;
+      display: flex;
+      height: 100vh;
+      width: 100vw;
+      background: #1c1c1c;
+      align-items: center;
+      justify-content: center;
+      __text{
+        z-index: 1002;
+      }
+    }
   }
   background-image: url("/assets/nami.png");
 }
 @media screen and (orientation: portrait) {
-  .table:before{
-    background-image: url("/assets/table_new.png");
-    background-repeat: no-repeat;
-    background-size: 54vh 54vw;
-    content: "";
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    top: calc(-100%);
-    left: -100%;
-    z-index: 0;
 
-    transform:  rotate(180deg);
-  }
+  //.table:before{
+  //  background-image: url("/assets/table_new.png");
+  //  background-repeat: no-repeat;
+  //  background-size: 54vh 54vw;
+  //  content: "";
+  //  position: absolute;
+  //  width: 200%;
+  //  height: 200%;
+  //  top: calc(-100%);
+  //  left: -100%;
+  //  z-index: 0;
+  //
+  //  transform:  rotate(180deg);
+  //}
 }
 .table {
   display: grid;
@@ -67,6 +67,7 @@
 
 
   @media screen and (orientation: portrait) {
+    display: none;
     top: calc(50% - 27vw);
     left: calc(50% - 27vh);
     height: 54vw;
@@ -90,6 +91,7 @@
 .startGameButton {
   position: absolute;
   @media screen and (orientation: portrait) {
+    display: none;
     left: calc(50vh - 45px);
     top: calc(50vw - 20px);
   }
