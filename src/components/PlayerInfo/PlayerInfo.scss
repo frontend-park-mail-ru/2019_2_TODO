@@ -4,6 +4,7 @@
   transition-duration: 300ms;
   //position: absolute;
   align-self: flex-end;
+  justify-self: center;
   transform: translate(0, -20px);
   width: 115px;
   border-radius: 5px;
@@ -53,7 +54,7 @@
   @media (orientation: landscape) {
     bottom: 18vh;
     left: 50%;
-    transform: translate(-50%, 0);
+    //transform: translate(-50%, 0);
   }
 }
 
