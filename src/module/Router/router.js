@@ -57,6 +57,7 @@ export default class Router {
       );
     }
     let {View, view, el} = route;
+    document.getElementById('application').innerHTML = '';
     el = document.createElement('section');
     el.className = 'el';
     this.root.appendChild(el);
