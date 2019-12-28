@@ -6,14 +6,14 @@
   align-self: flex-end;
   justify-self: center;
   transform: translate(0, -20px);
-  width: 115px;
+  width: 119px;
   border-radius: 5px;
 
   &__card-container {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    overflow: hidden;
+    //overflow: hidden;
     @keyframes showWinner {
       30% {
         transform: translate(0, -30px);
