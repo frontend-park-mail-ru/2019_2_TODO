@@ -54,19 +54,6 @@ export default class TableView extends BaseView {
         );
       });
     });
-    //
-    const table2 = document.getElementById('tables');
-    const table = new TableComponent({
-      roomBet: `${2}/${2*2}`,
-      taken: '0',
-      all: '2',
-      id: 'asda',
-    }, []);
-    table2.appendChild(table.render());
-    table.element.addEventListener('click', (event)=>{
-      this.roomsController.socket.close();
-      router.open(`/multiplayer?room=${id}`);
-    }, {once: true});
   }
 
   /**

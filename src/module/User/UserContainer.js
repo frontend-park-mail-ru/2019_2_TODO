@@ -4,7 +4,7 @@ import AjaxModule from '../AjaxModule/ajax';
 export default class User {
   /** Инициализация данных*/
   constructor() {
-    this.isAuth = false;
+    this.isAuth = true;
     this.username = 'unAuthorized';
     this.avatar = 'https://jok.io/Images/Shared/unknown_female.png';
     this.id = null;

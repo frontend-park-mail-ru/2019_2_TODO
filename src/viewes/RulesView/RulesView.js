@@ -10,7 +10,7 @@ export default class RulesView extends BaseView {
   render() {
     const application = this.el;
     application.innerHTML = '';
-    // application.style.backgroundImage = 'url("assets/asfalt.png")';
+    application.style.backgroundImage = 'url("assets/asfalt.png")';
     // application.style.height = '100vh';
     // application.style += 'justify-content: flex-start';
     const header = new HeaderComponent(application);
