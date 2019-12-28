@@ -66,6 +66,13 @@ export default class OfflineGameView extends BaseView {
     const playerButton = new PokerUserPanel();
     this.el.appendChild(playerButton.render());
     this.el.requestFullscreen();
+    screen.orientation.lock('landscape-secondary')
+        .catch((e)=>{
+          console.log(e);
+        })
+        .then(()=>{
+      console.log('succes');
+    });
     this.addHandlers();
   }
 
